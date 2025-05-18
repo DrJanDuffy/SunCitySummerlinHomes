@@ -26,10 +26,6 @@ const Properties: NextPage = () => {
 
     return () => clearInterval(interval);
   }, [propertyImages.length]);
-    "/property1.jpg",
-    "/property2.jpg",
-    "/property3.jpg",
-  ];
 
   return (
     <div className={styles.container}>
