@@ -80,12 +80,13 @@ const Home: NextPage = () => {
           <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
         </div>
         <nav className={styles.nav}>
-          <a href="#property">Property</a>
-          <a href="#features">Features</a>
-          <a href="#community">Community</a>
-          <a href="#lifestyle">Lifestyle</a>
-          <a href="#amenities">Amenities</a>
-          <a href="#contact">Contact</a>
+          <Link href="/">Home</Link>
+          <Link href="/properties">Properties</Link>
+          <Link href="/community">Community</Link>
+          <Link href="/lifestyle">Lifestyle</Link>
+          <Link href="/amenities">Amenities</Link>
+          <Link href="/testimonials">Testimonials</Link>
+          <Link href="/contact">Contact</Link>
         </nav>
       </header>
 

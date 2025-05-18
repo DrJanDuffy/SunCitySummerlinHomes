@@ -111,6 +111,257 @@
   animation: fadeIn 1.2s ease-out;
 }
 
+
+.pageTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  text-align: center;
+  position: relative;
+}
+
+.pageTitle:after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #8e1f41;
+  margin: 0.5rem auto 0;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.testimonialCardLarge {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonialCardLarge:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.testimonialImage {
+  height: 200px;
+  overflow: hidden;
+}
+
+.testimonialImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.testimonialCardLarge:hover .testimonialImage img {
+  transform: scale(1.05);
+}
+
+.testimonialContent {
+  padding: 1.5rem;
+}
+
+.emptyStar {
+  color: #ddd;
+}
+
+.testimonialLocation {
+  color: #666;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.testimonialIntro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.testimonialCTA {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.communityMedia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.mediaItem {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mediaItem img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.mediaItem h3 {
+  padding: 1rem 1rem 0.5rem;
+  margin: 0;
+}
+
+.mediaItem p {
+  padding: 0 1rem 1rem;
+  margin: 0;
+  color: #666;
+}
+
+.communityHistory {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.amenitiesDetail {
+  margin: 3rem 0;
+}
+
+.amenityFeature {
+  margin-bottom: 3rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.amenityFeature h2 {
+  padding: 1.5rem;
+  margin: 0;
+  background-color: #8e1f41;
+  color: white;
+}
+
+.amenityFeature img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.amenityFeature p {
+  padding: 1.5rem;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.lifestyleStories {
+  margin: 3rem 0;
+}
+
+.storyCard {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.storyCard h3 {
+  color: #8e1f41;
+  margin-top: 0;
+}
+
+.lifestyleCalendar {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.calendarItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.calendarItem {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendarItem h3 {
+  margin-top: 0;
+  color: #8e1f41;
+}
+
+.calendarItem p {
+  margin-bottom: 0;
+  color: #666;
+}
+
+.contactIntro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.formSuccess {
+  background-color: #dff0d8;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.resetButton {
+  background-color: #8e1f41;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.mapContainer {
+  margin: 3rem 0;
+}
+
+.mapPlaceholder {
+  background-color: #eee;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .communityMedia {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonialGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .ctaContainer {
   display: flex;
   gap: 1rem;
