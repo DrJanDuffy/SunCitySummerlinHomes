@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           `
         }} />
       </Head>
+      
       <Script
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
         strategy="afterInteractive"

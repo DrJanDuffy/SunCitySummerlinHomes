@@ -74,6 +74,7 @@ const Home: NextPage = () => {
           `
         }} />
       </Head>
+      
       <Script 
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
         strategy="afterInteractive"
@@ -96,7 +97,6 @@ const Home: NextPage = () => {
       </header>
 
       <div className={styles.listingsSection}>
-        {/* @ts-ignore - RealScout custom element */}
         <realscout-office-listings 
           agent-encoded-id="QWdlbnQtMjI1MDUw" 
           sort-order="NEWEST" 
