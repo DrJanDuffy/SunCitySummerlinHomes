@@ -1,8 +1,29 @@
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  overflow-x: hidden;
+}
+
+.fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 .header {
@@ -11,6 +32,12 @@
   align-items: center;
   padding: 1.5rem 0;
   border-bottom: 1px solid #eaeaea;
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .logoContainer {
@@ -52,40 +79,143 @@
 
 .hero {
   text-align: center;
-  padding: 4rem 0;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/hero-bg.jpg');
+  padding: 8rem 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .title {
   margin: 0;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
-  color: #333;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-out;
 }
 
 .subtitle {
   margin: 1.5rem 0;
-  font-size: 1.5rem;
-  color: #666;
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1.2s ease-out;
+}
+
+.ctaContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  animation: fadeIn 1.4s ease-out;
 }
 
 .cta {
   background-color: #8e1f41;
   color: white;
   border: none;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 5px;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cta:hover {
   background-color: #7a1a38;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.virtualTourBtn {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid white;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.virtualTourBtn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+.tourIcon {
+  font-size: 1.3rem;
+}
+
+.virtualTourModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modalContent {
+  width: 90%;
+  max-width: 1000px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  position: relative;
+}
+
+.closeModal {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.tourPlaceholder {
+  width: 100%;
+  height: 500px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.tourMessage {
+  text-align: center;
+}
+
+.tourInstructions {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
 }
 
 .sectionTitle {
@@ -108,16 +238,74 @@
 
 .mainImage {
   width: 100%;
-  height: 500px;
+  height: 550px;
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 1rem;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.mainImage:hover {
+  transform: scale(1.01);
 }
 
 .featuredImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  z-index: 10;
+  font-weight: bold;
+}
+
+.imageNavigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mainImage:hover .imageNavigation {
+  opacity: 1;
+}
+
+.navArrow {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.navArrow:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
 }
 
 .thumbnails {
@@ -125,22 +313,91 @@
   gap: 1rem;
   overflow-x: auto;
   padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #8e1f41 #f0f0f0;
+}
+
+.thumbnails::-webkit-scrollbar {
+  height: 6px;
+
+.testimonialsSection {
+  margin-bottom: 4rem;
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+}
+
+.testimonialContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonialCard {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonialRating {
+  margin-bottom: 1rem;
+}
+
+.star {
+  color: #ffcc00;
+  font-size: 1.2rem;
+  margin-right: 2px;
+}
+
+.testimonialText {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.testimonialAuthor {
+  font-weight: bold;
+  color: #333;
+  text-align: right;
+}
+
+}
+
+.thumbnails::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+  background-color: #8e1f41;
+  border-radius: 10px;
 }
 
 .thumbnail {
-  width: 100px;
-  height: 70px;
+  width: 120px;
+  height: 80px;
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
   opacity: 0.7;
-  transition: opacity 0.2s ease;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .thumbnail:hover,
 .activeThumbnail {
   opacity: 1;
   border: 2px solid #8e1f41;
+  transform: scale(1.05);
 }
 
 .thumbnail img {
@@ -308,14 +565,40 @@
   .header {
     flex-direction: column;
     gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .logoContainer {
+    margin-bottom: 1rem;
   }
 
+  .nav {
+    width: 100%;
+    justify-content: space-around;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 5rem 1rem;
+  }
+  
   .title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .subtitle {
     font-size: 1.2rem;
+  }
+  
+  .ctaContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cta, .virtualTourBtn {
+    width: 100%;
+    padding: 1rem;
   }
 
   .mainImage {
@@ -325,10 +608,61 @@
   .propertyDetails {
     flex-direction: column;
   }
+  
+  .testimonialContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .modalContent {
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  .tourPlaceholder {
+    height: 300px;
+  }
 
   .footer {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
     text-align: center;
+    padding: 1.5rem 0;
+  }
+  
+  .footerBranding {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .footerLinks {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav a {
+    padding: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .features, .contactInfo {
+    grid-template-columns: 1fr;
+  }
+  
+  .feature {
+    padding: 1.2rem;
   }
 }

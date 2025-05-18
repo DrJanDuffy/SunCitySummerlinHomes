@@ -2,10 +2,23 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Home: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [showVirtualTour, setShowVirtualTour] = useState(false);
+  
+  useEffect(() => {
+    setIsVisible(true);
+    
+    // Auto-rotate property images
+    const interval = setInterval(() => {
+      setActiveImage((prev) => (prev + 1) % propertyImages.length);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, []);
   
   const propertyImages = [
     "/property1.jpg",
@@ -21,6 +34,24 @@ const Home: NextPage = () => {
     "Walking Trails",
     "Social Club",
     "24/7 Security"
+  ];
+  
+  const testimonials = [
+    {
+      name: "Sarah & David Johnson",
+      text: "Moving to Sun City Summerlin was the best decision we've made. The community is vibrant and the amenities are outstanding!",
+      rating: 5
+    },
+    {
+      name: "Robert Wilson",
+      text: "After looking at dozens of properties, this home stood out for its quality finishes and perfect location near the golf course.",
+      rating: 5
+    },
+    {
+      name: "Margaret Thompson",
+      text: "The BHHS agent made our buying process so smooth. We're loving our new home and the active lifestyle here.",
+      rating: 4
+    }
   ];
 
   return (
@@ -45,24 +76,71 @@ const Home: NextPage = () => {
       </header>
 
       <main className={styles.main}>
-        <section className={styles.hero}>
-          <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
-          <p className={styles.subtitle}>
-            Experience resort-style living in Las Vegas' premier active adult community
-          </p>
-          <button className={styles.cta}>Schedule a Viewing</button>
+        <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
+            <p className={styles.subtitle}>
+              Experience resort-style living in Las Vegas' premier active adult community
+            </p>
+            <div className={styles.ctaContainer}>
+              <button className={styles.cta}>Schedule a Viewing</button>
+              <button 
+                className={styles.virtualTourBtn} 
+                onClick={() => setShowVirtualTour(true)}
+              >
+                Virtual Tour <span className={styles.tourIcon}>🔍</span>
+              </button>
+            </div>
+          </div>
+          
+          {showVirtualTour && (
+            <div className={styles.virtualTourModal}>
+              <div className={styles.modalContent}>
+                <button 
+                  className={styles.closeModal}
+                  onClick={() => setShowVirtualTour(false)}
+                >
+                  ×
+                </button>
+                <h2>Virtual Tour</h2>
+                <div className={styles.tourPlaceholder}>
+                  <div className={styles.tourMessage}>
+                    <p>360° Virtual Tour</p>
+                    <p className={styles.tourInstructions}>Use your mouse to look around</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </section>
 
-        <section id="property" className={styles.propertySection}>
+        <section id="property" className={`${styles.propertySection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>Property Highlights</h2>
           
           <div className={styles.imageGallery}>
             <div className={styles.mainImage}>
+              <div className={styles.imageOverlay}>
+                <span className={styles.imageCount}>{activeImage + 1}/{propertyImages.length}</span>
+              </div>
               <img 
                 src={propertyImages[activeImage]} 
                 alt="Sun City Summerlin Property" 
                 className={styles.featuredImage}
               />
+              <div className={styles.imageNavigation}>
+                <button 
+                  onClick={() => setActiveImage((prev) => (prev - 1 + propertyImages.length) % propertyImages.length)}
+                  className={styles.navArrow}
+                >
+                  &#10094;
+                </button>
+                <button 
+                  onClick={() => setActiveImage((prev) => (prev + 1) % propertyImages.length)}
+                  className={styles.navArrow}
+                >
+                  &#10095;
+                </button>
+              </div>
             </div>
             <div className={styles.thumbnails}>
               {propertyImages.map((image, index) => (
@@ -132,7 +210,25 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section id="contact" className={styles.contactSection}>
+        <section id="testimonials" className={`${styles.testimonialsSection} ${isVisible ? styles.fadeIn : ''}`}>
+          <h2 className={styles.sectionTitle}>What Homeowners Say</h2>
+          
+          <div className={styles.testimonialContainer}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className={styles.testimonialCard}>
+                <div className={styles.testimonialRating}>
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className={styles.star}>★</span>
+                  ))}
+                </div>
+                <p className={styles.testimonialText}>"{testimonial.text}"</p>
+                <p className={styles.testimonialAuthor}>- {testimonial.name}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        
+        <section id="contact" className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>Contact Us</h2>
           
           <div className={styles.contactForm}>
