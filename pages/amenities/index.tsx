@@ -2,6 +2,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
 
@@ -65,7 +66,13 @@ const Amenities: NextPage = () => {
           <div className={styles.amenitiesDetail}>
             <div className={styles.amenityFeature}>
               <h2>Golf Courses</h2>
-              <img src="/golf-course.jpg" alt="Sun City Summerlin Golf Course" />
+              <Image 
+                src="/golf-course.jpg" 
+                alt="Sun City Summerlin Golf Course" 
+                width={600}
+                height={400}
+                layout="responsive"
+              />
               <p>
                 Sun City Summerlin features three distinct championship golf courses designed by renowned architects. Highland Falls offers panoramic views of the Las Vegas Strip, Palm Valley provides a traditional layout with mild elevation changes, and Eagle Crest is a shorter executive course perfect for a quick round.
               </p>
@@ -73,7 +80,13 @@ const Amenities: NextPage = () => {
             
             <div className={styles.amenityFeature}>
               <h2>Recreation Centers</h2>
-              <img src="/community-center.jpg" alt="Sun City Summerlin Recreation Center" />
+              <Image 
+                src="/community-center.jpg" 
+                alt="Sun City Summerlin Recreation Center" 
+                width={600}
+                height={400}
+                layout="responsive"
+              />
               <p>
                 Four state-of-the-art recreation centers provide residents with swimming pools, fitness facilities, tennis and pickleball courts, and spaces for various clubs and activities. The centers also host regular social events, classes, and workshops.
               </p>

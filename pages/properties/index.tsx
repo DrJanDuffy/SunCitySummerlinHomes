@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
 
@@ -36,7 +37,14 @@ const Properties: NextPage = () => {
 
       <header className={styles.header}>
         <div className={styles.logoContainer}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
+          <Image 
+            src="/bhhs-logo.png" 
+            alt="BHHS Logo" 
+            className={styles.bhsLogo}
+            width={150}
+            height={60}
+            priority
+          />
           <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
         </div>
         <nav className={styles.nav}>
@@ -61,10 +69,14 @@ const Properties: NextPage = () => {
               <div className={styles.imageOverlay}>
                 <span className={styles.imageCount}>{activeImage + 1}/{propertyImages.length}</span>
               </div>
-              <img 
+              <Image 
                 src={propertyImages[activeImage]} 
                 alt="Sun City Summerlin Property" 
                 className={styles.featuredImage}
+                width={800}
+                height={600}
+                priority
+                layout="responsive"
               />
               <div className={styles.imageNavigation}>
                 <button 
@@ -88,7 +100,13 @@ const Properties: NextPage = () => {
                   className={`${styles.thumbnail} ${activeImage === index ? styles.activeThumbnail : ''}`}
                   onClick={() => setActiveImage(index)}
                 >
-                  <img src={image} alt={`Property view ${index + 1}`} />
+                  <Image 
+                    src={image} 
+                    alt={`Property view ${index + 1}`} 
+                    width={150}
+                    height={100}
+                    layout="responsive"
+                  />
                 </div>
               ))}
             </div>
@@ -145,7 +163,13 @@ const Properties: NextPage = () => {
 
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
+          <Image 
+            src="/bhhs-logo.png" 
+            alt="BHHS Logo" 
+            className={styles.footerLogo}
+            width={120}
+            height={48}
+          />
           <p>&copy; 2023 Berkshire Hathaway HomeServices. All rights reserved.</p>
         </div>
         <div className={styles.footerLinks}>
