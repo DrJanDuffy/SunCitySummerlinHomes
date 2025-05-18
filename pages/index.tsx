@@ -26,13 +26,16 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Sun City Summerlin Homes</title>
-        <meta name="description" content="Luxury homes in Sun City Summerlin community" />
+        <title>BHHS | Sun City Summerlin Homes</title>
+        <meta name="description" content="Luxury homes in Sun City Summerlin community offered by Berkshire Hathaway HomeServices" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header className={styles.header}>
-        <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+        <div className={styles.logoContainer}>
+          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
+          <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+        </div>
         <nav className={styles.nav}>
           <a href="#property">Property</a>
           <a href="#features">Features</a>
@@ -172,10 +175,14 @@ const Home: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        <p>&copy; 2023 Sun City Summerlin Homes. All rights reserved.</p>
+        <div className={styles.footerBranding}>
+          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
+          <p>&copy; 2023 Berkshire Hathaway HomeServices. All rights reserved.</p>
+        </div>
         <div className={styles.footerLinks}>
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
+          <a href="https://www.bhhs.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          <a href="https://www.bhhs.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+          <a href="https://www.bhhs.com/" target="_blank" rel="noopener noreferrer">BHHS.com</a>
         </div>
       </footer>
     </div>
