@@ -1,4 +1,3 @@
-
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const Community: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -39,10 +38,10 @@ const Community: NextPage = () => {
       <main className={styles.main}>
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <h1 className={styles.title}>Sun City Summerlin Community</h1>
-          
+
           <div className={styles.communitySection}>
             <img src="/community-center.jpg" alt="Sun City Summerlin Community Center" className={styles.featuredImage} />
-            
+
             <div className={styles.communityHighlights}>
               <div className={styles.statsCard}>
                 <h3>$548,175</h3>
@@ -61,13 +60,13 @@ const Community: NextPage = () => {
                 <p>Active Residents</p>
               </div>
             </div>
-            
+
             <div className={styles.communityDescription}>
               <p>
                 Sun City Summerlin is a 55-plus, active adult community brimming with amenities. Located just beyond the foothills of the Spring Mountains, residents enjoy stunning backyard views of Red Rock Canyon and adjacent rocky peaks. As Las Vegas' oldest and largest community of its kind, Sun City Summerlin is truly "a city within a city," offering convenient access to doctors, banks, florists, and various stores right within the community.
               </p>
               <p>
-                Built in three phases starting in 1989, the community consists of almost 8,000 attached and single-family homes. With more than two dozen floor plans ranging from 1,000 to 2,900 square feet, homes feature contemporary Mediterranean bungalow designs with characteristic terracotta roofing and stucco siding. Many properties front one of the community's renowned golf courses, with garage space specifically for golf carts.
+                Built in three phases starting in 1989, the community consists of almost 8,000 attached and single-family homes. With more than two dozen floor plans ranging from 1,000 to 2,900 square feet, homes feature contemporary Mediterranean bungalow designs with characteristic terracotta roofing and stucco siding. Many properties front one of the community&apos;s renowned golf courses, with garage space specifically for golf carts.
               </p>
             </div>
           </div>
@@ -93,7 +92,7 @@ export default Community;
 
 const Community: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -144,16 +143,16 @@ const Community: NextPage = () => {
               <p>Active Residents</p>
             </div>
           </div>
-          
+
           <div className={styles.communityDescription}>
             <p>
               Sun City Summerlin is a 55-plus, active adult community brimming with amenities. Located just beyond the foothills of the Spring Mountains, residents enjoy stunning backyard views of Red Rock Canyon and adjacent rocky peaks. As Las Vegas' oldest and largest community of its kind, Sun City Summerlin is truly "a city within a city," offering convenient access to doctors, banks, florists, and various stores right within the community.
             </p>
             <p>
-              Built in three phases starting in 1989, the community consists of almost 8,000 attached and single-family homes. With more than two dozen floor plans ranging from 1,000 to 2,900 square feet, homes feature contemporary Mediterranean bungalow designs with characteristic terracotta roofing and stucco siding. Many properties front one of the community's renowned golf courses, with garage space specifically for golf carts.
+              Built in three phases starting in 1989, the community consists of almost 8,000 attached and single-family homes. With more than two dozen floor plans ranging from 1,000 to 2,900 square feet, homes feature contemporary Mediterranean bungalow designs with characteristic terracotta roofing and stucco siding. Many properties front one of the community&apos;s renowned golf courses, with garage space specifically for golf carts.
             </p>
           </div>
-          
+
           <div className={styles.communityMedia}>
             <div className={styles.mediaItem}>
               <img src="/community-center.jpg" alt="Sun City Summerlin Community Center" />
@@ -166,7 +165,7 @@ const Community: NextPage = () => {
               <p>Three distinct courses catering to all skill levels</p>
             </div>
           </div>
-          
+
           <div className={styles.communityHistory}>
             <h2>Community History</h2>
             <p>

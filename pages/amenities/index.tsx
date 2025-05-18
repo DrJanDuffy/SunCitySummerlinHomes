@@ -16,12 +16,12 @@ const Amenities: NextPage = () => {
     "Three Championship Golf Courses",
     "Four Recreation Centers",
     "Multiple Swimming Pools",
-    "Tennis & Pickleball Courts",
+    "Tennis &amp; Pickleball Courts",
     "Fitness Centers with Classes",
-    "Woodworking & Ceramics Studios",
-    "Over 100 Social Clubs & Activities",
-    "Walking & Golf Cart Trails",
-    "On-site Shopping & Dining",
+    "Woodworking &amp; Ceramics Studios",
+    "Over 100 Social Clubs &amp; Activities",
+    "Walking &amp; Golf Cart Trails",
+    "On-site Shopping &amp; Dining",
     "24/7 Security & Gated Areas"
   ];
 

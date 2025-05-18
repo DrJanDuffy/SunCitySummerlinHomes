@@ -54,7 +54,7 @@ const Lifestyle: NextPage = () => {
               <p>Designated golf cart pathways throughout the community make it easy to travel between courses, recreation centers, and local shopping areas.</p>
             </div>
             <div className={styles.lifestyleFeature}>
-              <h3>Shopping & Dining</h3>
+              <h3>Shopping &amp; Dining</h3>
               <p>Tucson Plaza features pharmacies, fitness centers, restaurants like My Mother's House Italian cuisine, and Smith's grocery store.</p>
             </div>
           </div>
