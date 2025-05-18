@@ -22,7 +22,7 @@ const Amenities: NextPage = () => {
     "Over 100 Social Clubs &amp; Activities",
     "Walking &amp; Golf Cart Trails",
     "On-site Shopping &amp; Dining",
-    "24/7 Security & Gated Areas"
+    "24/7 Security &amp; Gated Areas"
   ];
 
   return (
