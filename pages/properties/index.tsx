@@ -185,4 +185,4 @@ const Properties: NextPage = () => {
 export default Properties;
 
 // Remove duplicate component declaration
-/* const Properties = ()=>{
+/* const Properties = ()=>{ */
