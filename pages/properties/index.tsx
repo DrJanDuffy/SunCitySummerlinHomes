@@ -1,4 +1,3 @@
-
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -6,87 +5,21 @@ import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
 
 const Properties: NextPage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Properties | Sun City Summerlin Homes</title>
-        <meta name="description" content="Explore properties in Sun City Summerlin community offered by Berkshire Hathaway HomeServices" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <header className={styles.header}>
-        <div className={styles.logoContainer}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
-          <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
-        </div>
-        <nav className={styles.nav}>
-          <Link href="/">Home</Link>
-          <Link href="/properties">Properties</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/lifestyle">Lifestyle</Link>
-          <Link href="/amenities">Amenities</Link>
-          <Link href="/testimonials">Testimonials</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
-      </header>
-
-      <main className={styles.main}>
-        <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
-          <h1 className={styles.title}>Our Available Properties</h1>
-          
-          <div className={styles.listingsSection}>
-            {/* @ts-ignore - RealScout custom element */}
-            <realscout-office-listings 
-              agent-encoded-id="QWdlbnQtMjI1MDUw" 
-              sort-order="NEWEST" 
-              listing-status="For Sale" 
-              property-types="SFR,MF" 
-              price-min="800000" 
-              price-max="4000000">
-            </realscout-office-listings>
-          </div>
-        </section>
-      </main>
-
-      <footer className={styles.footer}>
-        <div className={styles.footerBranding}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
-          <p>&copy; 2023 Berkshire Hathaway HomeServices. All rights reserved.</p>
-        </div>
-        <div className={styles.footerLinks}>
-          <a href="https://www.bhhs.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-          <a href="https://www.bhhs.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of Service</a>
-          <a href="https://www.bhhs.com/" target="_blank" rel="noopener noreferrer">BHHS.com</a>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default Properties;
-
-const Properties: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [showVirtualTour, setShowVirtualTour] = useState(false);
-  
+
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Auto-rotate property images
     const interval = setInterval(() => {
       setActiveImage((prev) => (prev + 1) % propertyImages.length);
     }, 5000);
-    
+
     return () => clearInterval(interval);
   }, []);
-  
+
   const propertyImages = [
     "/property1.jpg",
     "/property2.jpg",
@@ -119,10 +52,10 @@ const Properties: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.pageTitle}>Our Properties</h1>
-        
+
         <section id="property" className={`${styles.propertySection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>Property Highlights</h2>
-          
+
           <div className={styles.imageGallery}>
             <div className={styles.mainImage}>
               <div className={styles.imageOverlay}>
@@ -173,10 +106,10 @@ const Properties: NextPage = () => {
             </p>
           </div>
         </section>
-        
+
         <section className={styles.featuresSection}>
           <h2 className={styles.sectionTitle}>Property Features</h2>
-          
+
           <div className={styles.features}>
             <div className={styles.feature}>
               <h3>Modern Kitchen</h3>
