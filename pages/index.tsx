@@ -63,6 +63,15 @@ const Home: NextPage = () => {
         <title>BHHS | Sun City Summerlin Homes</title>
         <meta name="description" content="Luxury homes in Sun City Summerlin community offered by Berkshire Hathaway HomeServices" />
         <link rel="icon" href="/favicon.ico" />
+        <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            realscout-office-listings {
+              --rs-listing-divider-color: rgb(101, 141, 172);
+              width: 100%;
+            }
+          `
+        }} />
       </Head>
 
       <header className={styles.header}>
@@ -79,6 +88,18 @@ const Home: NextPage = () => {
           <a href="#contact">Contact</a>
         </nav>
       </header>
+
+      <div className={styles.listingsSection}>
+        {/* @ts-ignore - RealScout custom element */}
+        <realscout-office-listings 
+          agent-encoded-id="QWdlbnQtMjI1MDUw" 
+          sort-order="NEWEST" 
+          listing-status="For Sale" 
+          property-types="SFR,MF" 
+          price-min="800000" 
+          price-max="4000000">
+        </realscout-office-listings>
+      </div>
 
       <main className={styles.main}>
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
