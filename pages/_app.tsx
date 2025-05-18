@@ -1,12 +1,13 @@
+
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
         <style dangerouslySetInnerHTML={{
           __html: `
             realscout-office-listings {
@@ -16,6 +17,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           `
         }} />
       </Head>
+      <Script
+        src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+        strategy="afterInteractive"
+      />
       <Component {...pageProps} />
     </>
   )
