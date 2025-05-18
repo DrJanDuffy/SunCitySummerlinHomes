@@ -11,6 +11,12 @@ const Home: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showVirtualTour, setShowVirtualTour] = useState(false);
   
+  const propertyImages = [
+    "/property1.jpg",
+    "/property2.jpg",
+    "/property3.jpg",
+  ];
+  
   useEffect(() => {
     setIsVisible(true);
     
@@ -21,12 +27,6 @@ const Home: NextPage = () => {
     
     return () => clearInterval(interval);
   }, [propertyImages.length]);
-  
-  const propertyImages = [
-    "/property1.jpg",
-    "/property2.jpg",
-    "/property3.jpg",
-  ];
 
   const amenities = [
     "Three Championship Golf Courses",
@@ -65,10 +65,6 @@ const Home: NextPage = () => {
         <title>BHHS | Sun City Summerlin Homes</title>
         <meta name="description" content="Luxury homes in Sun City Summerlin community offered by Berkshire Hathaway HomeServices" />
         <link rel="icon" href="/favicon.ico" />
-        <Script 
-          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-          strategy="afterInteractive"
-        />
         <style dangerouslySetInnerHTML={{
           __html: `
             realscout-office-listings {
@@ -78,6 +74,10 @@ const Home: NextPage = () => {
           `
         }} />
       </Head>
+      <Script 
+        src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+        strategy="afterInteractive"
+      />
 
       <header className={styles.header}>
         <div className={styles.logoContainer}>
