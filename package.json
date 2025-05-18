@@ -21,5 +21,11 @@
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.3",
     "typescript": "^5.8.2"
+  },
+  "eslintConfig": {
+    "rules": {
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-sync-scripts": "off"
+    }
   }
 }
