@@ -2,6 +2,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
     }, 5000);
     
     return () => clearInterval(interval);
-  }, []);
+  }, [propertyImages.length]);
   
   const propertyImages = [
     "/property1.jpg",
@@ -64,7 +65,10 @@ const Home: NextPage = () => {
         <title>BHHS | Sun City Summerlin Homes</title>
         <meta name="description" content="Luxury homes in Sun City Summerlin community offered by Berkshire Hathaway HomeServices" />
         <link rel="icon" href="/favicon.ico" />
-        <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
+        <Script 
+          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+          strategy="afterInteractive"
+        />
         <style dangerouslySetInnerHTML={{
           __html: `
             realscout-office-listings {
