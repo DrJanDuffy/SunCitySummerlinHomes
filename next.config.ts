@@ -8,7 +8,9 @@ const nextConfig: NextConfig = {
   distDir: 'out',
   images: {
     unoptimized: true, // Required for static export
-  }
+  },
+  // Disable API routes generation in static builds
+  trailingSlash: true
 };
 
 module.exports = nextConfig;

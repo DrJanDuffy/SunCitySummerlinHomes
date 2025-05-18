@@ -1,4 +1,7 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
+// This API route is disabled for static export
+// To use API routes, you would need to switch to an Autoscale deployment
+/*
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -11,3 +14,4 @@ export default function handler(
 ) {
   res.status(200).json({ name: 'John Doe' })
 }
+*/
