@@ -10,6 +10,12 @@ const Properties: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showVirtualTour, setShowVirtualTour] = useState(false);
 
+  const propertyImages = [
+    "/property1.jpg",
+    "/property2.jpg",
+    "/property3.jpg",
+  ];
+
   useEffect(() => {
     setIsVisible(true);
 
@@ -20,8 +26,6 @@ const Properties: NextPage = () => {
 
     return () => clearInterval(interval);
   }, [propertyImages.length]);
-
-  const propertyImages = [
     "/property1.jpg",
     "/property2.jpg",
     "/property3.jpg",
