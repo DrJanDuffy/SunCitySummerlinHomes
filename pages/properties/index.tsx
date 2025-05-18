@@ -18,7 +18,7 @@ const Properties: NextPage = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [propertyImages.length]);
 
   const propertyImages = [
     "/property1.jpg",
