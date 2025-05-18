@@ -149,7 +149,6 @@ const Properties: NextPage = () => {
         </section>
 
         <div className={styles.listingsSection}>
-          {/* @ts-ignore - RealScout custom element */}
           <realscout-office-listings 
             agent-encoded-id="QWdlbnQtMjI1MDUw" 
             sort-order="NEWEST" 
