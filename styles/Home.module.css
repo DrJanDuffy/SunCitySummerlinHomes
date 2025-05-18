@@ -227,9 +227,82 @@
 
 .propertySection,
 .featuresSection,
+.communitySection,
+.lifestyleSection,
 .amenitiesSection,
 .contactSection {
   margin-bottom: 4rem;
+}
+
+.communitySection {
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+}
+
+.communityHighlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.statsCard {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.statsCard:hover {
+  transform: translateY(-5px);
+}
+
+.statsCard h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #8e1f41;
+}
+
+.statsCard p {
+  margin: 0.5rem 0 0;
+  color: #666;
+}
+
+.lifestyleSection {
+  padding: 3rem 0;
+}
+
+.lifestyleFeatures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.lifestyleFeature {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-top: 3px solid #8e1f41;
+}
+
+.lifestyleFeature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lifestyleFeature h3 {
+  margin-top: 0;
+  color: #8e1f41;
+}
+
+.lifestyleFeature p {
+  color: #555;
+  line-height: 1.6;
 }
 
 .imageGallery {
@@ -577,6 +650,11 @@
     justify-content: space-around;
     gap: 0.5rem;
     font-size: 0.9rem;
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    padding: 0.5rem;
   }
 
   .hero {
@@ -620,6 +698,20 @@
   
   .tourPlaceholder {
     height: 300px;
+  }
+
+  .communityHighlights,
+  .lifestyleFeatures {
+    grid-template-columns: 1fr;
+  }
+
+  .communitySection,
+  .lifestyleSection {
+    padding: 2rem 1rem;
+  }
+
+  .statsCard {
+    padding: 1.2rem;
   }
 
   .footer {

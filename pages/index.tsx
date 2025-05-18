@@ -27,13 +27,16 @@ const Home: NextPage = () => {
   ];
 
   const amenities = [
-    "Golf Course Access",
-    "Community Swimming Pool",
-    "Fitness Center",
-    "Tennis Courts",
-    "Walking Trails",
-    "Social Club",
-    "24/7 Security"
+    "Three Championship Golf Courses",
+    "Four Recreation Centers",
+    "Multiple Swimming Pools",
+    "Tennis & Pickleball Courts",
+    "Fitness Centers with Classes",
+    "Woodworking & Ceramics Studios",
+    "Over 100 Social Clubs & Activities",
+    "Walking & Golf Cart Trails",
+    "On-site Shopping & Dining",
+    "24/7 Security & Gated Areas"
   ];
   
   const testimonials = [
@@ -70,6 +73,8 @@ const Home: NextPage = () => {
         <nav className={styles.nav}>
           <a href="#property">Property</a>
           <a href="#features">Features</a>
+          <a href="#community">Community</a>
+          <a href="#lifestyle">Lifestyle</a>
           <a href="#amenities">Amenities</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -80,7 +85,7 @@ const Home: NextPage = () => {
           <div className={styles.heroContent}>
             <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
             <p className={styles.subtitle}>
-              Experience resort-style living in Las Vegas' premier active adult community
+              Experience resort-style living in Las Vegas' premier 55+ active adult community with mountain views and championship golf
             </p>
             <div className={styles.ctaContainer}>
               <button className={styles.cta}>Schedule a Viewing</button>
@@ -157,13 +162,13 @@ const Home: NextPage = () => {
 
           <div className={styles.propertyDetails}>
             <div className={styles.detailCard}>
-              <h3>$475,000</h3>
+              <h3>$548,175</h3>
               <p>3 Beds | 2 Baths | 1,850 Sq Ft</p>
-              <p>Built in 2018 | 0.25 Acre Lot</p>
+              <p>Contemporary Mediterranean | Golf Course Views</p>
             </div>
 
             <p className={styles.description}>
-              This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan, gourmet kitchen, and resort-style backyard with mountain views, this property is perfect for those seeking an active adult lifestyle in Las Vegas' most desirable community.
+              This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community. Many homes in the area include two primary suites and dedicated golf cart garage space.
             </p>
           </div>
         </section>
@@ -191,6 +196,61 @@ const Home: NextPage = () => {
           </div>
         </section>
 
+        <section id="community" className={styles.communitySection}>
+          <h2 className={styles.sectionTitle}>Sun City Summerlin Community</h2>
+          
+          <div className={styles.communityHighlights}>
+            <div className={styles.statsCard}>
+              <h3>$548,175</h3>
+              <p>Average Home Value</p>
+            </div>
+            <div className={styles.statsCard}>
+              <h3>$331</h3>
+              <p>Average Price per Sq Ft</p>
+            </div>
+            <div className={styles.statsCard}>
+              <h3>8,000+</h3>
+              <p>Homes in Community</p>
+            </div>
+            <div className={styles.statsCard}>
+              <h3>20,000+</h3>
+              <p>Active Residents</p>
+            </div>
+          </div>
+          
+          <div className={styles.communityDescription}>
+            <p>
+              Sun City Summerlin is a 55-plus, active adult community brimming with amenities. Located just beyond the foothills of the Spring Mountains, residents enjoy stunning backyard views of Red Rock Canyon and adjacent rocky peaks. As Las Vegas' oldest and largest community of its kind, Sun City Summerlin is truly "a city within a city," offering convenient access to doctors, banks, florists, and various stores right within the community.
+            </p>
+            <p>
+              Built in three phases starting in 1989, the community consists of almost 8,000 attached and single-family homes. With more than two dozen floor plans ranging from 1,000 to 2,900 square feet, homes feature contemporary Mediterranean bungalow designs with characteristic terracotta roofing and stucco siding. Many properties front one of the community's renowned golf courses, with garage space specifically for golf carts.
+            </p>
+          </div>
+        </section>
+
+        <section id="lifestyle" className={styles.lifestyleSection}>
+          <h2 className={styles.sectionTitle}>Active Adult Lifestyle</h2>
+          
+          <div className={styles.lifestyleFeatures}>
+            <div className={styles.lifestyleFeature}>
+              <h3>Golf Paradise</h3>
+              <p>Enjoy three distinct courses: Highland Falls with panoramic Vegas views, Palm Valley with mild elevation changes, and the executive Eagle Crest course.</p>
+            </div>
+            <div className={styles.lifestyleFeature}>
+              <h3>Recreation Centers</h3>
+              <p>Four recreation centers offer fitness facilities, swimming pools, pickleball courts, and spaces for over 100 different clubs and activities.</p>
+            </div>
+            <div className={styles.lifestyleFeature}>
+              <h3>Golf Cart Community</h3>
+              <p>Designated golf cart pathways throughout the community make it easy to travel between courses, recreation centers, and local shopping areas.</p>
+            </div>
+            <div className={styles.lifestyleFeature}>
+              <h3>Shopping & Dining</h3>
+              <p>Tucson Plaza features pharmacies, fitness centers, restaurants like My Mother's House Italian cuisine, and Smith's grocery store.</p>
+            </div>
+          </div>
+        </section>
+
         <section id="amenities" className={styles.amenitiesSection}>
           <h2 className={styles.sectionTitle}>Community Amenities</h2>
           
@@ -201,12 +261,6 @@ const Home: NextPage = () => {
                 <span>{amenity}</span>
               </div>
             ))}
-          </div>
-          
-          <div className={styles.communityDescription}>
-            <p>
-              Sun City Summerlin is Las Vegas' premier 55+ active adult community with over 7,800 homes, offering a resort lifestyle with world-class amenities. Enjoy three golf courses, four community centers, multiple swimming pools, and over 80 clubs and activities.
-            </p>
           </div>
         </section>
 
