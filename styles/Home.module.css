@@ -574,6 +574,52 @@
   color: #666;
 }
 
+.homeValueWidgetContainer {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.widgetWrapper {
+  background: linear-gradient(135deg, rgba(142, 31, 65, 0.05) 0%, rgba(35, 93, 137, 0.1) 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.widgetWrapper::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(35, 93, 137, 0.3) 0%, rgba(142, 31, 65, 0.2) 100%);
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(15px);
+}
+
+.widgetWrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.widgetTitle {
+  font-size: 1.8rem;
+  color: #235d89;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 .lifestyleSection {
   padding: 3rem 0;
 }

@@ -144,6 +144,28 @@ const Home: NextPage = () => {
               <span className={styles.credentialItem}>⛳ Golf Course Properties</span>
               <span className={styles.credentialItem}>👨‍👩‍👧‍👧 80+ Social Clubs</span>
             </div>
+            
+            <div className={styles.homeValueWidgetContainer}>
+              <style dangerouslySetInnerHTML={{
+                __html: `
+                  realscout-home-value {
+                    --rs-hvw-background-color: #ffffff;
+                    --rs-hvw-title-color: #000000;
+                    --rs-hvw-subtitle-color: rgba(28, 30, 38, 0.5);
+                    --rs-hvw-primary-button-text-color: #ffffff;
+                    --rs-hvw-primary-button-color: rgb(35, 93, 137);
+                    --rs-hvw-secondary-button-text-color: rgb(35, 93, 137);
+                    --rs-hvw-secondary-button-color: #ffffff;
+                    --rs-hvw-widget-width: 925px;
+                  }
+                `
+              }} />
+              <div className={styles.widgetWrapper}>
+                <h2 className={styles.widgetTitle}>Get Your Sun City Summerlin Home Value</h2>
+                <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw" include-name include-phone></realscout-home-value>
+              </div>
+            </div>
+            
             <div className={styles.ctaContainer}>
               <button className={styles.cta}>Schedule a Viewing</button>
               <button 
