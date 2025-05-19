@@ -8,20 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  trailingSlash: true,
-  // Add rewrites for SPA-like behavior
-  async rewrites() {
-    return {
-      fallback: [
-        {
-          source: '/:path*',
-          destination: '/_404'
-        }
-      ]
-    };
-  },
-  // Configure for Next.js 12 static export
-  distDir: 'out',
+  trailingSlash: false,
   // Allow builds to complete even with TypeScript errors
   typescript: {
     ignoreBuildErrors: true,
@@ -31,7 +18,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   // Important for static export
-  output: 'export',
+  output: 'standalone',
   // Configure for static export
   experimental: {
     appDir: false
