@@ -2,6 +2,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
@@ -114,7 +115,14 @@ const Home: NextPage = () => {
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.heroContent}>
             <div className={styles.logoContainer}>
-              <img src="/bhhs-logo.png" alt="Dr. Jan Duffy Realtor" className={styles.drjanLogo} />
+              <Image 
+                src="/bhhs-logo.png" 
+                alt="Dr. Jan Duffy Realtor" 
+                className={styles.drjanLogo} 
+                width={150}
+                height={75}
+                unoptimized
+              />
             </div>
             <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
             <p className={styles.subtitle}>
@@ -366,6 +374,34 @@ const Home: NextPage = () => {
           </div>
         </section>
       </main>
+
+      {/* Debug section to check images - remove after debugging */}
+      <div style={{ padding: '20px', backgroundColor: '#f0f0f0', margin: '20px', borderRadius: '8px' }}>
+        <h2>Image Availability Check</h2>
+        <p>If the images below appear, they exist in your public folder:</p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          <div>
+            <p>bhhs-logo.png:</p>
+            <Image src="/bhhs-logo.png" alt="BHHS Logo" width={100} height={50} unoptimized />
+          </div>
+          <div>
+            <p>property1.jpg:</p>
+            <Image src="/property1.jpg" alt="Property 1" width={100} height={80} unoptimized />
+          </div>
+          <div>
+            <p>property2.jpg:</p>
+            <Image src="/property2.jpg" alt="Property 2" width={100} height={80} unoptimized />
+          </div>
+          <div>
+            <p>property3.jpg:</p> 
+            <Image src="/property3.jpg" alt="Property 3" width={100} height={80} unoptimized />
+          </div>
+          <div>
+            <p>drjan-logo.png:</p>
+            <Image src="/drjan-logo.png" alt="Dr Jan Logo" width={100} height={50} unoptimized />
+          </div>
+        </div>
+      </div>
 
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>

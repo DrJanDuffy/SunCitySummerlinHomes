@@ -39,7 +39,14 @@ const Community: NextPage = () => {
       <main className={styles.main}>
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.logoContainer}>
-            <img src="/bhhs-logo.png" alt="Dr. Jan Duffy Realtor" className={styles.drjanLogo} />
+            <Image 
+              src="/bhhs-logo.png" 
+              alt="Dr. Jan Duffy Realtor" 
+              className={styles.drjanLogo} 
+              width={150}
+              height={75}
+              unoptimized
+            />
           </div>
           <h1 className={styles.title}>Sun City Summerlin Community</h1>
 

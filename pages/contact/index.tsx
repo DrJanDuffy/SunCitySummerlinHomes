@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
 
@@ -48,7 +49,14 @@ const Contact: NextPage = () => {
       <main className={styles.main}>
         <section className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.logoContainer}>
-            <img src="/bhhs-logo.png" alt="Dr. Jan Duffy Realtor" className={styles.drjanLogo} />
+            <Image 
+              src="/bhhs-logo.png" 
+              alt="Dr. Jan Duffy Realtor" 
+              className={styles.drjanLogo} 
+              width={150}
+              height={75}
+              unoptimized
+            />
           </div>
 
         <h1 className={styles.pageTitle}>Contact Us</h1>
