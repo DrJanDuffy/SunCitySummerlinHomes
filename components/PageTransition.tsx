@@ -1,37 +1,29 @@
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import styles from '../styles/PageTransition.module.css';
+import { useRouter } from 'next/router';
 
-interface PageTransitionProps {
+type PageTransitionProps = {
   children: ReactNode;
-  key?: string;
-}
+};
 
-const PageTransition = ({ children, key }: PageTransitionProps) => {
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
-    enter: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
-  };
-
+const PageTransition = ({ children }: PageTransitionProps) => {
+  const router = useRouter();
+  
   return (
-    <div className={styles.pageTransitionContainer}>
+    <div className={styles.pageTransitionWrapper}>
       <AnimatePresence mode="wait">
         <motion.div
-          key={key}
-          variants={variants}
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-          className={styles.pageTransition}
+          key={router.pathname}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
         >
           {children}
         </motion.div>
       </AnimatePresence>
-      <div className={styles.decorationTop} />
-      <div className={styles.decorationBottom} />
     </div>
   );
 };
