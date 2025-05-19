@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000 --hostname 0.0.0.0",
-    "build": "next build && touch out/.nojekyll",
+    "build": "next build",
     "start": "next start --port 3000 --hostname 0.0.0.0",
     "lint": "next lint"
   },
@@ -15,6 +15,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "schema-dts": "^1.1.5",
+    "serve": "^14.2.4",
     "sitemap": "^7.1.1"
   },
   "devDependencies": {

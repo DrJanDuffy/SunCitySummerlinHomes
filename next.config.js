@@ -17,9 +17,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Important for static export
-  output: 'export',
-  // Configure for static export
+  // Switch to standalone mode for server-side rendering
+  output: 'standalone',
   experimental: {
     appDir: false
   }
