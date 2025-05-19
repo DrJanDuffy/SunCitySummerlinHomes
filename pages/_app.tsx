@@ -124,11 +124,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
         strategy="afterInteractive"
       />
-       <AnimatePresence mode="wait" initial={false}>
-        <PageTransition key={router.route}>
-          <Component {...pageProps} />
-        </PageTransition>
-      </AnimatePresence>
+      <PageTransition>
+        <Component {...pageProps} />
+      </PageTransition>
 
       {/* LocalBusiness Structured Data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
