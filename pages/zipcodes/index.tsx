@@ -60,7 +60,7 @@ const ZipcodesIndex: NextPage = () => {
                   ))}
                 </ul>
               </div>
-              <Link href={`/zipcodes/${zipcode.code}`} className={styles.zipcodeLink}>
+              <Link href={`/zipcodes/${zipcode.code}`} passHref className={styles.zipcodeLink}>
                 Browse {zipcode.area} Homes
               </Link>
             </div>

@@ -59,21 +59,21 @@ const ZipcodePage: NextPage<ZipcodePageProps> = ({ zipcodeData, nearbyZipcodes }
           <p className={styles.logo}>Sun City Summerlin Homes</p>
         </div>
         <nav className={styles.nav}>
-          <Link href="/">Home</Link>
-          <Link href="/properties">Properties</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/lifestyle">Lifestyle</Link>
-          <Link href="/amenities">Amenities</Link>
-          <Link href="/testimonials">Testimonials</Link>
-          <Link href="/zipcodes">Zipcodes</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/" passHref>Home</Link>
+          <Link href="/properties" passHref>Properties</Link>
+          <Link href="/community" passHref>Community</Link>
+          <Link href="/lifestyle" passHref>Lifestyle</Link>
+          <Link href="/amenities" passHref>Amenities</Link>
+          <Link href="/testimonials" passHref>Testimonials</Link>
+          <Link href="/zipcodes" passHref>Zipcodes</Link>
+          <Link href="/contact" passHref>Contact</Link>
         </nav>
       </header>
 
       <main className={styles.main}>
         <div className={styles.zipcodeHeader}>
           <div className={styles.breadcrumbs}>
-            <Link href="/zipcodes">Zipcodes</Link> &gt; {zipcodeData.code}
+            <Link href="/zipcodes" passHref>Zipcodes</Link> &gt; {zipcodeData.code}
           </div>
           <h1 className={styles.pageTitle}>{zipcodeData.area} - {zipcodeData.code}</h1>
           <p className={styles.zipcodeDescription}>{zipcodeData.description}</p>
@@ -161,10 +161,10 @@ const ZipcodePage: NextPage<ZipcodePageProps> = ({ zipcodeData, nearbyZipcodes }
             <h2>Find Your Dream Home in {zipcodeData.code}</h2>
             <p>Dr. Jan Duffy specializes in helping buyers and sellers in the {zipcodeData.area} area. With extensive knowledge of this zipcode and surrounding communities, Dr. Jan can help you find the perfect property.</p>
             <div className={styles.ctaButtons}>
-              <Link href="/contact" className={styles.primaryButton}>
+              <Link href="/contact" passHref className={styles.primaryButton}>
                 Contact Dr. Jan
               </Link>
-              <Link href="/properties" className={styles.secondaryButton}>
+              <Link href="/properties" passHref className={styles.secondaryButton}>
                 View Properties
               </Link>
             </div>
@@ -176,6 +176,7 @@ const ZipcodePage: NextPage<ZipcodePageProps> = ({ zipcodeData, nearbyZipcodes }
               {nearbyZipcodes.map((zipcode) => (
                 <Link 
                   href={`/zipcodes/${zipcode.code}`} 
+                  passHref
                   key={zipcode.code}
                   className={styles.nearbyZipcodeCard}
                 >

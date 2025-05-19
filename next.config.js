@@ -14,6 +14,17 @@ const nextConfig = {
   trailingSlash: true,
   env: {
     siteUrl: 'https://suncitysummerlin.com',
+  },
+  // Add rewrites for SPA-like behavior
+  async rewrites() {
+    return {
+      fallback: [
+        {
+          source: '/:path*',
+          destination: '/_404'
+        }
+      ]
+    };
   }
 };
 
