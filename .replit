@@ -13,11 +13,16 @@ NEXT_TELEMETRY_DISABLED = "1"
 build = ["sh", "-c", "npm run build"]
 deploymentTarget = "static"
 publicDir = "out"
-run = ["sh", "-c", "npx serve -s out"]
+run = ["sh", "-c", ""]
 
 [[deployment.rewrites]]
 from = "/*"
 to = "/index.html"
+
+[[deployment.responseHeaders]]
+path = "/*"
+name = "Cache-Control"
+value = "public, max-age=0, must-revalidate"
 
 [[ports]]
 localPort = 3000
@@ -43,3 +48,12 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npm run generate-sitemap"
+
+[[workflows.workflow]]
+name = "Build for Deployment"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build"

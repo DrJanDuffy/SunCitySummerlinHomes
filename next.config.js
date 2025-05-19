@@ -18,7 +18,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   // Important for static export
-  output: 'standalone',
+  output: 'export',
   // Configure for static export
   experimental: {
     appDir: false
