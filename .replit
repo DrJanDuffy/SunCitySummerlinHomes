@@ -12,7 +12,7 @@ NEXT_TELEMETRY_DISABLED = "1"
 [deployment]
 build = ["sh", "-c", "npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/"]
 deploymentTarget = "cloudrun"
-run = ["sh", "-c", "cd .next/standalone && node server.js"]
+run = ["sh", "-c", "cd .next/standalone && PORT=3000 node server.js"]
 
 # Properly configured for Next.js standalone mode
 
@@ -71,3 +71,20 @@ args = "npm run build"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npx serve -s .next/standalone -l 3000"
+
+[[workflows.workflow]]
+name = "Deploy Preview"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd .next/standalone && PORT=3000 node server.js"
