@@ -15,3 +15,6 @@ export default function handler(
   res.status(200).json({ name: 'John Doe' })
 }
 */
+
+// Add this line at the end of the file
+export {};
