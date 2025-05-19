@@ -177,11 +177,11 @@ const Home: NextPage = () => {
         <div className={styles.headerInner}>
           <div className={styles.logoContainer}>
             <div className={styles.logoText}>
-              <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
-              <div className={styles.subLogoContainer}>
-                <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.headerLogo} />
-                <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
-              </div>
+              <h1 className={styles.logo}>Sun City Summerlin</h1>
+            <div className={styles.subLogoContainer}>
+              <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.headerLogo} />
+              <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Specialist</p>
+            </div>
             </div>
           </div>
 
@@ -495,11 +495,11 @@ const Home: NextPage = () => {
 
         <section id="amenities" className={styles.amenitiesSection}>
           <h2 className={styles.sectionTitle}>Community Amenities</h2>
-          
+
           <div className={styles.amenitiesIntro}>
             <p>Sun City Summerlin offers world-class amenities in a resort-style setting. Residents enjoy access to all these premium features included with their home ownership:</p>
           </div>
-          
+
           <div className={styles.amenitiesGrid}>
             {amenities.map((amenity, index) => (
               <div key={index} className={styles.amenityCard}>
@@ -534,7 +534,7 @@ const Home: NextPage = () => {
               </div>
             ))}
           </div>
-          
+
           <div className={styles.amenitiesCta}>
             <p>Experience the unparalleled lifestyle that Sun City Summerlin offers.</p>
             <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
@@ -710,7 +710,7 @@ const Home: NextPage = () => {
                 listingsElement.setAttribute('agent-encoded-id', 'QWdlbnQtMjI1MDUw');
                 listingsElement.setAttribute('sort-order', 'NEWEST');
                 listingsElement.setAttribute('listing-status', 'For Sale');
-                listingsElement.setAttribute('property-types', 'SFR,MF');
+                listingsElement.setAttribute('property-types','SFR,MF');
                 listingsElement.setAttribute('price-min', '800000');
                 listingsElement.setAttribute('price-max', '4000000');
                 container.appendChild(listingsElement);

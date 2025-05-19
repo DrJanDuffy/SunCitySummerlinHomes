@@ -16,10 +16,10 @@ const Header = () => {
       <div className={styles.headerInner}>
         <div className={styles.logoContainer}>
           <div className={styles.logoText}>
-            <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+            <h1 className={styles.logo}>Sun City Summerlin</h1>
             <div className={styles.subLogoContainer}>
               <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.headerLogo} />
-              <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
+              <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Specialist</p>
             </div>
           </div>
         </div>
