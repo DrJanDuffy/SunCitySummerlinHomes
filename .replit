@@ -10,11 +10,11 @@ channel = "stable-24_11"
 NEXT_TELEMETRY_DISABLED = "1"
 
 [deployment]
-build = ["sh", "-c", "npm run build"]
+build = ["sh", "-c", "npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/"]
 deploymentTarget = "cloudrun"
-run = ["sh", "-c", "npx serve -s .next/standalone -l 3000"]
+run = ["sh", "-c", "cd .next/standalone && node server.js"]
 
-# Removed the rewrite rule as it's not needed for Next.js standalone mode
+# Properly configured for Next.js standalone mode
 
 [[deployment.responseHeaders]]
 path = "/*"
