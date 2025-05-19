@@ -251,7 +251,12 @@ const Home: NextPage = () => {
               }} />
               <div className={styles.widgetWrapper}>
                 <h2 className={styles.widgetTitle}>Get Your Sun City Summerlin Home Value</h2>
-                <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw" include-name include-phone></realscout-home-value>
+                <realscout-home-value 
+                  agent-encoded-id="QWdlbnQtMjI1MDUw" 
+                  include-name 
+                  include-phone
+                  loading="eager"
+                ></realscout-home-value>
               </div>
             </div>
             
@@ -554,33 +559,7 @@ const Home: NextPage = () => {
         </section>
       </main>
 
-      {/* Debug section to check images - remove after debugging */}
-      <div style={{ padding: '20px', backgroundColor: '#f0f0f0', margin: '20px', borderRadius: '8px' }}>
-        <h2>Image Availability Check</h2>
-        <p>If the images below appear, they exist in your public folder:</p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          <div>
-            <p>bhhs-logo.png:</p>
-            <Image src="/bhhs-logo.png" alt="BHHS Logo" width={100} height={50} unoptimized />
-          </div>
-          <div>
-            <p>property1.jpg:</p>
-            <Image src="/property1.jpg" alt="Property 1" width={100} height={80} unoptimized />
-          </div>
-          <div>
-            <p>property2.jpg:</p>
-            <Image src="/property2.jpg" alt="Property 2" width={100} height={80} unoptimized />
-          </div>
-          <div>
-            <p>property3.jpg:</p> 
-            <Image src="/property3.jpg" alt="Property 3" width={100} height={80} unoptimized />
-          </div>
-          <div>
-            <p>drjan-logo.png:</p>
-            <Image src="/drjan-logo.png" alt="Dr Jan Logo" width={100} height={50} unoptimized />
-          </div>
-        </div>
-      </div>
+      {/* Widget optimization - removed debug section */}
 
       <section className={styles.faqSection} id="faqs">
         <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
