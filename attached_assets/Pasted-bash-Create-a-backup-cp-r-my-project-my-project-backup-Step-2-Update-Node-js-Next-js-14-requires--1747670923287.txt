@@ -1,0 +1,261 @@
+bash# Create a backup
+cp -r my-project my-project-backup
+Step 2: Update Node.js
+Next.js 14 requires Node.js 18.17 or later:
+bash# Check your current version
+node -v
+
+# Update if needed using nvm or your preferred method
+nvm install 18.17
+nvm use 18.17
+Step 3: Update Dependencies in package.json
+Update your package.json with the new versions:
+json{
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "framer-motion": "^11.0.0",
+    "typescript": "^5.3.0"
+    // Other dependencies...
+  }
+}
+Step 4: Install the Updated Dependencies
+bash# Remove node_modules and package-lock.json for a clean install
+rm -rf node_modules package-lock.json
+
+# Install dependencies
+npm install
+Step 5: Update TypeScript Configuration
+Update your tsconfig.json for TypeScript 5.3 compatibility:
+json{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+Step 6: Update Next.js Configuration
+Update your next.config.js file for Next.js 14:
+javascript/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  // For Next.js 14 and React 19
+  experimental: {
+    // No longer needed: optimizeFonts and optimizeCss were causing issues in your logs
+  },
+  // For images, ensure you're using the latest format
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      // Define your remote patterns here if needed
+    ]
+  }
+};
+
+module.exports = nextConfig;
+Step 7: Code Modifications for React 19
+Update _app.tsx
+Next.js 14 with React 19 includes changes to the App component:
+tsx// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
+// Import other dependencies...
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Your effect code...
+  }, []);
+
+  return (
+    <>
+      {/* Your providers and components */}
+      <AnimatePresence mode="wait">
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
+    </>
+  );
+}
+Add PageTransition Component
+tsx// components/PageTransition.tsx
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+
+interface PageTransitionProps {
+  children: ReactNode;
+}
+
+const PageTransition = ({ children }: PageTransitionProps) => {
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    enter: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
+  };
+
+  return (
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export default PageTransition;
+Step 8: Update Link Components
+React 19 and Next.js 14 change how the Link component works:
+tsx// Old pattern (Next.js 12)
+<Link href="/">
+  <a className="link-class">Home</a>
+</Link>
+
+// New pattern (Next.js 14)
+<Link href="/" className="link-class">
+  Home
+</Link>
+Step 9: Update Image Components
+Next.js 14 has updated Image component requirements:
+tsx// Old pattern (may vary)
+<Image src="/image.jpg" width={500} height={300} />
+
+// New pattern with required alt
+<Image 
+  src="/image.jpg" 
+  width={500} 
+  height={300} 
+  alt="Description of image" 
+/>
+Step 10: API Routes Updates
+If you're using API routes, update them to the new format:
+typescript// pages/api/example.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+type ResponseData = {
+  message: string;
+};
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseData>
+) {
+  res.status(200).json({ message: 'Hello from API' });
+}
+Step 11: Remove Legacy Font Optimization
+Replace any legacy font optimization with the new Next.js 14 approach:
+tsx// pages/_document.tsx
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          {/* Fonts now handled via next/font */}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+And in your app:
+tsx// Add to your app
+import { Inter } from 'next/font/google';
+
+// Initialize font
+const inter = Inter({ subsets: ['latin'] });
+
+// Use in your MyApp component
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <main className={inter.className}>
+      <Component {...pageProps} />
+    </main>
+  );
+}
+Step 12: Update TypeScript Types
+Check for TypeScript errors and update types as needed:
+bash# Run type checking
+npx tsc --noEmit
+Step 13: Run Development Server and Test
+bashnpm run dev
+Troubleshooting Common Issues
+1. React Hooks Errors
+React 19 is strict about hooks. Ensure:
+
+Hooks are only called at the top level
+Hooks are not called conditionally
+Hooks are called from React function components or custom hooks
+
+2. Package Compatibility Issues
+Some packages may not be compatible with React 19 yet. Check for warnings in console and look for updated versions.
+3. TypeScript Type Errors
+TypeScript 5.3 has stricter type checking. Common fixes:
+
+Use more explicit typing
+Update any types to more specific types
+Fix index signature issues
+
+4. Next.js Link Component Issues
+If you see "Multiple children were passed to <Link>" errors:
+
+Ensure Link components only have a single child
+Update to the new Link API pattern
+Wrap multiple children in a container element
+
+5. Image Component Issues
+For "Image is missing required 'alt' prop" errors:
+
+Add alt text to all Image components
+Use empty alt="" for decorative images
+
+6. CSS Module Compatibility
+If using CSS modules:
+
+Check for any deprecated syntax
+Update selector patterns if needed
+Verify imports are working correctly
+
+Final Steps
+After addressing all errors and warnings:
+
+Test thoroughly across different browsers
+Check mobile responsiveness
+Verify that all functionality works as expected
+Run Lighthouse tests to ensure performance hasn't degraded
