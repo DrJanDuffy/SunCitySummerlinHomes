@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 export function usePageTransition() {
   const router = useRouter();
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [transitionKey, setTransitionKey] = useState(router.pathname);
   
   useEffect(() => {
     // Handle route change start
@@ -14,9 +13,8 @@ export function usePageTransition() {
     };
     
     // Handle route change complete
-    const handleRouteChangeComplete = (url: string) => {
+    const handleRouteChangeComplete = () => {
       setIsTransitioning(false);
-      setTransitionKey(url);
     };
     
     router.events.on('routeChangeStart', handleRouteChangeStart);
@@ -28,7 +26,11 @@ export function usePageTransition() {
     };
   }, [router]);
   
-  return { isTransitioning, transitionKey: router.pathname };
+  return { 
+    isTransitioning, 
+    // Return current route as key for AnimatePresence
+    routeKey: router.asPath || router.pathname 
+  };
 }
 
 export default usePageTransition;

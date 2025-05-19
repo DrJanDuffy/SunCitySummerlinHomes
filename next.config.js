@@ -1,15 +1,20 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // For Next.js 14 and React 19
+  experimental: {
+    // No longer needed: optimizeFonts and optimizeCss were causing issues in your logs
+  },
+  // For images, ensure you're using the latest format
   images: {
-    domains: ['images.unsplash.com'],
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      // Define your remote patterns here if needed
+    ]
   },
-  // Remove experimental optimizeCss flag to use stable features
-  swcMinify: true, // Use SWC minifier instead
-  compiler: {
-    // Use stable compiler options
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-}
+  // Enable standalone output for improved deployment
+  output: 'standalone'
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -126,7 +126,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         strategy="afterInteractive"
       />
       
-      <PageTransition key={router.route}>
+      <PageTransition key={router.asPath}>
         <Component {...pageProps} />
       </PageTransition>
 

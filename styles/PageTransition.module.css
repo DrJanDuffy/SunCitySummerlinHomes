@@ -1,3 +1,4 @@
+
 .pageTransitionContainer {
   position: relative;
   min-height: 100vh;
@@ -11,7 +12,7 @@
   width: 100%;
 }
 
-/* Additional decorative elements that can be added back */
+/* Decorative elements */
 .decorationTop,
 .decorationBottom {
   position: absolute;
@@ -20,6 +21,8 @@
   background: linear-gradient(90deg, #0097FB, #97fb00);
   z-index: 100;
   pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .decorationTop {
@@ -28,4 +31,10 @@
 
 .decorationBottom {
   bottom: 0;
+}
+
+/* Hover effects */
+.pageTransitionContainer:hover .decorationTop,
+.pageTransitionContainer:hover .decorationBottom {
+  opacity: 1;
 }
