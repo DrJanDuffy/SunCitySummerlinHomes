@@ -1,2 +1,546 @@
-Fixing CSS syntax error by removing the markdown code block delimiter.
-```
+
+/* Home styles for Sun City Summerlin website */
+
+.container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero section styling */
+.hero {
+  width: 100%;
+  height: 80vh;
+  min-height: 500px;
+  background-image: url('/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.heroOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.heroContent {
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primaryButton, 
+.secondaryButton {
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.primaryButton {
+  background-color: #8e1f41;
+  color: white;
+}
+
+.secondaryButton {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation styling */
+.header {
+  background-color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 50px;
+  margin-right: 1rem;
+}
+
+.bhhsLogo {
+  height: 40px;
+  margin-left: 1rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  margin-left: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #8e1f41;
+}
+
+.activeLink {
+  color: #8e1f41;
+  border-bottom: 2px solid #8e1f41;
+}
+
+/* Feature section styling */
+.featureSection {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #235d89;
+  margin-bottom: 3rem;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-10px);
+}
+
+.featureImage {
+  height: 200px;
+  overflow: hidden;
+}
+
+.featureImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.featureCard:hover .featureImage img {
+  transform: scale(1.05);
+}
+
+.featureContent {
+  padding: 1.5rem;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  color: #235d89;
+  margin-bottom: 1rem;
+}
+
+.featureDescription {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Property showcase section */
+.propertyShowcase {
+  padding: 4rem 2rem;
+}
+
+.propertyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.propertyCard {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.propertyCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.propertyImage {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.propertyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.propertyCard:hover .propertyImage img {
+  transform: scale(1.05);
+}
+
+.propertyTag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #8e1f41;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.propertyContent {
+  padding: 1.5rem;
+}
+
+.propertyPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8e1f41;
+  margin-bottom: 0.5rem;
+}
+
+.propertyAddress {
+  font-size: 1.2rem;
+  color: #235d89;
+  margin-bottom: 1rem;
+}
+
+.propertyDetails {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.propertyDetail {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.viewPropertyButton {
+  background-color: #235d89;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.viewPropertyButton:hover {
+  background-color: #1a4b6d;
+}
+
+/* Testimonials section */
+.testimonialSection {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.testimonialQuote {
+  font-size: 1.5rem;
+  color: #333;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.testimonialAuthor {
+  font-weight: 600;
+  color: #235d89;
+}
+
+/* Call to action section */
+.ctaSection {
+  padding: 6rem 2rem;
+  background-color: #235d89;
+  color: white;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ctaDescription {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 3rem 2rem;
+}
+
+.footerBranding {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.footerLogo {
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footerLinks a {
+  color: #ddd;
+  transition: color 0.2s ease;
+}
+
+.footerLinks a:hover {
+  color: white;
+}
+
+/* Community page specific styles */
+.communityHeader {
+  background-color: #235d89;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.communityTitle {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.communitySubtitle {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #ddd;
+}
+
+.communitySection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.communityHighlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.statsCard {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.statsCard h3 {
+  font-size: 2rem;
+  color: #8e1f41;
+  margin-bottom: 0.5rem;
+}
+
+.statsCard p {
+  color: #666;
+}
+
+.communityDescription p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  margin: 0;  
+}
+
+.callToActionBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 3rem 0;
+}
+
+.realtorProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 3rem;
+}
+
+.realtorProfile h3 {
+  color: #235d89;
+  margin-bottom: 1rem;
+}
+
+.realtorImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.realtorImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.realtorContact {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.realtorContactButton {
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  background-color: #235d89;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.realtorContactButton:hover {
+  background-color: #1a4b6d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .heroButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .primaryButton, 
+  .secondaryButton {
+    width: 100%;
+  }
+  
+  .header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .logo {
+    margin-bottom: 1rem;
+  }
+  
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .navLink {
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+  
+  .featureGrid,
+  .propertyGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .callToActionBar {
+    flex-direction: column;
+  }
+}
