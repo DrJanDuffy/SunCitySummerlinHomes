@@ -1,0 +1,126 @@
+
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+
+info  - Compiled successfully
+
+info  - Collecting page data...
+
+(node:200) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+(node:201) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+(node:208) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+(node:231) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+(node:202) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+(node:209) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+(node:199) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+info  - Generating static pages (0/25)
+
+
+Error occurred prerendering page "/zipcodes". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Minified React error #143; visit https://reactjs.org/docs/error-decoder.html?invariant=143 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Object.only (/home/runner/workspace/node_modules/react/cjs/react.production.min.js:19:241)
+    at Object.LinkComponent [as render] (/home/runner/workspace/out/server/chunks/664.js:313:45)
+    at b.render (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:43:194)
+    at b.read (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:41:83)
+    at exports.renderToString (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:52:138)
+    at renderDocument (/home/runner/workspace/node_modules/next/dist/server/render.js:736:47)
+    at renderToHTML (/home/runner/workspace/node_modules/next/dist/server/render.js:819:34)
+    at async /home/runner/workspace/node_modules/next/dist/export/worker.js:304:36
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+
+info  - Generating static pages (6/25)
+
+
+Error occurred prerendering page "/zipcodes/89144". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Minified React error #143; visit https://reactjs.org/docs/error-decoder.html?invariant=143 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Object.only (/home/runner/workspace/node_modules/react/cjs/react.production.min.js:19:241)
+    at Object.LinkComponent [as render] (/home/runner/workspace/out/server/chunks/664.js:313:45)
+    at b.render (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:43:194)
+    at b.read (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:41:83)
+    at exports.renderToString (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:52:138)
+    at renderDocument (/home/runner/workspace/node_modules/next/dist/server/render.js:736:47)
+    at renderToHTML (/home/runner/workspace/node_modules/next/dist/server/render.js:819:34)
+    at async /home/runner/workspace/node_modules/next/dist/export/worker.js:304:36
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+
+
+Error occurred prerendering page "/zipcodes/89145". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Minified React error #143; visit https://reactjs.org/docs/error-decoder.html?invariant=143 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Object.only (/home/runner/workspace/node_modules/react/cjs/react.production.min.js:19:241)
+    at Object.LinkComponent [as render] (/home/runner/workspace/out/server/chunks/664.js:313:45)
+    at b.render (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:43:194)
+    at b.read (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:41:83)
+    at exports.renderToString (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:52:138)
+    at renderDocument (/home/runner/workspace/node_modules/next/dist/server/render.js:736:47)
+    at renderToHTML (/home/runner/workspace/node_modules/next/dist/server/render.js:819:34)
+    at async /home/runner/workspace/node_modules/next/dist/export/worker.js:304:36
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+
+
+Error occurred prerendering page "/zipcodes/89117". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Minified React error #143; visit https://reactjs.org/docs/error-decoder.html?invariant=143 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Object.only (/home/runner/workspace/node_modules/react/cjs/react.production.min.js:19:241)
+    at Object.LinkComponent [as render] (/home/runner/workspace/out/server/chunks/664.js:313:45)
+    at b.render (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:43:194)
+    at b.read (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:41:83)
+    at exports.renderToString (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:52:138)
+    at renderDocument (/home/runner/workspace/node_modules/next/dist/server/render.js:736:47)
+    at renderToHTML (/home/runner/workspace/node_modules/next/dist/server/render.js:819:34)
+    at async /home/runner/workspace/node_modules/next/dist/export/worker.js:304:36
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+
+
+Error occurred prerendering page "/zipcodes/89148". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Minified React error #143; visit https://reactjs.org/docs/error-decoder.html?invariant=143 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Object.only (/home/runner/workspace/node_modules/react/cjs/react.production.min.js:19:241)
+    at Object.LinkComponent [as render] (/home/runner/workspace/out/server/chunks/664.js:313:45)
+    at b.render (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:43:194)
+    at b.read (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:41:83)
+    at exports.renderToString (/home/runner/workspace/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:52:138)
+    at renderDocument (/home/runner/workspace/node_modules/next/dist/server/render.js:736:47)
+    at renderToHTML (/home/runner/workspace/node_modules/next/dist/server/render.js:819:34)
+    at async /home/runner/workspace/node_modules/next/dist/export/worker.js:304:36
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+
+Error: Export encountered errors on following paths:
+    /zipcodes
+    /zipcodes/[zipcode]: /zipcodes/89117
+    /zipcodes/[zipcode]: /zipcodes/89128
+    /zipcodes/[zipcode]: /zipcodes/89129
+    /zipcodes/[zipcode]: /zipcodes/89130
+    /zipcodes/[zipcode]: /zipcodes/89131
+    /zipcodes/[zipcode]: /zipcodes/89134
+    /zipcodes/[zipcode]: /zipcodes/89135
+    /zipcodes/[zipcode]: /zipcodes/89138
+    /zipcodes/[zipcode]: /zipcodes/89144
+    /zipcodes/[zipcode]: /zipcodes/89145
+    /zipcodes/[zipcode]: /zipcodes/89148
+    /zipcodes/[zipcode]: /zipcodes/89149
+    at /home/runner/workspace/node_modules/next/dist/export/index.js:404:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+    at async /home/runner/workspace/node_modules/next/dist/build/index.js:1230:21
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+    at async /home/runner/workspace/node_modules/next/dist/build/index.js:1092:17
+    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:79:20)
+    at async Object.build [as default] (/home/runner/workspace/node_modules/next/dist/build/index.js:65:29)
+
