@@ -19,17 +19,42 @@ const nextConfig = {
   // Switch to standalone mode for server-side rendering
   output: 'standalone',
   experimental: {
-    appDir: false
+    appDir: false,
+    // Enable memory optimization
+    optimizeCss: true,
+    // Optimize fonts
+    optimizeFonts: true
   },
   // Add configuration to handle external browser extensions
   webpack: (config) => {
+    // Optimize bundle size
+    config.optimization = {
+      ...config.optimization,
+      moduleIds: 'deterministic',
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            name: 'vendor',
+            test: /[\\/]node_modules[\\/]/,
+            chunks: 'all',
+          },
+        },
+      },
+    };
     return config;
   },
   // Suppress hydration warnings in development
   onDemandEntries: {
     // Keep the pages in memory for longer to reduce rebuilds
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 4,
+    maxInactiveAge: 60 * 1000,
+    pagesBufferLength: 8,
+  },
+  // Increase build performance
+  swcMinify: true,
+  // Improve runtime performance
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false
   }
 };
 

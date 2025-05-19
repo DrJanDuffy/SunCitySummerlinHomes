@@ -7,8 +7,15 @@ import styles from '../styles/Home.module.css'
 // Import AOS styles
 import 'aos/dist/aos.css'
 
+import { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { suppressExtensionWarnings } from '../utils/suppress-warnings';
+
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
+    // Suppress browser extension warnings (Dashlane, etc.)
+    const cleanupWarnings = suppressExtensionWarnings();
+    
     // Improve Core Web Vitals with preconnect and prefetch
     const links = [
       { rel: 'preconnect', href: 'https://em.realscout.com' },
