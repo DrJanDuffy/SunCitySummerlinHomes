@@ -114,7 +114,7 @@ const Home: NextPage = () => {
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.heroContent}>
             <div className={styles.logoContainer}>
-              <img src="/drjan-logo.png" alt="Dr. Jan Duffy Realtor" className={styles.drjanLogo} />
+              <img src="/bhhs-logo.png" alt="Dr. Jan Duffy Realtor" className={styles.drjanLogo} />
             </div>
             <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
             <p className={styles.subtitle}>
