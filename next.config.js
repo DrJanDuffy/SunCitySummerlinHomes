@@ -1,20 +1,15 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    // Temporary solution to allow deployment
-    ignoreBuildErrors: true,
-  },
+  output: 'standalone',  // Switch from static generation to SSR
   reactStrictMode: true,
-  output: 'export',
-  distDir: 'out',
-  images: {
-    unoptimized: true, // Required for static export
-  },
-  trailingSlash: true,
   env: {
     siteUrl: 'https://suncitysummerlin.com',
   },
+  images: {
+    unoptimized: true,
+  },
+  trailingSlash: true,
   // Add rewrites for SPA-like behavior
   async rewrites() {
     return {
