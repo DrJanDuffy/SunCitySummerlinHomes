@@ -46,11 +46,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Mobile menu toggle
     const setupMobileMenu = () => {
-      const menuButton = document.querySelector('.mobileMenuButton');
-      if (menuButton) {
+      const menuButton = document.querySelector(`.${styles.mobileMenuButton}`);
+      const navLinks = document.querySelector(`.${styles.navLinks}`);
+      
+      if (menuButton && navLinks) {
         menuButton.addEventListener('click', () => {
-          // Implement mobile menu toggle logic here
-          console.log('Mobile menu toggled');
+          navLinks.classList.toggle(styles.navLinksActive);
+          
+          // Toggle animation for menu button
+          const spans = menuButton.querySelectorAll('span');
+          spans.forEach(span => {
+            span.classList.toggle(styles.mobileButtonActive);
+          });
         });
       }
     };
