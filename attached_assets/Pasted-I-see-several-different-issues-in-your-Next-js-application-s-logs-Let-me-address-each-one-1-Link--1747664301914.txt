@@ -1,0 +1,64 @@
+I see several different issues in your Next.js application's logs. Let me address each one:
+1. Link Component Error (Fixed)
+It looks like your previous Link component error might be resolved since it's not appearing in these logs anymore.
+2. Image Style Warning
+Image with src /property1.jpg is assigned the following styles, which are overwritten by automatically-generated styles: width, height
+This warning occurs when you're trying to apply inline width and height styles to a Next.js Image component, but these styles are being overridden by Next.js's own styles.
+Fix:
+jsx// Instead of this:
+<Image src="/property1.jpg" style={{ width: '100px', height: '100px' }} />
+
+// Do this:
+<Image src="/property1.jpg" width={100} height={100} />
+3. Failed to Fetch Error
+TypeError: Failed to fetch
+This error typically happens when:
+
+Your API endpoint is unavailable
+There's a network issue
+CORS policies are blocking the request
+
+Fix:
+
+Check that any API endpoints your app is calling are accessible
+If using local API routes, ensure they're properly set up
+Add error handling for fetch requests:
+
+jsxfetch('/api/your-endpoint')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Handle your data
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+    // Handle the error gracefully in the UI
+  });
+4. Fast Refresh Full Reload
+warn - Fast Refresh had to perform a full reload
+This happens when Next.js can't preserve state between edits. Common causes:
+
+Editing a file outside the React tree
+Changes to global CSS
+Changes that affect React component hierarchy significantly
+
+This is just a warning and doesn't necessarily indicate a problem.
+5. Experimental Feature Warning
+warn - You have enabled experimental feature (optimizeCss) in next.config.js.
+This is just a warning. If you need CSS optimization, you can keep this feature enabled, but be aware it might change in future Next.js releases.
+Next Steps
+Your application seems to be running but has some minor issues. Here's what I recommend:
+
+Fix the Image component issue by using the proper Next.js Image props instead of style attributes
+Investigate the fetch error:
+
+Check browser console for more details
+Verify API endpoints are working
+Add proper error handling for fetch calls
+
+
+Consider updating your next.config.js to use stable features instead of experimental ones if possible
