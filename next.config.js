@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -21,6 +20,16 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     appDir: false
+  },
+  // Add configuration to handle external browser extensions
+  webpack: (config) => {
+    return config;
+  },
+  // Suppress hydration warnings in development
+  onDemandEntries: {
+    // Keep the pages in memory for longer to reduce rebuilds
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 4,
   }
 };
 

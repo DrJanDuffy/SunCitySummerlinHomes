@@ -21,8 +21,10 @@ export default function Document() {
         />
       </Head>
       <body>
-        <Main />
-        <NextScript />
+        <div suppressHydrationWarning>
+          <Main />
+          <NextScript />
+        </div>
       </body>
     </Html>
   )
