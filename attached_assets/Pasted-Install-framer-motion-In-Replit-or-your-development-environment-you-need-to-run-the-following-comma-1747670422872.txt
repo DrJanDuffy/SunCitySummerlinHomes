@@ -1,0 +1,101 @@
+Install framer-motion
+In Replit or your development environment, you need to run the following command in your terminal:
+bashnpm install framer-motion
+If you're using Replit, make sure to:
+
+Look for the "Shell" tab or open a new shell/terminal
+Run the installation command there
+Wait for the installation to complete (it might take a minute)
+
+Alternative Approach
+If you're having trouble installing the package, you have two options:
+Option 1: Simplified transition without framer-motion
+You can create a simple CSS-based transition instead:
+
+Create a simplified PageTransition.tsx file without framer-motion:
+
+tsx// components/PageTransition.tsx
+import { ReactNode } from 'react';
+import styles from '../styles/PageTransition.module.css';
+
+interface PageTransitionProps {
+  children: ReactNode;
+}
+
+const PageTransition = ({ children }: PageTransitionProps) => {
+  return (
+    <div className={styles.pageTransition}>
+      {children}
+    </div>
+  );
+};
+
+export default PageTransition;
+
+Create a CSS module file for the transitions:
+
+css/* styles/PageTransition.module.css */
+.pageTransition {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+Update your _app.tsx to remove framer-motion:
+
+tsx// pages/_app.tsx
+import PageTransition from '../components/PageTransition';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+// Import other dependencies...
+
+function MyApp({ Component, pageProps }) {
+  // Use the router hook once
+  const router = useRouter();
+
+  useEffect(() => {
+    // Your effect code...
+  }, []);
+
+  return (
+    <>
+      {/* Your other components/providers */}
+      <PageTransition key={router.route}>
+        <Component {...pageProps} />
+      </PageTransition>
+    </>
+  );
+}
+
+export default MyApp;
+Option 2: Skip page transitions for now
+You can also temporarily remove the page transition functionality until you can install framer-motion:
+tsx// pages/_app.tsx
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+// Import other dependencies...
+
+function MyApp({ Component, pageProps }) {
+  // Use the router hook once
+  const router = useRouter();
+
+  useEffect(() => {
+    // Your effect code...
+  }, []);
+
+  return (
+    <>
+      {/* Your other components/providers */}
+      <Component {...pageProps} />
+    </>
+  );
+}
+
+export default MyApp;
