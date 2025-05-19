@@ -1,40 +1,20 @@
-
-import { ReactNode, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import styles from '../styles/PageTransition.module.css';
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
 
 interface PageTransitionProps {
   children: ReactNode;
 }
 
 const PageTransition = ({ children }: PageTransitionProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    setIsVisible(true);
-    
-    const handleRouteChangeStart = () => {
-      setIsVisible(false);
-    };
-    
-    const handleRouteChangeComplete = () => {
-      setTimeout(() => setIsVisible(true), 50);
-    };
-    
-    router.events.on('routeChangeStart', handleRouteChangeStart);
-    router.events.on('routeChangeComplete', handleRouteChangeComplete);
-    
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChangeStart);
-      router.events.off('routeChangeComplete', handleRouteChangeComplete);
-    };
-  }, [router]);
-
   return (
-    <div className={`${styles.pageTransition} ${isVisible ? styles.visible : ''}`}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };
 

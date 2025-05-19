@@ -6,10 +6,14 @@ import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 // Import AOS styles
 import 'aos/dist/aos.css'
-import { AppProps } from 'next/app';
 import { suppressExtensionWarnings } from '../utils/suppress-warnings';
+import { AnimatePresence } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   useEffect(() => {
     // Suppress browser extension warnings (Dashlane, etc.)
     const cleanupWarnings = suppressExtensionWarnings();
@@ -89,7 +93,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
-  // Removed PageTransition wrapper to fix rendering error
   return (
     <div>
       <Head>
@@ -121,109 +124,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
         strategy="afterInteractive"
       />
-
-      <Component {...pageProps} />
-
-      {/* LocalBusiness Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: `
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Dr. Jan Duffy - Sun City Summerlin REALTOR®",
-            "image": "/drjan-logo.png",
-            "url": "https://suncitysummerlin.com",
-            "telephone": "(702) 718-0043",
-            "priceRange": "$$$",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "9406 Del Webb Boulevard",
-              "addressLocality": "Las Vegas",
-              "addressRegion": "NV",
-              "postalCode": "89134",
-              "addressCountry": "US"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 36.2043,
-              "longitude": -115.2936
-            },
-            "openingHoursSpecification": {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-              ],
-              "opens": "09:00",
-              "closes": "19:00"
-            }
-          }
-        `
-      }}/>
-
-      {/* Structured data for organization */}
-      <Script
-        id="organization-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Berkshire Hathaway HomeServices Nevada",
-            "url": "https://www.bhhsnv.com/",
-            "logo": {/* BHHS logo removed */},
-            "sameAs": [
-              "https://www.facebook.com/DrJanDuffyRealtorCentennialHills/",
-              "https://www.instagram.com/drjanduffy/",
-              "https://www.linkedin.com/company/lvrmembers/"
-            ]
-          })
-        }}
-      />
-    </div>
-  )
-
-  return (
-    <div>
-      <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#8e1f41" />
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            realscout-office-listings {
-              --rs-listing-divider-color: rgb(101, 141, 172);
-              width: 100%;
-            }
-          `
-        }} />
-        {/* Global site tag (gtag.js) - Google Analytics */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
-            `
-          }}
-        />
-      </Head>
-
-      {/* RealScout script is now loaded in _document.tsx */}
-
-      {/* Add Google Analytics */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-        strategy="afterInteractive"
-      />
-
-      <Component {...pageProps} />
+       <AnimatePresence mode="wait" initial={false}>
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
 
       {/* LocalBusiness Structured Data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
