@@ -17,6 +17,12 @@ a {
   box-sizing: border-box;
 }
 
+/* SEO-focused semantic styling */
+article, section, aside, nav, main, header, footer {
+  display: block;
+  width: 100%;
+}
+
 input,
 textarea,
 button {

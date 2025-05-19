@@ -599,7 +599,13 @@
 }
 
 /* SEO-focused semantic styling */
-article, section, aside, nav, main, header, footer {
+.seoContainer article, 
+.seoContainer section, 
+.seoContainer aside, 
+.seoContainer nav, 
+.seoContainer main, 
+.seoContainer header, 
+.seoContainer footer {
   display: block;
   width: 100%;
 }
