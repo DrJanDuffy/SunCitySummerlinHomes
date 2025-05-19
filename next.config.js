@@ -20,8 +20,7 @@ const nextConfig = {
       ]
     };
   },
-  // Configure static export for Next.js 12+
-  output: 'export',
+  // Configure for Next.js 12 static export
   distDir: 'out'
 };
 
