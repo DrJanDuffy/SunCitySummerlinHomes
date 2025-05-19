@@ -99,13 +99,6 @@ const Zipcodes: NextPage = () => {
     }
   ];
 
-  useEffect(() => {
-    // Initialize Google Map after the script has loaded
-    if (typeof window !== 'undefined' && window.google && mapRef.current && !mapLoaded) {
-      initializeMap();
-    }
-  }, [mapRef.current, mapLoaded, initializeMap]);
-
   // Initialize Google Map using useCallback to avoid dependency issues
   const initializeMap = useCallback(() => {
     // Center map on Las Vegas
@@ -186,6 +179,13 @@ const Zipcodes: NextPage = () => {
 
     setMapLoaded(true);
   }, [zipcodes]);
+  
+  useEffect(() => {
+    // Initialize Google Map after the script has loaded
+    if (typeof window !== 'undefined' && window.google && mapRef.current && !mapLoaded) {
+      initializeMap();
+    }
+  }, [mapRef, mapLoaded, initializeMap]);
 
   return (
     <div className={styles.container}>
@@ -291,18 +291,18 @@ const Zipcodes: NextPage = () => {
           <a href="https://www.bhhs.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of Service</a>
         </div>
       </footer>
-
-      {/* Google Maps API */}
-      <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=Function.prototype`}
-        strategy="afterInteractive"
-        onLoad={() => {
-          if (typeof window !== 'undefined' && mapRef.current && !mapLoaded) {
-            initializeMap();
-          }
-        }}
-      />
     </div>
+    
+    {/* Google Maps API - Outside of main component to avoid Head issues */}
+    <Script
+      src={`https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=Function.prototype`}
+      strategy="afterInteractive"
+      onLoad={() => {
+        if (typeof window !== 'undefined' && window.google && !mapLoaded) {
+          initializeMap();
+        }
+      }}
+    />
   );
 };
 
