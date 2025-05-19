@@ -1039,12 +1039,194 @@
   color: #666;
 }
 
+.communityDescription {
+  position: relative;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.communityDescription::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/golf-course.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  z-index: -1;
+}
+
 .communityDescription p {
   margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.7;
+  color: #333;
+  position: relative;
+  z-index: 1;
+}
+
+.communityDescription p:last-child {
+  margin-bottom: 0;
+}
+
+.communityDescriptionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.communityFeature {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid #235d89;
+}
+
+.communityFeature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.communityFeature h3 {
+  color: #235d89;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 3rem;
+}
+
+.communityFeature h3::before {
+  content: attr(data-icon);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem;
+}
+
+.communityFeature p {
+  font-size: 1rem;
+  line-height: 1.6;
   color: #444;
-  margin: 0;  
+  margin: 0;
+}
+
+.communityStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.communityStat {
+  padding: 0.8rem 1.2rem;
+  background-color: #8e1f41;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(142, 31, 65, 0.2);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.communityStat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(142, 31, 65, 0.3);
+}
+
+.communityStat span {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.communityImageRow {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.communityImage {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.communityImage:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.communityImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.communityImage:hover img {
+  transform: scale(1.05);
+}
+
+.communityLearnMore {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.communityLearnMoreBtn {
+  background-color: #235d89;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(35, 93, 137, 0.3);
+}
+
+.communityLearnMoreBtn:hover {
+  background-color: #1a4b6d;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(35, 93, 137, 0.4);
+}
+
+@media (max-width: 768px) {
+  .communityDescriptionGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .communityImageRow {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .communityImage {
+    height: 200px;
+  }
 }
 
 .callToActionBar {
