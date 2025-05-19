@@ -231,7 +231,14 @@ const Home: NextPage = () => {
 
       <div className={styles.listingsSection} suppressHydrationWarning>
         {/* RealScout Office Listings - Added suppressHydrationWarning to handle browser extensions */}
-        
+        <realscout-office-listings 
+          agent-encoded-id="QWdlbnQtMjI1MDUw" 
+          sort-order="NEWEST" 
+          listing-status="For Sale" 
+          property-types="SFR,MF" 
+          price-min="800000" 
+          price-max="4000000">
+        </realscout-office-listings>
       </div>
 
       <main className={styles.main}>
