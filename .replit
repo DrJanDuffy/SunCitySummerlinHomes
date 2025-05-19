@@ -1424,3 +1424,40 @@ args = 'echo -e "\033[1;32m🚀 Starting optimized dev server...\033[0m"'
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_SOURCEMAPS=true NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run dev"
+
+[[workflows.workflow]]
+name = "Fix Fast Refresh"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Kill any running processes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean Next.js cache thoroughly"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Set environment variables to optimize development"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run dev"

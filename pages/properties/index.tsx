@@ -145,7 +145,7 @@ const Properties: NextPage = () => {
                 width={800}
                 height={600}
                 priority
-                style={{width: '100%', height: 'auto'}}
+                layout="responsive"
               />
               <div className={styles.imageNavigation}>
                 <button 
