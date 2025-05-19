@@ -10,6 +10,12 @@ const Properties: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [showVirtualTour, setShowVirtualTour] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Handle menu toggle for mobile
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const propertyImages = [
     "/property1.jpg",
@@ -24,8 +30,25 @@ const Properties: NextPage = () => {
     const interval = setInterval(() => {
       setActiveImage((prev) => (prev + 1) % propertyImages.length);
     }, 5000);
-
-    return () => clearInterval(interval);
+    
+    // Add scroll effect for header
+    const handleScroll = () => {
+      const header = document.querySelector(`.${styles.mainNav}`);
+      if (header) {
+        if (window.scrollY > 100) {
+          header.classList.add(styles.stickyNav);
+        } else {
+          header.classList.remove(styles.stickyNav);
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [propertyImages.length]);
 
   return (
@@ -48,15 +71,41 @@ const Properties: NextPage = () => {
           />
           <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
         </div>
-        <nav className={styles.nav}>
-          <Link href="/">Home</Link>
-          <Link href="/properties">Properties</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/lifestyle">Lifestyle</Link>
-          <Link href="/amenities">Amenities</Link>
-          <Link href="/zipcodes">Zipcodes</Link>
-          <Link href="/testimonials">Testimonials</Link>
-          <Link href="/contact">Contact</Link>
+        <nav className={styles.mainNav}>
+          <div className={styles.menuItems}>
+            <Link href="/" className={styles.navLink}>
+              <span className={styles.navIcon}>🏠</span>
+              <span className={styles.navText}>Home</span>
+            </Link>
+            <Link href="/properties" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              <span className={styles.navIcon}>🏘️</span>
+              <span className={styles.navText}>Properties</span>
+            </Link>
+            <Link href="/community" className={styles.navLink}>
+              <span className={styles.navIcon}>👥</span>
+              <span className={styles.navText}>Community</span>
+            </Link>
+            <Link href="/lifestyle" className={styles.navLink}>
+              <span className={styles.navIcon}>🌴</span>
+              <span className={styles.navText}>Lifestyle</span>
+            </Link>
+            <Link href="/amenities" className={styles.navLink}>
+              <span className={styles.navIcon}>🏊</span>
+              <span className={styles.navText}>Amenities</span>
+            </Link>
+            <Link href="/zipcodes" className={styles.navLink}>
+              <span className={styles.navIcon}>📍</span>
+              <span className={styles.navText}>Zipcodes</span>
+            </Link>
+            <Link href="/testimonials" className={styles.navLink}>
+              <span className={styles.navIcon}>💬</span>
+              <span className={styles.navText}>Testimonials</span>
+            </Link>
+            <Link href="/contact" className={styles.navLink}>
+              <span className={styles.navIcon}>📱</span>
+              <span className={styles.navText}>Contact</span>
+            </Link>
+          </div>
         </nav>
       </header>
 

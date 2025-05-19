@@ -73,6 +73,134 @@
   text-decoration: none;
 }
 
+/* Enhanced Navigation Styling */
+.mainNav {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.menuItems {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 15px;
+  color: #555;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+}
+
+.navLink:hover {
+  color: #8e1f41;
+  background-color: rgba(142, 31, 65, 0.05);
+  transform: translateY(-2px);
+}
+
+.navIcon {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.navText {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.activeNavLink {
+  color: #8e1f41;
+  background-color: rgba(142, 31, 65, 0.08);
+  border-bottom: 3px solid #8e1f41;
+}
+
+.activeNavLink .navIcon {
+  transform: scale(1.1);
+}
+
+/* Sticky navigation effect */
+.stickyNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 1000;
+  animation: slideDown 0.3s ease-in-out;
+  border-radius: 0 0 8px 8px;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .mainNav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .menuItems {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 5px;
+  }
+  
+  .navLink {
+    min-width: 60px;
+    padding: 8px 10px;
+  }
+  
+  .navText {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navIcon {
+    font-size: 1rem;
+  }
+  
+  .navText {
+    display: none;
+  }
+  
+  .menuItems {
+    justify-content: space-around;
+  }
+  
+  .navLink {
+    min-width: auto;
+  }
+}
+
+
 .primaryButton {
   background-color: #8e1f41;
   color: white;
