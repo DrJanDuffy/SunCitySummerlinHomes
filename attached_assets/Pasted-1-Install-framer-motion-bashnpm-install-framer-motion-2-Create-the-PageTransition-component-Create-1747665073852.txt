@@ -1,0 +1,98 @@
+1. Install framer-motion
+bashnpm install framer-motion
+2. Create the PageTransition component
+Create a new file at components/PageTransition.tsx (or .jsx if not using TypeScript):
+tsx// components/PageTransition.tsx
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+
+interface PageTransitionProps {
+  children: ReactNode;
+}
+
+const PageTransition = ({ children }: PageTransitionProps) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export default PageTransition;
+If you're not using TypeScript, use this version instead:
+jsx// components/PageTransition.jsx
+import { motion } from 'framer-motion';
+
+const PageTransition = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export default PageTransition;
+3. Update your _app.tsx file
+Make sure your complete _app.tsx (or _app.jsx) looks like this:
+tsx// pages/_app.tsx
+import { AnimatePresence } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
+
+function MyApp({ Component, pageProps, router }) {
+  return (
+    <>
+      {/* Your other components/providers */}
+      
+      <AnimatePresence mode="wait">
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
+    </>
+  );
+}
+
+export default MyApp;
+Make sure you've added the export default MyApp; line at the end.
+4. More advanced transitions (optional)
+If you want a more advanced transition effect, you can modify the PageTransition component:
+tsx// components/PageTransition.tsx
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+
+interface PageTransitionProps {
+  children: ReactNode;
+}
+
+const PageTransition = ({ children }: PageTransitionProps) => {
+  // Slide up transition
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    enter: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
+  };
+
+  return (
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export default PageTransition;
