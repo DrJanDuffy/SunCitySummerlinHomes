@@ -14,6 +14,8 @@ interface SystemInfo {
   uptime: number;
   nextVersion: string;
   nodeVersion: string;
+  lastBuild: string;
+  environment: string;
 }
 
 interface BuildInfo {
