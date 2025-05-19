@@ -30,7 +30,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "Run"
+runButton = "Development Server"
 
 [[workflows.workflow]]
 name = "Run"
@@ -88,3 +88,16 @@ args = "npm run build"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd .next/standalone && PORT=3000 node server.js"
+
+[[workflows.workflow]]
+name = "Development Server"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
