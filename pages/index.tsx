@@ -100,17 +100,6 @@ const Home: NextPage = () => {
         </nav>
       </header>
 
-      <div className={styles.listingsSection}>
-        <realscout-office-listings 
-          agent-encoded-id="QWdlbnQtMjI1MDUw" 
-          sort-order="NEWEST" 
-          listing-status="For Sale" 
-          property-types="SFR,MF" 
-          price-min="800000" 
-          price-max="4000000">
-        </realscout-office-listings>
-      </div>
-
       <div className={styles.topBanner}>
         <h1 className={styles.topTitle}>Luxury Living in Sun City Summerlin</h1>
         <p className={styles.topSubtitle}>
@@ -122,6 +111,17 @@ const Home: NextPage = () => {
           <span className={styles.topCredentialItem}>⛳ Golf Course Properties</span>
           <span className={styles.topCredentialItem}>👨‍👩‍👧‍👧 80+ Social Clubs</span>
         </div>
+      </div>
+
+      <div className={styles.listingsSection}>
+        <realscout-office-listings 
+          agent-encoded-id="QWdlbnQtMjI1MDUw" 
+          sort-order="NEWEST" 
+          listing-status="For Sale" 
+          property-types="SFR,MF" 
+          price-min="800000" 
+          price-max="4000000">
+        </realscout-office-listings>
       </div>
 
       <main className={styles.main}>
