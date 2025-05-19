@@ -111,6 +111,19 @@ const Home: NextPage = () => {
         </realscout-office-listings>
       </div>
 
+      <div className={styles.topBanner}>
+        <h1 className={styles.topTitle}>Luxury Living in Sun City Summerlin</h1>
+        <p className={styles.topSubtitle}>
+          Experience resort-style living in Las Vegas' premier 55+ active adult community with Dr. Jan Duffy, your REALTOR® specialist with 25+ years of experience
+        </p>
+        <div className={styles.topCredentials}>
+          <span className={styles.topCredentialItem}>📍 Del Webb Community Expert</span>
+          <span className={styles.topCredentialItem}>🏠 Low-Maintenance Single-Story Homes</span>
+          <span className={styles.topCredentialItem}>⛳ Golf Course Properties</span>
+          <span className={styles.topCredentialItem}>👨‍👩‍👧‍👧 80+ Social Clubs</span>
+        </div>
+      </div>
+
       <main className={styles.main}>
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.heroContent}>
@@ -133,16 +146,6 @@ const Home: NextPage = () => {
                   unoptimized
                 />
               </div>
-            </div>
-            <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
-            <p className={styles.subtitle}>
-              Experience resort-style living in Las Vegas' premier 55+ active adult community with Dr. Jan Duffy, your REALTOR® specialist with 25+ years of experience
-            </p>
-            <div className={styles.credentials}>
-              <span className={styles.credentialItem}>📍 Del Webb Community Expert</span>
-              <span className={styles.credentialItem}>🏠 Low-Maintenance Single-Story Homes</span>
-              <span className={styles.credentialItem}>⛳ Golf Course Properties</span>
-              <span className={styles.credentialItem}>👨‍👩‍👧‍👧 80+ Social Clubs</span>
             </div>
             
             <div className={styles.homeValueWidgetContainer}>
