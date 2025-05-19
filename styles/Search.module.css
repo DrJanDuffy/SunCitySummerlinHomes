@@ -1,0 +1,238 @@
+
+.searchSection {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.searchFilters {
+  background-color: #f8f8f8;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.filterGroup {
+  margin-bottom: 1.5rem;
+}
+
+.filterGroup label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #235d89;
+}
+
+.filterRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.dualSlider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rangeSlider {
+  flex: 1;
+}
+
+.rangeValue {
+  font-weight: 600;
+  min-width: 90px;
+}
+
+.searchButton {
+  background-color: #8e1f41;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.searchButton:hover {
+  background-color: #7a1b38;
+}
+
+.searchButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.propertyCard {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+.propertyCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.propertyImage {
+  height: 220px;
+  overflow: hidden;
+}
+
+.propertyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.propertyCard:hover .propertyImage img {
+  transform: scale(1.05);
+}
+
+.propertyInfo {
+  padding: 1.5rem;
+}
+
+.propertyInfo h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #235d89;
+  font-size: 1.3rem;
+}
+
+.propertyPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8e1f41;
+  margin: 0.5rem 0;
+}
+
+.propertyAddress {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.propertyStats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.propertyStats span {
+  background-color: #f0f0f0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.propertyFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.featureTag {
+  background-color: #e6f0f9;
+  color: #235d89;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 15px;
+}
+
+.viewPropertyBtn {
+  background-color: #235d89;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.viewPropertyBtn:hover {
+  background-color: #1a4b6d;
+}
+
+.noResults {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+
+.initialSearch {
+  color: #555;
+}
+
+.tipsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tipCard {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tipCard h3 {
+  color: #8e1f41;
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .searchContainer {
+    flex-direction: column;
+  }
+  
+  .filterRow {
+    grid-template-columns: 1fr;
+  }
+  
+  .resultsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dualSlider {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .rangeSlider {
+    width: 100%;
+  }
+}

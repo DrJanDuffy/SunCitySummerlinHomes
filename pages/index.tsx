@@ -6,6 +6,7 @@ import Image from "next/image";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
+import StructuredData from "../components/StructuredData";
 
 const Home: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -88,54 +89,84 @@ const Home: NextPage = () => {
             }
           `
         }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: `
-            {
-              "@context": "https://schema.org",
-              "@type": "RealEstateAgent",
-              "name": "Dr. Jan Duffy, REALTOR®",
-              "image": "/drjan-logo.png",
-              "url": "https://suncitysummerlin.com",
-              "telephone": "(702) 718-0043",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "9406 Del Webb Boulevard",
-                "addressLocality": "Las Vegas",
-                "addressRegion": "NV",
-                "postalCode": "89134",
-                "addressCountry": "US"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 36.2043,
-                "longitude": -115.2936
-              },
-              "sameAs": [
-                "https://www.instagram.com/drjanduffy/",
-                "https://www.facebook.com/DrJanDuffyRealtorCentennialHills/",
-                "https://www.linkedin.com/company/lvrmembers/",
-                "https://www.youtube.com/@DrDuffy"
+        <StructuredData 
+          type="RealEstateAgent"
+          data={{
+            name: "Dr. Jan Duffy, REALTOR®",
+            image: "/drjan-logo.png",
+            url: "https://suncitysummerlin.com",
+            telephone: "(702) 718-0043",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "9406 Del Webb Boulevard",
+              addressLocality: "Las Vegas",
+              addressRegion: "NV",
+              postalCode: "89134",
+              addressCountry: "US"
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 36.2043,
+              longitude: -115.2936
+            },
+            sameAs: [
+              "https://www.instagram.com/drjanduffy/",
+              "https://www.facebook.com/DrJanDuffyRealtorCentennialHills/",
+              "https://www.linkedin.com/company/lvrmembers/",
+              "https://www.youtube.com/@DrDuffy",
+              "https://x.com/drjanduffy",
+              "https://www.tiktok.com/@dr.janduffy",
+              "https://www.pinterest.com/bhhsluxury/"
+            ],
+            openingHoursSpecification: {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
               ],
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                  "Sunday"
-                ],
-                "opens": "09:00",
-                "closes": "19:00"
-              },
-              "priceRange": "$$$",
-              "areaServed": ["Sun City Summerlin", "Las Vegas", "Clark County"],
-              "description": "Dr. Jan Duffy is a REALTOR® specialist with 25+ years of experience in Sun City Summerlin, Las Vegas' premier 55+ Del Webb community."
+              opens: "09:00",
+              closes: "19:00"
+            },
+            priceRange: "$$$",
+            areaServed: ["Sun City Summerlin", "Las Vegas", "Clark County", "Nevada"],
+            description: "Dr. Jan Duffy is a REALTOR® specialist with 25+ years of experience in Sun City Summerlin, Las Vegas' premier 55+ Del Webb community. Specializing in luxury single-story homes and golf course properties.",
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Sun City Summerlin Real Estate Services",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Senior Home Buying Services",
+                    description: "Specialized home buying assistance for 55+ adults in Sun City Summerlin"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Luxury Home Selling",
+                    description: "Expert marketing and representation for Sun City Summerlin home sellers"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "California to Las Vegas Relocation",
+                    description: "Specialized support for homebuyers relocating from California to Las Vegas"
+                  }
+                }
+              ]
             }
-          `
-        }}/>
+          }}
+        />
       </Head>
       
       <Script 
@@ -156,10 +187,12 @@ const Home: NextPage = () => {
             <nav className={styles.nav}>
               <Link href="/" className={styles.navLink}><span>Home</span></Link>
               <Link href="/properties" className={styles.navLink}><span>Properties</span></Link>
+              <Link href="/search" className={styles.navLink}><span>Search</span></Link>
               <Link href="/community" className={styles.navLink}><span>Community</span></Link>
               <Link href="/lifestyle" className={styles.navLink}><span>Lifestyle</span></Link>
               <Link href="/amenities" className={styles.navLink}><span>Amenities</span></Link>
               <Link href="/zipcodes" className={styles.navLink}><span>Zipcodes</span></Link>
+              <Link href="/blog" className={styles.navLink}><span>Blog</span></Link>
               <Link href="/testimonials" className={styles.navLink}><span>Testimonials</span></Link>
               <Link href="/contact" className={styles.navLink}><span>Contact</span></Link>
             </nav>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
+import MortgageCalculator from "../../components/MortgageCalculator";
 
 const Properties: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -200,6 +201,15 @@ const Properties: NextPage = () => {
             price-max="4000000">
           </realscout-office-listings>
         </div>
+        
+        <section className={styles.calculatorSection}>
+          <h2 className={styles.sectionTitle}>Mortgage Calculator</h2>
+          <p className={styles.calculatorIntro}>
+            Plan your Sun City Summerlin investment with our specialized mortgage calculator that includes HOA fees and local property taxes.
+          </p>
+          
+          <MortgageCalculator defaultPrice={548175} defaultDownPayment={109635} />
+        </section>
       </main>
 
       <footer className={styles.footer}>
