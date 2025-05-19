@@ -30,7 +30,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "Fix Preview"
+runButton = "NextJS Optimized Dev"
 
 [[workflows.workflow]]
 name = "Run"
@@ -1343,6 +1343,79 @@ args = ""
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "# Restart the dev server with optimizations"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;32m🚀 Starting optimized dev server...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_SOURCEMAPS=true NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run dev"
+
+[[workflows.workflow]]
+name = "NextJS Optimized Dev"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "#!/bin/bash"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "set -e"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;36m┌─────────────────────────────────────┐"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo -e \"│  🚀 NextJS Optimized Development      │\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "└─────────────────────────────────────┘\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Kill any running processes on port 3000"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clear Next.js cache for a fresh start"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;33m🧹 Cleaning build cache...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next/cache"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Run optimized dev server"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"

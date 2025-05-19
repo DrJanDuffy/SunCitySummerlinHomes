@@ -1,36 +1,46 @@
 
+import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
-export default function Custom404() {
+const Custom404: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>404 - Page Not Found | Dr. Jan Duffy - Sun City Summerlin Specialist</title>
-        <meta name="description" content="The page you are looking for could not be found." />
+        <title>404 - Page Not Found | Sun City Summerlin Real Estate</title>
+        <meta name="description" content="The page you're looking for couldn't be found." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main} style={{ textAlign: 'center', padding: '5rem 1rem' }}>
-        <h1 className={styles.title} style={{ marginBottom: '2rem' }}>404 - Page Not Found</h1>
-        <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-          We're sorry, the page you requested could not be found.
+      <main className={styles.main}>
+        <h1 className={styles.title}>404 - Page Not Found</h1>
+        <p className={styles.description}>
+          Sorry, the page you're looking for doesn't exist or has been moved.
         </p>
-        <Link href="/" passHref>
-          <span className={styles.button} style={{
-            display: 'inline-block',
-            padding: '0.75rem 1.5rem',
-            backgroundColor: '#1c4966',
-            color: 'white',
-            borderRadius: '4px',
-            textDecoration: 'none',
-            fontWeight: 'bold',
-            cursor: 'pointer'
-          }}>
-            Return to Home
-          </span>
-        </Link>
+        <div className={styles.grid}>
+          <Link href="/">
+            <a className={styles.card}>
+              <h2>Return Home &rarr;</h2>
+              <p>Go back to the homepage</p>
+            </a>
+          </Link>
+          <Link href="/properties">
+            <a className={styles.card}>
+              <h2>View Properties &rarr;</h2>
+              <p>Browse available Sun City Summerlin homes</p>
+            </a>
+          </Link>
+          <Link href="/contact">
+            <a className={styles.card}>
+              <h2>Contact Us &rarr;</h2>
+              <p>Get in touch for assistance</p>
+            </a>
+          </Link>
+        </div>
       </main>
     </div>
   );
-}
+};
+
+export default Custom404;

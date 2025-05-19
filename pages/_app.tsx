@@ -1,4 +1,3 @@
-
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -7,6 +6,7 @@ import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 // Import AOS styles
 import 'aos/dist/aos.css'
+import { AppProps } from 'next/app';
 import { suppressExtensionWarnings } from '../utils/suppress-warnings';
 
 function MyApp({ Component, pageProps }: AppProps) {
