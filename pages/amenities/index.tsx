@@ -44,6 +44,7 @@ const Amenities: NextPage = () => {
           <Link href="/community">Community</Link>
           <Link href="/lifestyle">Lifestyle</Link>
           <Link href="/amenities">Amenities</Link>
+          <Link href="/zipcodes">Zipcodes</Link>
           <Link href="/testimonials">Testimonials</Link>
           <Link href="/contact">Contact</Link>
         </nav>

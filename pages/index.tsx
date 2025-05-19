@@ -159,6 +159,7 @@ const Home: NextPage = () => {
               <Link href="/community" className={styles.navLink}><span>Community</span></Link>
               <Link href="/lifestyle" className={styles.navLink}><span>Lifestyle</span></Link>
               <Link href="/amenities" className={styles.navLink}><span>Amenities</span></Link>
+              <Link href="/zipcodes" className={styles.navLink}><span>Zipcodes</span></Link>
               <Link href="/testimonials" className={styles.navLink}><span>Testimonials</span></Link>
               <Link href="/contact" className={styles.navLink}><span>Contact</span></Link>
             </nav>
