@@ -144,22 +144,45 @@ const Home: NextPage = () => {
       />
 
       <header className={styles.header}>
-        <div className={styles.logoContainer}>
-          <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
-          <div className={styles.logoText}>
-            <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
-            <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
+        <div className={styles.headerInner}>
+          <div className={styles.logoContainer}>
+            <img 
+              src="/bhhs-quality-seal-black.png" 
+              alt="Berkshire Hathaway HomeServices" 
+              className={styles.bhsLogo} 
+              width={60}
+              height={60}
+            />
+            <div className={styles.logoText}>
+              <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+              <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
+            </div>
+          </div>
+          
+          <div className={styles.headerRight}>
+            <nav className={styles.nav}>
+              <Link href="/" className={styles.navLink}><span>Home</span></Link>
+              <Link href="/properties" className={styles.navLink}><span>Properties</span></Link>
+              <Link href="/community" className={styles.navLink}><span>Community</span></Link>
+              <Link href="/lifestyle" className={styles.navLink}><span>Lifestyle</span></Link>
+              <Link href="/amenities" className={styles.navLink}><span>Amenities</span></Link>
+              <Link href="/testimonials" className={styles.navLink}><span>Testimonials</span></Link>
+              <Link href="/contact" className={styles.navLink}><span>Contact</span></Link>
+            </nav>
+            
+            <div className={styles.headerActions}>
+              <a href="tel:7027180043" className={styles.phoneButton}>
+                <span className={styles.phoneIcon}>📞</span>
+                <span className={styles.phoneNumber}>(702) 718-0043</span>
+              </a>
+              <button className={styles.mobileMenuButton} aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
           </div>
         </div>
-        <nav className={styles.nav}>
-          <Link href="/">Home</Link>
-          <Link href="/properties">Properties</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/lifestyle">Lifestyle</Link>
-          <Link href="/amenities">Amenities</Link>
-          <Link href="/testimonials">Testimonials</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
       </header>
 
       <div className={styles.topBanner}>

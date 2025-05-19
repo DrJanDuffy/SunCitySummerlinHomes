@@ -27,6 +27,40 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Add accessibility improvements
     document.documentElement.lang = 'en';
+    
+    // Header scroll animation
+    const handleScroll = () => {
+      const header = document.querySelector('header');
+      if (header) {
+        if (window.scrollY > 50) {
+          header.style.padding = '0.5rem 1.5rem';
+          header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+        } else {
+          header.style.padding = '0.8rem 1.5rem';
+          header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // Mobile menu toggle
+    const setupMobileMenu = () => {
+      const menuButton = document.querySelector('.mobileMenuButton');
+      if (menuButton) {
+        menuButton.addEventListener('click', () => {
+          // Implement mobile menu toggle logic here
+          console.log('Mobile menu toggled');
+        });
+      }
+    };
+    
+    // Call after a slight delay to ensure DOM is ready
+    setTimeout(setupMobileMenu, 500);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
