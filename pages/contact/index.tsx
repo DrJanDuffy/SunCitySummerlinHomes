@@ -117,8 +117,8 @@ const Contact: NextPage = () => {
               <p><small>Closed on major holidays</small></p>
             </div>
             <div className={styles.infoItem}>
-              <h3>Website</h3>
-              <p><a href="http://lasvegas55plushomes.com/" target="_blank" rel="noopener noreferrer">lasvegas55plushomes.com</a></p>
+              <h3>Google Business</h3>
+              <p><a href="https://g.co/kgs/uwtzcWj" target="_blank" rel="noopener noreferrer">View Google Business Profile</a></p>
             </div>
           </div>
           
