@@ -10,10 +10,10 @@ channel = "stable-24_11"
 NEXT_TELEMETRY_DISABLED = "1"
 
 [deployment]
-build = ["sh", "-c", "npm run build"]
+build = ["sh", "-c", "npm run build && cp -r .next/static ./out/_next/static"]
 deploymentTarget = "static"
 publicDir = "out"
-run = ["sh", "-c", "npm run start"]
+run = ["sh", "-c", "npx serve out"]
 
 [[ports]]
 localPort = 3000
