@@ -8,9 +8,3 @@ declare namespace JSX {
     // Add any other RealScout components you might use
   }
 }
-
-// This tells TypeScript to ignore data attributes from extensions like Dashlane
-interface HTMLElement {
-  'data-dashlane-shadowhost'?: string;
-  // Add other data attributes here as needed
-}

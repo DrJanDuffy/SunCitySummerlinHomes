@@ -15,7 +15,6 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
   return (
     <script
       type="application/ld+json"
-      suppressHydrationWarning={true}
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(structuredData)
       }}

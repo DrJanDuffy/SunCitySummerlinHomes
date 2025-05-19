@@ -225,7 +225,7 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className={styles.listingsSection} suppressHydrationWarning={true}>
+      <div className={styles.listingsSection}>
         <realscout-office-listings 
           agent-encoded-id="QWdlbnQtMjI1MDUw" 
           sort-order="NEWEST" 
