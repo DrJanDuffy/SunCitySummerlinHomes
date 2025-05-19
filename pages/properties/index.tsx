@@ -62,7 +62,9 @@ const Properties: NextPage = () => {
         <h1 className={styles.pageTitle}>Our Properties</h1>
 
         <section id="property" className={`${styles.propertySection} ${isVisible ? styles.fadeIn : ''}`}>
-          <h2 className={styles.sectionTitle}>Property Highlights</h2>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionTitleAccent}>Premium</span> Property Highlights
+          </h2>
 
           <div className={styles.imageGallery}>
             <div className={styles.mainImage}>
@@ -82,14 +84,16 @@ const Properties: NextPage = () => {
                 <button 
                   onClick={() => setActiveImage((prev) => (prev - 1 + propertyImages.length) % propertyImages.length)}
                   className={styles.navArrow}
+                  aria-label="Previous image"
                 >
-                  &#10094;
+                  <span aria-hidden="true">❮</span>
                 </button>
                 <button 
                   onClick={() => setActiveImage((prev) => (prev + 1) % propertyImages.length)}
                   className={styles.navArrow}
+                  aria-label="Next image"
                 >
-                  &#10095;
+                  <span aria-hidden="true">❯</span>
                 </button>
               </div>
             </div>
@@ -99,6 +103,14 @@ const Properties: NextPage = () => {
                   key={index} 
                   className={`${styles.thumbnail} ${activeImage === index ? styles.activeThumbnail : ''}`}
                   onClick={() => setActiveImage(index)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View property image ${index + 1}`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setActiveImage(index);
+                    }
+                  }}
                 >
                   <Image 
                     src={image} 
@@ -107,6 +119,7 @@ const Properties: NextPage = () => {
                     height={100}
                     layout="responsive"
                   />
+                  <div className={styles.thumbnailCaption}>Property view {index + 1}</div>
                 </div>
               ))}
             </div>
@@ -114,14 +127,42 @@ const Properties: NextPage = () => {
 
           <div className={styles.propertyDetails}>
             <div className={styles.detailCard}>
-              <h3>$548,175</h3>
-              <p>3 Beds | 2 Baths | 1,850 Sq Ft</p>
-              <p>Contemporary Mediterranean | Golf Course Views</p>
+              <div className={styles.priceTag}>
+                <h3>$548,175</h3>
+                <span className={styles.priceBadge}>Premium Location</span>
+              </div>
+              <div className={styles.propertyStats}>
+                <div className={styles.statItem}>
+                  <span className={styles.statIcon}>🛏️</span>
+                  <span className={styles.statValue}>3</span>
+                  <span className={styles.statLabel}>Bedrooms</span>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statIcon}>🚿</span>
+                  <span className={styles.statValue}>2</span>
+                  <span className={styles.statLabel}>Bathrooms</span>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statIcon}>📏</span>
+                  <span className={styles.statValue}>1,850</span>
+                  <span className={styles.statLabel}>Sq Ft</span>
+                </div>
+              </div>
+              <p className={styles.propertyStyle}>Contemporary Mediterranean | Golf Course Views</p>
             </div>
 
-            <p className={styles.description}>
-              This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community. Many homes in the area include two primary suites and dedicated golf cart garage space.
-            </p>
+            <div className={styles.descriptionBox}>
+              <p className={styles.description}>
+                This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community.
+              </p>
+              <p className={styles.description}>
+                Many homes in the area include two primary suites and dedicated golf cart garage space, making this an ideal property for retirees who value both convenience and sophistication.
+              </p>
+              <div className={styles.callToActionBar}>
+                <button className={styles.scheduleBtn}>Schedule Viewing</button>
+                <button className={styles.virtualTourBtn}>Virtual Tour</button>
+              </div>
+            </div>
           </div>
         </section>
 
