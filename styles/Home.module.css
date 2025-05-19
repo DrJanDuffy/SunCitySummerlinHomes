@@ -383,17 +383,17 @@
   .topTitle {
     font-size: 2.2rem;
   }
-  
+
   .topSubtitle {
     font-size: 1.1rem;
   }
-  
+
   .topCredentials {
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
   }
-  
+
   .topCredentialItem {
     width: 100%;
     max-width: 300px;
@@ -747,11 +747,11 @@
   .lifestyleFeatures {
     grid-template-columns: 1fr;
   }
-  
+
   .lifestyleTitle {
     font-size: 2rem;
   }
-  
+
   .lifestyleFeatureImage {
     height: 180px;
   }
@@ -926,11 +926,11 @@
   .testimonialContainer {
     grid-template-columns: 1fr;
   }
-  
+
   .sectionTitle {
     font-size: 2rem;
   }
-  
+
   .testimonialCardQuote {
     font-size: 1rem;
   }
@@ -1218,12 +1218,12 @@
   .communityDescriptionGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .communityImageRow {
     flex-direction: column;
     height: auto;
   }
-  
+
   .communityImage {
     height: 200px;
   }
@@ -1445,92 +1445,5 @@
   .headerActions {
     justify-content: center;
     width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1.2rem;
-  }
-
-  .heroButtons {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .primaryButton, 
-  .secondaryButton {
-    width: 100%;
-  }
-
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  .subLogo {
-    font-size: 0.8rem;
-  }
-
-  .navLinks {
-    display: none;
-  }
-
-  .navLinksActive {
-    display: flex !important;
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .navLinksActive .navLink {
-    padding: 0.8rem;
-    text-align: center;
-    margin: 0;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-  }
-
-  .mobileMenuButton {
-    display: flex;
-  }
-
-  .phoneButton {
-    padding: 0.4rem 0.8rem;
-  }
-
-  .phoneIcon {
-    font-size: 0.9rem;
-  }
-
-  .phoneNumber {
-    font-size: 0.8rem;
-  }
-
-  .featureGrid,
-  .propertyGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .callToActionBar {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.3rem;
-  }
-
-  .headerLogo {
-    height: 24px;
-  }
-
-  .subLogo {
-    font-size: 0.7rem;
   }
 }
