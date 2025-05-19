@@ -589,8 +589,8 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   position: relative;
-  max-width: 70%;
-  width: 600px;
+  max-width: 95%;
+  width: 750px;
   margin: 0 auto;
 }
 
