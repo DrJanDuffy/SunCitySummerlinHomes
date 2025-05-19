@@ -157,7 +157,7 @@ const Home: NextPage = () => {
                     --rs-hvw-primary-button-color: rgb(35, 93, 137);
                     --rs-hvw-secondary-button-text-color: rgb(35, 93, 137);
                     --rs-hvw-secondary-button-color: #ffffff;
-                    --rs-hvw-widget-width: 100%;
+                    --rs-hvw-widget-width: 87.5%;
                   }
                 `
               }} />
