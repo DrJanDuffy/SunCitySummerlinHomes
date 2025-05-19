@@ -21,8 +21,12 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     appDir: false,
-    // Enable memory optimization
-    optimizeCss: true,
+    // Enable CSS optimization with critters
+    optimizeCss: {
+      minify: true,
+      inlineThreshold: 0,
+      fonts: true
+    },
     // Optimize fonts
     optimizeFonts: true
   },
