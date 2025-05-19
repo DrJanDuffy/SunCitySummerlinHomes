@@ -1,4 +1,3 @@
-
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -12,21 +11,21 @@ const Home: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [showVirtualTour, setShowVirtualTour] = useState(false);
-  
+
   const propertyImages = [
     "/property1.jpg",
     "/property2.jpg",
     "/property3.jpg",
   ];
-  
+
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Auto-rotate property images
     const interval = setInterval(() => {
       setActiveImage((prev) => (prev + 1) % propertyImages.length);
     }, 5000);
-    
+
     return () => clearInterval(interval);
   }, [propertyImages.length]);
 
@@ -42,7 +41,7 @@ const Home: NextPage = () => {
     "On-site Shopping &amp; Dining",
     "24/7 Security & Gated Areas"
   ];
-  
+
   const testimonials = [
     {
       name: "Sarah & David Johnson",
@@ -168,7 +167,7 @@ const Home: NextPage = () => {
           }}
         />
       </Head>
-      
+
       <Script 
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
         strategy="lazyOnload"
@@ -182,7 +181,7 @@ const Home: NextPage = () => {
               <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
             </div>
           </div>
-          
+
           <div className={styles.headerRight}>
             <nav className={styles.nav}>
               <Link href="/" className={styles.navLink}><span>Home</span></Link>
@@ -196,7 +195,7 @@ const Home: NextPage = () => {
               <Link href="/testimonials" className={styles.navLink}><span>Testimonials</span></Link>
               <Link href="/contact" className={styles.navLink}><span>Contact</span></Link>
             </nav>
-            
+
             <div className={styles.headerActions}>
               <a href="tel:7027180043" className={styles.phoneButton}>
                 <span className={styles.phoneIcon}>📞</span>
@@ -227,14 +226,7 @@ const Home: NextPage = () => {
 
       <div className={styles.listingsSection} suppressHydrationWarning>
         {/* RealScout Office Listings - Added suppressHydrationWarning to handle browser extensions */}
-        <realscout-office-listings 
-          agent-encoded-id="QWdlbnQtMjI1MDUw" 
-          sort-order="NEWEST" 
-          listing-status="For Sale" 
-          property-types="SFR,MF" 
-          price-min="800000" 
-          price-max="4000000">
-        </realscout-office-listings>
+        
       </div>
 
       <main className={styles.main}>
@@ -266,7 +258,7 @@ const Home: NextPage = () => {
                 ></realscout-home-value>
               </div>
             </div>
-            
+
             <div className={styles.ctaContainer}>
               <button className={styles.cta}>Schedule a Viewing</button>
               <button 
@@ -277,7 +269,7 @@ const Home: NextPage = () => {
               </button>
             </div>
           </div>
-          
+
           {showVirtualTour && (
             <div className={styles.virtualTourModal}>
               <div className={styles.modalContent}>
@@ -301,7 +293,7 @@ const Home: NextPage = () => {
 
         <section id="property" className={`${styles.propertySection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>Property Highlights</h2>
-          
+
           <div className={styles.imageGallery}>
             <div className={styles.mainImage}>
               <div className={styles.imageOverlay}>
@@ -350,7 +342,7 @@ const Home: NextPage = () => {
             <p className={styles.description}>
               This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community. Many homes in the area include two primary suites and dedicated golf cart garage space.
             </p>
-            
+
             <script type="application/ld+json" dangerouslySetInnerHTML={{
               __html: `
                 {
@@ -413,7 +405,7 @@ const Home: NextPage = () => {
 
         <section id="features" className={styles.featuresSection}>
           <h2 className={styles.sectionTitle}>Property Features</h2>
-          
+
           <div className={styles.features}>
             <div className={styles.feature}>
               <h3>Modern Kitchen</h3>
@@ -436,7 +428,7 @@ const Home: NextPage = () => {
 
         <section id="community" className={styles.communitySection}>
           <h2 className={styles.sectionTitle}>Sun City Summerlin Community</h2>
-          
+
           <div className={styles.communityHighlights}>
             <div className={styles.statsCard}>
               <h3>$548,175</h3>
@@ -455,7 +447,7 @@ const Home: NextPage = () => {
               <p>Active Residents</p>
             </div>
           </div>
-          
+
           <div className={styles.communityDescription}>
             <p>
               Sun City Summerlin is a 55-plus, active adult community brimming with amenities. Located just beyond the foothills of the Spring Mountains, residents enjoy stunning backyard views of Red Rock Canyon and adjacent rocky peaks. As Las Vegas' oldest and largest community of its kind, Sun City Summerlin is truly "a city within a city," offering convenient access to doctors, banks, florists, and various stores right within the community.
@@ -468,7 +460,7 @@ const Home: NextPage = () => {
 
         <section id="lifestyle" className={styles.lifestyleSection}>
           <h2 className={styles.sectionTitle}>Active Adult Lifestyle</h2>
-          
+
           <div className={styles.lifestyleFeatures}>
             <div className={styles.lifestyleFeature}>
               <h3>Golf Paradise</h3>
@@ -491,7 +483,7 @@ const Home: NextPage = () => {
 
         <section id="amenities" className={styles.amenitiesSection}>
           <h2 className={styles.sectionTitle}>Community Amenities</h2>
-          
+
           <div className={styles.amenitiesList}>
             {amenities.map((amenity, index) => (
               <div key={index} className={styles.amenity}>
@@ -504,7 +496,7 @@ const Home: NextPage = () => {
 
         <section id="testimonials" className={`${styles.testimonialsSection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>What Homeowners Say</h2>
-          
+
           <div className={styles.testimonialContainer}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className={styles.testimonialCard}>
@@ -519,10 +511,10 @@ const Home: NextPage = () => {
             ))}
           </div>
         </section>
-        
+
         <section id="contact" className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>Contact Us</h2>
-          
+
           <div className={styles.contactForm}>
             <form>
               <div className={styles.formGroup}>
@@ -544,7 +536,7 @@ const Home: NextPage = () => {
               <button type="submit" className={styles.submitButton}>Send Message</button>
             </form>
           </div>
-          
+
           <div className={styles.contactInfo}>
             <div className={styles.infoItem}>
               <h3>Address</h3>
@@ -658,6 +650,25 @@ const Home: NextPage = () => {
           </div>
         </div>
       </footer>
+      <Script id="realscout-listings-init" strategy="lazyOnload">
+        {`
+          document.addEventListener('realscout-web-components-ready', () => {
+            const container = document.querySelector('.listingsSection');
+            if (container) {
+              const listingsElement = document.createElement('realscout-office-listings');
+              if (listingsElement && listingsElement.setAttribute) {
+                listingsElement.setAttribute('agent-encoded-id', 'QWdlbnQtMjI1MDUw');
+                listingsElement.setAttribute('sort-order', 'NEWEST');
+                listingsElement.setAttribute('listing-status', 'For Sale');
+                listingsElement.setAttribute('property-types', 'SFR,MF');
+                listingsElement.setAttribute('price-min', '800000');
+                listingsElement.setAttribute('price-max', '4000000');
+                container.appendChild(listingsElement);
+              }
+            }
+          });
+        `}
+      </Script>
     </div>
   );
 };
