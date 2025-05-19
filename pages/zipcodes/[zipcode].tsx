@@ -37,7 +37,7 @@ const ZipcodePage: NextPage<ZipcodePageProps> = ({ zipcodeData, nearbyZipcodes }
   return (
     <div className={styles.container}>
       <Head>
-        <title>{zipcodeData.area} (${zipcodeData.code}) | Las Vegas Real Estate | Dr. Jan Duffy</title>
+        <title>{zipcodeData.area} ({zipcodeData.code}) | Las Vegas Real Estate | Dr. Jan Duffy</title>
         <meta 
           name="description" 
           content={`Explore homes for sale in ${zipcodeData.area} (${zipcodeData.code}). ${zipcodeData.description} Contact Dr. Jan Duffy for expert real estate guidance in Las Vegas.`} 
@@ -59,14 +59,14 @@ const ZipcodePage: NextPage<ZipcodePageProps> = ({ zipcodeData, nearbyZipcodes }
           <p className={styles.logo}>Sun City Summerlin Homes</p>
         </div>
         <nav className={styles.nav}>
-          <Link href="/" passHref>Home</Link>
-          <Link href="/properties" passHref>Properties</Link>
-          <Link href="/community" passHref>Community</Link>
-          <Link href="/lifestyle" passHref>Lifestyle</Link>
-          <Link href="/amenities" passHref>Amenities</Link>
-          <Link href="/testimonials" passHref>Testimonials</Link>
-          <Link href="/zipcodes" passHref>Zipcodes</Link>
-          <Link href="/contact" passHref>Contact</Link>
+          <Link href="/">Home</Link>
+          <Link href="/properties">Properties</Link>
+          <Link href="/community">Community</Link>
+          <Link href="/lifestyle">Lifestyle</Link>
+          <Link href="/amenities">Amenities</Link>
+          <Link href="/testimonials">Testimonials</Link>
+          <Link href="/zipcodes">Zipcodes</Link>
+          <Link href="/contact">Contact</Link>
         </nav>
       </header>
 

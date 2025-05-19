@@ -1,13 +1,13 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',  // Switch from static generation to SSR
+  output: 'export',  // Use export for static site generation
   reactStrictMode: true,
   env: {
     siteUrl: 'https://suncitysummerlin.com',
   },
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for static export
   },
   trailingSlash: true,
   // Add rewrites for SPA-like behavior

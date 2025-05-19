@@ -185,16 +185,16 @@ const Home: NextPage = () => {
           
           <div className={styles.headerRight}>
             <nav className={styles.nav}>
-              <Link href="/" passHref className={styles.navLink}><span>Home</span></Link>
-              <Link href="/properties" passHref className={styles.navLink}><span>Properties</span></Link>
-              <Link href="/search" passHref className={styles.navLink}><span>Search</span></Link>
-              <Link href="/community" passHref className={styles.navLink}><span>Community</span></Link>
-              <Link href="/lifestyle" passHref className={styles.navLink}><span>Lifestyle</span></Link>
-              <Link href="/amenities" passHref className={styles.navLink}><span>Amenities</span></Link>
-              <Link href="/zipcodes" passHref className={styles.navLink}><span>Zipcodes</span></Link>
-              <Link href="/blog" passHref className={styles.navLink}><span>Blog</span></Link>
-              <Link href="/testimonials" passHref className={styles.navLink}><span>Testimonials</span></Link>
-              <Link href="/contact" passHref className={styles.navLink}><span>Contact</span></Link>
+              <Link href="/" className={styles.navLink}><span>Home</span></Link>
+              <Link href="/properties" className={styles.navLink}><span>Properties</span></Link>
+              <Link href="/search" className={styles.navLink}><span>Search</span></Link>
+              <Link href="/community" className={styles.navLink}><span>Community</span></Link>
+              <Link href="/lifestyle" className={styles.navLink}><span>Lifestyle</span></Link>
+              <Link href="/amenities" className={styles.navLink}><span>Amenities</span></Link>
+              <Link href="/zipcodes" className={styles.navLink}><span>Zipcodes</span></Link>
+              <Link href="/blog" className={styles.navLink}><span>Blog</span></Link>
+              <Link href="/testimonials" className={styles.navLink}><span>Testimonials</span></Link>
+              <Link href="/contact" className={styles.navLink}><span>Contact</span></Link>
             </nav>
             
             <div className={styles.headerActions}>
