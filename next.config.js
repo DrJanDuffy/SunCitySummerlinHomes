@@ -31,7 +31,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   // Important for static export
-  output: 'export'
+  output: 'export',
+  // Configure for static export
+  experimental: {
+    appDir: false
+  }
 };
 
 module.exports = nextConfig;

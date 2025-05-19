@@ -226,7 +226,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const zipcode = params?.zipcode as string;
+  const zipcode = params?.zipcode as stringing;
 
   // This is a simplified version - in a real application, you would fetch this data from an API or database
   const allZipcodeData: ZipcodeData[] = [
