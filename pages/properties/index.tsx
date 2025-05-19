@@ -1,305 +1,362 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
-import styles from "../../styles/Home.module.css";
-import { useState, useEffect } from "react";
-import MortgageCalculator from "../../components/MortgageCalculator";
 
-const Properties: NextPage = () => {
-  const [activeImage, setActiveImage] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [showVirtualTour, setShowVirtualTour] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // Handle menu toggle for mobile
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
+import Header from '../../components/Header';
+import PropertyCard from '../../components/PropertyCard';
+import styles from '../../styles/Properties.module.css';
+import { fetchWithErrorHandling } from '../../utils/client-utils';
+import StructuredData from '../../components/StructuredData';
 
-  const propertyImages = [
-    "/property1.jpg",
-    "/property2.jpg",
-    "/property3.jpg",
-  ];
+// Dynamically import components that might be heavy or use browser APIs
+const PropertyFilters = dynamic(() => import('../../components/PropertyFilters'), {
+  loading: () => <div className={styles.loadingPlaceholder}>Loading filters...</div>,
+  ssr: true
+});
 
-  useEffect(() => {
-    setIsVisible(true);
+// Mock property data (would come from API in production)
+const propertiesData = [
+  {
+    id: 'prop1',
+    title: 'Elegant Single-Story Villa',
+    price: 548175,
+    address: '1234 Sun Valley Dr, Las Vegas, NV 89134',
+    bedrooms: 3,
+    bathrooms: 2,
+    sqft: 1850,
+    image: '/property1.jpg',
+    features: ['Golf Course View', 'Pool'],
+    isNew: true
+  },
+  {
+    id: 'prop2',
+    title: 'Modern Desert Retreat',
+    price: 615000,
+    address: '5678 Canyon Ridge Ln, Las Vegas, NV 89134',
+    bedrooms: 2,
+    bathrooms: 2.5,
+    sqft: 2100,
+    image: '/property2.jpg',
+    features: ['Single Story', 'Renovated']
+  },
+  {
+    id: 'prop3',
+    title: 'Spacious Golf Course Home',
+    price: 729000,
+    address: '9101 Fairway View Dr, Las Vegas, NV 89134',
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: 2600,
+    image: '/property3.jpg',
+    features: ['Premium View', 'Large Lot']
+  },
+  {
+    id: 'prop4',
+    title: 'Charming Villa with Mountain Views',
+    price: 499000,
+    address: '2468 Red Rock Way, Las Vegas, NV 89134',
+    bedrooms: 2,
+    bathrooms: 2,
+    sqft: 1650,
+    image: '/property1.jpg',
+    features: ['Mountain View', 'Updated Kitchen'],
+    isNew: true
+  },
+  {
+    id: 'prop5',
+    title: 'Luxurious Desert Oasis',
+    price: 875000,
+    address: '1357 Palm Spring Ct, Las Vegas, NV 89134',
+    bedrooms: 3,
+    bathrooms: 3.5,
+    sqft: 2800,
+    image: '/property2.jpg',
+    features: ['Premium Lot', 'Custom Design']
+  },
+  {
+    id: 'prop6',
+    title: 'Cozy Single Family Home',
+    price: 425000,
+    address: '3691 Vista Dr, Las Vegas, NV 89134',
+    bedrooms: 2,
+    bathrooms: 2,
+    sqft: 1450,
+    image: '/property3.jpg',
+    features: ['Great Value', 'Move-in Ready']
+  }
+];
 
-    // Auto-rotate property images
-    const interval = setInterval(() => {
-      setActiveImage((prev) => (prev + 1) % propertyImages.length);
-    }, 5000);
-    
-    // Add scroll effect for header
-    const handleScroll = () => {
-      const header = document.querySelector(`.${styles.mainNav}`);
-      if (header) {
-        if (window.scrollY > 100) {
-          header.classList.add(styles.stickyNav);
-        } else {
-          header.classList.remove(styles.stickyNav);
+// Schema.org data for SEO
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Dr. Jan Duffy - Sun City Summerlin Specialist",
+  "description": "Browse luxury homes for sale in Sun City Summerlin, Las Vegas' premier 55+ community with Dr. Jan Duffy, REALTOR® specialist with 25+ years of experience.",
+  "url": "https://suncitysummerlin.com/properties",
+  "telephone": "(702) 718-0043",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9406 Del Webb Boulevard",
+    "addressLocality": "Las Vegas",
+    "addressRegion": "NV",
+    "postalCode": "89134",
+    "addressCountry": "US"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Sun City Summerlin Properties",
+    "itemListElement": propertiesData.map((property, index) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Residence",
+        "name": property.title,
+        "description": `${property.bedrooms} bed, ${property.bathrooms} bath, ${property.sqft} sq ft home in Sun City Summerlin`,
+        "numberOfRooms": property.bedrooms,
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": property.sqft,
+          "unitCode": "SQF"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Las Vegas",
+          "addressRegion": "NV",
+          "postalCode": "89134"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": property.price,
+          "priceCurrency": "USD"
         }
       }
-    };
+    }))
+  }
+};
+
+const Properties = () => {
+  const [properties, setProperties] = useState(propertiesData);
+  const [filteredProperties, setFilteredProperties] = useState(propertiesData);
+  const [loading, setLoading] = useState(false);
+  const [filters, setFilters] = useState({
+    minPrice: 0,
+    maxPrice: 1000000,
+    bedrooms: 0,
+    bathrooms: 0,
+    features: []
+  });
+
+  const fetchProperties = async () => {
+    setLoading(true);
+    try {
+      // In a real app, this would be a fetch call to your API
+      // const data = await fetchWithErrorHandling('/api/properties');
+      // setProperties(data);
+      // setFilteredProperties(data);
+      
+      // Simulate API delay
+      setTimeout(() => {
+        setProperties(propertiesData);
+        setFilteredProperties(propertiesData);
+        setLoading(false);
+      }, 500);
+    } catch (error) {
+      console.error("Error fetching properties:", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProperties();
+  }, []);
+
+  const applyFilters = (newFilters) => {
+    setFilters(newFilters);
     
-    window.addEventListener('scroll', handleScroll);
+    const filtered = properties.filter(property => {
+      const matchesPrice = property.price >= newFilters.minPrice && 
+                          property.price <= newFilters.maxPrice;
+      
+      const matchesBedrooms = newFilters.bedrooms === 0 || 
+                             property.bedrooms >= newFilters.bedrooms;
+      
+      const matchesBathrooms = newFilters.bathrooms === 0 || 
+                              property.bathrooms >= newFilters.bathrooms;
+      
+      const matchesFeatures = newFilters.features.length === 0 || 
+                             newFilters.features.some(feature => 
+                               property.features.includes(feature));
+      
+      return matchesPrice && matchesBedrooms && matchesBathrooms && 
+            (newFilters.features.length === 0 || matchesFeatures);
+    });
     
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [propertyImages.length]);
+    setFilteredProperties(filtered);
+  };
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Properties | BHHS Sun City Summerlin</title>
-        <meta name="description" content="View our luxury properties in Sun City Summerlin" />
+        <title>Luxury Homes for Sale in Sun City Summerlin | Las Vegas 55+ Community</title>
+        <meta name="description" content="Browse luxury homes for sale in Sun City Summerlin, Las Vegas' premier 55+ community. Single-story villas, golf course properties, and desert view homes available." />
+        <meta name="keywords" content="Sun City Summerlin homes for sale, Las Vegas luxury properties, 55+ community homes, Del Webb community, golf course properties" />
+        <link rel="canonical" href="https://suncitysummerlin.com/properties" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={styles.header}>
-        <div className={styles.logoContainer}>
-          <Image 
-            src="/bhhs-quality-seal-black.png" 
-            alt="BHHS Logo" 
-            className={styles.bhsLogo}
-            width={150}
-            height={60}
-            priority
-          />
-          <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
-        </div>
-        <nav className={styles.mainNav}>
-          <div className={styles.menuItems}>
-            <Link href="/" className={styles.navLink}>
-              <div>
-                <span className={styles.navIcon}>🏠</span>
-                <span className={styles.navText}>Home</span>
-              </div>
-            </Link>
-            <Link href="/properties" className={`${styles.navLink} ${styles.activeNavLink}`}>
-              <div>
-                <span className={styles.navIcon}>🏘️</span>
-                <span className={styles.navText}>Properties</span>
-              </div>
-            </Link>
-            <Link href="/community" className={styles.navLink}>
-              <div>
-                <span className={styles.navIcon}>👥</span>
-                <span className={styles.navText}>Community</span>
-              </div>
-            </Link>
-            <Link href="/lifestyle" className={styles.navLink}>
-              <div>
-                <span className={styles.navIcon}>🌴</span>
-                <span className={styles.navText}>Lifestyle</span>
-              </div>
-            </Link>
-            <Link href="/amenities" className={styles.navLink}>
-              <div>
-                <span className={styles.navIcon}>🏊</span>
-                <span className={styles.navText}>Amenities</span>
-              </div>
-            </Link>
-            <Link href="/zipcodes" className={styles.navLink}>
-              <div>
-                <span className={styles.navIcon}>📍</span>
-                <span className={styles.navText}>Zipcodes</span>
-              </div>
-            </Link>
-            <Link href="/testimonials" className={styles.navLink}>
-              <div>
-                <span className={styles.navIcon}>💬</span>
-                <span className={styles.navText}>Testimonials</span>
-              </div>
-            </Link>
-            <Link href="/contact" className={styles.navLink}>
-              <div>
-                <span className={styles.navIcon}>📱</span>
-                <span className={styles.navText}>Contact</span>
-              </div>
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <StructuredData type="RealEstateAgent" data={schemaData} />
+
+      <Header />
 
       <main className={styles.main}>
-        <h1 className={styles.pageTitle}>Our Properties</h1>
-
-        <section id="property" className={`${styles.propertySection} ${isVisible ? styles.fadeIn : ''}`}>
-          <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionTitleAccent}>Premium</span> Property Highlights
-          </h2>
-
-          <div className={styles.imageGallery}>
-            <div className={styles.mainImage}>
-              <div className={styles.imageOverlay}>
-                <span className={styles.imageCount}>{activeImage + 1}/{propertyImages.length}</span>
-              </div>
-              <Image 
-                src={propertyImages[activeImage]} 
-                alt="Sun City Summerlin Property" 
-                className={styles.featuredImage}
-                width={800}
-                height={600}
-                priority
-                layout="responsive"
-              />
-              <div className={styles.imageNavigation}>
-                <button 
-                  onClick={() => setActiveImage((prev) => (prev - 1 + propertyImages.length) % propertyImages.length)}
-                  className={styles.navArrow}
-                  aria-label="Previous image"
-                >
-                  <span aria-hidden="true">❮</span>
-                </button>
-                <button 
-                  onClick={() => setActiveImage((prev) => (prev + 1) % propertyImages.length)}
-                  className={styles.navArrow}
-                  aria-label="Next image"
-                >
-                  <span aria-hidden="true">❯</span>
-                </button>
-              </div>
-            </div>
-            <div className={styles.thumbnails}>
-              {propertyImages.map((image, index) => (
-                <div 
-                  key={index} 
-                  className={`${styles.thumbnail} ${activeImage === index ? styles.activeThumbnail : ''}`}
-                  onClick={() => setActiveImage(index)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`View property image ${index + 1}`}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      setActiveImage(index);
-                    }
-                  }}
-                >
-                  <Image 
-                    src={image} 
-                    alt={`Property view ${index + 1}`} 
-                    width={150}
-                    height={100}
-                    layout="responsive"
-                  />
-                  <div className={styles.thumbnailCaption}>Property view {index + 1}</div>
-                </div>
-              ))}
-            </div>
+        <div className={styles.heroSection}>
+          <div className={styles.heroOverlay}></div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Luxury Homes in Sun City Summerlin</h1>
+            <p className={styles.heroSubtitle}>Discover your perfect retirement home in Las Vegas' premier 55+ community</p>
           </div>
-
-          <div className={styles.propertyDetails}>
-            <div className={styles.detailCard}>
-              <div className={styles.priceTag}>
-                <p className={styles.propertyPrice}>$548,175</p>
-                <span className={styles.priceBadge}>Premium Location</span>
-              </div>
-              <div className={styles.propertyStats}>
-                <div className={styles.statItem}>
-                  <span className={styles.statIcon}>🛏️</span>
-                  <span className={styles.statValue}>3</span>
-                  <span className={styles.statLabel}>Bedrooms</span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statIcon}>🚿</span>
-                  <span className={styles.statValue}>2</span>
-                  <span className={styles.statLabel}>Bathrooms</span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statIcon}>📏</span>
-                  <span className={styles.statValue}>1,850</span>
-                  <span className={styles.statLabel}>Sq Ft</span>
-                </div>
-              </div>
-              <p className={styles.propertyStyle}>Contemporary Mediterranean | Golf Course Views</p>
-            </div>
-
-            <div className={styles.descriptionBox}>
-              <p className={styles.description}>
-                This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community.
-              </p>
-              <p className={styles.description}>
-                Many homes in the area include two primary suites and dedicated golf cart garage space, making this an ideal property for retirees who value both convenience and sophistication.
-              </p>
-              <div className={styles.callToActionBar}>
-                <button className={styles.scheduleBtn}>Schedule Viewing</button>
-                <button 
-                className={styles.virtualTourBtn} 
-                onClick={() => setShowVirtualTour && setShowVirtualTour(true)}
-              >
-                Virtual Tour <span className={styles.tourIcon}>🔍</span>
-              </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.featuresSection}>
-          <h2 className={styles.sectionTitle}>Property Features</h2>
-
-          <div className={styles.features}>
-            <div className={styles.feature}>
-              <h3>Modern Kitchen</h3>
-              <p>Granite countertops, stainless steel appliances, and custom cabinetry</p>
-            </div>
-            <div className={styles.feature}>
-              <h3>Primary Suite</h3>
-              <p>Spacious bedroom with walk-in closet and en-suite bathroom with dual vanities</p>
-            </div>
-            <div className={styles.feature}>
-              <h3>Outdoor Living</h3>
-              <p>Covered patio with built-in BBQ and desert landscaping</p>
-            </div>
-            <div className={styles.feature}>
-              <h3>Energy Efficient</h3>
-              <p>Solar panels, smart thermostat, and energy-efficient windows</p>
-            </div>
-          </div>
-        </section>
-
-        <div className={styles.listingsSection}>
-          <realscout-office-listings 
-            agent-encoded-id="QWdlbnQtMjI1MDUw" 
-            sort-order="NEWEST" 
-            listing-status="For Sale" 
-            property-types="SFR,MF" 
-            price-min="800000" 
-            price-max="4000000">
-          </realscout-office-listings>
         </div>
 
-        <section className={styles.calculatorSection}>
-          <h2 className={styles.sectionTitle}>Mortgage Calculator</h2>
-          <p className={styles.calculatorIntro}>
-            Plan your Sun City Summerlin investment with our specialized mortgage calculator that includes HOA fees and local property taxes.
-          </p>
+        <section className={styles.propertiesSection}>
+          <div className={styles.filtersContainer}>
+            <PropertyFilters 
+              currentFilters={filters} 
+              onApplyFilters={applyFilters} 
+            />
+          </div>
 
-          <MortgageCalculator defaultPrice={548175} defaultDownPayment={109635} />
+          <div className={styles.propertiesResults}>
+            <div className={styles.resultsHeader}>
+              <h2>Available Properties 
+                <span className={styles.resultCount}>
+                  ({filteredProperties.length} Homes)
+                </span>
+              </h2>
+              <div className={styles.sortOptions}>
+                <label htmlFor="sort">Sort by:</label>
+                <select id="sort" className={styles.sortSelect}>
+                  <option value="newest">Newest</option>
+                  <option value="price_high">Price (High to Low)</option>
+                  <option value="price_low">Price (Low to High)</option>
+                  <option value="beds">Bedrooms</option>
+                  <option value="sqft">Square Footage</option>
+                </select>
+              </div>
+            </div>
+
+            {loading ? (
+              <div className={styles.loadingContainer}>
+                <div className={styles.spinner}></div>
+                <p>Loading properties...</p>
+              </div>
+            ) : filteredProperties.length === 0 ? (
+              <div className={styles.noResults}>
+                <h3>No properties match your criteria</h3>
+                <p>Try adjusting your filters to see more options.</p>
+                <button 
+                  className={styles.resetButton}
+                  onClick={() => applyFilters({
+                    minPrice: 0,
+                    maxPrice: 1000000,
+                    bedrooms: 0,
+                    bathrooms: 0,
+                    features: []
+                  })}
+                >
+                  Reset Filters
+                </button>
+              </div>
+            ) : (
+              <div className={styles.propertiesGrid}>
+                {filteredProperties.map((property, index) => (
+                  <div key={property.id} className={styles.propertyCardWrapper} style={{'--index': index} as React.CSSProperties}>
+                    <PropertyCard 
+                      id={property.id}
+                      title={property.title}
+                      price={property.price}
+                      address={property.address}
+                      bedrooms={property.bedrooms}
+                      bathrooms={property.bathrooms}
+                      sqft={property.sqft}
+                      image={property.image}
+                      features={property.features}
+                      isNew={property.isNew}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section className={styles.callToAction}>
+          <div className={styles.ctaContent}>
+            <h2>Find Your Dream Home Today</h2>
+            <p>Work with Dr. Jan Duffy, your Sun City Summerlin specialist with 25+ years of experience</p>
+            <div className={styles.ctaButtons}>
+              <a href="/contact" className={styles.primaryButton}>Schedule a Showing</a>
+              <a href="tel:7027180043" className={styles.secondaryButton}>Call (702) 718-0043</a>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.featuredSection}>
+          <div className={styles.sectionHeader}>
+            <h2>Featured in Sun City Summerlin</h2>
+            <p>Explore the amenities and lifestyle of this premier community</p>
+          </div>
+          
+          <div className={styles.featuresGrid}>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>⛳</div>
+              <h3>Championship Golf</h3>
+              <p>Three distinct courses designed by renowned architects with sweeping views of the Las Vegas valley</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>🏊</div>
+              <h3>Resort-Style Pools</h3>
+              <p>Multiple swimming pools for year-round enjoyment with dedicated lap lanes and relaxation areas</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>👥</div>
+              <h3>Active Community</h3>
+              <p>Over 80 clubs and activities for residents, from tennis to woodworking to social gatherings</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>🌄</div>
+              <h3>Mountain Views</h3>
+              <p>Breathtaking vistas of Red Rock Canyon and the Las Vegas valley from many properties</p>
+            </div>
+          </div>
         </section>
       </main>
 
       <footer className={styles.footer}>
-        <div className={styles.footerBranding}>
-          <Image 
-            src="/bhhs-quality-seal-black.png"
-            alt="BHHS Logo" 
-            className={styles.footerLogo}
-            width={120}
-            height={48}
-          />
-          <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
-          <p>Dr Jan Duffy REALTOR® | CA to LV Relocation Expert @DrJanDuffy</p>
-          <p>Dr. Jan Duffy is a Nevada REALTOR® Making Dreams Come True in Las Vegas, Summerlin, Henderson, North Las Vegas, and Spring Valley Nevada. S.0197614.LL</p>
-          <p>Real Estate Las Vegas, NV <a href="https://drjanduffy.realscout.com/onboarding" target="_blank" rel="noopener noreferrer">drjanduffy.realscout.com/onboarding</a></p>
+        <div className={styles.footerContent}>
+          <div className={styles.footerBranding}>
+            <h3>Sun City Summerlin</h3>
+            <p>Dr. Jan Duffy, REALTOR® | 55+ Specialist</p>
+            <p>(702) 718-0043</p>
+          </div>
+          <div className={styles.footerLinks}>
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/properties">Properties</a></li>
+              <li><a href="/community">Community</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+          <div className={styles.footerNewsletter}>
+            <h4>Stay Updated</h4>
+            <p>Subscribe to receive the latest listings and community news</p>
+            <div className={styles.newsletterForm}>
+              <input type="email" placeholder="Your Email" />
+              <button>Subscribe</button>
+            </div>
+          </div>
         </div>
-        <div className={styles.footerLinks}>
-          <a href="https://www.bhhs.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-          <a href="https://www.bhhs.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of Service</a>
-          <a href="https://www.bhhs.com/" target="_blank" rel="noopener noreferrer">BHHS.com</a>
+        <div className={styles.footerBottom}>
+          <p>&copy; {new Date().getFullYear()} All rights reserved. Berkshire Hathaway HomeServices Nevada Properties.</p>
         </div>
       </footer>
     </div>
@@ -307,6 +364,3 @@ const Properties: NextPage = () => {
 };
 
 export default Properties;
-
-// Remove duplicate component declaration
-/* const Properties = ()=>{ */

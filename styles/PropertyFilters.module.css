@@ -1,0 +1,160 @@
+
+.filtersWrapper {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.filtersTitle {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #235d89;
+  text-align: center;
+}
+
+.filtersContainer {
+  padding: 1.5rem;
+}
+
+.filterSection {
+  margin-bottom: 1.5rem;
+}
+
+.filterSection h3 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #444;
+  font-weight: 600;
+}
+
+.priceInputs, .roomFilters {
+  display: flex;
+  gap: 10px;
+}
+
+.inputGroup {
+  flex: 1;
+}
+
+.inputGroup label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.inputWithPrefix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currencyPrefix {
+  position: absolute;
+  left: 10px;
+  color: #666;
+}
+
+.inputGroup input, .inputGroup select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.inputWithPrefix input {
+  padding-left: 25px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.featureCheckbox {
+  display: flex;
+  align-items: center;
+}
+
+.featureCheckbox input {
+  margin-right: 8px;
+}
+
+.filterActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.applyButton, .resetButton {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.applyButton {
+  background-color: #235d89;
+  color: white;
+  border: none;
+}
+
+.resetButton {
+  background-color: white;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.applyButton:hover {
+  background-color: #1a4a6e;
+}
+
+.resetButton:hover {
+  background-color: #f5f5f5;
+}
+
+.mobileFilterToggle {
+  display: none;
+  width: 100%;
+  padding: 12px;
+  background-color: #235d89;
+  color: white;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.filterIcon {
+  margin-left: 8px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .mobileFilterToggle {
+    display: flex;
+  }
+  
+  .filtersContainer {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .filtersOpen {
+    display: block;
+    max-height: 1000px; /* Arbitrary large value */
+  }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
