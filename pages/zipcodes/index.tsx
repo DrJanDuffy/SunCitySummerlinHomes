@@ -1,10 +1,15 @@
+The changes primarily focus on dynamically rendering the map component to avoid server-side rendering issues and incorporate the DynamicMap component.
+```
 
+```replit_final_file
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Zipcodes.module.css";
+import dynamic from 'next/dynamic';
+import DynamicMap from '../../components/DynamicMap';
 
 interface ZipcodeData {
   code: string;
@@ -143,7 +148,7 @@ const Zipcodes: NextPage = () => {
       };
 
       const position = getZipcodeCoordinates(zipcode.code);
-      
+
       const marker = new google.maps.Marker({
         position,
         map,
@@ -161,7 +166,7 @@ const Zipcodes: NextPage = () => {
           <a href="/zipcodes/${zipcode.code}">View homes in ${zipcode.code}</a>
         </div>
       `;
-      
+
       const infoWindow = new google.maps.InfoWindow({
         content: infoContent,
         maxWidth: 300
@@ -172,7 +177,7 @@ const Zipcodes: NextPage = () => {
         // Close all other info windows
         infoWindow.open(map, marker);
         setActiveZipcode(zipcode.code);
-        
+
         // Center map on marker
         map.panTo(position);
         map.setZoom(13);
@@ -214,7 +219,7 @@ const Zipcodes: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.pageTitle}>Las Vegas Zipcodes - Real Estate Guide</h1>
-        
+
         <div className={styles.introduction}>
           <p>
             Las Vegas offers diverse communities each with unique amenities and lifestyles. 
@@ -226,9 +231,6 @@ const Zipcodes: NextPage = () => {
 
         <div className={styles.mapContainer}>
           <div id="map" ref={mapRef} className={styles.map}></div>
-          <div className={styles.mapInstructions}>
-            <p>Click on a marker to learn more about each zipcode area</p>
-          </div>
         </div>
 
         <section className={styles.zipcodesSection}>

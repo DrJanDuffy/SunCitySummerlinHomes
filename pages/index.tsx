@@ -140,7 +140,7 @@ const Home: NextPage = () => {
       
       <Script 
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
 
       <header className={styles.header}>
