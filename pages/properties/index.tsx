@@ -38,7 +38,7 @@ const Properties: NextPage = () => {
       <header className={styles.header}>
         <div className={styles.logoContainer}>
           <Image 
-            src="/bhhs-logo.png" 
+            src="/bhhs-quality-seal-black.png" 
             alt="BHHS Logo" 
             className={styles.bhsLogo}
             width={150}
@@ -204,7 +204,7 @@ const Properties: NextPage = () => {
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
           <Image 
-            src="/bhhs-logo.png" 
+            src="/bhhs-quality-seal-black.png"
             alt="BHHS Logo" 
             className={styles.footerLogo}
             width={120}

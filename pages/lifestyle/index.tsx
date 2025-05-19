@@ -22,7 +22,7 @@ const Lifestyle: NextPage = () => {
 
       <header className={styles.header}>
         <div className={styles.logoContainer}>
-          <img src="/bhhs-logo.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
+          <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
           <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
         </div>
         <nav className={styles.nav}>
@@ -110,7 +110,7 @@ const Lifestyle: NextPage = () => {
 
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
+          <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.footerLogo} />
           <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
           <p>Dr Jan Duffy REALTOR® | CA to LV Relocation Expert @DrJanDuffy</p>
           <p>Dr. Jan Duffy is a Nevada REALTOR® Making Dreams Come True in Las Vegas, Summerlin, Henderson, North Las Vegas, and Spring Valley Nevada. S.0197614.LL</p>

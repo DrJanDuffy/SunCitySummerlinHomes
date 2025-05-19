@@ -1,4 +1,3 @@
-
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,11 +6,11 @@ import { useState, useEffect } from "react";
 
 const Testimonials: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
-  
+
   const testimonials = [
     {
       name: "Sarah & David Johnson",
@@ -67,7 +66,7 @@ const Testimonials: NextPage = () => {
 
       <header className={styles.header}>
         <div className={styles.logoContainer}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
+          <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
           <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
         </div>
         <nav className={styles.nav}>
@@ -88,7 +87,7 @@ const Testimonials: NextPage = () => {
           <p className={styles.testimonialIntro}>
             Don't just take our word for it. Hear directly from homeowners who have made Sun City Summerlin their home and are enjoying the active adult lifestyle it offers.
           </p>
-          
+
           <div className={styles.testimonialGrid}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className={styles.testimonialCardLarge}>
@@ -111,7 +110,7 @@ const Testimonials: NextPage = () => {
               </div>
             ))}
           </div>
-          
+
           <div className={styles.testimonialCTA}>
             <h2>Ready to Join Our Community?</h2>
             <p>Discover why so many active adults choose Sun City Summerlin for their retirement lifestyle.</p>
@@ -122,7 +121,7 @@ const Testimonials: NextPage = () => {
 
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
+          <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.footerLogo} />
           <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
           <p>Dr Jan Duffy REALTOR® | CA to LV Relocation Expert @DrJanDuffy</p>
           <p>Dr. Jan Duffy is a Nevada REALTOR® Making Dreams Come True in Las Vegas, Summerlin, Henderson, North Las Vegas, and Spring Valley Nevada. S.0197614.LL</p>

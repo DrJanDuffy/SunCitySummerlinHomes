@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             "@type": "Organization",
             "name": "Berkshire Hathaway HomeServices Nevada",
             "url": "https://www.bhhsnv.com/",
-            "logo": "https://suncitysummerlin.com/bhhs-logo.png",
+            "logo": "https://suncitysummerlin.com/bhhs-quality-seal-black.png",
             "sameAs": [
               "https://www.facebook.com/DrJanDuffyRealtorCentennialHills/",
               "https://www.instagram.com/drjanduffy/",
