@@ -44,7 +44,7 @@ const Contact: NextPage = () => {
           <Link href="/testimonials">Testimonials</Link>
           <Link href="/contact">Contact</Link>
         </nav>
-      </header>er>
+      </header>
 
       <main className={styles.main}>
         <section className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
