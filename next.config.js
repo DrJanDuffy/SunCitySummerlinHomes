@@ -1,8 +1,6 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Next.js 12 doesn't support 'export' for output
-  // but needs these settings for static export
   reactStrictMode: true,
   env: {
     siteUrl: 'https://suncitysummerlin.com',
@@ -21,7 +19,10 @@ const nextConfig = {
         }
       ]
     };
-  }
+  },
+  // Configure static export for Next.js 12+
+  output: 'export',
+  distDir: 'out'
 };
 
 module.exports = nextConfig;
