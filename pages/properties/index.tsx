@@ -80,7 +80,7 @@ const Properties: NextPage = () => {
                 width={800}
                 height={600}
                 priority
-                layout="responsive"
+                style={{width: '100%', height: 'auto'}}
               />
               <div className={styles.imageNavigation}>
                 <button 
@@ -162,7 +162,12 @@ const Properties: NextPage = () => {
               </p>
               <div className={styles.callToActionBar}>
                 <button className={styles.scheduleBtn}>Schedule Viewing</button>
-                <button className={styles.virtualTourBtn}>Virtual Tour</button>
+                <button 
+                className={styles.virtualTourBtn} 
+                onClick={() => setShowVirtualTour && setShowVirtualTour(true)}
+              >
+                Virtual Tour <span className={styles.tourIcon}>🔍</span>
+              </button>
               </div>
             </div>
           </div>
@@ -201,13 +206,13 @@ const Properties: NextPage = () => {
             price-max="4000000">
           </realscout-office-listings>
         </div>
-        
+
         <section className={styles.calculatorSection}>
           <h2 className={styles.sectionTitle}>Mortgage Calculator</h2>
           <p className={styles.calculatorIntro}>
             Plan your Sun City Summerlin investment with our specialized mortgage calculator that includes HOA fees and local property taxes.
           </p>
-          
+
           <MortgageCalculator defaultPrice={548175} defaultDownPayment={109635} />
         </section>
       </main>

@@ -331,7 +331,9 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
         <p>
           Get pre-approved for a mortgage and explore Sun City Summerlin properties with Dr. Jan Duffy.
           <br />
-          <Link href="/contact/" className={styles.contactLink}>Contact Dr. Jan for financing options →</Link>
+          <Link href="/contact/" legacyBehavior>
+            <a className={styles.contactLink}>Contact Dr. Jan for financing options →</a>
+          </Link>
         </p>
       </div>
     </div>
