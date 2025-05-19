@@ -376,12 +376,32 @@
   margin-bottom: 1.5rem;
 }
 
-.drjanLogo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid #fff;
+.dualLogoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bhhsLogo {
+  max-width: 200px;
+  height: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.summerlinLogo {
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+  .dualLogoContainer {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
 }
 
 .credentialItem {

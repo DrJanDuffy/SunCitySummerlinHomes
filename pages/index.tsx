@@ -115,14 +115,24 @@ const Home: NextPage = () => {
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.heroContent}>
             <div className={styles.logoContainer}>
-              <Image 
-                src="/bhhs-logo.png" 
-                alt="Dr. Jan Duffy Realtor" 
-                className={styles.drjanLogo} 
-                width={150}
-                height={75}
-                unoptimized
-              />
+              <div className={styles.dualLogoContainer}>
+                <Image 
+                  src="/bhhs-nevada-logo.jpg" 
+                  alt="Berkshire Hathaway HomeServices Nevada Properties" 
+                  className={styles.bhhsLogo} 
+                  width={150}
+                  height={75}
+                  unoptimized
+                />
+                <Image 
+                  src="/summerlin-logo.jpg" 
+                  alt="Sun City Summerlin A Del Webb Community" 
+                  className={styles.summerlinLogo} 
+                  width={200}
+                  height={150}
+                  unoptimized
+                />
+              </div>
             </div>
             <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
             <p className={styles.subtitle}>
