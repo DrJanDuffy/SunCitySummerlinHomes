@@ -483,14 +483,52 @@ const Home: NextPage = () => {
 
         <section id="amenities" className={styles.amenitiesSection}>
           <h2 className={styles.sectionTitle}>Community Amenities</h2>
-
-          <div className={styles.amenitiesList}>
+          
+          <div className={styles.amenitiesIntro}>
+            <p>Sun City Summerlin offers world-class amenities in a resort-style setting. Residents enjoy access to all these premium features included with their home ownership:</p>
+          </div>
+          
+          <div className={styles.amenitiesGrid}>
             {amenities.map((amenity, index) => (
-              <div key={index} className={styles.amenity}>
-                <span className={styles.checkmark}>✓</span>
-                <span>{amenity}</span>
+              <div key={index} className={styles.amenityCard}>
+                <div className={styles.amenityIconContainer}>
+                  <span className={styles.amenityIcon}>
+                    {index === 0 ? '⛳' : 
+                     index === 1 ? '🏊' : 
+                     index === 2 ? '💦' : 
+                     index === 3 ? '🎾' : 
+                     index === 4 ? '💪' : 
+                     index === 5 ? '🔨' : 
+                     index === 6 ? '👥' : 
+                     index === 7 ? '🚶' : 
+                     index === 8 ? '🛒' : '🔒'}
+                  </span>
+                </div>
+                <div className={styles.amenityContent}>
+                  <h3 className={styles.amenityTitle}>{amenity.replace(/^[^a-zA-Z]+/, '')}</h3>
+                  <p className={styles.amenityDescription}>
+                    {index === 0 ? 'Designed by renowned architects with sweeping views of the Las Vegas valley' : 
+                     index === 1 ? 'State-of-the-art facilities for gatherings, events, and activities' : 
+                     index === 2 ? 'Year-round swimming in heated pools for fitness and relaxation' : 
+                     index === 3 ? 'Professional courts for all skill levels with regular tournaments' : 
+                     index === 4 ? 'Modern equipment with personal trainers and group classes' : 
+                     index === 5 ? 'Fully-equipped studios for hobbyists and artisans' : 
+                     index === 6 ? 'Vibrant social scene with clubs for every interest and hobby' : 
+                     index === 7 ? 'Miles of scenic paths connecting the entire community' : 
+                     index === 8 ? 'Convenient access to restaurants, stores, and services' : 
+                     'Professional security team monitoring the community 24/7'}
+                  </p>
+                </div>
               </div>
             ))}
+          </div>
+          
+          <div className={styles.amenitiesCta}>
+            <p>Experience the unparalleled lifestyle that Sun City Summerlin offers.</p>
+            <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+                    className={styles.amenitiesCtaButton}>
+              Schedule a Tour
+            </button>
           </div>
         </section>
 
