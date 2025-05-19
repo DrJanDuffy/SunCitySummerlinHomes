@@ -369,3 +369,371 @@ args = "# Clean untracked files"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "git clean -fd"
+
+[[workflows.workflow]]
+name = "GitHub Pro"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Reset any lock files that might be causing issues"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/index.lock .git/config.lock .git/refs/remotes/origin/main.lock .git/HEAD.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Configure Git with proper credentials"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global core.fileMode false"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global --add safe.directory /home/runner/workspace"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global user.name \"Dr Jan Duffy\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global user.email \"your-email@example.com\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Add all changes with detailed status"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"📝 Staging changes...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add --all"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git status --short"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Smart commit with timestamp and branch info"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🔒 Committing changes...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "BRANCH=$(git rev-parse --abbrev-ref HEAD)"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git commit -m \"Update[$BRANCH]: $(date '+%Y-%m-%d %H:%M:%S')\" -m \"Changes made in Replit workspace\" || echo \"No changes to commit\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Push with better error handling and progress feedback"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🚀 Pushing to GitHub...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git push -u origin $BRANCH --force-with-lease || (git pull --rebase && git push -u origin $BRANCH)"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"✅ GitHub sync complete!\""
+
+[[workflows.workflow]]
+name = "Create GitHub PR"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean any lock files first"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/index.lock .git/config.lock .git/refs/remotes/origin/main.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Create a new branch for the PR"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"Enter branch name for your PR (feature/fix/etc):\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "read BRANCH_NAME"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git checkout -b $BRANCH_NAME"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Stage and commit changes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add --all"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"Enter PR title:\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "read PR_TITLE"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git commit -m \"$PR_TITLE\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Push the branch"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git push -u origin $BRANCH_NAME"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Generate GitHub PR URL"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = '''REPO_URL=$(git remote get-url origin | sed 's/\.git$//' | sed 's/git@github.com:/https:\/\/github.com\//')'''
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"✅ Create your PR at: $REPO_URL/compare/main...$BRANCH_NAME\""
+
+[[workflows.workflow]]
+name = "GitHub Sync"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean any lock files"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/index.lock .git/config.lock .git/refs/remotes/origin/main.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Get current branch"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Fetch latest changes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"📥 Fetching latest changes from GitHub...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git fetch --all --prune"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Stash any local changes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git stash save \"Auto-stashed before GitHub sync\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Sync with remote branch"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🔄 Syncing with GitHub...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git pull --rebase origin $CURRENT_BRANCH"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Pop stashed changes if any"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git stash pop || echo \"No stashed changes\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"✅ GitHub sync complete!\""
+
+[[workflows.workflow]]
+name = "GitHub Health Check"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean any lock files"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/index.lock .git/config.lock .git/refs/remotes/origin/main.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Check repo status"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🔍 Checking repository health...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git status"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Run Git maintenance tasks"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🧹 Running maintenance tasks...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git gc --auto"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git prune"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git fsck --full"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Check remote configuration"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🌐 Checking remote configuration...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git remote -v"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Show branch information"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"🌿 Checking branch information...\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git branch -vv"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"✅ GitHub health check complete!\""
