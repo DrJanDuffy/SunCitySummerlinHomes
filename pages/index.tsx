@@ -205,27 +205,6 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.heroContent}>
-            <div className={styles.logoContainer}>
-              <div className={styles.dualLogoContainer}>
-                <Image 
-                  src="/bhhs-nevada-logo.jpg" 
-                  alt="Berkshire Hathaway HomeServices Nevada Properties" 
-                  className={styles.bhhsLogo} 
-                  width={150}
-                  height={75}
-                  unoptimized
-                />
-                <Image 
-                  src="/summerlin-logo.jpg" 
-                  alt="Sun City Summerlin A Del Webb Community" 
-                  className={styles.summerlinLogo} 
-                  width={200}
-                  height={150}
-                  unoptimized
-                />
-              </div>
-            </div>
-            
             <div className={styles.homeValueWidgetContainer}>
               <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
               <style dangerouslySetInnerHTML={{
