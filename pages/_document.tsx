@@ -19,6 +19,17 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        
+        {/* RealScout Web Components */}
+        <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            realscout-office-listings {
+              --rs-listing-divider-color: rgb(101, 141, 172);
+              width: 100%;
+            }
+          `
+        }} />
       </Head>
       <body>
         <Main />

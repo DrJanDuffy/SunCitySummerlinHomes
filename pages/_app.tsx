@@ -98,11 +98,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      <Script
-        src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-        strategy="afterInteractive"
-        id="realscout-script"
-      />
+      {/* RealScout script is now loaded in _document.tsx */}
 
       {/* Add Google Analytics */}
       <Script
