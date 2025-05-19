@@ -12,7 +12,7 @@ NEXT_TELEMETRY_DISABLED = "1"
 [deployment]
 build = ["sh", "-c", "npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/"]
 deploymentTarget = "cloudrun"
-run = ["sh", "-c", "cd .next/standalone && PORT=3000 node server.js"]
+run = ["sh", "-c", "npm start"]
 
 # Properly configured for Next.js standalone mode
 
