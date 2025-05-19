@@ -162,16 +162,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  gap: 1.5rem;
 }
 
 .navLink {
-  margin-left: 1.5rem;
   color: #333;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.2s ease;
   position: relative;
-  padding: 0.3rem 0;
+  padding: 0.3rem 0.5rem;
+  white-space: nowrap;
 }
 
 .navLink:hover {
@@ -849,14 +850,19 @@
   }
 
   .navLinksActive {
+    display: flex !important;
+    flex-direction: column;
     padding: 1rem;
     gap: 1rem;
+    align-items: center;
   }
 
   .navLinksActive .navLink {
-    padding: 0.5rem;
+    padding: 0.8rem;
     text-align: center;
     margin: 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
   }
 
   .mobileMenuButton {
