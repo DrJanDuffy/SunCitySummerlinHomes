@@ -93,6 +93,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
+  const router = useRouter();
+  
   return (
     <div>
       <Head>
@@ -124,9 +126,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
         strategy="afterInteractive"
       />
-      <PageTransition>
-        <Component {...pageProps} />
-      </PageTransition>
+      
+      <AnimatePresence mode="wait" initial={false}>
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
 
       {/* LocalBusiness Structured Data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{

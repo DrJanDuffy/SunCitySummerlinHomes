@@ -30,7 +30,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "NextJS Ultimate Dev"
+runButton = "Fix Page Transitions"
 
 [[workflows.workflow]]
 name = "Run"
@@ -1538,3 +1538,20 @@ args = 'echo -e "\033[1;32m🚀 Starting optimized dev server...\033[0m"'
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_SOURCEMAPS=true NEXT_IGNORE_DUPLICATES=true NODE_OPTIONS='--max-old-space-size=4096 --no-warnings --tls-min-v1.0' npm run dev"
+
+[[workflows.workflow]]
+name = "Fix Page Transitions"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
