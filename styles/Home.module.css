@@ -56,11 +56,7 @@
   line-height: 1.2;
 }
 
-.bhsLogo {
-  height: 50px;
-  width: auto;
-  margin-right: 15px;
-}
+/* Removed BHHS logo styling */
 
 .logo {
   font-size: 1.5rem;

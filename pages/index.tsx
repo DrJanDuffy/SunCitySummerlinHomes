@@ -146,13 +146,6 @@ const Home: NextPage = () => {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <div className={styles.logoContainer}>
-            <img 
-              src="/bhhs-quality-seal-black.png" 
-              alt="Berkshire Hathaway HomeServices" 
-              className={styles.bhsLogo} 
-              width={60}
-              height={60}
-            />
             <div className={styles.logoText}>
               <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
               <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
@@ -627,8 +620,7 @@ const Home: NextPage = () => {
 
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
-          <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.footerLogo} />
-          <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
           <p>Sun City Summerlin REALTOR® Dr. Jan Duffy - Serving Las Vegas since 2013</p>
           <p>Dr Jan Duffy REALTOR® | CA to LV Relocation Expert @DrJanDuffy</p>
           <p>Dr. Jan Duffy is a Nevada REALTOR® Making Dreams Come True in Las Vegas, Summerlin, Henderson, North Las Vegas, and Spring Valley Nevada. S.0197614.LL</p>

@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Add accessibility improvements
     document.documentElement.lang = 'en';
-    
+
     // Header scroll animation
     const handleScroll = () => {
       const header = document.querySelector('header');
@@ -41,9 +41,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
-    
+
     // Mobile menu toggle
     const setupMobileMenu = () => {
       const menuButton = document.querySelector('.mobileMenuButton');
@@ -54,10 +54,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
       }
     };
-    
+
     // Call after a slight delay to ensure DOM is ready
     setTimeout(setupMobileMenu, 500);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -156,7 +156,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             "@type": "Organization",
             "name": "Berkshire Hathaway HomeServices Nevada",
             "url": "https://www.bhhsnv.com/",
-            "logo": "https://suncitysummerlin.com/bhhs-quality-seal-black.png",
+            "logo": {/* BHHS logo removed */},
             "sameAs": [
               "https://www.facebook.com/DrJanDuffyRealtorCentennialHills/",
               "https://www.instagram.com/drjanduffy/",
