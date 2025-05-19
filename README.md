@@ -1,6 +1,8 @@
 
 # Sun City Summerlin Homes
 
+[![Run on Replit](https://replit.com/badge/github/DrJanDuffy/SunCitySummerlinHomes)](https://replit.com/@DrJanDuffy/SunCitySummerlinHomes)
+
 NextJS website for Dr. Jan Duffy's Sun City Summerlin Homes real estate service.
 
 ## Development Workflow

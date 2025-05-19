@@ -12,7 +12,7 @@ NEXT_TELEMETRY_DISABLED = "1"
 [deployment]
 build = ["sh", "-c", "npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/"]
 deploymentTarget = "cloudrun"
-run = ["sh", "-c", "npm start"]
+run = ["sh", "-c", "cd .next/standalone && NODE_ENV=production node server.js"]
 
 # Properly configured for Next.js standalone mode
 
@@ -30,7 +30,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "Clean Build & Fix Dashlane Issues"
+runButton = "NextJS SuperDev"
 
 [[workflows.workflow]]
 name = "Run"
@@ -737,3 +737,326 @@ args = ""
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "echo \"✅ GitHub health check complete!\""
+
+[[workflows.workflow]]
+name = "GitHub Professional"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "#!/bin/bash"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "set -e"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Show fancy header"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;36m┌─────────────────────────────────────┐"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo -e \"│  🚀 GitHub Professional Workflow      │\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "└─────────────────────────────────────┘\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Reset any lock files that might be causing issues"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/index.lock .git/config.lock .git/refs/remotes/origin/main.lock .git/HEAD.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Configure Git with proper credentials"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global core.fileMode false"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global --add safe.directory /home/runner/workspace"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global user.name \"Dr Jan Duffy\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global user.email \"realestate@drjanduffy.com\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config pull.rebase true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Add all changes with detailed status"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;33m📝 Staging changes...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add --all"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git status --short"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Smart commit with timestamp and branch info"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;33m🔒 Creating commit...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "BRANCH=$(git rev-parse --abbrev-ref HEAD)"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "COMMIT_MSG=\"Update[$BRANCH]: $(date '+%Y-%m-%d %H:%M:%S')\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Check if there are changes to commit"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "if git diff --staged --quiet; then"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = '  echo -e "\033[1;33m⚠️ No changes to commit\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "else"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "  git commit -m \"$COMMIT_MSG\" -m \"Changes made in Replit workspace\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "  "
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "  # Push with better error handling and progress feedback"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = '  echo -e "\033[1;33m🚀 Pushing to GitHub...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "  git push -u origin $BRANCH --force-with-lease || (git pull --rebase && git push -u origin $BRANCH)"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "  "
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = '  echo -e "\033[1;32m✅ GitHub sync complete!\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "fi"
+
+[[workflows.workflow]]
+name = "NextJS SuperDev"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "#!/bin/bash"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "set -e"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;36m┌─────────────────────────────────────┐"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo -e \"│  🚀 NextJS SuperDev Mode              │\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "└─────────────────────────────────────┘\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Kill any running processes on port 3000"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clear Next.js cache for a fresh start"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;33m🧹 Cleaning build cache...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Run optimized dev server"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;32m🚀 Starting optimized dev server...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run dev"
+
+[[workflows.workflow]]
+name = "Performance Audit"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "#!/bin/bash"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "set -e"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;36m┌─────────────────────────────────────┐"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo -e \"│  📊 Performance Audit                 │\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "└─────────────────────────────────────┘\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Build the project in production mode"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;33m🔨 Building project in production mode...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NODE_ENV=production npm run build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Check bundle sizes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;33m📦 Analyzing bundle sizes...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "find .next/static -type f -name \"*.js\" | sort -k 5 -nr | xargs ls -lh | head -20"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Check for possible memory leaks"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;33m🔍 Checking for potential issues...\033[0m"'
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "grep -r \"addEventListener\" --include=\"*.tsx\" --include=\"*.ts\" . | grep -v \"removeEventListener\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = 'echo -e "\033[1;32m✅ Performance audit complete!\033[0m"'
