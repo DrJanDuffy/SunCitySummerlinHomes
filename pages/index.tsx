@@ -464,14 +464,14 @@ const Home: NextPage = () => {
             <p>
               Sun City Summerlin is a 55-plus, active adult community brimming with amenities. Located just beyond the foothills of the Spring Mountains, residents enjoy stunning backyard views of Red Rock Canyon and adjacent rocky peaks. As Las Vegas' oldest and largest community of its kind, Sun City Summerlin is truly "a city within a city," offering convenient access to doctors, banks, florists, and various stores right within the community.
             </p>
-            
+
             <div className={styles.communityStats}>
               <div className={styles.communityStat}><span>⏱️</span> Established 1989</div>
               <div className={styles.communityStat}><span>🏘️</span> 8,000+ Homes</div>
               <div className={styles.communityStat}><span>📏</span> 1,000-2,900 sq ft</div>
               <div className={styles.communityStat}><span>👥</span> 20,000+ Residents</div>
             </div>
-            
+
             <div className={styles.communityImageRow}>
               <div className={styles.communityImage}>
                 <img src="/property1.jpg" alt="Sun City Summerlin Home" />
@@ -483,33 +483,33 @@ const Home: NextPage = () => {
                 <img src="/community-center.jpg" alt="Sun City Summerlin Community Center" />
               </div>
             </div>
-            
+
             <p>
               Built in three phases starting in 1989, the community consists of almost 8,000 attached and single-family homes. With more than two dozen floor plans ranging from 1,000 to 2,900 square feet, homes feature contemporary Mediterranean bungalow designs with characteristic terracotta roofing and stucco siding. Many properties front one of the community's renowned golf courses, with garage space specifically for golf carts.
             </p>
-            
+
             <div className={styles.communityDescriptionGrid}>
               <div className={styles.communityFeature}>
                 <h3 data-icon="🏡">Mediterranean Design</h3>
                 <p>Elegant homes with characteristic terracotta roofing, stucco siding, and open floor plans that maximize natural light and desert views. Each home is designed for comfort and low-maintenance living.</p>
               </div>
-              
+
               <div className={styles.communityFeature}>
                 <h3 data-icon="⛳">Golf Course Living</h3>
                 <p>Many properties offer direct frontage to one of the community's championship golf courses, with convenient dedicated golf cart garages allowing residents easy access to greens and fairways.</p>
               </div>
-              
+
               <div className={styles.communityFeature}>
                 <h3 data-icon="🏔️">Mountain Views</h3>
                 <p>Strategically positioned at the foothills of the Spring Mountains, homes provide breathtaking vistas of Red Rock Canyon and the Las Vegas valley from patios and backyards.</p>
               </div>
-              
+
               <div className={styles.communityFeature}>
                 <h3 data-icon="🛎️">Full-Service Community</h3>
                 <p>A true "city within a city" featuring medical offices, banking, restaurants, shopping, and services all within the community boundaries, accessible by golf cart or a short drive.</p>
               </div>
             </div>
-            
+
             <div className={styles.communityLearnMore}>
               <button 
                 className={styles.communityLearnMoreBtn}
@@ -633,7 +633,7 @@ const Home: NextPage = () => {
 
         <section id="testimonials" className={`${styles.testimonialsSection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>What Homeowners Say</h2>
-          
+
           <div className={styles.reviewRating}>
             <div className={styles.googleInfo}>
               <img src="/google-logo.png" alt="Google" className={styles.googleLogo} />
@@ -655,7 +655,7 @@ const Home: NextPage = () => {
               </div>
             ))}
           </div>
-          
+
           <div className={styles.testimonialCta}>
             <h3>Ready to Experience Sun City Summerlin?</h3>
             <p>Join our growing community of satisfied homeowners today.</p>

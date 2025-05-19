@@ -19,6 +19,8 @@ const nextConfig = {
   },
   // Switch to standalone mode for server-side rendering
   output: 'standalone',
+  // Optimize fonts (moved to top level)
+  optimizeFonts: true,
   experimental: {
     appDir: false,
     // Enable CSS optimization with critters
@@ -26,9 +28,7 @@ const nextConfig = {
       minify: true,
       inlineThreshold: 0,
       fonts: true
-    },
-    // Optimize fonts
-    optimizeFonts: true
+    }
   },
   // Add configuration to handle external browser extensions
   webpack: (config) => {
