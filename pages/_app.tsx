@@ -93,8 +93,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
-  const router = useRouter();
-  
   return (
     <div>
       <Head>
@@ -127,7 +125,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         strategy="afterInteractive"
       />
       
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence 
+        mode="wait" 
+        initial={false}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
         <PageTransition key={router.route}>
           <Component {...pageProps} />
         </PageTransition>
