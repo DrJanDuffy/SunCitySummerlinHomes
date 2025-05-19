@@ -1,3 +1,5 @@
+
+import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode } from 'react';
 import styles from '../styles/PageTransition.module.css';
 import usePageTransition from '../utils/usePageTransition';
@@ -7,25 +9,22 @@ interface PageTransitionProps {
 }
 
 const PageTransition = ({ children }: PageTransitionProps) => {
-  const { isReady, pathname } = usePageTransition();
-
-  // Apply different CSS classes based on the page path
-  const getPageClass = () => {
-    if (pathname === '/') {
-      return styles.homePage;
-    }
-    return '';
-  };
+  const { isTransitioning, transitionKey } = usePageTransition();
 
   return (
-    <div 
-      className={`${styles.pageWrapper} page-wrapper ${isReady ? styles.pageReady : styles.pageHidden} ${getPageClass()}`}
-    >
-      <div className={styles.decorationTop}></div>
-      <div className={`${styles.pageContent} page-content`}>
-        {children}
-      </div>
-      <div className={styles.decorationBottom}></div>
+    <div className={styles.pageTransitionContainer}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={transitionKey}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+          className={styles.pageTransition}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

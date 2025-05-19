@@ -8,6 +8,7 @@ import styles from '../styles/Home.module.css'
 // Import AOS styles
 import 'aos/dist/aos.css'
 import { suppressExtensionWarnings } from '../utils/suppress-warnings';
+import { AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
 import { useRouter } from 'next/router';
 
