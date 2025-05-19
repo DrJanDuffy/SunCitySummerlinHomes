@@ -109,7 +109,7 @@ const Contact: NextPage = () => {
             </div>
             <div className={styles.infoItem}>
               <h3>Email</h3>
-              <p>jan@lasvegas55plushomes.com</p>
+              <p>DrDuffy@bhhsnv.com</p>
             </div>
             <div className={styles.infoItem}>
               <h3>Office Hours</h3>
