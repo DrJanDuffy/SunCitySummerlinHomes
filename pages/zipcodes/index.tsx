@@ -185,7 +185,7 @@ const Zipcodes: NextPage = () => {
     if (typeof window !== 'undefined' && window.google && mapRef.current && !mapLoaded) {
       initializeMap();
     }
-  }, [mapRef, mapLoaded, initializeMap]);
+  }, [mapLoaded, initializeMap]);
 
   return (
     <div className={styles.container}>
@@ -230,7 +230,11 @@ const Zipcodes: NextPage = () => {
         </div>
 
         <div className={styles.mapContainer}>
-          <div id="map" ref={mapRef} className={styles.map}></div>
+          {typeof window !== 'undefined' ? (
+            <div id="map" ref={mapRef} className={styles.map}></div>
+          ) : (
+            <DynamicMap zipcodes={zipcodes} />
+          )}
         </div>
 
         <section className={styles.zipcodesSection}>
@@ -293,16 +297,17 @@ const Zipcodes: NextPage = () => {
       </footer>
     </div>
     
-    {/* Google Maps API - Outside of main component to avoid Head issues */}
-    <Script
-      src={`https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=Function.prototype`}
-      strategy="afterInteractive"
-      onLoad={() => {
-        if (typeof window !== 'undefined' && window.google && !mapLoaded) {
-          initializeMap();
-        }
-      }}
-    />
+    {typeof window !== 'undefined' && (
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=Function.prototype`}
+        strategy="afterInteractive"
+        onLoad={() => {
+          if (window.google && mapRef.current && !mapLoaded) {
+            initializeMap();
+          }
+        }}
+      />
+    )}
   );
 };
 
