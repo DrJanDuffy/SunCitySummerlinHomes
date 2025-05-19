@@ -1,4 +1,3 @@
-
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -8,11 +7,11 @@ import { useState, useEffect } from "react";
 const Contact: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // In a real application, you would handle the form submission here
@@ -47,6 +46,11 @@ const Contact: NextPage = () => {
       </header>
 
       <main className={styles.main}>
+        <section className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
+          <div className={styles.logoContainer}>
+            <img src="/drjan-logo.png" alt="Dr. Jan Duffy Realtor" className={styles.drjanLogo} />
+          </div>
+
         <h1 className={styles.pageTitle}>Contact Us</h1>
 
         <section className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
@@ -56,7 +60,7 @@ const Contact: NextPage = () => {
               Whether you're looking to buy a home in Sun City Summerlin, sell your current property, or simply have questions about the community, our experienced team is ready to assist you.
             </p>
           </div>
-          
+
           {formSubmitted ? (
             <div className={styles.formSuccess}>
               <h2>Thank You for Contacting Us!</h2>
@@ -97,7 +101,7 @@ const Contact: NextPage = () => {
               </form>
             </div>
           )}
-          
+
           <div className={styles.contactInfo}>
             <div className={styles.infoItem}>
               <h3>Address</h3>
@@ -121,7 +125,7 @@ const Contact: NextPage = () => {
               <p><a href="https://g.co/kgs/uwtzcWj" target="_blank" rel="noopener noreferrer">View Google Business Profile</a></p>
             </div>
           </div>
-          
+
           <div className={styles.mapContainer}>
             <h3>Find Us</h3>
             <div className={styles.map}>

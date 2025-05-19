@@ -113,6 +113,9 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <section className={`${styles.hero} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.heroContent}>
+            <div className={styles.logoContainer}>
+              <img src="/drjan-logo.png" alt="Dr. Jan Duffy Realtor" className={styles.drjanLogo} />
+            </div>
             <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
             <p className={styles.subtitle}>
               Experience resort-style living in Las Vegas' premier 55+ active adult community with Dr. Jan Duffy, your REALTOR® specialist with 25+ years of experience
