@@ -74,36 +74,52 @@ const Properties: NextPage = () => {
         <nav className={styles.mainNav}>
           <div className={styles.menuItems}>
             <Link href="/" className={styles.navLink}>
-              <span className={styles.navIcon}>🏠</span>
-              <span className={styles.navText}>Home</span>
+              <div>
+                <span className={styles.navIcon}>🏠</span>
+                <span className={styles.navText}>Home</span>
+              </div>
             </Link>
             <Link href="/properties" className={`${styles.navLink} ${styles.activeNavLink}`}>
-              <span className={styles.navIcon}>🏘️</span>
-              <span className={styles.navText}>Properties</span>
+              <div>
+                <span className={styles.navIcon}>🏘️</span>
+                <span className={styles.navText}>Properties</span>
+              </div>
             </Link>
             <Link href="/community" className={styles.navLink}>
-              <span className={styles.navIcon}>👥</span>
-              <span className={styles.navText}>Community</span>
+              <div>
+                <span className={styles.navIcon}>👥</span>
+                <span className={styles.navText}>Community</span>
+              </div>
             </Link>
             <Link href="/lifestyle" className={styles.navLink}>
-              <span className={styles.navIcon}>🌴</span>
-              <span className={styles.navText}>Lifestyle</span>
+              <div>
+                <span className={styles.navIcon}>🌴</span>
+                <span className={styles.navText}>Lifestyle</span>
+              </div>
             </Link>
             <Link href="/amenities" className={styles.navLink}>
-              <span className={styles.navIcon}>🏊</span>
-              <span className={styles.navText}>Amenities</span>
+              <div>
+                <span className={styles.navIcon}>🏊</span>
+                <span className={styles.navText}>Amenities</span>
+              </div>
             </Link>
             <Link href="/zipcodes" className={styles.navLink}>
-              <span className={styles.navIcon}>📍</span>
-              <span className={styles.navText}>Zipcodes</span>
+              <div>
+                <span className={styles.navIcon}>📍</span>
+                <span className={styles.navText}>Zipcodes</span>
+              </div>
             </Link>
             <Link href="/testimonials" className={styles.navLink}>
-              <span className={styles.navIcon}>💬</span>
-              <span className={styles.navText}>Testimonials</span>
+              <div>
+                <span className={styles.navIcon}>💬</span>
+                <span className={styles.navText}>Testimonials</span>
+              </div>
             </Link>
             <Link href="/contact" className={styles.navLink}>
-              <span className={styles.navIcon}>📱</span>
-              <span className={styles.navText}>Contact</span>
+              <div>
+                <span className={styles.navIcon}>📱</span>
+                <span className={styles.navText}>Contact</span>
+              </div>
             </Link>
           </div>
         </nav>
