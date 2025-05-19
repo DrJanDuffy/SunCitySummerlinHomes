@@ -146,6 +146,7 @@ const Home: NextPage = () => {
             </div>
             
             <div className={styles.homeValueWidgetContainer}>
+              <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
               <style dangerouslySetInnerHTML={{
                 __html: `
                   realscout-home-value {
@@ -156,7 +157,7 @@ const Home: NextPage = () => {
                     --rs-hvw-primary-button-color: rgb(35, 93, 137);
                     --rs-hvw-secondary-button-text-color: rgb(35, 93, 137);
                     --rs-hvw-secondary-button-color: #ffffff;
-                    --rs-hvw-widget-width: 650px;
+                    --rs-hvw-widget-width: 800px;
                   }
                 `
               }} />
