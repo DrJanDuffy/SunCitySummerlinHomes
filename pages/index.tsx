@@ -471,25 +471,61 @@ const Home: NextPage = () => {
         </section>
 
         <section id="lifestyle" className={styles.lifestyleSection}>
-          <h2 className={styles.sectionTitle}>Active Adult Lifestyle</h2>
+          <div className={styles.lifestyleHeading}>
+            <h2 className={styles.lifestyleTitle}>Active Adult Lifestyle</h2>
+            <p className={styles.lifestyleSubtitle}>Experience the best of resort-style living with premium amenities and activities designed for an active 55+ community</p>
+          </div>
 
           <div className={styles.lifestyleFeatures}>
             <div className={styles.lifestyleFeature}>
-              <h3>Golf Paradise</h3>
-              <p>Enjoy three distinct courses: Highland Falls with panoramic Vegas views, Palm Valley with mild elevation changes, and the executive Eagle Crest course.</p>
+              <div className={styles.lifestyleFeatureIcon}>⛳</div>
+              <div className={styles.lifestyleFeatureImage}>
+                <img src="/golf-course.jpg" alt="Sun City Summerlin Golf Course" />
+              </div>
+              <div className={styles.lifestyleFeatureContent}>
+                <h3>Golf Paradise</h3>
+                <p>Enjoy three distinct championship courses: Highland Falls with panoramic Vegas Strip views, Palm Valley with mild elevation changes perfect for all skill levels, and the executive Eagle Crest course ideal for quick rounds.</p>
+              </div>
             </div>
+
             <div className={styles.lifestyleFeature}>
-              <h3>Recreation Centers</h3>
-              <p>Four recreation centers offer fitness facilities, swimming pools, pickleball courts, and spaces for over 100 different clubs and activities.</p>
+              <div className={styles.lifestyleFeatureIcon}>🏊</div>
+              <div className={styles.lifestyleFeatureImage}>
+                <img src="/community-center.jpg" alt="Sun City Summerlin Recreation Center" />
+              </div>
+              <div className={styles.lifestyleFeatureContent}>
+                <h3>Recreation Centers</h3>
+                <p>Four state-of-the-art recreation centers feature indoor and outdoor swimming pools, modern fitness facilities with classes for all levels, pickleball courts, and dedicated spaces for over 100 different clubs and social activities.</p>
+              </div>
             </div>
+
             <div className={styles.lifestyleFeature}>
-              <h3>Golf Cart Community</h3>
-              <p>Designated golf cart pathways throughout the community make it easy to travel between courses, recreation centers, and local shopping areas.</p>
+              <div className={styles.lifestyleFeatureIcon}>🛺</div>
+              <div className={styles.lifestyleFeatureImage}>
+                <img src="/golf-cart-path.jpg" alt="Sun City Summerlin Golf Cart Paths" />
+              </div>
+              <div className={styles.lifestyleFeatureContent}>
+                <h3>Golf Cart Community</h3>
+                <p>Designated golf cart pathways throughout the community create a unique transportation network, making it easy and enjoyable to travel between courses, recreation centers, and local shopping areas without ever needing your car.</p>
+              </div>
             </div>
+
             <div className={styles.lifestyleFeature}>
-              <h3>Shopping & Dining</h3>
-              <p>Tucson Plaza features pharmacies, fitness centers, restaurants like My Mother's House Italian cuisine, and Smith's grocery store.</p>
+              <div className={styles.lifestyleFeatureIcon}>🍽️</div>
+              <div className={styles.lifestyleFeatureImage}>
+                <img src="/shopping-plaza.jpg" alt="Sun City Summerlin Shopping and Dining" />
+              </div>
+              <div className={styles.lifestyleFeatureContent}>
+                <h3>Shopping &amp; Dining</h3>
+                <p>Tucson Plaza offers convenient access to pharmacies, fitness centers, and diverse dining options including My Mother's House Italian cuisine. Smith's grocery store and numerous specialty shops ensure everything you need is just minutes away.</p>
+              </div>
             </div>
+          </div>
+
+          <div className={styles.lifestyleCtaContainer}>
+            <button className={styles.lifestyleCta} onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              Schedule a Lifestyle Tour
+            </button>
           </div>
         </section>
 
