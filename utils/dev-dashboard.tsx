@@ -18,6 +18,21 @@ interface SystemInfo {
   environment: string;
 }
 
+import { useState, useEffect } from 'react';
+import styles from '../styles/DevDashboard.module.css';
+
+interface SystemInfo {
+  uptime: number;
+  memoryUsage: {
+    total: number;
+    free: number;
+    used: number;
+  };
+  cpuUsage: number;
+  nodeVersion: string;
+  nextVersion: string;
+}
+
 interface BuildInfo {
   lastBuild: string;
   buildDuration: number;
@@ -84,6 +99,44 @@ export function DevDashboard() {
   if (error) {
     return <div className={styles.dashboard}><p className={styles.error}>Error: {error}</p></div>;
   }
+  
+  return (
+    <div className={styles.dashboard}>
+      <h2>Development Dashboard</h2>
+      
+      <div className={styles.section}>
+        <h3>System Information</h3>
+        {systemInfo && (
+          <div className={styles.grid}>
+            <div className={styles.card}>
+              <h4>Memory Usage</h4>
+              <div className={styles.meter}>
+                <div 
+                  className={styles.progress} 
+                  style={{width: `${(systemInfo.memoryUsage.used / systemInfo.memoryUsage.total) * 100}%`}}
+                ></div>
+              </div>
+              <p>{formatBytes(systemInfo.memoryUsage.used)} / {formatBytes(systemInfo.memoryUsage.total)}</p>
+            </div>
+            
+            <div className={styles.card}>
+              <h4>CPU Usage</h4>
+              <div className={styles.meter}>
+                <div 
+                  className={styles.progress} 
+                  style={{width: `${systemInfo.cpuUsage}%`}}
+                ></div>
+              </div>
+              <p>{systemInfo.cpuUsage.toFixed(1)}%</p>
+            </div>
+            
+            <div className={styles.card}>
+              <h4>Uptime</h4>
+              <p>{formatUptime(systemInfo.uptime)}</p>
+            </div>
+            
+            <div className={styles.card}>
+              <h4>Runtime Versions</h4>
 
   return (
     <div className={styles.dashboard}>

@@ -1,76 +1,68 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { version as nextVersion } from 'next/package.json';
-import { execSync } from 'child_process';
+import os from 'os';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 
-interface SystemInfo {
-  memory: {
+const execAsync = promisify(exec);
+
+type SystemInfo = {
+  uptime: number;
+  memoryUsage: {
     total: number;
     free: number;
     used: number;
   };
-  cpu: {
-    usage: number;
-  };
-  uptime: number;
-  nextVersion: string;
+  cpuUsage: number;
   nodeVersion: string;
-  lastBuild: string;
-  environment: string;
-}
+  nextVersion: string;
+};
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<SystemInfo>
 ) {
   try {
+    // Get memory information
+    const totalMem = os.totalmem();
+    const freeMem = os.freemem();
+    const usedMem = totalMem - freeMem;
+    
+    // Get CPU usage (simplified)
+    const cpuUsage = os.loadavg()[0] * 10; // Multiply by 10 to get percentage-like value
+    
     // Get Node.js version
     const nodeVersion = process.version;
     
-    // Get last build time from filesystem
-    let lastBuild = 'Unknown';
+    // Get Next.js version from package.json
+    let nextVersion = 'Unknown';
     try {
-      // Get last modification time of the .next directory
-      const stats = execSync('stat -c %y .next 2>/dev/null || echo "Not built yet"').toString().trim();
-      lastBuild = stats;
-    } catch (error) {
-      console.error('Failed to get build time:', error);
+      const { stdout } = await execAsync('npm list next --json');
+      const packageInfo = JSON.parse(stdout);
+      nextVersion = packageInfo.dependencies.next.version;
+    } catch (e) {
+      console.error('Error getting Next.js version:', e);
     }
     
-    // This is a mock implementation since we can't access real system info in Replit
-    const mockMemoryTotal = 8 * 1024 * 1024 * 1024; // 8 GB
-    const mockMemoryUsed = Math.random() * 4 * 1024 * 1024 * 1024; // 0-4 GB
-    
-    const systemInfo: SystemInfo = {
-      memory: {
-        total: mockMemoryTotal,
-        free: mockMemoryTotal - mockMemoryUsed,
-        used: mockMemoryUsed
+    res.status(200).json({
+      uptime: os.uptime(),
+      memoryUsage: {
+        total: totalMem,
+        free: freeMem,
+        used: usedMem
       },
-      cpu: {
-        usage: Math.random() * 100
-      },
-      uptime: Math.floor(process.uptime()),
-      nextVersion: nextVersion || '12.3.4',
+      cpuUsage,
       nodeVersion,
-      lastBuild,
-      environment: process.env.NODE_ENV || 'development'
-    };
-
-    // Add a small delay to simulate API call
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    res.status(200).json(systemInfo);
+      nextVersion
+    });
   } catch (error) {
     console.error('Error in system-info API:', error);
-    res.status(500).json({ 
-      memory: { total: 0, free: 0, used: 0 },
-      cpu: { usage: 0 },
+    res.status(500).json({
       uptime: 0,
-      nextVersion: 'error',
-      nodeVersion: 'error',
-      lastBuild: 'Error fetching data',
-      environment: 'unknown'
-    } as SystemInfo);
+      memoryUsage: { total: 0, free: 0, used: 0 },
+      cpuUsage: 0,
+      nodeVersion: 'Error',
+      nextVersion: 'Error'
+    });
   }
 }
