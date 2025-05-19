@@ -293,7 +293,7 @@ const Properties = () => {
             <h2>Find Your Dream Home Today</h2>
             <p>Work with Dr. Jan Duffy, your Sun City Summerlin specialist with 25+ years of experience</p>
             <div className={styles.ctaButtons}>
-              <a href="/contact" className={styles.primaryButton}>Schedule a Showing</a>
+              <Link href="/contact/" className={styles.primaryButton}>Schedule a Showing</Link>
               <a href="tel:7027180043" className={styles.secondaryButton}>Call (702) 718-0043</a>
             </div>
           </div>
@@ -340,10 +340,10 @@ const Properties = () => {
           <div className={styles.footerLinks}>
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/properties">Properties</a></li>
-              <li><a href="/community">Community</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/properties/">Properties</Link></li>
+              <li><Link href="/community/">Community</Link></li>
+              <li><Link href="/contact/">Contact</Link></li>
             </ul>
           </div>
           <div className={styles.footerNewsletter}>
