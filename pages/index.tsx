@@ -147,7 +147,7 @@ const Home: NextPage = () => {
         <div className={styles.headerInner}>
           <div className={styles.logoContainer}>
             <div className={styles.logoText}>
-              <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+              <p className={styles.logo}>Sun City Summerlin Homes</p>
               <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
             </div>
           </div>
@@ -307,7 +307,7 @@ const Home: NextPage = () => {
 
           <div className={styles.propertyDetails}>
             <div className={styles.detailCard}>
-              <h3>$548,175</h3>
+              <p className={styles.propertyPrice}>$548,175</p>
               <p>3 Beds | 2 Baths | 1,850 Sq Ft</p>
               <p>Contemporary Mediterranean | Golf Course Views</p>
             </div>

@@ -31,7 +31,7 @@ const Contact: NextPage = () => {
         <div className={styles.logoContainer}>
           <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
           <div className={styles.logoText}>
-            <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+            <p className={styles.logo}>Sun City Summerlin Homes</p>
             <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
           </div>
         </div>

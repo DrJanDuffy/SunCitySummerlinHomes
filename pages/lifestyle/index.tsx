@@ -23,7 +23,7 @@ const Lifestyle: NextPage = () => {
       <header className={styles.header}>
         <div className={styles.logoContainer}>
           <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
-          <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+          <p className={styles.logo}>Sun City Summerlin Homes</p>
         </div>
         <nav className={styles.nav}>
           <Link href="/">Home</Link>

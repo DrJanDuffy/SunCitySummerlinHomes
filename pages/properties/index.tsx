@@ -128,7 +128,7 @@ const Properties: NextPage = () => {
           <div className={styles.propertyDetails}>
             <div className={styles.detailCard}>
               <div className={styles.priceTag}>
-                <h3>$548,175</h3>
+                <p className={styles.propertyPrice}>$548,175</p>
                 <span className={styles.priceBadge}>Premium Location</span>
               </div>
               <div className={styles.propertyStats}>
