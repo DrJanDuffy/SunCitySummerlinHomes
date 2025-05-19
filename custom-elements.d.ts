@@ -1,21 +1,10 @@
 
 declare namespace JSX {
   interface IntrinsicElements {
-    'realscout-office-listings': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-      // Add the specific attributes you're using
-      'agent-encoded-id'?: string;
-      'sort-order'?: string;
-      'listing-status'?: string;
-      'property-types'?: string;
-      'price-min'?: string;
-      'price-max'?: string;
-      // Add any other attributes that appear in your code
-    };
-    'realscout-home-value': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-      'agent-encoded-id'?: string;
-      'include-name'?: boolean;
-      'include-phone'?: boolean;
-      'loading'?: string;
-    };
+    // Use 'any' to allow any attributes without having to list them all
+    'realscout-office-listings': any;
+    'realscout-home-value': any;
+    'realscout-property-search': any;
+    // Add any other RealScout components you might use
   }
 }
