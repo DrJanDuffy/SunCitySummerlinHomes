@@ -26,8 +26,35 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
   const [insuranceRate, setInsuranceRate] = useState(0.35); // Average insurance rate per $100
 
   useEffect(() => {
+    // Calculate mortgage when relevant values change
+    const calculateMortgage = () => {
+      const principal = price - downPayment;
+      const monthlyInterest = interestRate / 100 / 12;
+      const numberOfPayments = loanTerm * 12;
+
+      // Calculate principal and interest payment
+      const x = Math.pow(1 + monthlyInterest, numberOfPayments);
+      const piPayment = principal * (monthlyInterest * x) / (x - 1);
+
+      // Calculate property tax payment
+      const annualPropertyTax = (price * taxRate) / 100;
+      const monthlyPropertyTax = annualPropertyTax / 12;
+
+      // Calculate insurance payment
+      const annualInsurance = (price * insuranceRate) / 100;
+      const monthlyInsurance = annualInsurance / 12;
+
+      // Calculate HOA fees (estimated for Sun City Summerlin)
+      const monthlyHOA = 275; // Average for Sun City Summerlin
+
+      // Total monthly payment
+      const total = piPayment + monthlyPropertyTax + monthlyInsurance + monthlyHOA;
+
+      setMonthlyPayment(total);
+    };
+    
     calculateMortgage();
-  }, [price, downPayment, interestRate, loanTerm, taxRate, insuranceRate, calculateMortgage]);
+  }, [price, downPayment, interestRate, loanTerm, taxRate, insuranceRate]);
 
   useEffect(() => {
     // Update downPaymentPercent when downPayment changes
@@ -53,32 +80,6 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
     setDownPaymentPercent(newPercent);
     const newDownPayment = (price * newPercent) / 100;
     setDownPayment(parseFloat(newDownPayment.toFixed(2)));
-  };
-
-  const calculateMortgage = () => {
-    const principal = price - downPayment;
-    const monthlyInterest = interestRate / 100 / 12;
-    const numberOfPayments = loanTerm * 12;
-
-    // Calculate principal and interest payment
-    const x = Math.pow(1 + monthlyInterest, numberOfPayments);
-    const piPayment = principal * (monthlyInterest * x) / (x - 1);
-
-    // Calculate property tax payment
-    const annualPropertyTax = (price * taxRate) / 100;
-    const monthlyPropertyTax = annualPropertyTax / 12;
-
-    // Calculate insurance payment
-    const annualInsurance = (price * insuranceRate) / 100;
-    const monthlyInsurance = annualInsurance / 12;
-
-    // Calculate HOA fees (estimated for Sun City Summerlin)
-    const monthlyHOA = 275; // Average for Sun City Summerlin
-
-    // Total monthly payment
-    const total = piPayment + monthlyPropertyTax + monthlyInsurance + monthlyHOA;
-
-    setMonthlyPayment(total);
   };
 
   const formatCurrency = (value: number) => {

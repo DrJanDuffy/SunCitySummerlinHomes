@@ -12,10 +12,6 @@ const nextConfig = {
     unoptimized: true, // Required for static export
   },
   trailingSlash: true,
-  // Improve SEO options
-  experimental: {
-    scrollRestoration: true
-  },
   env: {
     siteUrl: 'https://suncitysummerlin.com',
   }
