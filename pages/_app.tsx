@@ -1,3 +1,4 @@
+
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -7,7 +8,6 @@ import styles from '../styles/Home.module.css'
 // Import AOS styles
 import 'aos/dist/aos.css'
 import { suppressExtensionWarnings } from '../utils/suppress-warnings';
-import { AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
 import { useRouter } from 'next/router';
 
@@ -125,15 +125,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         strategy="afterInteractive"
       />
       
-      <AnimatePresence 
-        mode="wait" 
-        initial={false}
-        onExitComplete={() => window.scrollTo(0, 0)}
-      >
-        <PageTransition key={router.route}>
-          <Component {...pageProps} />
-        </PageTransition>
-      </AnimatePresence>
+      <PageTransition key={router.route}>
+        <Component {...pageProps} />
+      </PageTransition>
 
       {/* LocalBusiness Structured Data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{

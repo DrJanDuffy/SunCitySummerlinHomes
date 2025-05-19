@@ -1,110 +1,67 @@
-
 .pageWrapper {
   position: relative;
-  width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
-  z-index: 1;
+  width: 100%;
 }
 
 .pageContent {
   position: relative;
-  z-index: 10;
-  width: 100%;
-  min-height: 100vh;
-  will-change: transform, opacity;
+  z-index: 1;
 }
 
-/* Decoration elements */
 .decorationTop,
 .decorationBottom {
   position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.05;
-  transition: opacity 0.6s ease;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, #0097FB, #97fb00);
+  z-index: 2;
 }
 
 .decorationTop {
   top: 0;
-  right: 0;
-  width: 60%;
-  height: 50%;
-  background: radial-gradient(circle at top right, var(--primary-glow), transparent 70%);
 }
 
 .decorationBottom {
   bottom: 0;
-  left: 0;
-  width: 60%; 
-  height: 50%;
-  background: radial-gradient(circle at bottom left, var(--secondary-glow), transparent 70%);
 }
 
-.pageWrapper:hover .decorationTop,
-.pageWrapper:hover .decorationBottom {
-  opacity: 0.08;
+/* Transition animations */
+.pageHidden {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  filter: blur(5px);
 }
 
-/* Animation helpers */
-.fadeIn {
-  animation: fadeIn 0.8s ease forwards;
+.pageReady {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
 }
 
-.slideUp {
-  animation: slideUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+/* Special animation for home page */
+.homePage.pageReady {
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
 }
 
-.scaleUp {
-  animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+.homePage.pageHidden {
+  transform: translateY(30px);
+}
+
+/* Add fade-in animation for child elements */
+.pageContent > * {
+  animation: fadeIn 0.5s ease-in-out forwards;
+  animation-delay: calc(var(--index, 0) * 0.1s);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(10px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes scaleUp {
-  from { 
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to { 
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Enhanced transition classes for specific sections */
-.heroTransition {
-  transition: transform 0.5s ease, opacity 0.6s ease;
-}
-
-.heroTransition:hover {
-  transform: translateY(-5px);
-}
-
-.contentTransition {
-  transition: opacity 0.4s ease;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .decorationTop, 
-  .decorationBottom {
-    width: 100%;
-    height: 30%;
-    opacity: 0.03;
   }
 }
