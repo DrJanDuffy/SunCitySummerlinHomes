@@ -59,21 +59,21 @@ const ZipcodePage: NextPage<ZipcodePageProps> = ({ zipcodeData, nearbyZipcodes }
           <p className={styles.logo}>Sun City Summerlin Homes</p>
         </div>
         <nav className={styles.nav}>
-          <Link href="/" passHref>Home</Link>
-          <Link href="/properties" passHref>Properties</Link>
-          <Link href="/community" passHref>Community</Link>
-          <Link href="/lifestyle" passHref>Lifestyle</Link>
-          <Link href="/amenities" passHref>Amenities</Link>
-          <Link href="/testimonials" passHref>Testimonials</Link>
-          <Link href="/zipcodes" passHref>Zipcodes</Link>
-          <Link href="/contact" passHref>Contact</Link>
+          <Link href="/" passHref legacyBehavior><a>Home</a></Link>
+          <Link href="/properties" passHref legacyBehavior><a>Properties</a></Link>
+          <Link href="/community" passHref legacyBehavior><a>Community</a></Link>
+          <Link href="/lifestyle" passHref legacyBehavior><a>Lifestyle</a></Link>
+          <Link href="/amenities" passHref legacyBehavior><a>Amenities</a></Link>
+          <Link href="/testimonials" passHref legacyBehavior><a>Testimonials</a></Link>
+          <Link href="/zipcodes" passHref legacyBehavior><a>Zipcodes</a></Link>
+          <Link href="/contact" passHref legacyBehavior><a>Contact</a></Link>
         </nav>
       </header>
 
       <main className={styles.main}>
         <div className={styles.zipcodeHeader}>
           <div className={styles.breadcrumbs}>
-            <Link href="/zipcodes" passHref>Zipcodes</Link> &gt; {zipcodeData.code}
+            <Link href="/zipcodes" passHref legacyBehavior><a>Zipcodes</a></Link> &gt; {zipcodeData.code}
           </div>
           <h1 className={styles.pageTitle}>{zipcodeData.area} - {zipcodeData.code}</h1>
           <p className={styles.zipcodeDescription}>{zipcodeData.description}</p>
@@ -178,11 +178,13 @@ const ZipcodePage: NextPage<ZipcodePageProps> = ({ zipcodeData, nearbyZipcodes }
                   href={`/zipcodes/${zipcode.code}`} 
                   passHref
                   key={zipcode.code}
-                  className={styles.nearbyZipcodeCard}
+                  legacyBehavior
                 >
-                  <h3>{zipcode.area}</h3>
-                  <div className={styles.zipcodeLabel}>{zipcode.code}</div>
-                  <p>{zipcode.description.substring(0, 100)}...</p>
+                  <a className={styles.nearbyZipcodeCard}>
+                    <h3>{zipcode.area}</h3>
+                    <div className={styles.zipcodeLabel}>{zipcode.code}</div>
+                    <p>{zipcode.description.substring(0, 100)}...</p>
+                  </a>
                 </Link>
               ))}
             </div>
@@ -219,7 +221,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true // Generate additional pages on-demand
+    fallback: 'blocking' // Change to blocking to prevent client-side fallback issues
   };
 };
 
