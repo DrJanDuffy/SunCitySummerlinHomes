@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -12,7 +11,20 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  trailingSlash: true
+  // Disable API routes generation in static builds
+  trailingSlash: true,
+  // Enable static optimizations
+  optimizeFonts: true,
+  poweredByHeader: false,
+  // Improve SEO options
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true
+  },
+  // Robots.txt will be generated
+  env: {
+    siteUrl: 'https://suncitysummerlin.com',
+  }
 };
 
 module.exports = nextConfig;

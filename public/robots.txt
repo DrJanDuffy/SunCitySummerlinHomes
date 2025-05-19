@@ -1,0 +1,8 @@
+
+# www.robotstxt.org
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://suncitysummerlin.com/sitemap.xml

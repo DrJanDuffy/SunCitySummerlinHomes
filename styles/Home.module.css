@@ -592,6 +592,41 @@
   max-width: 83%;
   width: 650px;
   margin: 0 auto;
+  
+  /* Core Web Vitals optimizations */
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 400px;
+}
+
+/* SEO-focused semantic styling */
+article, section, aside, nav, main, header, footer {
+  display: block;
+  width: 100%;
+}
+
+.seoHeading {
+  display: block;
+  margin: 0 0 1rem 0;
+}
+
+/* Image optimization classes */
+.optimizedImage {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* Accessibility improvements */
+.screenReaderText {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .widgetWrapper::before {
@@ -610,6 +645,78 @@
 .widgetWrapper:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+
+/* FAQ Section Styles for Rich Snippets */
+.faqSection {
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 4rem;
+}
+
+.faqContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.faqItem h3 {
+  color: #8e1f41;
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.faqItem h3:before {
+  content: "Q:";
+  position: absolute;
+  left: 0;
+  color: #235d89;
+}
+
+.faqItem p {
+  margin: 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #444;
+}
+
+.faqItem p:before {
+  content: "A:";
+  position: absolute;
+  left: 0;
+  color: #8e1f41;
+}
+
+@media (max-width: 768px) {
+  .faqSection {
+    padding: 2rem 1rem;
+  }
+  
+  .faqItem {
+    padding: 1.2rem;
+  }
+  
+  .faqItem h3 {
+    font-size: 1.1rem;
+  }
 }
 
 .widgetTitle {
