@@ -1,4 +1,3 @@
-
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
@@ -8,7 +7,7 @@ export default function Document() {
         {/* Preconnect to important domains */}
         <link rel="preconnect" href="https://em.realscout.com" />
         <link rel="dns-prefetch" href="https://em.realscout.com" />
-        
+
         {/* Font preloading for performance */}
         <link
           rel="preload"
@@ -19,9 +18,11 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        
+
         {/* RealScout Web Components */}
         <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <style dangerouslySetInnerHTML={{
           __html: `
             realscout-office-listings {

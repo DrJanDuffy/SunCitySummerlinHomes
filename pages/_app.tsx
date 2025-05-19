@@ -49,11 +49,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     const setupMobileMenu = () => {
       const menuButton = document.querySelector(`.${styles.mobileMenuButton}`);
       const navLinks = document.querySelector(`.${styles.navLinks}`);
-      
+
       if (menuButton && navLinks) {
         menuButton.addEventListener('click', () => {
           navLinks.classList.toggle(styles.navLinksActive);
-          
+
           // Toggle animation for menu button
           const spans = menuButton.querySelectorAll('span');
           spans.forEach(span => {
@@ -65,6 +65,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Call after a slight delay to ensure DOM is ready
     setTimeout(setupMobileMenu, 500);
+
+    // Initialize AOS animation library
+    if (typeof window !== 'undefined') {
+      const AOS = require('aos');
+      AOS.init({
+        duration: 800,
+        once: false,
+        mirror: true,
+        offset: 100
+      });
+    }
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

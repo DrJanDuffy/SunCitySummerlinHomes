@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import styles from "../../styles/Home.module.css";
+import Image from "next/image";
+import styles from "../../styles/Testimonials.module.css";
 import { useState, useEffect } from "react";
 import StructuredData from "../../components/StructuredData";
 
@@ -109,7 +110,12 @@ const Testimonials: NextPage = () => {
       <Head>
         <title>Client Testimonials | Sun City Summerlin Las Vegas Real Estate | Dr. Jan Duffy</title>
         <meta name="description" content="Read what clients say about working with Dr. Jan Duffy, Sun City Summerlin's 55+ community specialist with 25+ years of experience in Las Vegas luxury real estate." />
-        <meta name="keywords" content="Sun City Summerlin reviews, Las Vegas real estate testimonials, Dr Jan Duffy client experiences, 55+ community specialist reviews" />
+        <meta name="keywords" content="Sun City Summerlin reviews, Las Vegas real estate testimonials, Dr Jan Duffy client experiences, 55+ community specialist reviews, 55+ community homes" />
+        <meta property="og:title" content="Client Success Stories | Sun City Summerlin Real Estate" />
+        <meta property="og:description" content="Discover what homeowners say about working with Dr. Jan Duffy, Las Vegas' premier 55+ community specialist." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://suncitysummerlin.com/testimonials" />
+        <meta property="og:image" content="https://suncitysummerlin.com/golf-course.jpg" />
         <link rel="canonical" href="https://suncitysummerlin.com/testimonials" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -156,7 +162,7 @@ const Testimonials: NextPage = () => {
 
         <section className={styles.testimonialsList}>
           {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className={styles.testimonialCard}>
+            <div key={testimonial.id} className={`${styles.testimonialCard}`} data-aos="fade-up">
               <div className={styles.testimonialHeader}>
                 <div className={styles.testimonialInfo}>
                   <h3 className={styles.testimonialName}>{testimonial.name}</h3>
@@ -168,7 +174,7 @@ const Testimonials: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles.testimonialDate}>
-                  <p>{testimonial.date}</p>
+                  {testimonial.date}
                 </div>
               </div>
 
@@ -177,7 +183,7 @@ const Testimonials: NextPage = () => {
               </blockquote>
 
               <div className={styles.testimonialFooter}>
-                <p className={styles.verifiedBadge}>✓ Verified Purchase</p>
+                <span className={styles.verifiedBadge}>Verified Purchase</span>
               </div>
             </div>
           ))}
@@ -185,13 +191,13 @@ const Testimonials: NextPage = () => {
 
         <section className={styles.testimonialCTA}>
           <h2>Ready to Experience the Sun City Summerlin Lifestyle?</h2>
-          <p>Join the many satisfied homeowners who found their perfect home with Dr. Jan Duffy</p>
+          <p>Join the many satisfied homeowners who found their perfect home with Dr. Jan Duffy, your 55+ community specialist with 25+ years of Las Vegas real estate experience</p>
           <div className={styles.ctaButtons}>
-            <Link href="/properties">
-              <a className={styles.primaryBtn}>View Available Properties</a>
+            <Link href="/properties" className={styles.primaryBtn}>
+              View Available Properties
             </Link>
-            <Link href="/contact">
-              <a className={styles.secondaryBtn}>Schedule a Consultation</a>
+            <Link href="/contact" className={styles.secondaryBtn}>
+              Schedule a Consultation
             </Link>
           </div>
         </section>
