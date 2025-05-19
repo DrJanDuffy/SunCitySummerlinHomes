@@ -1,32 +1,40 @@
-
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  
-  // Analytics tracking (simplified version)
   useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      // Track page views when route changes
-      console.log(`Page view: ${url}`);
-      // Here you would normally send to your analytics service
-    };
+    // Improve Core Web Vitals with preconnect and prefetch
+    const links = [
+      { rel: 'preconnect', href: 'https://em.realscout.com' },
+      { rel: 'dns-prefetch', href: 'https://em.realscout.com' },
+      // Add Google Fonts preconnect if you're using them
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' }
+    ];
 
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
+    links.forEach(link => {
+      const linkElement = document.createElement('link');
+      Object.entries(link).forEach(([key, value]) => {
+        if (value !== undefined) {
+          linkElement.setAttribute(key, value);
+        }
+      });
+      document.head.appendChild(linkElement);
+    });
+
+    // Add accessibility improvements
+    document.documentElement.lang = 'en';
+  }, []);
 
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#8e1f41" />
         <style dangerouslySetInnerHTML={{
           __html: `
             realscout-office-listings {
@@ -35,15 +43,75 @@ function MyApp({ Component, pageProps }: AppProps) {
             }
           `
         }} />
+        {/* Global site tag (gtag.js) - Google Analytics */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            `
+          }}
+        />
       </Head>
-      
-      {/* Load critical RealScout script */}
+
       <Script
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
         strategy="afterInteractive"
         id="realscout-script"
       />
-      
+
+      {/* Add Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+        strategy="afterInteractive"
+      />
+
+      <Component {...pageProps} />
+
+      {/* LocalBusiness Structured Data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: `
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Dr. Jan Duffy - Sun City Summerlin REALTOR®",
+            "image": "/drjan-logo.png",
+            "url": "https://suncitysummerlin.com",
+            "telephone": "(702) 718-0043",
+            "priceRange": "$$$",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "9406 Del Webb Boulevard",
+              "addressLocality": "Las Vegas",
+              "addressRegion": "NV",
+              "postalCode": "89134",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 36.2043,
+              "longitude": -115.2936
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "09:00",
+              "closes": "19:00"
+            }
+          }
+        `
+      }}/>
+
       {/* Structured data for organization */}
       <Script
         id="organization-schema"
@@ -63,8 +131,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           })
         }}
       />
-      
-      <Component {...pageProps} />
     </>
   )
 }

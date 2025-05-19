@@ -63,24 +63,23 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Sun City Summerlin Las Vegas | 55+ Community Homes | Dr. Jan Duffy, REALTOR®</title>
-        <meta name="description" content="Sun City Summerlin REALTOR® Dr. Jan Duffy specializes in Las Vegas' premier 55+ Del Webb community. 25+ years helping active adults find low-maintenance single-story homes." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="keywords" content="Sun City Summerlin, Las Vegas 55+ community, Del Webb, single-story homes, golf course properties, active adult community, luxury homes Las Vegas, Jan Duffy realtor" />
-        <meta property="og:title" content="Sun City Summerlin Las Vegas | 55+ Community Homes | Dr. Jan Duffy" />
+        <title>Sun City Summerlin Las Vegas | Luxury 55+ Community Homes | Dr. Jan Duffy</title>
+        <meta name="description" content="Find your dream home in Sun City Summerlin, Las Vegas' premier 55+ Del Webb community. Expert REALTOR® Dr. Jan Duffy brings 25+ years of experience in luxury single-story homes, golf course properties, and active adult living." />
+        <meta name="keywords" content="Sun City Summerlin, luxury homes Las Vegas, 55+ community, Del Webb, Dr Jan Duffy Realtor, active adult community, golf course homes, retirement community Las Vegas" />
+        <meta name="author" content="Dr. Jan Duffy, REALTOR®" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:title" content="Sun City Summerlin Las Vegas | Luxury 55+ Community Homes" />
         <meta property="og:description" content="Experience resort-style living in Las Vegas' premier 55+ active adult community with Dr. Jan Duffy, your REALTOR® specialist with 25+ years of experience." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://suncitysummerlin.com/" />
         <meta property="og:image" content="/property1.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://suncitysummerlin.com" />
+        <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sun City Summerlin Las Vegas | 55+ Community Homes" />
-        <meta name="twitter:description" content="Experience resort-style living in Las Vegas' premier 55+ Del Webb community with Dr. Jan Duffy, REALTOR®" />
+        <meta name="twitter:title" content="Sun City Summerlin Las Vegas | Luxury 55+ Living" />
+        <meta name="twitter:description" content="Find your dream home in Sun City Summerlin with Dr. Jan Duffy, your local expert REALTOR®." />
         <meta name="twitter:image" content="/property1.jpg" />
-        <link rel="canonical" href="https://suncitysummerlin.com/" />
+        <link rel="canonical" href="https://suncitysummerlin.com" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style dangerouslySetInnerHTML={{
           __html: `
             realscout-office-listings {
@@ -89,15 +88,14 @@ const Home: NextPage = () => {
             }
           `
         }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: `
+            {
               "@context": "https://schema.org",
               "@type": "RealEstateAgent",
-              "name": "Dr. Jan Duffy - Sun City Summerlin Specialist",
+              "name": "Dr. Jan Duffy, REALTOR®",
               "image": "/drjan-logo.png",
-              "url": "https://suncitysummerlin.com/",
+              "url": "https://suncitysummerlin.com",
               "telephone": "(702) 718-0043",
               "address": {
                 "@type": "PostalAddress",
@@ -109,9 +107,15 @@ const Home: NextPage = () => {
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 36.2051,
-                "longitude": -115.2958
+                "latitude": 36.2043,
+                "longitude": -115.2936
               },
+              "sameAs": [
+                "https://www.instagram.com/drjanduffy/",
+                "https://www.facebook.com/DrJanDuffyRealtorCentennialHills/",
+                "https://www.linkedin.com/company/lvrmembers/",
+                "https://www.youtube.com/@DrDuffy"
+              ],
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": [
@@ -124,17 +128,14 @@ const Home: NextPage = () => {
                   "Sunday"
                 ],
                 "opens": "09:00",
-                "closes": "18:00"
+                "closes": "19:00"
               },
-              "sameAs": [
-                "https://www.instagram.com/drjanduffy/",
-                "https://www.facebook.com/DrJanDuffyRealtorCentennialHills/",
-                "https://www.linkedin.com/company/lvrmembers/"
-              ],
-              "priceRange": "$$$"
-            })
-          }}
-        />
+              "priceRange": "$$$",
+              "areaServed": ["Sun City Summerlin", "Las Vegas", "Clark County"],
+              "description": "Dr. Jan Duffy is a REALTOR® specialist with 25+ years of experience in Sun City Summerlin, Las Vegas' premier 55+ Del Webb community."
+            }
+          `
+        }}/>
       </Head>
       
       <Script 
@@ -263,118 +264,116 @@ const Home: NextPage = () => {
           )}
         </section>
 
-        <section id="property" className={`${styles.propertySection} ${isVisible ? styles.fadeIn : ''}`} aria-label="Featured Property">
+        <section id="property" className={`${styles.propertySection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>Property Highlights</h2>
           
-          <div className={styles.imageGallery} role="region" aria-label="Property image gallery">
+          <div className={styles.imageGallery}>
             <div className={styles.mainImage}>
               <div className={styles.imageOverlay}>
                 <span className={styles.imageCount}>{activeImage + 1}/{propertyImages.length}</span>
               </div>
               <img 
                 src={propertyImages[activeImage]} 
-                alt={`Sun City Summerlin Luxury Property - View ${activeImage + 1}`}
+                alt="Sun City Summerlin Property" 
                 className={styles.featuredImage}
-                loading="eager"
-                width="800"
-                height="600"
               />
-              <div className={styles.imageNavigation} aria-label="Gallery navigation">
+              <div className={styles.imageNavigation}>
                 <button 
                   onClick={() => setActiveImage((prev) => (prev - 1 + propertyImages.length) % propertyImages.length)}
                   className={styles.navArrow}
-                  aria-label="Previous image"
                 >
                   &#10094;
                 </button>
                 <button 
                   onClick={() => setActiveImage((prev) => (prev + 1) % propertyImages.length)}
                   className={styles.navArrow}
-                  aria-label="Next image"
                 >
                   &#10095;
                 </button>
               </div>
             </div>
-            <div className={styles.thumbnails} role="list" aria-label="Property thumbnail images">
+            <div className={styles.thumbnails}>
               {propertyImages.map((image, index) => (
                 <div 
                   key={index} 
                   className={`${styles.thumbnail} ${activeImage === index ? styles.activeThumbnail : ''}`}
                   onClick={() => setActiveImage(index)}
-                  role="listitem"
-                  aria-label={`Select image ${index + 1}`}
                 >
-                  <img 
-                    src={image} 
-                    alt={`Sun City Summerlin property thumbnail ${index + 1}`} 
-                    loading="lazy"
-                    width="150"
-                    height="100"
-                  />
+                  <img src={image} alt={`Property view ${index + 1}`} />
                 </div>
               ))}
             </div>
           </div>
 
-          <article className={styles.propertyDetails} itemScope itemType="https://schema.org/House">
+          <div className={styles.propertyDetails}>
             <div className={styles.detailCard}>
-              <h3 itemProp="offers" itemScope itemType="https://schema.org/Offer">
-                <span itemProp="price">$548,175</span>
-                <meta itemProp="priceCurrency" content="USD" />
-              </h3>
-              <p itemProp="description">
-                <span itemProp="numberOfRooms">3</span> Beds | 
-                <span itemProp="numberOfBathroomsTotal">2</span> Baths | 
-                <span itemProp="floorSize" itemScope itemType="https://schema.org/QuantitativeValue">
-                  <span itemProp="value">1,850</span>
-                  <meta itemProp="unitCode" content="SqFt" />
-                </span> Sq Ft
-              </p>
-              <p>
-                <span itemProp="architecturalStyle">Contemporary Mediterranean</span> | 
-                <span itemProp="amenityFeature" itemScope itemType="https://schema.org/LocationFeatureSpecification">
-                  <meta itemProp="name" content="Golf Course Views" />
-                  Golf Course Views
-                </span>
-              </p>
-              <meta itemProp="numberOfBedrooms" content="3" />
+              <h3>$548,175</h3>
+              <p>3 Beds | 2 Baths | 1,850 Sq Ft</p>
+              <p>Contemporary Mediterranean | Golf Course Views</p>
             </div>
 
-            <p className={styles.description} itemProp="description">
+            <p className={styles.description}>
               This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community. Many homes in the area include two primary suites and dedicated golf cart garage space.
             </p>
-            <meta itemProp="url" content="https://suncitysummerlin.com/properties/" />
-            <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-              <meta itemProp="addressLocality" content="Las Vegas" />
-              <meta itemProp="addressRegion" content="NV" />
-              <meta itemProp="postalCode" content="89134" />
-              <meta itemProp="addressCountry" content="US" />
-            </div>
-          </article>
-          
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Product",
-                "name": "Sun City Summerlin Luxury Home",
-                "description": "This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views.",
-                "image": propertyImages[0],
-                "offers": {
-                  "@type": "Offer",
-                  "priceCurrency": "USD",
-                  "price": "548175",
-                  "availability": "https://schema.org/InStock"
-                },
-                "brand": {
-                  "@type": "Brand",
-                  "name": "Sun City Summerlin"
+            
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+              __html: `
+                {
+                  "@context": "https://schema.org",
+                  "@type": "Residence",
+                  "name": "Luxury Single-Story Home in Sun City Summerlin",
+                  "description": "Stunning single-story home with open floor plan, gourmet kitchen, and resort-style backyard with Red Rock Canyon views",
+                  "numberOfRooms": "3",
+                  "floorSize": {
+                    "@type": "QuantitativeValue",
+                    "value": "1850",
+                    "unitCode": "SQF"
+                  },
+                  "numberOfBathroomsTotal": 2,
+                  "amenityFeature": [
+                    {
+                      "@type": "LocationFeatureSpecification",
+                      "name": "Golf Course Views",
+                      "value": true
+                    },
+                    {
+                      "@type": "LocationFeatureSpecification",
+                      "name": "Single-Story",
+                      "value": true
+                    },
+                    {
+                      "@type": "LocationFeatureSpecification",
+                      "name": "Gourmet Kitchen",
+                      "value": true
+                    },
+                    {
+                      "@type": "LocationFeatureSpecification",
+                      "name": "Open Floor Plan",
+                      "value": true
+                    }
+                  ],
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "548175",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 36.2043,
+                    "longitude": -115.2936
+                  },
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Las Vegas",
+                    "addressRegion": "NV",
+                    "postalCode": "89134",
+                    "addressCountry": "US"
+                  }
                 }
-              })
-            }}
-          />
+              `
+            }}/>
+          </div>
         </section>
 
         <section id="features" className={styles.featuresSection}>
@@ -560,40 +559,73 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      {/* FAQ Schema for Rich Snippets */}
-      <section className={styles.faqSection} id="faq">
+      <section className={styles.faqSection} id="faqs">
         <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
-        <div className={styles.faqContainer} itemScope itemType="https://schema.org/FAQPage">
-          <div className={styles.faqItem} itemScope itemType="https://schema.org/Question">
-            <h3 itemProp="name">What makes Sun City Summerlin unique among 55+ communities?</h3>
-            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-              <p itemProp="text">Sun City Summerlin stands out with three championship golf courses, four recreation centers, and over 80 social clubs. As Las Vegas' largest 55+ community, it offers both mountain views and proximity to the Strip, with homes designed specifically for active adults.</p>
-            </div>
+        <div className={styles.faqContainer}>
+          <div className={styles.faqItem}>
+            <h3>What is the average home price in Sun City Summerlin?</h3>
+            <p>The average home price in Sun City Summerlin is around $548,175, though prices vary based on size, location, and amenities. Golf course properties typically command higher prices.</p>
           </div>
-          <div className={styles.faqItem} itemScope itemType="https://schema.org/Question">
-            <h3 itemProp="name">What types of homes are available in Sun City Summerlin?</h3>
-            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-              <p itemProp="text">Sun City Summerlin offers primarily single-story homes with Mediterranean-style architecture, ranging from 1,000 to 2,900 square feet. Many homes feature open floor plans, golf course views, and dedicated golf cart garages. Properties include both attached and detached single-family homes.</p>
-            </div>
+          <div className={styles.faqItem}>
+            <h3>Is Sun City Summerlin a 55+ community?</h3>
+            <p>Yes, Sun City Summerlin is an age-restricted community where at least one resident must be 55 years or older, and no permanent residents can be under 19 years of age.</p>
           </div>
-          <div className={styles.faqItem} itemScope itemType="https://schema.org/Question">
-            <h3 itemProp="name">How much do homes in Sun City Summerlin typically cost?</h3>
-            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-              <p itemProp="text">Home prices in Sun City Summerlin typically range from $400,000 to over $1 million, with an average price around $548,175. Factors affecting price include size, location, views, and upgrades. The average price per square foot is approximately $331.</p>
-            </div>
+          <div className={styles.faqItem}>
+            <h3>What amenities are available in Sun City Summerlin?</h3>
+            <p>Sun City Summerlin offers three championship golf courses, four recreation centers, multiple swimming pools, tennis and pickleball courts, fitness centers, woodworking studios, over 100 social clubs, walking trails, and on-site shopping and dining.</p>
           </div>
-          <div className={styles.faqItem} itemScope itemType="https://schema.org/Question">
-            <h3 itemProp="name">What amenities are available to Sun City Summerlin residents?</h3>
-            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-              <p itemProp="text">Residents enjoy three championship golf courses, four recreation centers with pools and fitness facilities, tennis and pickleball courts, walking trails, woodworking studios, ceramics workshops, and over 80 social clubs. The community also features on-site shopping, dining, and 24/7 security.</p>
-            </div>
+          <div className={styles.faqItem}>
+            <h3>How do I contact Dr. Jan Duffy for property viewings?</h3>
+            <p>You can contact Dr. Jan Duffy at (702) 718-0043, email at DrDuffy@bhhsnv.com, or fill out the contact form on this website to schedule a viewing or consultation.</p>
           </div>
         </div>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: `
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is the average home price in Sun City Summerlin?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The average home price in Sun City Summerlin is around $548,175, though prices vary based on size, location, and amenities. Golf course properties typically command higher prices."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is Sun City Summerlin a 55+ community?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Sun City Summerlin is an age-restricted community where at least one resident must be 55 years or older, and no permanent residents can be under 19 years of age."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What amenities are available in Sun City Summerlin?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sun City Summerlin offers three championship golf courses, four recreation centers, multiple swimming pools, tennis and pickleball courts, fitness centers, woodworking studios, over 100 social clubs, walking trails, and on-site shopping and dining."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I contact Dr. Jan Duffy for property viewings?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can contact Dr. Jan Duffy at (702) 718-0043, email at DrDuffy@bhhsnv.com, or fill out the contact form on this website to schedule a viewing or consultation."
+                  }
+                }
+              ]
+            }
+          `
+        }}/>
       </section>
 
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} width="150" height="60" />
+          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
           <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
           <p>Sun City Summerlin REALTOR® Dr. Jan Duffy - Serving Las Vegas since 2013</p>
         </div>
