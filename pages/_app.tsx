@@ -89,7 +89,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
-  // Wrap the app with PageTransition component
+  // Removed PageTransition wrapper to fix rendering error
   return (
     <div>
       <Head>
@@ -122,9 +122,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         strategy="afterInteractive"
       />
 
-      <PageTransition>
-        <Component {...pageProps} />
-      </PageTransition>
+      <Component {...pageProps} />
 
       {/* LocalBusiness Structured Data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
