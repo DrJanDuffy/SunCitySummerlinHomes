@@ -582,19 +582,38 @@ const Home: NextPage = () => {
 
         <section id="testimonials" className={`${styles.testimonialsSection} ${isVisible ? styles.fadeIn : ''}`}>
           <h2 className={styles.sectionTitle}>What Homeowners Say</h2>
+          
+          <div className={styles.reviewRating}>
+            <div className={styles.googleInfo}>
+              <img src="/google-logo.png" alt="Google" className={styles.googleLogo} />
+              <span className={styles.reviewText}>Based on Google Reviews</span>
+            </div>
+            <div className={styles.starRating}>★★★★★</div>
+          </div>
 
           <div className={styles.testimonialContainer}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className={styles.testimonialCard}>
-                <div className={styles.testimonialRating}>
+                <div className={styles.testimonialCardRating}>
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className={styles.star}>★</span>
+                    <span key={i}>★</span>
                   ))}
                 </div>
-                <p className={styles.testimonialText}>"{testimonial.text}"</p>
-                <p className={styles.testimonialAuthor}>- {testimonial.name}</p>
+                <p className={styles.testimonialCardQuote}>{testimonial.text}</p>
+                <p className={styles.testimonialCardAuthor}>- {testimonial.name}</p>
               </div>
             ))}
+          </div>
+          
+          <div className={styles.testimonialCta}>
+            <h3>Ready to Experience Sun City Summerlin?</h3>
+            <p>Join our growing community of satisfied homeowners today.</p>
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+              className={styles.testimonialCtaButton}
+            >
+              Schedule a Showing
+            </button>
           </div>
         </section>
 
