@@ -6,7 +6,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import styles from "../../styles/Zipcodes.module.css";
 import dynamic from 'next/dynamic';
 import DynamicMap from '../../components/DynamicMap';
@@ -101,13 +101,13 @@ const Zipcodes: NextPage = () => {
 
   useEffect(() => {
     // Initialize Google Map after the script has loaded
-    if (window.google && mapRef.current && !mapLoaded) {
+    if (typeof window !== 'undefined' && window.google && mapRef.current && !mapLoaded) {
       initializeMap();
     }
-  }, [mapRef.current, window.google, mapLoaded]);
+  }, [mapRef.current, mapLoaded, initializeMap]);
 
-  // Initialize Google Map
-  const initializeMap = () => {
+  // Initialize Google Map using useCallback to avoid dependency issues
+  const initializeMap = useCallback(() => {
     // Center map on Las Vegas
     const lasVegas = { lat: 36.1699, lng: -115.1398 };
     const map = new google.maps.Map(mapRef.current!, {
@@ -185,7 +185,7 @@ const Zipcodes: NextPage = () => {
     });
 
     setMapLoaded(true);
-  };
+  }, [zipcodes]);
 
   return (
     <div className={styles.container}>
@@ -297,7 +297,7 @@ const Zipcodes: NextPage = () => {
         src={`https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=Function.prototype`}
         strategy="afterInteractive"
         onLoad={() => {
-          if (mapRef.current && !mapLoaded) {
+          if (typeof window !== 'undefined' && mapRef.current && !mapLoaded) {
             initializeMap();
           }
         }}

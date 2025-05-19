@@ -1,5 +1,5 @@
-
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from '../styles/MortgageCalculator.module.css';
 
 interface MortgageCalculatorProps {
@@ -59,25 +59,25 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
     const principal = price - downPayment;
     const monthlyInterest = interestRate / 100 / 12;
     const numberOfPayments = loanTerm * 12;
-    
+
     // Calculate principal and interest payment
     const x = Math.pow(1 + monthlyInterest, numberOfPayments);
     const piPayment = principal * (monthlyInterest * x) / (x - 1);
-    
+
     // Calculate property tax payment
     const annualPropertyTax = (price * taxRate) / 100;
     const monthlyPropertyTax = annualPropertyTax / 12;
-    
+
     // Calculate insurance payment
     const annualInsurance = (price * insuranceRate) / 100;
     const monthlyInsurance = annualInsurance / 12;
-    
+
     // Calculate HOA fees (estimated for Sun City Summerlin)
     const monthlyHOA = 275; // Average for Sun City Summerlin
-    
+
     // Total monthly payment
     const total = piPayment + monthlyPropertyTax + monthlyInsurance + monthlyHOA;
-    
+
     setMonthlyPayment(total);
   };
 
@@ -94,20 +94,20 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
     const principal = price - downPayment;
     const monthlyInterest = interestRate / 100 / 12;
     const numberOfPayments = loanTerm * 12;
-    
+
     let balance = principal;
     const piPayment = principal * (monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments)) / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
-    
+
     const schedule = [];
     let totalInterest = 0;
-    
+
     for (let i = 1; i <= Math.min(numberOfPayments, 60); i++) { // Display first 5 years
       const interest = balance * monthlyInterest;
       const principalPayment = piPayment - interest;
-      
+
       totalInterest += interest;
       balance -= principalPayment;
-      
+
       if (i % 12 === 0) { // Show yearly entries
         schedule.push({
           year: i / 12,
@@ -118,7 +118,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
         });
       }
     }
-    
+
     return schedule;
   };
 
@@ -136,7 +136,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
       <p className={styles.calculatorDescription}>
         Estimate your monthly payments for a Sun City Summerlin property, including HOA fees
       </p>
-      
+
       <div className={styles.calculatorInputs}>
         <div className={styles.inputGroup}>
           <label htmlFor="price">Home Price</label>
@@ -162,7 +162,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
             className={styles.rangeSlider}
           />
         </div>
-        
+
         <div className={styles.inputGroup}>
           <label htmlFor="downPayment">Down Payment</label>
           <div className={styles.dualInput}>
@@ -201,7 +201,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
             className={styles.rangeSlider}
           />
         </div>
-        
+
         <div className={styles.inputRow}>
           <div className={styles.inputGroup}>
             <label htmlFor="interestRate">Interest Rate (%)</label>
@@ -227,7 +227,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
               className={styles.rangeSlider}
             />
           </div>
-          
+
           <div className={styles.inputGroup}>
             <label htmlFor="loanTerm">Loan Term (years)</label>
             <select
@@ -243,13 +243,13 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
           </div>
         </div>
       </div>
-      
+
       <div className={styles.resultSection}>
         <div className={styles.monthlyPayment}>
           <h3>Estimated Monthly Payment</h3>
           <p className={styles.paymentAmount}>{formatCurrency(monthlyPayment)}</p>
         </div>
-        
+
         <div className={styles.paymentBreakdown}>
           <div className={styles.breakdownItem}>
             <span>Principal & Interest:</span>
@@ -272,7 +272,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
             <span>{formatCurrency(monthlyPayment)}</span>
           </div>
         </div>
-        
+
         <div className={styles.loanSummary}>
           <div className={styles.summaryItem}>
             <span>Loan Amount:</span>
@@ -287,14 +287,14 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
             <span>{formatCurrency((monthlyPayment * loanTerm * 12) - paymentBreakdown.principal - (paymentBreakdown.monthlyPropertyTax + paymentBreakdown.monthlyInsurance + paymentBreakdown.monthlyHOA) * loanTerm * 12)}</span>
           </div>
         </div>
-        
+
         <button 
           className={styles.amortizationToggle}
           onClick={() => setShowAmortization(!showAmortization)}
         >
           {showAmortization ? 'Hide Amortization Schedule' : 'Show Amortization Schedule'}
         </button>
-        
+
         {showAmortization && (
           <div className={styles.amortizationSchedule}>
             <table className={styles.scheduleTable}>
@@ -325,12 +325,12 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
           </div>
         )}
       </div>
-      
+
       <div className={styles.calculatorFooter}>
         <p>
           Get pre-approved for a mortgage and explore Sun City Summerlin properties with Dr. Jan Duffy.
           <br />
-          <a href="/contact" className={styles.contactLink}>Contact Dr. Jan for financing options →</a>
+          <Link href="/contact/" className={styles.contactLink}>Contact Dr. Jan for financing options →</Link>
         </p>
       </div>
     </div>
