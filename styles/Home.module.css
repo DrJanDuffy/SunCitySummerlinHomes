@@ -303,6 +303,104 @@
   transition: all 0.3s ease;
 }
 
+/* Top banner styling */
+.topBanner {
+  background: linear-gradient(135deg, #235d89, #1a3d5a);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-bottom: 5px solid #8e1f41;
+}
+
+.topBanner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/golf-course.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  z-index: 1;
+}
+
+.topTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.topSubtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.topCredentials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.topCredentialItem {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  padding: 0.7rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.topCredentialItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+  .topTitle {
+    font-size: 2.2rem;
+  }
+  
+  .topSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .topCredentials {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .topCredentialItem {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+}
+
 /* Feature section styling */
 .featureSection {
   padding: 4rem 2rem;

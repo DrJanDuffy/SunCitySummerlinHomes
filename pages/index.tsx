@@ -225,7 +225,7 @@ const Home: NextPage = () => {
           <span className={styles.topCredentialItem}>📍 Del Webb Community Expert</span>
           <span className={styles.topCredentialItem}>🏠 Low-Maintenance Single-Story Homes</span>
           <span className={styles.topCredentialItem}>⛳ Golf Course Properties</span>
-          <span className={styles.topCredentialItem}>👨‍👩‍👧‍👧 80+ Social Clubs</span>
+          <span className={styles.topCredentialItem}>👥 80+ Social Clubs</span>
         </div>
       </div>
 
