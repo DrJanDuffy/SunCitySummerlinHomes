@@ -1080,7 +1080,7 @@
   .propertyDetails {
     grid-template-columns: 1fr;
   }
-  
+
   .callToActionBar {
     flex-direction: column;
   }
@@ -1500,4 +1500,21 @@
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
   }
+}
+
+.footerBranding p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footerBranding a {
+  color: #83b1ed;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerBranding a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }

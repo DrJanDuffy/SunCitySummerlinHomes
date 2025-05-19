@@ -111,7 +111,10 @@ const Lifestyle: NextPage = () => {
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
           <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
-          <p>&copy; 2023 Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>Dr Jan Duffy REALTOR® | CA to LV Relocation Expert @DrJanDuffy</p>
+          <p>Dr. Jan Duffy is a Nevada REALTOR® Making Dreams Come True in Las Vegas, Summerlin, Henderson, North Las Vegas, and Spring Valley Nevada. S.0197614.LL</p>
+          <p>Real Estate Las Vegas, NV <a href="https://drjanduffy.realscout.com/onboarding" target="_blank" rel="noopener noreferrer">drjanduffy.realscout.com/onboarding</a></p>
         </div>
         <div className={styles.footerLinks}>
           <a href="https://www.bhhs.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
