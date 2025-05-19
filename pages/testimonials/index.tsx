@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "../../styles/Testimonials.module.css";
 import { useState, useEffect } from "react";
 import StructuredData from "../../components/StructuredData";
+import Header from "../../components/Header";
 
 const Testimonials: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -122,26 +123,7 @@ const Testimonials: NextPage = () => {
 
       <StructuredData type="RealEstateAgent" data={reviewSchema} />
 
-      <header className={styles.header}>
-        <div className={styles.logoContainer}>
-          <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
-          <div className={styles.logoText}>
-            <p className={styles.logo}>Sun City Summerlin Homes</p>
-            <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
-          </div>
-        </div>
-        <nav className={styles.nav}>
-          <Link href="/">Home</Link>
-          <Link href="/properties">Properties</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/lifestyle">Lifestyle</Link>
-          <Link href="/amenities">Amenities</Link>
-          <Link href="/zipcodes">Zipcodes</Link>
-          <Link href="/testimonials">Testimonials</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
-      </header>
+      <Header />
 
       <main className={`${styles.main} ${isVisible ? styles.fadeIn : ''}`}>
         <section className={styles.testimonialHero}>
