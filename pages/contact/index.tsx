@@ -52,8 +52,6 @@ const Contact: NextPage = () => {
           </div>
 
         <h1 className={styles.pageTitle}>Contact Us</h1>
-
-        <section className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
           <div className={styles.contactIntro}>
             <h2>We're Here to Help</h2>
             <p>
