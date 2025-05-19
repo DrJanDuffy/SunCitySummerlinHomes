@@ -1,21 +1,25 @@
-.pageWrapper {
+.pageTransitionContainer {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pageTransition {
   position: relative;
   min-height: 100vh;
   width: 100%;
 }
 
-.pageContent {
-  position: relative;
-  z-index: 1;
-}
-
+/* Additional decorative elements that can be added back */
 .decorationTop,
 .decorationBottom {
   position: absolute;
   height: 5px;
   width: 100%;
   background: linear-gradient(90deg, #0097FB, #97fb00);
-  z-index: 2;
+  z-index: 100;
+  pointer-events: none;
 }
 
 .decorationTop {
@@ -24,44 +28,4 @@
 
 .decorationBottom {
   bottom: 0;
-}
-
-/* Transition animations */
-.pageHidden {
-  opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  filter: blur(5px);
-}
-
-.pageReady {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
-}
-
-/* Special animation for home page */
-.homePage.pageReady {
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
-}
-
-.homePage.pageHidden {
-  transform: translateY(30px);
-}
-
-/* Add fade-in animation for child elements */
-.pageContent > * {
-  animation: fadeIn 0.5s ease-in-out forwards;
-  animation-delay: calc(var(--index, 0) * 0.1s);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

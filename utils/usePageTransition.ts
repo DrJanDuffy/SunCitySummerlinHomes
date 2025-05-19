@@ -4,21 +4,19 @@ import { useState, useEffect } from 'react';
 
 export function usePageTransition() {
   const router = useRouter();
-  const [isRouteChanging, setIsRouteChanging] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionKey, setTransitionKey] = useState(router.pathname);
   
   useEffect(() => {
-    // Set ready state after initial load
-    setIsReady(true);
-    
     // Handle route change start
     const handleRouteChangeStart = () => {
-      setIsRouteChanging(true);
+      setIsTransitioning(true);
     };
     
     // Handle route change complete
-    const handleRouteChangeComplete = () => {
-      setIsRouteChanging(false);
+    const handleRouteChangeComplete = (url: string) => {
+      setIsTransitioning(false);
+      setTransitionKey(url);
     };
     
     router.events.on('routeChangeStart', handleRouteChangeStart);
@@ -30,7 +28,7 @@ export function usePageTransition() {
     };
   }, [router]);
   
-  return { isRouteChanging, isReady, pathname: router.pathname };
+  return { isTransitioning, transitionKey: router.pathname };
 }
 
 export default usePageTransition;
