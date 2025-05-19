@@ -1,0 +1,66 @@
+You need to remove one of these definitions. Since you're using the router parameter in your component function arguments (MyApp({ Component, pageProps, router })) and you're also defining it with useRouter(), there's a conflict.
+Here's how to fix your code:
+tsx// pages/_app.tsx
+import { useRouter } from 'next/router';
+import { AnimatePresence } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
+import { useEffect } from 'react';
+// Import other dependencies...
+
+function MyApp({ Component, pageProps }) {
+  // Use the router hook once
+  const router = useRouter();
+
+  useEffect(() => {
+    // Your effect code...
+    // All the browser extension warnings, links, header scroll, etc.
+  }, []);
+
+  // Remove the duplicate router definition on line 96
+  // const router = useRouter(); <- DELETE THIS LINE
+
+  return (
+    <>
+      {/* Your other components/providers */}
+      
+      <AnimatePresence mode="wait">
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
+    </>
+  );
+}
+
+export default MyApp;
+Note that I've removed router from the component parameters since you're already using the useRouter hook. If you prefer to use the router from props instead, you would:
+
+Remove both useRouter calls
+Ensure your component gets the router from Next.js
+
+tsx// Alternative approach
+import { AnimatePresence } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
+import { useEffect } from 'react';
+// Import other dependencies...
+
+function MyApp({ Component, pageProps, router }) {
+  // No useRouter() call needed, router comes from props
+  
+  useEffect(() => {
+    // Your effect code...
+  }, []);
+
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
+    </>
+  );
+}
+
+export default MyApp;
+Choose whichever approach makes more sense for your application. The first approach (using useRouter hook) is generally more common in Next.js applications.
