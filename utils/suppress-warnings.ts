@@ -1,72 +1,42 @@
-
 /**
- * Utility to suppress common browser extension warnings
- * Particularly focused on Dashlane extension warnings
+ * Utility to suppress warnings from browser extensions like Dashlane
+ * that inject elements into the DOM causing React hydration errors
  */
 
-export function suppressExtensionWarnings() {
+export function suppressExtensionWarnings(): () => void {
   if (typeof window === 'undefined') return () => {};
-  
-  // Original console methods
+
+  // Store original console.error function
   const originalConsoleError = console.error;
-  const originalConsoleWarn = console.warn;
-  
-  // Filter for Dashlane related warnings
-  console.error = (...args: any[]) => {
-    // Skip Dashlane related warnings
-    if (
-      args[0]?.includes?.('data-dashlane') || 
-      (typeof args[0] === 'string' && args[0].includes('Warning: Extra attributes from the server')) ||
-      (typeof args[0] === 'string' && args[0].includes('dashlane'))
-    ) {
-      return;
+
+  // Create a filter for browser extension warnings
+  console.error = function(...args: any[]) {
+    // Filter out known Dashlane warnings
+    const suppressPatterns = [
+      'Extra attributes from the server',
+      'data-dashlane-',
+      'Hydration failed because',
+      'mismatched with the server',
+      'There was an error while hydrating'
+    ];
+
+    // Check if the error message contains any of the patterns
+    const shouldSuppress = suppressPatterns.some(pattern => 
+      args.some(arg => typeof arg === 'string' && arg.includes(pattern))
+    );
+
+    // Only log errors that don't match our suppression patterns
+    if (!shouldSuppress) {
+      originalConsoleError.apply(console, args);
     }
-    originalConsoleError.apply(console, args);
   };
-  
-  console.warn = (...args: any[]) => {
-    // Skip Dashlane and certain React warnings
-    if (
-      args[0]?.includes?.('data-dashlane') || 
-      (typeof args[0] === 'string' && args[0].includes('Warning: Extra attributes from the server')) ||
-      (typeof args[0] === 'string' && args[0].includes('dashlane'))
-    ) {
-      return;
-    }
-    originalConsoleWarn.apply(console, args);
-  };
-  
+
+  // Add attribute to document to indicate we're handling browser extensions
+  document.documentElement.setAttribute('data-extension-warnings-suppressed', 'true');
+
   // Return cleanup function
   return () => {
     console.error = originalConsoleError;
-    console.warn = originalConsoleWarn;
+    document.documentElement.removeAttribute('data-extension-warnings-suppressed');
   };
-}
-
-/**
- * Handles Dashlane-specific DOM manipulations
- * Call this function to clear Dashlane attributes that may cause hydration issues
- */
-export function cleanDashlaneAttributes() {
-  if (typeof window === 'undefined') return;
-  
-  // Run after DOM is fully loaded
-  setTimeout(() => {
-    try {
-      // Remove all data-dashlane attributes
-      document.querySelectorAll('[data-dashlane-shadowhost]').forEach(el => {
-        el.removeAttribute('data-dashlane-shadowhost');
-      });
-      
-      // Remove other potential Dashlane attributes
-      const dashlaneAttrs = ['data-dashlane-rid', 'data-form-type', 'data-dashlane-label'];
-      dashlaneAttrs.forEach(attr => {
-        document.querySelectorAll(`[${attr}]`).forEach(el => {
-          el.removeAttribute(attr);
-        });
-      });
-    } catch (e) {
-      // Silently fail if there's an error
-    }
-  }, 500);
 }
