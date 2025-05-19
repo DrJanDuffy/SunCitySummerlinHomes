@@ -1,0 +1,59 @@
+Next.js Static Generation Error: Build Worker Exit
+I see your build is failing during the static page generation phase. The build compiled successfully but crashed when trying to generate static pages.
+Understanding the Error
+Generating static pages (0/23) ...
+⨯ Next.js build worker exited with code: 1 and signal: null
+This indicates that while your code compiles without syntax errors, something is crashing during the actual rendering of your pages.
+Common Causes and Solutions
+1. Client-Side Code Being Used During Server Rendering
+The most common issue is using browser-specific APIs during server rendering:
+jsx// Problem: window/document used during initial render
+const Component = () => {
+  // This crashes during static generation
+  const width = window.innerWidth;
+  return <div>{width}</div>;
+}
+Fix: Move browser-only code to useEffect or check for browser environment:
+jsxconst Component = () => {
+  const [width, setWidth] = useState(0);
+  
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+  
+  return <div>{width}</div>;
+}
+2. Map Component Issues
+Your error happens right after linting a file with map initialization. Map libraries often cause SSR issues:
+jsx// In zipcodes/index.tsx
+useEffect(() => {
+  initializeMap(); // This is flagged in the linting warning
+}, []);
+Fix: Make sure your map component only runs on the client:
+jsximport dynamic from 'next/dynamic';
+
+// Load map component only on client-side with no SSR
+const MapComponent = dynamic(
+  () => import('../components/MapComponent'),
+  { ssr: false }
+);
+3. Data Fetching Errors
+If you're using getStaticProps or getStaticPaths, errors in these functions can crash the build:
+jsx// Check if your data fetching functions have proper error handling
+export async function getStaticProps() {
+  try {
+    const data = await fetchSomeData();
+    return { props: { data } };
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    return { props: { data: null } };
+  }
+}
+4. Quick Fix: Disable Static Generation
+If you need to deploy quickly, you can switch to server-side rendering by modifying your next.config.js:
+jsmodule.exports = {
+  // Other config options...
+  
+  // Change output mode to not use static generation
+  output: 'standalone',
+}

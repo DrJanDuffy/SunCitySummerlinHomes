@@ -144,3 +144,228 @@ args = "rm -rf .next"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NODE_OPTIONS='--no-warnings' npm run dev"
+
+[[workflows.workflow]]
+name = "Git Push to GitHub"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add ."
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git commit -m \"Update project files\" "
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git push -u origin main"
+
+[[workflows.workflow]]
+name = "Automatic Git Push"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Reset any possible lock files"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/config.lock .git/refs/remotes/origin/main.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Add all changes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add ."
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Commit with timestamp"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git commit -m \"Automatic update $(date '+%Y-%m-%d %H:%M:%S')\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Force push to ensure success (use with caution)"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git push -u origin main --force"
+
+[[workflows.workflow]]
+name = "Git Operations"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean up any Git lock files"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/index.lock .git/config.lock .git/refs/remotes/origin/main.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Force a clean Git state"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global --add safe.directory /home/runner/workspace"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global user.name \"Dr Jan Duffy\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git config --global user.email \"your-email@example.com\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Add all changes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git add ."
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Commit with descriptive message including timestamp"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git commit -m \"Update: $(date '+%Y-%m-%d %H:%M:%S')\" || echo \"No changes to commit\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Push to remote with better error handling"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git push -u origin main --force || (git pull --rebase && git push -u origin main)"
+
+[[workflows.workflow]]
+name = "Git Maintenance"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Prune remote tracking branches"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git remote prune origin"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Garbage collection to optimize repository"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git gc --aggressive --prune=now"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Verify repository integrity"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git fsck --full"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Show repository status"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git status"
+
+[[workflows.workflow]]
+name = "Sync From GitHub"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean up any Git lock files first"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .git/index.lock .git/config.lock .git/refs/remotes/origin/main.lock 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Force reset to match GitHub exactly (use with caution!)"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git fetch origin"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git reset --hard origin/main"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean untracked files"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "git clean -fd"

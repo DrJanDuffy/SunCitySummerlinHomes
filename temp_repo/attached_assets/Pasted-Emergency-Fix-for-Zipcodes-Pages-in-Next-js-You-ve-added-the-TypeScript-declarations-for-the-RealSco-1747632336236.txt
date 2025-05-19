@@ -1,0 +1,92 @@
+Emergency Fix for Zipcodes Pages in Next.js
+You've added the TypeScript declarations for the RealScout components, but you're still facing the Link component error in your zipcodes pages. This is a separate issue that needs to be addressed.
+Option 1: Switch to Server-Side Rendering (Quickest Solution)
+Modify your next.config.js to use server-side rendering instead of static generation:
+javascript/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone',  // This switches from static export to SSR
+  typescript: {
+    // Optional: only add this if you still have TypeScript errors
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    // Optional: only add this if you still have ESLint errors
+    ignoreDuringBuilds: true,
+  },
+};
+
+module.exports = nextConfig;
+This is the fastest way to get your site deployed without having to fix the Link components in the zipcodes pages.
+Option 2: Temporarily Replace Zipcodes Pages
+If Option 1 doesn't work, create simplified versions of your zipcodes pages:
+
+In /pages/zipcodes/index.tsx, replace everything with:
+
+tsximport React from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
+
+export default function ZipcodesPage() {
+  return (
+    <div>
+      <Head>
+        <title>Las Vegas Zipcodes | Sun City Summerlin</title>
+      </Head>
+      <h1>Las Vegas Zipcodes</h1>
+      <p>We're updating our zipcodes search. Please check back soon.</p>
+      <Link href="/">Return to Home</Link>
+    </div>
+  );
+}
+
+In /pages/zipcodes/[zipcode].tsx, replace everything with:
+
+tsximport React from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
+export default function ZipcodePage() {
+  const router = useRouter();
+  const { zipcode } = router.query;
+  
+  return (
+    <div>
+      <Head>
+        <title>Zipcode {zipcode} | Sun City Summerlin</title>
+      </Head>
+      <h1>Zipcode: {zipcode}</h1>
+      <p>We're updating our zipcode information. Please check back soon.</p>
+      <Link href="/zipcodes">Back to All Zipcodes</Link>
+    </div>
+  );
+}
+
+// Add this to provide paths for static generation
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking'
+  };
+}
+
+export async function getStaticProps() {
+  return {
+    props: {}
+  };
+}
+Option 3: Fix the Link Component Issue
+If you want to preserve your current zipcodes pages, the specific issue is with how you're using the Link component. Open your zipcodes pages and check for:
+
+Old style Link usage with <a> tag children:
+jsx<Link href="/some-path">
+  <a className="some-class">Link text</a>
+</Link>
+
+Replace with new style (for Next.js 13+):
+jsx<Link href="/some-path" className="some-class">
+  Link text
+</Link>
+
+
+I recommend trying Option 1 first, as it's the quickest way to get your site deployed without having to modify your content.
