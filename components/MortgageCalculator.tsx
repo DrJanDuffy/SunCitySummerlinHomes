@@ -27,7 +27,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({
 
   useEffect(() => {
     calculateMortgage();
-  }, [price, downPayment, interestRate, loanTerm, taxRate, insuranceRate]);
+  }, [price, downPayment, interestRate, loanTerm, taxRate, insuranceRate, calculateMortgage]);
 
   useEffect(() => {
     // Update downPaymentPercent when downPayment changes

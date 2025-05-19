@@ -18,11 +18,7 @@ const nextConfig = {
   },
   env: {
     siteUrl: 'https://suncitysummerlin.com',
-  },
-  // Enable dev origins for preview
-  allowedDevOrigins: process.env.REPLIT_DOMAINS ? 
-    [process.env.REPLIT_DOMAINS.split(",")[0]] : 
-    undefined
+  }
 };
 
 module.exports = nextConfig;
