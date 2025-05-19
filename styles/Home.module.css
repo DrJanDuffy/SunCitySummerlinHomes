@@ -780,37 +780,37 @@
     align-items: center;
     padding: 1rem 0;
   }
-  
+
   .logoContainer {
     margin-bottom: 1rem;
     text-align: center;
   }
-  
+
   .logoText {
     align-items: center;
   }
-  
+
   .headerRight {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .nav {
     margin-right: 0;
     margin-bottom: 1rem;
     width: 100%;
   }
-  
+
   .navLinks {
     justify-content: center;
     margin-bottom: 1rem;
   }
-  
+
   .navLink {
     margin: 0 0.8rem;
     font-size: 0.9rem;
   }
-  
+
   .headerActions {
     justify-content: center;
     width: 100%;
@@ -839,27 +839,38 @@
   .logo {
     font-size: 1.5rem;
   }
-  
+
   .subLogo {
     font-size: 0.8rem;
   }
-  
+
   .navLinks {
     display: none;
   }
-  
+
+  .navLinksActive {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .navLinksActive .navLink {
+    padding: 0.5rem;
+    text-align: center;
+    margin: 0;
+  }
+
   .mobileMenuButton {
     display: flex;
   }
-  
+
   .phoneButton {
     padding: 0.4rem 0.8rem;
   }
-  
+
   .phoneIcon {
     font-size: 0.9rem;
   }
-  
+
   .phoneNumber {
     font-size: 0.8rem;
   }
@@ -878,11 +889,11 @@
   .logo {
     font-size: 1.3rem;
   }
-  
+
   .headerLogo {
     height: 24px;
   }
-  
+
   .subLogo {
     font-size: 0.7rem;
   }
