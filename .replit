@@ -14,9 +14,7 @@ build = ["sh", "-c", "npm run build"]
 deploymentTarget = "cloudrun"
 run = ["sh", "-c", "npx serve -s .next/standalone -l 3000"]
 
-[[deployment.rewrites]]
-from = "/*"
-to = "/index.html"
+# Removed the rewrite rule as it's not needed for Next.js standalone mode
 
 [[deployment.responseHeaders]]
 path = "/*"
