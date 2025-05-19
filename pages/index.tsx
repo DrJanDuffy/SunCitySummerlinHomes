@@ -83,7 +83,7 @@ const Home: NextPage = () => {
 
       <header className={styles.header}>
         <div className={styles.logoContainer}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
+          <img src="/bhhs-logo.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
           <div className={styles.logoText}>
             <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
             <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>

@@ -29,7 +29,7 @@ const Contact: NextPage = () => {
 
       <header className={styles.header}>
         <div className={styles.logoContainer}>
-          <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
+          <img src="/bhhs-logo.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
           <div className={styles.logoText}>
             <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
             <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
@@ -44,7 +44,7 @@ const Contact: NextPage = () => {
           <Link href="/testimonials">Testimonials</Link>
           <Link href="/contact">Contact</Link>
         </nav>
-      </header>
+      </header>er>
 
       <main className={styles.main}>
         <section className={`${styles.contactSection} ${isVisible ? styles.fadeIn : ''}`}>
