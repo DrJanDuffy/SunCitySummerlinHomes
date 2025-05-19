@@ -62,8 +62,8 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>BHHS | Sun City Summerlin Homes</title>
-        <meta name="description" content="Luxury homes in Sun City Summerlin community offered by Berkshire Hathaway HomeServices" />
+        <title>Sun City Summerlin Las Vegas | 55+ Community Homes | Dr. Jan Duffy, REALTOR®</title>
+        <meta name="description" content="Sun City Summerlin REALTOR® Dr. Jan Duffy specializes in Las Vegas' premier 55+ Del Webb community. 25+ years helping active adults find low-maintenance single-story homes." />
         <link rel="icon" href="/favicon.ico" />
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -83,7 +83,10 @@ const Home: NextPage = () => {
       <header className={styles.header}>
         <div className={styles.logoContainer}>
           <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
-          <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+          <div className={styles.logoText}>
+            <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+            <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
+          </div>
         </div>
         <nav className={styles.nav}>
           <Link href="/">Home</Link>
@@ -112,8 +115,14 @@ const Home: NextPage = () => {
           <div className={styles.heroContent}>
             <h1 className={styles.title}>Luxury Living in Sun City Summerlin</h1>
             <p className={styles.subtitle}>
-              Experience resort-style living in Las Vegas' premier 55+ active adult community with mountain views and championship golf
+              Experience resort-style living in Las Vegas' premier 55+ active adult community with Dr. Jan Duffy, your REALTOR® specialist with 25+ years of experience
             </p>
+            <div className={styles.credentials}>
+              <span className={styles.credentialItem}>📍 Del Webb Community Expert</span>
+              <span className={styles.credentialItem}>🏠 Low-Maintenance Single-Story Homes</span>
+              <span className={styles.credentialItem}>⛳ Golf Course Properties</span>
+              <span className={styles.credentialItem}>👨‍👩‍👧‍👧 80+ Social Clubs</span>
+            </div>
             <div className={styles.ctaContainer}>
               <button className={styles.cta}>Schedule a Viewing</button>
               <button 
@@ -337,15 +346,19 @@ const Home: NextPage = () => {
           <div className={styles.contactInfo}>
             <div className={styles.infoItem}>
               <h3>Address</h3>
-              <p>10000 Sun City Blvd, Las Vegas, NV 89134</p>
+              <p>9406 Del Webb Boulevard, Las Vegas, NV 89134</p>
             </div>
             <div className={styles.infoItem}>
               <h3>Phone</h3>
-              <p>(702) 123-4567</p>
+              <p>(702) 718-0043</p>
             </div>
             <div className={styles.infoItem}>
               <h3>Email</h3>
-              <p>info@suncitysummerlinhomes.com</p>
+              <p>jan@lasvegas55plushomes.com</p>
+            </div>
+            <div className={styles.infoItem}>
+              <h3>Website</h3>
+              <p><a href="http://lasvegas55plushomes.com/" target="_blank" rel="noopener noreferrer">lasvegas55plushomes.com</a></p>
             </div>
           </div>
         </section>
@@ -354,12 +367,25 @@ const Home: NextPage = () => {
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
           <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
-          <p>&copy; 2023 Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>Sun City Summerlin REALTOR® Dr. Jan Duffy - Serving Las Vegas since 2013</p>
         </div>
         <div className={styles.footerLinks}>
           <a href="https://www.bhhs.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
           <a href="https://www.bhhs.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of Service</a>
           <a href="https://www.bhhs.com/" target="_blank" rel="noopener noreferrer">BHHS.com</a>
+        </div>
+        <div className={styles.socialLinks}>
+          <h3>Connect With Dr. Jan</h3>
+          <div className={styles.socialIcons}>
+            <a href="https://www.instagram.com/drjanduffy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+            <a href="https://www.facebook.com/DrJanDuffyRealtorCentennialHills/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">👍</a>
+            <a href="https://www.pinterest.com/bhhsluxury/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">📌</a>
+            <a href="https://www.youtube.com/@DrDuffy" target="_blank" rel="noopener noreferrer" aria-label="YouTube">🎬</a>
+            <a href="https://x.com/drjanduffy" target="_blank" rel="noopener noreferrer" aria-label="Twitter">🐦</a>
+            <a href="https://www.linkedin.com/company/lvrmembers/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+            <a href="https://www.tiktok.com/@dr.janduffy" target="_blank" rel="noopener noreferrer" aria-label="TikTok">🎵</a>
+          </div>
         </div>
       </footer>
     </div>

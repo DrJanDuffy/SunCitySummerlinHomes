@@ -69,6 +69,15 @@ const Community: NextPage = () => {
               <p>
                 Built in three phases starting in 1989, the community consists of almost 8,000 attached and single-family homes. With more than two dozen floor plans ranging from 1,000 to 2,900 square feet, homes feature contemporary Mediterranean bungalow designs with characteristic terracotta roofing and stucco siding. Many properties front one of the community&apos;s renowned golf courses, with garage space specifically for golf carts.
               </p>
+              <div className={styles.realtorProfile}>
+                <h3>Your Sun City Summerlin Expert</h3>
+                <p>
+                  Dr. Jan Duffy has been specializing in Sun City Summerlin homes for over 25 years. As a Las Vegas REALTOR® dedicated to the 55+ community, Dr. Duffy provides personal tours, senior-specific market analysis, and simplified transactions designed specifically for retirees. With expertise in low-maintenance single-story homes near golf courses, pools, and the 80+ social clubs that make this community special, Dr. Duffy is your trusted guide to finding the perfect home in this premier Del Webb community.
+                </p>
+                <p>
+                  As both a veteran-owned and women-owned business, Dr. Duffy's practice is dedicated to accessible, inclusive service for all clients. Contact (702) 718-0043 to schedule a consultation today.
+                </p>
+              </div>
             </div>
           </div>
         </section>

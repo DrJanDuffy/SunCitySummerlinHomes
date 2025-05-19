@@ -22,15 +22,18 @@ const Contact: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Contact | BHHS Sun City Summerlin</title>
-        <meta name="description" content="Contact us about properties in Sun City Summerlin" />
+        <title>Contact Dr. Jan Duffy | Sun City Summerlin Las Vegas REALTOR®</title>
+        <meta name="description" content="Contact Dr. Jan Duffy, specialized REALTOR® with 25+ years of experience in Sun City Summerlin. Call (702) 718-0043 for personalized assistance." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header className={styles.header}>
         <div className={styles.logoContainer}>
           <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.bhsLogo} />
-          <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+          <div className={styles.logoText}>
+            <h1 className={styles.logo}>Sun City Summerlin Homes</h1>
+            <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
+          </div>
         </div>
         <nav className={styles.nav}>
           <Link href="/">Home</Link>
@@ -98,21 +101,24 @@ const Contact: NextPage = () => {
           <div className={styles.contactInfo}>
             <div className={styles.infoItem}>
               <h3>Address</h3>
-              <p>10000 Sun City Blvd, Las Vegas, NV 89134</p>
+              <p>9406 Del Webb Boulevard, Las Vegas, NV 89134</p>
             </div>
             <div className={styles.infoItem}>
               <h3>Phone</h3>
-              <p>(702) 123-4567</p>
+              <p>(702) 718-0043</p>
             </div>
             <div className={styles.infoItem}>
               <h3>Email</h3>
-              <p>info@suncitysummerlinhomes.com</p>
+              <p>jan@lasvegas55plushomes.com</p>
             </div>
             <div className={styles.infoItem}>
               <h3>Office Hours</h3>
-              <p>Monday-Friday: 9am-5pm</p>
-              <p>Saturday: 10am-4pm</p>
-              <p>Sunday: Closed</p>
+              <p>Every day: 6:00 AM–9:00 PM</p>
+              <p><small>Closed on major holidays</small></p>
+            </div>
+            <div className={styles.infoItem}>
+              <h3>Website</h3>
+              <p><a href="http://lasvegas55plushomes.com/" target="_blank" rel="noopener noreferrer">lasvegas55plushomes.com</a></p>
             </div>
           </div>
           
@@ -131,12 +137,25 @@ const Contact: NextPage = () => {
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
           <img src="/bhhs-logo.png" alt="BHHS Logo" className={styles.footerLogo} />
-          <p>&copy; 2023 Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>Sun City Summerlin REALTOR® Dr. Jan Duffy - Serving Las Vegas since 2013</p>
         </div>
         <div className={styles.footerLinks}>
           <a href="https://www.bhhs.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
           <a href="https://www.bhhs.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of Service</a>
           <a href="https://www.bhhs.com/" target="_blank" rel="noopener noreferrer">BHHS.com</a>
+        </div>
+        <div className={styles.socialLinks}>
+          <h3>Connect With Dr. Jan</h3>
+          <div className={styles.socialIcons}>
+            <a href="https://www.instagram.com/drjanduffy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+            <a href="https://www.facebook.com/DrJanDuffyRealtorCentennialHills/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">👍</a>
+            <a href="https://www.pinterest.com/bhhsluxury/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">📌</a>
+            <a href="https://www.youtube.com/@DrDuffy" target="_blank" rel="noopener noreferrer" aria-label="YouTube">🎬</a>
+            <a href="https://x.com/drjanduffy" target="_blank" rel="noopener noreferrer" aria-label="Twitter">🐦</a>
+            <a href="https://www.linkedin.com/company/lvrmembers/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+            <a href="https://www.tiktok.com/@dr.janduffy" target="_blank" rel="noopener noreferrer" aria-label="TikTok">🎵</a>
+          </div>
         </div>
       </footer>
     </div>

@@ -356,10 +356,28 @@
   .communityMedia {
     grid-template-columns: 1fr;
   }
-  
+
   .testimonialGrid {
     grid-template-columns: 1fr;
   }
+}
+
+.credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.credentialItem {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ctaContainer {
@@ -642,57 +660,6 @@
 
 .thumbnails::-webkit-scrollbar {
   height: 6px;
-
-.testimonialsSection {
-  margin-bottom: 4rem;
-  background-color: #f9f9f9;
-  padding: 3rem 2rem;
-  border-radius: 10px;
-}
-
-.testimonialContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.testimonialCard {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.testimonialCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.testimonialRating {
-  margin-bottom: 1rem;
-}
-
-.star {
-  color: #ffcc00;
-  font-size: 1.2rem;
-  margin-right: 2px;
-}
-
-.testimonialText {
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-
-.testimonialAuthor {
-  font-weight: bold;
-  color: #333;
-  text-align: right;
-}
-
 }
 
 .thumbnails::-webkit-scrollbar-track {
@@ -851,11 +818,53 @@
 
 .footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 2rem 0;
   border-top: 1px solid #eaeaea;
-  color: #666;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.socialLinks {
+  margin-top: 1rem;
+}
+
+.socialLinks h3 {
+  margin-bottom: 0.5rem;
+  color: #8e1f41;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialIcons a {
+  font-size: 1.5rem;
+  color: #555;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.socialIcons a:hover {
+  transform: scale(1.2);
+}
+
+.realtorProfile {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.realtorProfile h3 {
+  color: #8e1f41;
+  margin-top: 0;
+  border-bottom: 2px solid #8e1f41;
+  padding-bottom: 0.5rem;
 }
 
 .footerBranding {
