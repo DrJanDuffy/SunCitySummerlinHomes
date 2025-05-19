@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
+// Import AOS styles
+import 'aos/dist/aos.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
