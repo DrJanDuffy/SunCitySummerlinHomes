@@ -1,4 +1,3 @@
-
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -14,7 +13,7 @@ import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  
+
   useEffect(() => {
     // Suppress browser extension warnings (Dashlane, etc.)
     const cleanupWarnings = suppressExtensionWarnings();
@@ -127,7 +126,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
         strategy="afterInteractive"
       />
-      
+
       <PageTransition key={router.asPath}>
         <Component {...pageProps} />
       </PageTransition>
