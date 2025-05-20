@@ -142,7 +142,7 @@ const Properties = () => {
     maxPrice: 1000000,
     bedrooms: 0,
     bathrooms: 0,
-    features: []
+    features: [] as string[]
   });
 
   const fetchProperties = async () => {

@@ -5,7 +5,6 @@ const nextConfig = {
   // For Next.js 14 and React 19
   experimental: {
     // Experimental features for improved compatibility
-    serverActions: true,
   },
   // For images, ensure you're using the latest format
   images: {
