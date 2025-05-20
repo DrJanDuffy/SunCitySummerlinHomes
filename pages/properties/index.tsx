@@ -121,7 +121,6 @@ const schemaData = {
           "@type": "PostalAddress",
           "addressLocality": "Las Vegas",
           "addressRegion": "NV",
-          "addressRegion": "NV",
           "postalCode": "89134"
         },
         "offers": {
