@@ -1,4 +1,3 @@
-
 .container {
   padding: 0 1rem;
   max-width: 1200px;
@@ -175,27 +174,27 @@
   .title {
     font-size: 2rem;
   }
-  
+
   .subtitle {
     font-size: 1rem;
   }
-  
+
   .mapContainer {
     height: 400px;
   }
-  
+
   .mapControls {
     overflow-x: auto;
   }
-  
+
   .filterButtons {
     width: 100%;
   }
-  
+
   .mapActions {
     flex-direction: column;
   }
-  
+
   .actionButton {
     width: 100%;
     text-align: center;
@@ -206,7 +205,6 @@
 .mapContainer :global(.neighborhood-info h3) {
   color: #235d89;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
 }
 
 .mapContainer :global(.neighborhood-info p) {
