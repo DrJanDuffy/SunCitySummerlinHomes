@@ -1,99 +1,12 @@
+tags.
+
+```
+<replit_final_file>
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
-
-// Define property type
-interface Property {
-  id: number;
-  title: string;
-  price: number;
-  bedrooms: number;
-  bathrooms: number;
-  sqft: number;
-  propertyType: string;
-  address: string;
-  image: string;
-  features: string[];
-}
-
-// Structured data component for accessible properties
-const AccessiblePropertySchema = () => (
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org/",
-        "@type": "WebPage",
-        "name": "Senior-Friendly Properties in Sun City Summerlin",
-        "description": "Find accessible homes with features like wheelchair access, grab bars, and walk-in showers in Sun City Summerlin.",
-        "url": "https://suncitysummerlin.com/search", // Replace with your actual URL
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://suncitysummerlin.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        },
-        "accessibilityAPI": "ARIA",
-        "accessibilityControl": ["fullKeyboardAccess", "fullTouchAccess", "screenReaderOptimization"],
-        "accessibilityFeature": ["wheelchairAccess", "grabBars", "walkInShower"],
-        "accessMode": ["visual", "textual"],
-        "accessModeSufficient": [
-          {
-            "@type": "ItemList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "WCAG 2.1 AA"
-              }
-            ]
-          }
-        ]
-      }),
-    }}
-  />
-);
-
-// Structured data component for senior real estate services
-const SeniorRealEstateService = () => (
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "RealEstateAgent",
-        "name": "Dr. Jan Duffy",
-        "description": "Specializing in senior community real estate in Sun City Summerlin. Helping seniors find the perfect home to enjoy their retirement.",
-        "url": "https://suncitysummerlin.com", // Replace with your website URL
-        "telephone": "+1-702-555-1234", // Replace with Dr. Duffy's phone number
-        "email": "jan.duffy@example.com", // Replace with Dr. Duffy's email
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "123 Main St", // Replace with Dr. Duffy's office address
-          "addressLocality": "Las Vegas",
-          "addressRegion": "NV",
-          "postalCode": "89101",
-          "addressCountry": "US"
-        },
-        "priceRange": "$300,000-$1,000,000+",
-        "image": "https://example.com/dr-jan-duffy.jpg", // Replace with Dr. Duffy's professional headshot
-        "agentAssociatedWith": {
-          "@type": "RealEstateAgency",
-          "name": "Berkshire Hathaway HomeServices",
-          "url": "https://www.bhhs.com/"
-        },
-        "serviceArea": {
-          "@type": "City",
-          "name": "Sun City Summerlin"
-        },
-        "knowsAbout": ["Senior Living", "Retirement Communities", "55+ Communities", "Accessibility Features"],
-        "additionalType": "http://www.productontology.org/id/Real_estate_agent"
-      }),
-    }}
-  />
-);
 
 const PropertySearch: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -104,26 +17,12 @@ const PropertySearch: NextPage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Accessibility Filters
-  const [showAccessibilityFilters, setShowAccessibilityFilters] = useState(false);
-  const [activeAccessibilityFilters, setActiveAccessibilityFilters] = useState({});
-
-  const accessibilityFeatures = [
-    { id: "wheelchairAccess", label: "Wheelchair Access", important: true },
-    { id: "grabBars", label: "Grab Bars in Bathrooms", important: true },
-    { id: "walkInShower", label: "Walk-In Shower" },
-    { id: "leverHandles", label: "Lever Handles on Doors" },
-    { id: "ramps", label: "Ramps" },
-    { id: "wideDoorways", label: "Wide Doorways" },
-    { id: "elevator", label: "Elevator (if multi-story)" }
-  ];
-
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   // Mock property data - in a real implementation, this would come from an API
-  const mockProperties: Property[] = [
+  const mockProperties = [
     {
       id: 1,
       title: "Elegant Single-Story Home",
@@ -134,7 +33,7 @@ const PropertySearch: NextPage = () => {
       propertyType: "Single-Story",
       address: "10243 Sun City Blvd, Las Vegas, NV 89134",
       image: "/property1.jpg",
-      features: ["Golf Course View", "Patio", "Updated Kitchen", "Wheelchair Access"]
+      features: ["Golf Course View", "Patio", "Updated Kitchen"]
     },
     {
       id: 2,
@@ -146,7 +45,7 @@ const PropertySearch: NextPage = () => {
       propertyType: "Single-Story",
       address: "9876 Del Webb Blvd, Las Vegas, NV 89134",
       image: "/property2.jpg",
-      features: ["Pool", "Spa", "Mountain View", "Grab Bars in Bathrooms"]
+      features: ["Pool", "Spa", "Mountain View"]
     },
     {
       id: 3,
@@ -158,24 +57,16 @@ const PropertySearch: NextPage = () => {
       propertyType: "Patio Home",
       address: "2468 Sunshine Way, Las Vegas, NV 89134",
       image: "/property3.jpg",
-      features: ["Updated Flooring", "Open Floor Plan", "Desert Landscaping", "Walk-In Shower"]
+      features: ["Updated Flooring", "Open Floor Plan", "Desert Landscaping"]
     }
   ];
-
-  const handleAccessibilityFilterChange = (e: any) => {
-    const { name, checked } = e.target;
-    setActiveAccessibilityFilters(prevFilters => ({
-      ...prevFilters,
-      [name]: checked
-    }));
-  };
 
   const handleSearch = () => {
     setIsLoading(true);
 
     // Simulate API call with setTimeout
     setTimeout(() => {
-      let filtered = mockProperties.filter(property => {
+      const filtered = mockProperties.filter(property => {
         const matchesPrice = property.price >= priceRange[0] && property.price <= priceRange[1];
         const matchesBeds = bedrooms === "any" || property.bedrooms === parseInt(bedrooms);
         const matchesBaths = bathrooms === "any" || property.bathrooms === parseFloat(bathrooms);
@@ -184,24 +75,12 @@ const PropertySearch: NextPage = () => {
         return matchesPrice && matchesBeds && matchesBaths && matchesType;
       });
 
-      // Apply accessibility filters
-      filtered = filtered.filter(property => {
-        for (const featureId in activeAccessibilityFilters) {
-          if (activeAccessibilityFilters[featureId] === true) {
-            if (!property.features.includes(featureId)) {
-              return false;
-            }
-          }
-        }
-        return true;
-      });
-
       setSearchResults(filtered);
       setIsLoading(false);
     }, 800);
   };
 
-  const formatPrice = (price: number): string => {
+  const formatPrice = (price) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -212,56 +91,39 @@ const PropertySearch: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Senior-Focused Property Search | Dr. Jan Duffy</title>
-        <meta name="description" content="Find the perfect Sun City Summerlin home with our specialized search tools for senior buyers. Filter by accessibility features and senior-friendly amenities." />
+        <title>Find Your Dream Home in Sun City Summerlin | Advanced Property Search</title>
+        <meta name="description" content="Search for your perfect retirement home in Sun City Summerlin Las Vegas. Filter by price, bedrooms, bathrooms, and property type with our advanced search tools." />
+        <meta name="keywords" content="Sun City Summerlin homes for sale, Las Vegas 55+ community, retirement homes Las Vegas, golf course properties, single-story homes" />
+        <link rel="canonical" href="https://suncitysummerlin.com/search" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SeniorRealEstateService />
-      <AccessiblePropertySchema />
-      <div className={styles.searchContainer}>
 
+      <header className={styles.header}>
+        <div className={styles.logoContainer}>
+          <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
+          <div className={styles.logoText}>
+            <p className={styles.logo}>Sun City Summerlin Homes</p>
+            <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
+          </div>
+        </div>
+        <nav className={styles.nav}>
+          <Link href="/">Home</Link>
+          <Link href="/properties">Properties</Link>
+          <Link href="/community">Community</Link>
+          <Link href="/lifestyle">Lifestyle</Link>
+          <Link href="/amenities">Amenities</Link>
+          <Link href="/zipcodes">Zipcodes</Link>
+          <Link href="/testimonials">Testimonials</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
+      </header>
+
+      <main className={`${styles.main} ${isVisible ? styles.fadeIn : ''}`}>
+        <section className={styles.searchSection}>
+          <h1 className={styles.pageTitle}>Find Your Dream Home in Sun City Summerlin</h1>
+
+          <div className={styles.searchContainer}>
             <div className={styles.searchFilters}>
-              <div className={styles.accessibilityToggle}>
-                <button 
-                  onClick={() => setShowAccessibilityFilters(!showAccessibilityFilters)}
-                  className={styles.accessibilityButton}
-                  aria-expanded={showAccessibilityFilters}
-                  aria-controls="senior-property-filters"
-                >
-                  {showAccessibilityFilters ? 'Hide Accessibility Filters' : 'Show Accessibility Filters'} 
-                  <span aria-hidden="true">♿</span>
-                </button>
-                <p className={styles.accessibilityNote}>Find properties with senior-friendly features</p>
-              </div>v>
-
-              {showAccessibilityFilters && (
-                <div id="senior-property-filters" className={styles.accessibilityFilters}>
-                  <h3>Accessibility Features</h3>
-                  <div className={styles.accessibilityGrid}>
-                    {accessibilityFeatures.map(feature => (
-                      <div key={feature.id} className={styles.accessibilityCheckbox}>
-                        <input
-                          type="checkbox"
-                          id={`feature-${feature.id}`}
-                          name={feature.id}
-                          checked={activeAccessibilityFilters[feature.id] || false}
-                          onChange={handleAccessibilityFilterChange}
-                          aria-label={feature.label}
-                        />
-                        <label htmlFor={`feature-${feature.id}`}>
-                          {feature.label}
-                          {feature.important && <span className={styles.importantFeature} title="Highly recommended for seniors">★</span>}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                  <div className={styles.filterSummary}>
-                    <span className={styles.filterCount} id="filter-count">
-                      {searchResults.length} properties match accessibility criteria
-                    </span>
-                  </div>
-                </div>
-              )}
-
               <div className={styles.filterGroup}>
                 <label htmlFor="priceRange">Price Range:</label>
                 <div className={styles.dualSlider}>
@@ -397,6 +259,7 @@ const PropertySearch: NextPage = () => {
               )}
             </div>
           </div>
+        </section>
 
         <section className={styles.searchTips}>
           <h2>Home Search Tips for Sun City Summerlin</h2>
@@ -419,7 +282,8 @@ const PropertySearch: NextPage = () => {
             </div>
           </div>
         </section>
-      </div>
+      </main>
+
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
           <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.footerLogo} />
@@ -451,4 +315,4 @@ const PropertySearch: NextPage = () => {
   );
 };
 
-export default PropertySearch;t default PropertySearch;
+export default PropertySearch;
