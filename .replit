@@ -2266,3 +2266,16 @@ args = "# Start development server with optimizations"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NEXT_TELEMETRY_DISABLED=1 npm run dev"
+
+[[workflows.workflow]]
+name = "Run TypeScript Type Check"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Run TypeScript compiler to check for type errors"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsc --noEmit --pretty pages/search/index.tsx"
