@@ -1,0 +1,85 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "RealEstateListing",
+        "name": "Single-Story Villa in Sun City Summerlin",
+        "description": "Beautiful 2-bedroom, 2-bath single-story villa with accessibility features in Highland Falls neighborhood of Sun City Summerlin. Zero-step entry, wide doorways, and updated kitchen.",
+        "url": "https://suncitysummerlinhomesforsale.com/property/123456",
+        "image": "https://suncitysummerlinhomesforsale.com/images/properties/highland-falls-villa.jpg",
+        "numberOfRooms": 2,
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": 1600,
+          "unitCode": "SqFt"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "2508 Faiss Drive",
+          "addressLocality": "Las Vegas",
+          "addressRegion": "NV",
+          "postalCode": "89134",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 36.2095,
+          "longitude": -115.2968
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": 350000,
+          "priceCurrency": "USD"
+        },
+        "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Single Story",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Zero Step Entry",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Wide Doorways",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Golf Course Access",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Community Pool",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Age-Restricted Community",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "RealEstateListing",
+        "name": "Luxury Golf Course Home in Eagle Crest",
+        "description": "Premium 3-bedroom, 2.5-bath single-level home with direct golf course views in Eagle Crest. Features gourmet kitchen, covered patio, and primary suite with walk-in shower.",
+        "url": "https://suncitysummerlinhomesforsale.com/property/123457",
+        "image": "https://suncitysummerlinhomesforsale.com/images/properties/eagle-crest-golf.jpg",
+        "numberOfRooms": 3,
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value
