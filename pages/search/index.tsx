@@ -273,7 +273,7 @@ const PropertySearch: NextPage = () => {
               <p>Consider proximity to recreation centers, shopping, and medical facilities when selecting your ideal neighborhood within Sun City.</p>
             </div>
             <div className={styles.tipCard}>
-              <h3>Updated Properties</h3>
+              <h3>Updated Properties</h3>>
               <p>Many homes have been renovated with modern finishes. Look for updated kitchens, bathrooms, and energy-efficient features.</p>
             </div>
           </div>
