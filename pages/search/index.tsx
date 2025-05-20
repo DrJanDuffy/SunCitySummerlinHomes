@@ -398,7 +398,7 @@ const PropertySearch: NextPage = () => {
             </div>
           </div>
 
-      <section className={styles.searchTips}>
+        <section className={styles.searchTips}>
           <h2>Home Search Tips for Sun City Summerlin</h2>
           <div className={styles.tipsGrid}>
             <div className={styles.tipCard}>
