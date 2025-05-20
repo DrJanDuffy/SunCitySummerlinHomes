@@ -121,6 +121,7 @@ const schemaData = {
           "@type": "PostalAddress",
           "addressLocality": "Las Vegas",
           "addressRegion": "NV",
+          "addressRegion": "NV",
           "postalCode": "89134"
         },
         "offers": {
@@ -169,7 +170,15 @@ const Properties = () => {
     fetchProperties();
   }, []);
 
-  const applyFilters = (newFilters) => {
+  // Adding type to fix TypeScript error
+  const applyFilters = (newFilters: {
+    minPrice?: number;
+    maxPrice?: number;
+    bedrooms?: number;
+    bathrooms?: number;
+    features?: string[];
+    [key: string]: any;
+  }) => {
     setFilters(newFilters);
 
     const filtered = properties.filter(property => {
