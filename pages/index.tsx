@@ -1,62 +1,86 @@
-
+import type { NextPage } from "next";
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
-import DynamicMap from '../components/DynamicMap';
-import RealEstateAgentSchema from '../components/RealEstateAgentSchema';
-import PropertyListingSchema from '../components/PropertyListingSchema';
-import CommunityStructuredData from '../components/CommunityStructuredData';
-import AccessiblePropertySchema from '../components/AccessiblePropertySchema';
-import SeniorRealEstateService from '../components/SeniorRealEstateService';
+import { useState, useEffect } from 'react';
 
-export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
+const Home: NextPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
-
-    // Initialize any client-side only features
-    if (typeof window !== 'undefined') {
-      // Add any client-side initialization code here
-    }
+    setIsVisible(true);
   }, []);
 
-  // Featured properties data
-  const featuredProperties = [
+  // Featured neighborhoods in Sun City Summerlin
+  const featuredNeighborhoods = [
     {
       id: 1,
-      title: "Luxury Single-Story Home",
-      price: 450000,
-      bedrooms: 3,
-      bathrooms: 2,
-      sqft: 2100,
-      address: "123 Del Webb Blvd, Las Vegas, NV 89134",
-      image: "/property1.jpg",
-      features: ["Single Story", "Golf Course View", "Updated Kitchen"]
+      name: "Eagle Crest",
+      description: "Luxurious homes with golf course views and modern amenities.",
+      image: "/property1.jpg"
     },
     {
       id: 2,
-      title: "Pristine Golf Course Villa",
-      price: 525000,
-      bedrooms: 2,
-      bathrooms: 2.5,
-      sqft: 2300,
-      address: "456 Sun City Pkwy, Las Vegas, NV 89134",
-      image: "/property2.jpg",
-      features: ["Golf Course", "Pool", "Casita"]
+      name: "Sun City Summerlin",
+      description: "Heart of the community with easy access to recreation centers.",
+      image: "/property2.jpg"
     },
     {
       id: 3,
-      title: "Updated Desert Modern Home",
-      price: 399000,
-      bedrooms: 2,
-      bathrooms: 2,
-      sqft: 1850,
-      address: "789 Rampart Blvd, Las Vegas, NV 89134",
-      image: "/property3.jpg",
-      features: ["Mountain View", "Renovated", "Private Courtyard"]
+      name: "Highland Falls",
+      description: "Stunning mountain and golf course views with premium properties.",
+      image: "/property3.jpg"
+    }
+  ];
+
+  // Community highlights
+  const communityHighlights = [
+    {
+      id: 1,
+      title: "Golf Courses",
+      description: "Three championship courses nestled in the desert landscape.",
+      icon: "⛳"
+    },
+    {
+      id: 2,
+      title: "Recreation Centers",
+      description: "Four modern centers with pools, fitness, and activity rooms.",
+      icon: "🏊"
+    },
+    {
+      id: 3,
+      title: "Community Activities",
+      description: "Over 80 clubs and social groups for all interests.",
+      icon: "👥"
+    },
+    {
+      id: 4,
+      title: "Restaurants & Shopping",
+      description: "Convenient dining and retail within the community.",
+      icon: "🛍️"
+    }
+  ];
+
+  // Testimonials
+  const testimonials = [
+    {
+      id: 1,
+      text: "Dr. Jan helped us find our dream home in Sun City. Her knowledge of the community was invaluable.",
+      author: "Robert & Mary S.",
+      location: "Eagle Crest"
+    },
+    {
+      id: 2,
+      text: "Moving from California was daunting, but Dr. Jan made the transition smooth and stress-free.",
+      author: "David L.",
+      location: "Highland Falls"
+    },
+    {
+      id: 3,
+      text: "As a senior looking for the perfect retirement home, I couldn't have asked for a better agent.",
+      author: "Patricia M.",
+      location: "Sun City Summerlin"
     }
   ];
 
@@ -65,29 +89,15 @@ export default function Home() {
       <Head>
         <title>Sun City Summerlin Las Vegas | Luxury 55+ Community Homes | Dr. Jan Duffy</title>
         <meta name="description" content="Find your dream home in Sun City Summerlin, Las Vegas' premier 55+ Del Webb community. Expert REALTOR® Dr. Jan Duffy brings 25+ years of experience in luxury single-story homes, golf course properties, and active adult living." />
-        <meta name="keywords" content="Sun City Summerlin, Las Vegas 55+ community, Del Webb homes, luxury single story homes, golf course properties, active adult living, Dr Jan Duffy realtor" />
-        <meta property="og:title" content="Sun City Summerlin Las Vegas | Luxury 55+ Community Homes" />
-        <meta property="og:description" content="Find your dream home in Sun City Summerlin, Las Vegas' premier 55+ Del Webb community with expert REALTOR® Dr. Jan Duffy." />
-        <meta property="og:image" content="/hero-bg.jpg" />
-        <meta property="og:url" content="https://suncitysummerlin.com" />
-        <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#8e1f41" />
-
-        {/* Preload critical images */}
-        <link rel="preload" as="image" href="/property1.jpg" />
-        <link rel="preload" as="image" href="/property2.jpg" />
-        <link rel="preload" as="image" href="/property3.jpg" />
-        <link rel="preload" as="image" href="/hero-bg.jpg" />
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.heroSection} data-aos="fade-in">
+        <section className={`${styles.hero} ${isVisible ? styles.visible : ''}`}>
           <div className={styles.heroContent}>
-            <h1 className={styles.title}>Sun City Summerlin Las Vegas</h1>
-            <h2 className={styles.subtitle}>Luxury 55+ Living in Las Vegas&apos; Premier Active Adult Community</h2>
-            <p className={styles.description}>Find your dream home with Las Vegas&apos; Sun City Summerlin expert, Dr. Jan Duffy</p>
+            <h1>Sun City Summerlin</h1>
+            <h2>Las Vegas' Premier 55+ Community</h2>
+            <p>Expert guidance from Dr. Jan Duffy, your Sun City Summerlin specialist</p>
             <div className={styles.heroCta}>
               <Link href="/properties" className={styles.primaryButton}>
                 View Properties
@@ -97,195 +107,102 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </div>
+        </section>
 
-        <section className={styles.introSection} data-aos="fade-up">
-          <div className={styles.introBadges}>
-            <div className={styles.badge}>
-              <span className={styles.badgeNumber}>25+</span>
-              <span className={styles.badgeText}>Years Experience</span>
-            </div>
-            <div className={styles.badge}>
-              <span className={styles.badgeNumber}>250+</span>
-              <span className={styles.badgeText}>Sun City Homes Sold</span>
-            </div>
-            <div className={styles.badge}>
-              <span className={styles.badgeNumber}>8,000+</span>
-              <span className={styles.badgeText}>Homes in Community</span>
-            </div>
-          </div>
-          <div className={styles.introContent}>
-            <h2>Welcome to Sun City Summerlin</h2>
-            <p>Sun City Summerlin is Las Vegas&apos; premier 55+ active adult community, featuring luxury single-story homes, world-class amenities, and stunning mountain and golf course views.</p>
-            <p>As a resident and REALTOR® specializing in this unique community, Dr. Jan Duffy provides unmatched expertise whether you&apos;re buying or selling in Sun City Summerlin.</p>
-            <div className={styles.introCta}>
-              <Link href="/community" className={styles.textButton}>
-                Learn About The Community
-              </Link>
-            </div>
+        <section className={styles.featuredSection}>
+          <h2 className={styles.sectionTitle}>Why Choose Sun City Summerlin?</h2>
+          <div className={styles.highlightsGrid}>
+            {communityHighlights.map(highlight => (
+              <div key={highlight.id} className={styles.highlightCard}>
+                <div className={styles.highlightIcon}>{highlight.icon}</div>
+                <h3>{highlight.title}</h3>
+                <p>{highlight.description}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section className={styles.featuredSection} data-aos="fade-up">
-          <h2 className={styles.sectionTitle}>Featured Properties</h2>
-          <p className={styles.sectionSubtitle}>Discover handpicked homes in Sun City Summerlin</p>
-
-          <div className={styles.propertyGrid}>
-            {featuredProperties.map(property => (
-              <div key={property.id} className={styles.propertyCard} data-aos="fade-up" data-aos-delay={(property.id - 1) * 100}>
-                <div className={styles.propertyImageContainer}>
-                  <img 
-                    src={property.image} 
-                    alt={property.title} 
-                    className={styles.propertyImage}
-                  />
-                  <div className={styles.propertyPrice}>${property.price.toLocaleString()}</div>
+        <section className={styles.neighborhoodsSection}>
+          <h2 className={styles.sectionTitle}>Featured Neighborhoods</h2>
+          <div className={styles.neighborhoodsGrid}>
+            {featuredNeighborhoods.map(neighborhood => (
+              <div key={neighborhood.id} className={styles.neighborhoodCard}>
+                <div className={styles.neighborhoodImage}>
+                  <img src={neighborhood.image} alt={neighborhood.name} />
                 </div>
-                <div className={styles.propertyContent}>
-                  <h3 className={styles.propertyTitle}>{property.title}</h3>
-                  <p className={styles.propertyAddress}>{property.address}</p>
-                  <div className={styles.propertySpecs}>
-                    <span>{property.bedrooms} bd</span>
-                    <span>{property.bathrooms} ba</span>
-                    <span>{property.sqft.toLocaleString()} sqft</span>
-                  </div>
-                  <div className={styles.propertyFeatures}>
-                    {property.features.map((feature, index) => (
-                      <span key={index} className={styles.featureTag}>{feature}</span>
-                    ))}
-                  </div>
-                  <Link href={`/properties?id=${property.id}`} className={styles.viewPropertyButton}>
-                    View Details
+                <div className={styles.neighborhoodInfo}>
+                  <h3>{neighborhood.name}</h3>
+                  <p>{neighborhood.description}</p>
+                  <Link href="/neighborhoods" className={styles.learnMoreLink}>
+                    Learn More
                   </Link>
                 </div>
               </div>
             ))}
           </div>
-
-          <div className={styles.sectionCta}>
-            <Link href="/properties" className={styles.primaryButton}>
-              Browse All Properties
-            </Link>
-          </div>
         </section>
 
-        <section className={styles.communitySection} data-aos="fade-up">
-          <h2 className={styles.sectionTitle}>Life in Sun City Summerlin</h2>
-          <p className={styles.sectionSubtitle}>Enjoy luxury living with world-class amenities</p>
-
-          <div className={styles.amenitiesGrid}>
-            <div className={styles.amenityCard} data-aos="fade-up" data-aos-delay="0">
-              <img src="/golf-course.jpg" alt="Golf Course" className={styles.amenityImage} />
-              <h3>Championship Golf</h3>
-              <p>Three 18-hole golf courses designed by Billy Casper and Greg Nash</p>
-            </div>
-            <div className={styles.amenityCard} data-aos="fade-up" data-aos-delay="100">
-              <img src="/community-center.jpg" alt="Community Center" className={styles.amenityImage} />
-              <h3>Community Centers</h3>
-              <p>Four community centers with pools, fitness, classes and social activities</p>
-            </div>
-            <div className={styles.amenityCard} data-aos="fade-up" data-aos-delay="200">
-              <img src="/shopping-plaza.jpg" alt="Shopping Plaza" className={styles.amenityImage} />
-              <h3>Shopping & Dining</h3>
-              <p>Convenient access to shopping centers, restaurants and medical facilities</p>
-            </div>
+        <section className={styles.testimonialSection}>
+          <h2 className={styles.sectionTitle}>What My Clients Say</h2>
+          <div className={styles.testimonialGrid}>
+            {testimonials.map(testimonial => (
+              <div key={testimonial.id} className={styles.testimonialCard}>
+                <p className={styles.testimonialText}>&ldquo;{testimonial.text}&rdquo;</p>
+                <p className={styles.testimonialAuthor}>{testimonial.author}</p>
+                <p className={styles.testimonialLocation}>{testimonial.location}</p>
+              </div>
+            ))}
           </div>
-
-          <div className={styles.sectionCta}>
-            <Link href="/lifestyle" className={styles.primaryButton}>
-              Explore Lifestyle
-            </Link>
-          </div>
-        </section>
-
-        <section className={styles.accessibilitySection} data-aos="fade-up">
-          <h2 className={styles.sectionTitle}>Senior-Friendly Features</h2>
-          <p className={styles.sectionSubtitle}>Homes designed with accessibility and comfort in mind</p>
-
-          <div className={styles.featuresGrid}>
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🏠</div>
-              <h3>Single-Story Living</h3>
-              <p>No stairs to navigate with convenient single-level floor plans</p>
-            </div>
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🚪</div>
-              <h3>Wide Doorways</h3>
-              <p>Accessible entry points for easy mobility</p>
-            </div>
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🛁</div>
-              <h3>Walk-in Showers</h3>
-              <p>Many homes feature step-free shower entry</p>
-            </div>
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🌡️</div>
-              <h3>Climate Control</h3>
-              <p>Efficient systems for year-round comfort</p>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.testimonialSection} data-aos="fade-up">
-          <h2 className={styles.sectionTitle}>Client Testimonials</h2>
-          <div className={styles.testimonialCard}>
-            <div className={styles.testimonialContent}>
-              <p>"Dr. Jan Duffy made our move to Sun City Summerlin seamless. Her knowledge of the community is unmatched, and she found us the perfect home that met all our needs."</p>
-              <div className={styles.testimonialAuthor}>- Robert & Mary Williams</div>
-            </div>
-          </div>
-
-          <div className={styles.sectionCta}>
-            <Link href="/testimonials" className={styles.textButton}>
+          <div className={styles.testimonialCta}>
+            <Link href="/testimonials" className={styles.secondaryButton}>
               Read More Testimonials
             </Link>
           </div>
         </section>
 
-        <section className={styles.mapSection} data-aos="fade-up">
-          <h2 className={styles.sectionTitle}>Explore Sun City Summerlin</h2>
-          <p className={styles.sectionSubtitle}>Located in the northwest Las Vegas valley with mountain views</p>
-
-          <div className={styles.mapContainer}>
-            {isLoaded && <DynamicMap />}
-          </div>
-
-          <div className={styles.sectionCta}>
-            <Link href="/map" className={styles.primaryButton}>
-              Interactive Community Map
+        <section className={styles.ctaSection}>
+          <h2>Ready to Find Your Dream Home in Sun City Summerlin?</h2>
+          <p>Let Dr. Jan Duffy guide you through the best 55+ community in Las Vegas</p>
+          <div className={styles.ctaButtons}>
+            <Link href="/properties" className={styles.primaryButton}>
+              Browse Properties
             </Link>
-          </div>
-        </section>
-
-        <section className={styles.contactSection} data-aos="fade-up">
-          <div className={styles.contactContent}>
-            <h2>Ready to Find Your Dream Home?</h2>
-            <p>Contact Dr. Jan Duffy for expert guidance on buying or selling in Sun City Summerlin.</p>
-            <div className={styles.contactLinks}>
-              <Link href="/contact" className={styles.primaryButton}>
-                Contact Dr. Jan
-              </Link>
-              <a href="tel:7027180043" className={styles.secondaryButton}>
-                Call (702) 718-0043
-              </a>
-            </div>
-          </div>
-          <div className={styles.brokerage}>
-            <p>Berkshire Hathaway HomeServices Nevada Properties</p>
-            <div className={styles.brokerageLogos}>
-              <img src="/bhhs-logo.png" alt="Berkshire Hathaway HomeServices" />
-              <img src="/bhhs-quality-seal-black.png" alt="Quality Service Certification" />
-            </div>
+            <Link href="/contact" className={styles.secondaryButton}>
+              Schedule a Consultation
+            </Link>
           </div>
         </section>
       </main>
 
-      {/* Structured Data for SEO */}
-      <RealEstateAgentSchema />
-      <PropertyListingSchema properties={featuredProperties} />
-      <CommunityStructuredData />
-      <AccessiblePropertySchema />
-      <SeniorRealEstateService />
+      <footer className={styles.footer}>
+        <div className={styles.footerBranding}>
+          <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.footerLogo} />
+          <p>&copy; {new Date().getFullYear()} Berkshire Hathaway HomeServices. All rights reserved.</p>
+          <p>Sun City Summerlin REALTOR® Dr. Jan Duffy - Serving Las Vegas since 2013</p>
+          <p>Dr Jan Duffy REALTOR® | CA to LV Relocation Expert @DrJanDuffy</p>
+          <p>Dr. Jan Duffy is a Nevada REALTOR® Making Dreams Come True in Las Vegas, Summerlin, Henderson, North Las Vegas, and Spring Valley Nevada. S.0197614.LL</p>
+          <p>Real Estate Las Vegas, NV <a href="https://drjanduffy.realscout.com/onboarding" target="_blank" rel="noopener noreferrer">drjanduffy.realscout.com/onboarding</a></p>
+        </div>
+        <div className={styles.footerLinks}>
+          <a href="https://www.bhhs.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          <a href="https://www.bhhs.com/terms-of-use" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+          <a href="https://www.bhhs.com/" target="_blank" rel="noopener noreferrer">BHHS.com</a>
+        </div>
+        <div className={styles.socialLinks}>
+          <h3>Connect With Dr. Jan</h3>
+          <div className={styles.socialIcons}>
+            <a href="https://www.instagram.com/drjanduffy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+            <a href="https://www.facebook.com/DrJanDuffyRealtorCentennialHills/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">👍</a>
+            <a href="https://www.pinterest.com/bhhsluxury/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">📌</a>
+            <a href="https://www.youtube.com/@DrDuffy" target="_blank" rel="noopener noreferrer" aria-label="YouTube">🎬</a>
+            <a href="https://x.com/drjanduffy" target="_blank" rel="noopener noreferrer" aria-label="Twitter">🐦</a>
+            <a href="https://www.linkedin.com/company/lvrmembers/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+            <a href="https://www.tiktok.com/@dr.janduffy" target="_blank" rel="noopener noreferrer" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
-}
+};
+
+export default Home;
