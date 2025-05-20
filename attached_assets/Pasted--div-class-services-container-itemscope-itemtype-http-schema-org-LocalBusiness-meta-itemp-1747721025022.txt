@@ -1,0 +1,42 @@
+<div class="services-container" itemscope itemtype="http://schema.org/LocalBusiness">
+  <meta itemprop="name" content="Dr. Jan Duffy, REALTOR - 55+ Community Specialist">
+  <meta itemprop="telephone" content="(702) 718-0043">
+  <meta itemprop="url" content="https://suncitysummerlinhomesforsale.com">
+  
+  <div class="service-item" itemprop="hasOfferCatalog" itemscope itemtype="http://schema.org/OfferCatalog">
+    <div class="service" itemprop="itemListElement" itemscope itemtype="http://schema.org/Offer">
+      <h3 itemprop="itemOffered" itemscope itemtype="http://schema.org/Service">
+        <span itemprop="name">Sun City Summerlin Buyer Representation</span>
+      </h3>
+      <p itemprop="description">Expert buyer representation for 55+ homebuyers in Sun City Summerlin. Our senior-focused services save you an average of 3.2% while finding accessible, low-maintenance properties. Includes golf community expert guidance, HOA evaluation, and Sun City-specific neighborhood tours.</p>
+    </div>
+
+    <div class="service" itemprop="itemListElement" itemscope itemtype="http://schema.org/Offer">
+      <h3 itemprop="itemOffered" itemscope itemtype="http://schema.org/Service">
+        <span itemprop="name">Luxury Property Sales in Sun City Summerlin</span>
+      </h3>
+      <p itemprop="description">Specialized luxury home marketing for discerning 55+ sellers and buyers. Expert in golf course properties, mountain view homes, and premium Del Webb designs with professional photography, virtual tours, and targeted campaigns to qualified active adult buyers.</p>
+    </div>
+
+    <div class="service" itemprop="itemListElement" itemscope itemtype="http://schema.org/Offer">
+      <h3 itemprop="itemOffered" itemscope itemtype="http://schema.org/Service">
+        <span itemprop="name">Senior Downsizing Specialist</span>
+      </h3>
+      <p itemprop="description">Complete downsizing coordination for 55+ homeowners transitioning to right-sized retirement living in Sun City Summerlin. Services include sorting belongings, estate sales coordination, packing assistance, and finding your perfect low-maintenance property.</p>
+    </div>
+    
+    <div class="service" itemprop="itemListElement" itemscope itemtype="http://schema.org/Offer">
+      <h3 itemprop="itemOffered" itemscope itemtype="http://schema.org/Service">
+        <span itemprop="name">Veterans Housing Benefits Expert</span>
+      </h3>
+      <p itemprop="description">Specialized assistance for senior veterans using VA loan benefits for Sun City Summerlin properties. Expert in navigating VA requirements for 55+ communities, securing COE verification, and maximizing entitlement benefits for Las Vegas retirement homes.</p>
+    </div>
+    
+    <div class="service" itemprop="itemListElement" itemscope itemtype="http://schema.org/Offer">
+      <h3 itemprop="itemOffered" itemscope itemtype="http://schema.org/Service">
+        <span itemprop="name">HOA Navigation Specialist</span>
+      </h3>
+      <p itemprop="description">Expert guidance for understanding Sun City Summerlin's HOA structure, fees, and regulations. Services include HOA financial health assessment, age-verification requirement assistance, and architectural guideline review for 55+ community buyers.</p>
+    </div>
+  </div>
+</div>
