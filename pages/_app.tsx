@@ -12,6 +12,8 @@ import { AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
 import { useRouter } from 'next/router';
 
+import Script from 'next/script';
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   
