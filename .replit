@@ -70,7 +70,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "Test Build After Fix"
+runButton = "Fix TypeScript Errors"
 
 [[workflows.workflow]]
 name = "Run"
@@ -2175,3 +2175,44 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npx tsc --noEmit"
+
+[[workflows.workflow]]
+name = "Fix TypeScript Errors"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean Next.js cache"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Use TypeScript compiler to locate errors"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsc --noEmit --pretty pages/search/index.tsx"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# View specific line numbers where errors occur"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"Checking problematic section of code:\""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "sed -n '395,410p' pages/search/index.tsx"
