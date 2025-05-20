@@ -1,0 +1,150 @@
+```typescript
+// Fix for pages/search/index.tsx TypeScript Error
+
+// Step 1: Define a proper interface for your property items
+interface Property {
+  id: number;
+  title: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: number;
+  propertyType: string;
+  address: string;
+  image: string;
+  features: string[];
+}
+
+// Step 2: Update your useState initialization with the proper type
+// Replace this:
+const [searchResults, setSearchResults] = useState([]);
+
+// With this:
+const [searchResults, setSearchResults] = useState<Property[]>([]);
+
+// Step 3: Make sure any utility functions handle the proper types
+const filterProperties = (properties: Property[], filters: any): Property[] => {
+  // Your filtering logic here
+  return properties.filter(property => {
+    // filtering conditions
+    return true; // replace with actual conditions
+  });
+};
+
+// Step 4: If you have any data fetching functions, ensure they return the correct type
+const fetchProperties = async (): Promise<Property[]> => {
+  // Your fetch logic
+  const response = await fetch('/api/properties');
+  const data = await response.json();
+  return data as Property[];
+};
+
+// Step 5: When calling setSearchResults, TypeScript will now properly recognize the type
+const handleSearch = () => {
+  setIsLoading(true);
+  
+  setTimeout(() => {
+    const filtered = allProperties.filter((property: Property) => {
+      // Your filter conditions
+      return true; // replace with actual conditions
+    });
+    
+    setSearchResults(filtered); // This will now work correctly
+    setIsLoading(false);
+  }, 800);
+};
+
+// Complete example of a search function implementation
+const handleSearch = () => {
+  setIsLoading(true);
+  
+  setTimeout(() => {
+    const filtered = allProperties.filter((property: Property) => {
+      // Filter by bedrooms if that filter is active
+      if (filters.bedrooms && property.bedrooms < filters.bedrooms) {
+        return false;
+      }
+      
+      // Filter by bathrooms if that filter is active
+      if (filters.bathrooms && property.bathrooms < filters.bathrooms) {
+        return false;
+      }
+      
+      // Filter by price range
+      if (filters.minPrice && property.price < filters.minPrice) {
+        return false;
+      }
+      if (filters.maxPrice && property.price > filters.maxPrice) {
+        return false;
+      }
+      
+      // Filter by property type
+      if (filters.propertyType && filters.propertyType !== 'all' && 
+          property.propertyType !== filters.propertyType) {
+        return false;
+      }
+      
+      // Filter by features
+      if (filters.features && filters.features.length > 0) {
+        const hasAllFeatures = filters.features.every((feature: string) => 
+          property.features.includes(feature)
+        );
+        if (!hasAllFeatures) {
+          return false;
+        }
+      }
+      
+      // If property passed all active filters, include it
+      return true;
+    });
+    
+    setSearchResults(filtered);
+    setIsLoading(false);
+  }, 800);
+};
+```
+
+This fix addresses the TypeScript error by properly typing your `searchResults` state and ensuring type safety throughout your search functionality. The error occurred because TypeScript was inferring the initial empty array as a `never[]` type (an array that can never contain anything), and then you were trying to assign a filtered array of property objects to it.
+
+By explicitly defining the `Property` interface and typing your state as `Property[]`, you're telling TypeScript exactly what kind of data your state will contain, resolving the type error.
+
+If you're using a more complex state structure or context for your property data, you may need to adjust the types accordingly, but this pattern will work for most search implementations.
+
+Additional TypeScript Best Practices for Next.js:
+
+1. **Type your props properly**:
+```typescript
+interface SearchPageProps {
+  initialProperties: Property[];
+}
+
+export default function SearchPage({ initialProperties }: SearchPageProps) {
+  // Component code
+}
+```
+
+2. **Use TypeScript for API routes**:
+```typescript
+// pages/api/properties.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Property[] | { message: string }>
+) {
+  // API logic
+}
+```
+
+3. **Type your context properly if using React Context**:
+```typescript
+interface PropertiesContextType {
+  properties: Property[];
+  setProperties: React.Dispatch<React.SetStateAction<Property[]>>;
+  loading: boolean;
+}
+
+const PropertiesContext = createContext<PropertiesContextType | undefined>(undefined);
+```
+
+By following these TypeScript best practices, you'll avoid similar type errors in the future and create more robust, maintainable code.
