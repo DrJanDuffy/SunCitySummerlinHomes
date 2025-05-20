@@ -1,0 +1,46 @@
+025-05-19T23:25:11Z info: Deployment: 79238b57-785f-4dec-b7b1-e3e2eaf6af19
+2025-05-19T23:25:11Z info: Build: 868c56d0-5465-4750-ae6a-16dd8b819f73
+2025-05-19T23:25:11Z info: Connecting to builder
+2025-05-19T23:25:14Z info: Builder connected
+2025-05-19T23:25:15Z info: Installing packages
+--> npm install
+
+
+added 1 package, and audited 342 packages in 6s
+
+  run `npm fund` for details
+
+
+1 critical severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+
+npm notice
+npm notice New major version of npm available! 10.9.0 -> 11.4.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.0
+npm notice To update run: npm install -g npm@11.4.0
+npm notice
+
+2025-05-19T23:25:22Z info: Starting Build
+
+> build
+> next build
+
+
+   Linting and checking validity of types ...
+
+
+Failed to compile.
+
+
+./pages/properties/index.tsx
+296:15  Error: Do not use an `<a>` element to navigate to `/contact/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+343:19  Error: Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+344:19  Error: Do not use an `<a>` element to navigate to `/properties/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+345:19  Error: Do not use an `<a>` element to navigate to `/community/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+346:19  Error: Do not use an `<a>` element to navigate to `/contact/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
