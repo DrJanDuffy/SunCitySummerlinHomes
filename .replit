@@ -10,7 +10,7 @@ channel = "stable-24_11"
 NEXT_TELEMETRY_DISABLED = "1"
 
 [deployment]
-build = ["sh", "-c", "NEXT_SUPPRESS_HYDRATION_WARNING=1 NODE_OPTIONS='--max-old-space-size=4096' npm run build"]
+build = ["sh", "-c", "NEXT_SUPPRESS_HYDRATION_WARNING=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run build"]
 deploymentTarget = "cloudrun"
 run = ["sh", "-c", "NODE_ENV=production node .next/standalone/server.js"]
 
