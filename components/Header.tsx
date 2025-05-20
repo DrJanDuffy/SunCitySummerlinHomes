@@ -16,6 +16,11 @@ const Header = () => {
     return paths.some(path => router.pathname.includes(path)) ? 
       `${styles.dropdownButton} ${styles.activeLink}` : styles.dropdownButton;
   };
+  
+  // Check if dropdown item is active
+  const isDropdownItemActive = (path: string) => {
+    return router.pathname === path ? `${styles.dropdownItem} ${styles.activeLink}` : styles.dropdownItem;
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -55,10 +60,10 @@ const Header = () => {
                   Properties <span className={styles.chevronIcon}>▼</span>
                 </span>
                 <div className={styles.dropdownContent}>
-                  <Link href="/properties" className={styles.dropdownItem}>Featured Listings</Link>
-                  <Link href="/search" className={styles.dropdownItem}>Search Properties</Link>
-                  <Link href="/properties/golf-course" className={styles.dropdownItem}>Golf Course Homes</Link>
-                  <Link href="/properties/new-listings" className={styles.dropdownItem}>New Listings</Link>
+                  <Link href="/properties" className={isDropdownItemActive('/properties')}>Featured Listings</Link>
+                  <Link href="/search" className={isDropdownItemActive('/search')}>Search Properties</Link>
+                  <Link href="/properties/golf-course" className={isDropdownItemActive('/properties/golf-course')}>Golf Course Homes</Link>
+                  <Link href="/properties/new-listings" className={isDropdownItemActive('/properties/new-listings')}>New Listings</Link>
                 </div>
               </div>
 
@@ -69,9 +74,10 @@ const Header = () => {
                   Community <span className={styles.chevronIcon}>▼</span>
                 </span>
                 <div className={styles.dropdownContent}>
-                  <Link href="/community" className={styles.dropdownItem}>About Sun City</Link>
-                  <Link href="/lifestyle" className={styles.dropdownItem}>Lifestyle</Link>
-                  <Link href="/amenities" className={styles.dropdownItem}>Amenities</Link>
+                  <Link href="/community" className={isDropdownItemActive('/community')}>About Sun City</Link>
+                  <Link href="/lifestyle" className={isDropdownItemActive('/lifestyle')}>Lifestyle</Link>
+                  <Link href="/amenities" className={isDropdownItemActive('/amenities')}>Amenities</Link>
+                  <Link href="/map" className={isDropdownItemActive('/map')}>Map</Link>
                 </div>
               </div>
 
@@ -80,9 +86,9 @@ const Header = () => {
                   Location <span className={styles.chevronIcon}>▼</span>
                 </span>
                 <div className={styles.dropdownContent}>
-                  <Link href="/zipcodes" className={styles.dropdownItem}>Zip Codes</Link>
-                  <Link href="/zipcodes/89134" className={styles.dropdownItem}>89134 Area</Link>
-                  <Link href="/zipcodes/89144" className={styles.dropdownItem}>89144 Area</Link>
+                  <Link href="/zipcodes" className={isDropdownItemActive('/zipcodes')}>Zip Codes</Link>
+                  <Link href="/zipcodes/89134" className={isDropdownItemActive('/zipcodes/89134')}>89134 Area</Link>
+                  <Link href="/zipcodes/89144" className={isDropdownItemActive('/zipcodes/89144')}>89144 Area</Link>
                 </div>
               </div>
 
@@ -91,12 +97,7 @@ const Header = () => {
               <Link href="/testimonials" className={isActive('/testimonials')}><span>Testimonials</span></Link>
               <Link href="/contact" className={isActive('/contact')}><span>Contact</span></Link>
 
-              <Link href="/amenities" className={styles.navLink}><span>Amenities</span></Link>
-              <Link href="/map" className={styles.navLink}><span>Map</span></Link>
-              <Link href="/zipcodes" className={styles.navLink}><span>Zip Codes</span></Link>
-              <Link href="/blog" className={isActive('/blog')}><span>Blog</span></Link>
-              <Link href="/testimonials" className={isActive('/testimonials')}><span>Testimonials</span></Link>
-              <Link href="/contact" className={isActive('/contact')}><span>Contact</span></Link>
+              {/* These links are already in the dropdown menus above, so removing duplicates */}
             </div>
           </nav>
 
