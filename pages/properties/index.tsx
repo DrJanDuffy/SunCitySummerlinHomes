@@ -172,12 +172,11 @@ const Properties = () => {
 
   // Adding type to fix TypeScript error
   const applyFilters = (newFilters: {
-    minPrice?: number;
-    maxPrice?: number;
-    bedrooms?: number;
-    bathrooms?: number;
-    features?: string[];
-    [key: string]: any;
+    minPrice: number;
+    maxPrice: number;
+    bedrooms: number;
+    bathrooms: number;
+    features: string[];
   }) => {
     setFilters(newFilters);
 
