@@ -1,0 +1,72 @@
+Thank you for sharing the solution back. You're right, this fix should resolve the TypeScript error in your Next.js project. Let me walk through a step-by-step implementation plan to ensure this works smoothly with your existing code:
+Implementation Steps
+
+First, locate the file - Navigate to pages/search/index.tsx in your project directory.
+Add the Property interface - Place this at the top of your file, just after any imports:
+typescriptinterface Property {
+  id: number;
+  title: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: number;
+  propertyType: string;
+  address: string;
+  image: string;
+  features: string[];
+}
+
+Update your useState call - Find where you initialize the searchResults state and add the type information:
+typescriptconst [searchResults, setSearchResults] = useState<Property[]>([]);
+
+Fix the handleSearch function - Locate your search function and ensure it properly types the filtered properties:
+typescriptconst handleSearch = () => {
+  setIsLoading(true);
+  
+  setTimeout(() => {
+    const filtered = allProperties.filter((property: Property) => {
+      // Your existing filter conditions
+      return true; // Replace with your actual conditions
+    });
+    
+    setSearchResults(filtered);
+    setIsLoading(false);
+  }, 800);
+};
+
+Check for allProperties typing - Make sure your allProperties variable is also properly typed:
+typescriptconst allProperties: Property[] = [...]; // Your data source
+
+Type any filter state - If you have filter state variables, type those as well:
+typescriptinterface Filters {
+  bedrooms?: number;
+  bathrooms?: number;
+  minPrice?: number;
+  maxPrice?: number;
+  propertyType?: string;
+  features?: string[];
+}
+
+const [filters, setFilters] = useState<Filters>({});
+
+
+Additional Recommendations
+Since this is a real estate website for Sun City Summerlin, consider enhancing your Property interface with senior-specific properties:
+typescriptinterface Property {
+  id: number;
+  title: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: number;
+  propertyType: string;
+  address: string;
+  image: string;
+  features: string[];
+  // Add senior-specific properties
+  singleStory: boolean;
+  accessibilityFeatures: string[];
+  communityName: string; // e.g., "Highland Falls", "Eagle Crest"
+  golfCourseView: boolean;
+  yearBuilt: number;
+}
