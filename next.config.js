@@ -4,7 +4,8 @@ const nextConfig = {
   reactStrictMode: true,
   // For Next.js 14 and React 19
   experimental: {
-    // No longer needed: optimizeFonts and optimizeCss were causing issues in your logs
+    // Experimental features for improved compatibility
+    serverActions: true,
   },
   // For images, ensure you're using the latest format
   images: {
@@ -14,7 +15,14 @@ const nextConfig = {
     ]
   },
   // Enable standalone output for improved deployment
-  output: 'standalone'
+  output: 'standalone',
+  // Suppress hydration warnings in production
+  onDemandEntries: {
+    // period (in ms) where the server will keep pages in the buffer
+    maxInactiveAge: 25 * 1000,
+    // number of pages that should be kept simultaneously without being disposed
+    pagesBufferLength: 2,
+  }
 };
 
 module.exports = nextConfig;
