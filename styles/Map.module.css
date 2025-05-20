@@ -203,36 +203,36 @@
 }
 
 /* Info Window Styling (will be applied globally through the map) */
-:global(.neighborhood-info h3) {
+.mapContainer :global(.neighborhood-info h3) {
   color: #235d89;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
-:global(.neighborhood-info p) {
+.mapContainer :global(.neighborhood-info p) {
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
   color: #444;
 }
 
-:global(.amenities ul) {
+.mapContainer :global(.amenities ul) {
   margin-left: 1.2rem;
   margin-bottom: 0.8rem;
 }
 
-:global(.amenities li) {
+.mapContainer :global(.amenities li) {
   font-size: 0.85rem;
   margin-bottom: 0.3rem;
 }
 
-:global(.neighborhood-actions) {
+.mapContainer :global(.neighborhood-actions) {
   display: flex;
   gap: 0.5rem;
   margin-top: 0.8rem;
 }
 
-:global(.learn-more),
-:global(.view-homes) {
+.mapContainer :global(.learn-more),
+.mapContainer :global(.view-homes) {
   display: inline-block;
   background-color: #235d89;
   color: white;
@@ -242,37 +242,37 @@
   font-size: 0.8rem;
 }
 
-:global(.view-homes) {
+.mapContainer :global(.view-homes) {
   background-color: #34a853;
 }
 
-:global(.amenity-info h3) {
+.mapContainer :global(.amenity-info h3) {
   color: #235d89;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
 }
 
-:global(.amenity-info p) {
+.mapContainer :global(.amenity-info p) {
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
 }
 
-:global(.office-info h3) {
+.mapContainer :global(.office-info h3) {
   color: #235d89;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
-:global(.office-info p) {
+.mapContainer :global(.office-info p) {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
 }
 
-:global(.office-hours) {
+.mapContainer :global(.office-hours) {
   margin: 0.8rem 0;
 }
 
-:global(.directions-button) {
+.mapContainer :global(.directions-button) {
   display: inline-block;
   background-color: #fbbc05;
   color: #333;
