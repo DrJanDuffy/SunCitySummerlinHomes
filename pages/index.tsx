@@ -1,21 +1,14 @@
+
+import { useEffect } from 'react';
 import type { NextPage } from "next";
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import PageTransition from '../components/PageTransition';
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Home: NextPage = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
-    setIsLoaded(true);
-    // Initialize AOS animations if needed
-    if (typeof window !== 'undefined') {
-      const AOS = require('aos');
-      AOS.refresh();
-    }
+    // Client-side code here
   }, []);
 
   return (
@@ -24,18 +17,20 @@ const Home: NextPage = () => {
         <title>Sun City Summerlin Las Vegas | 55+ Community | Dr. Jan Duffy</title>
         <meta name="description" content="Sun City Summerlin is Las Vegas' premier 55+ community with stunning homes, golf courses, and amenities. Dr. Jan Duffy specializes in Sun City Summerlin real estate." />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.heroSection}>
-          <div className={styles.heroContent} data-aos="fade-up">
-            <h1>Sun City Summerlin</h1>
-            <h2>Las Vegas&apos; Premier 55+ Community</h2>
-            <p>Discover resort-style living in the heart of Las Vegas</p>
-            <div className={styles.heroCta}>
-              <Link href="/properties" className={styles.primaryButton}>
-                View Properties
+        <div className={styles.hero}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.title}>Sun City Summerlin Real Estate</h1>
+            <h2 className={styles.subtitle}>Las Vegas&apos; Premier 55+ Community</h2>
+            <p className={styles.description}>
+              Find your perfect home in this beautiful active adult community with Dr. Jan Duffy, 
+              your Sun City Summerlin real estate specialist.
+            </p>
+            <div className={styles.ctaButtons}>
+              <Link href="/search" className={styles.primaryButton}>
+                Search Homes
               </Link>
               <Link href="/contact" className={styles.secondaryButton}>
                 Contact Dr. Jan
@@ -44,76 +39,103 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <section className={styles.featureSection}>
-          <div className={styles.featuresGrid}>
-            <div className={styles.featureCard} data-aos="fade-up" data-aos-delay="100">
-              <Image 
-                src="/property1.jpg" 
-                alt="Beautiful home in Sun City Summerlin" 
-                width={400} 
-                height={300}
-                className={styles.featureImage}
-              />
-              <h3>Premium Properties</h3>
-              <p>Explore beautiful homes designed for active adults</p>
-              <Link href="/properties" className={styles.featureLink}>
-                Browse Listings
-              </Link>
+        <section className={styles.featuresSection}>
+          <h2 className={styles.sectionTitle}>Why Choose Sun City Summerlin?</h2>
+          <div className={styles.features}>
+            <div className={styles.featureCard}>
+              <h3>Active Lifestyle</h3>
+              <p>Four golf courses, multiple community centers, pools, and countless activities.</p>
             </div>
-
-            <div className={styles.featureCard} data-aos="fade-up" data-aos-delay="200">
-              <Image 
-                src="/golf-course.jpg" 
-                alt="Golf course in Sun City Summerlin" 
-                width={400} 
-                height={300}
-                className={styles.featureImage}
-              />
-              <h3>World-Class Amenities</h3>
-              <p>Enjoy golf courses, pools, and community centers</p>
-              <Link href="/amenities" className={styles.featureLink}>
-                Discover Amenities
-              </Link>
+            <div className={styles.featureCard}>
+              <h3>Beautiful Views</h3>
+              <p>Stunning mountain and Las Vegas valley views from many locations.</p>
             </div>
-
-            <div className={styles.featureCard} data-aos="fade-up" data-aos-delay="300">
-              <Image 
-                src="/community-center.jpg" 
-                alt="Community center in Sun City Summerlin" 
-                width={400} 
-                height={300}
-                className={styles.featureImage}
-              />
-              <h3>Active Community</h3>
-              <p>Join a vibrant community with events and activities</p>
-              <Link href="/community" className={styles.featureLink}>
-                Community Life
-              </Link>
+            <div className={styles.featureCard}>
+              <h3>Convenient Location</h3>
+              <p>Minutes from shopping, dining, and entertainment with easy access to Las Vegas.</p>
             </div>
           </div>
         </section>
 
-        <section className={styles.ctaSection} data-aos="fade-up">
-          <h2>Ready to find your dream home in Sun City Summerlin?</h2>
-          <p>Let Dr. Jan Duffy guide you through the process with over 20 years of local expertise</p>
-          <Link href="/contact" className={styles.primaryButton}>
-            Schedule a Consultation
-          </Link>
+        <section className={styles.propertiesSection}>
+          <h2 className={styles.sectionTitle}>Featured Properties</h2>
+          <div className={styles.propertyGrid}>
+            <div className={styles.propertyCard}>
+              <img src="/property1.jpg" alt="Sun City Summerlin Home" className={styles.propertyImage} />
+              <h3>Beautiful Single Story</h3>
+              <p>2 bed | 2 bath | 1,400 sq ft</p>
+              <Link href="/properties" className={styles.propertyLink}>
+                View Details
+              </Link>
+            </div>
+            <div className={styles.propertyCard}>
+              <img src="/property2.jpg" alt="Sun City Summerlin Home" className={styles.propertyImage} />
+              <h3>Golf Course Home</h3>
+              <p>3 bed | 2.5 bath | 1,800 sq ft</p>
+              <Link href="/properties" className={styles.propertyLink}>
+                View Details
+              </Link>
+            </div>
+            <div className={styles.propertyCard}>
+              <img src="/property3.jpg" alt="Sun City Summerlin Home" className={styles.propertyImage} />
+              <h3>Luxury Villa</h3>
+              <p>2 bed | 2 bath | 1,600 sq ft</p>
+              <Link href="/properties" className={styles.propertyLink}>
+                View Details
+              </Link>
+            </div>
+          </div>
+          <div className={styles.viewAllContainer}>
+            <Link href="/properties" className={styles.viewAllButton}>
+              View All Properties
+            </Link>
+          </div>
+        </section>
+
+        <section className={styles.testimonialsSection}>
+          <h2 className={styles.sectionTitle}>What My Clients Say</h2>
+          <div className={styles.testimonials}>
+            <div className={styles.testimonial}>
+              <p>"Dr. Jan made our transition to Sun City Summerlin so smooth. Her knowledge of the community is impressive!"</p>
+              <p className={styles.testimonialAuthor}>- John & Mary S.</p>
+            </div>
+            <div className={styles.testimonial}>
+              <p>"As a senior buyer, I appreciated Dr. Jan's patience and expertise in finding a home that met all my accessibility needs."</p>
+              <p className={styles.testimonialAuthor}>- Robert T.</p>
+            </div>
+          </div>
+          <div className={styles.viewAllContainer}>
+            <Link href="/testimonials" className={styles.viewAllButton}>
+              Read More Testimonials
+            </Link>
+          </div>
+        </section>
+
+        <section className={styles.aboutSection}>
+          <div className={styles.aboutContent}>
+            <h2 className={styles.sectionTitle}>About Dr. Jan Duffy</h2>
+            <p>With over 20 years of experience in Las Vegas real estate and specialized knowledge of Sun City Summerlin, Dr. Jan Duffy is uniquely qualified to help senior buyers and sellers navigate the real estate market.</p>
+            <p>As a certified Senior Real Estate Specialist, Dr. Jan understands the specific needs and concerns of clients in the 55+ community.</p>
+            <Link href="/contact" className={styles.contactButton}>
+              Get in Touch
+            </Link>
+          </div>
         </section>
       </main>
 
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <div className={styles.footerLogo}>
-            <Image src="/drjan-logo.png" alt="Dr. Jan Duffy Logo" width={180} height={60} />
+          <div className={styles.footerBranding}>
+            <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.footerLogo} />
+            <p>Dr. Jan Duffy <br />BHHS Nevada Properties</p>
           </div>
           <div className={styles.footerLinks}>
             <div className={styles.footerCol}>
-              <h4>Explore</h4>
+              <h4>Quick Links</h4>
+              <Link href="/search">Search</Link>
               <Link href="/properties">Properties</Link>
-              <Link href="/neighborhoods">Neighborhoods</Link>
-              <Link href="/amenities">Amenities</Link>
-              <Link href="/lifestyle">Lifestyle</Link>
+              <Link href="/community">Community</Link>
+              <Link href="/contact">Contact</Link>
             </div>
             <div className={styles.footerCol}>
               <h4>Services</h4>
@@ -123,23 +145,16 @@ const Home: NextPage = () => {
               <Link href="/services/luxury-homes">Luxury Homes</Link>
             </div>
             <div className={styles.footerCol}>
-              <h4>About</h4>
-              <Link href="/contact">Contact</Link>
-              <Link href="/testimonials">Testimonials</Link>
+              <h4>Resources</h4>
               <Link href="/blog">Blog</Link>
-              <Link href="/map">Area Map</Link>
+              <Link href="/map">Community Map</Link>
+              <Link href="/testimonials">Testimonials</Link>
             </div>
-          </div>
-          <div className={styles.footerContact}>
-            <h4>Contact Dr. Jan</h4>
-            <p>Phone: (702) 718-0043</p>
-            <p>Email: realestate@drjanduffy.com</p>
-            <p>Office: 9406 Del Webb Boulevard, Las Vegas, NV 89134</p>
           </div>
         </div>
         <div className={styles.footerBottom}>
-          <p>&copy; {new Date().getFullYear()} Dr. Jan Duffy | BHHS Nevada Properties | All Rights Reserved</p>
-          <Image src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway Home Services Quality Seal" width={120} height={40} />
+          <p>© {new Date().getFullYear()} Dr. Jan Duffy. All rights reserved.</p>
+          <p>BHHS Nevada Properties | License #12345</p>
         </div>
       </footer>
     </div>

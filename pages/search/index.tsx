@@ -397,6 +397,7 @@ const PropertySearch: NextPage = () => {
               )}
             </div>
           </div>
+        </section>
 
         <section className={styles.searchTips}>
           <h2>Home Search Tips for Sun City Summerlin</h2>
