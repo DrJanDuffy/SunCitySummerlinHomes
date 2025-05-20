@@ -10,7 +10,7 @@ channel = "stable-24_11"
 NEXT_TELEMETRY_DISABLED = "1"
 
 [deployment]
-build = ["sh", "-c", "NEXT_SUPPRESS_HYDRATION_WARNING=1 npm run build"]
+build = ["sh", "-c", "NEXT_SUPPRESS_HYDRATION_WARNING=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run build"]
 deploymentTarget = "cloudrun"
 run = ["sh", "-c", "cd .next/standalone && NODE_ENV=production NEXT_SUPPRESS_HYDRATION_WARNING=1 node server.js"]
 
@@ -1926,3 +1926,52 @@ args = "# Perform a clean build with optimizations"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NEXT_TELEMETRY_DISABLED=1 NEXT_SUPPRESS_HYDRATION_WARNING=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run build"
+
+[[workflows.workflow]]
+name = "Clean Build & Deploy"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Kill any running processes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pkill -f node || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean build cache"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Run optimized build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Test the standalone build locally"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd .next/standalone && NODE_ENV=production NEXT_SUPPRESS_HYDRATION_WARNING=1 node server.js"

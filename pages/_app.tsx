@@ -1,8 +1,8 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
 import Head from 'next/head'
 import Script from 'next/script'
-import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 // Import AOS styles
 import 'aos/dist/aos.css'
@@ -91,6 +91,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       window.removeEventListener('scroll', handleScroll);
       if (cleanupWarnings) cleanupWarnings();
     };
+  }, []);
+
+  useEffect(() => {
+    // This helps address hydration issues by allowing client-side rendering to complete
+    document.documentElement.dataset.hydrated = 'true';
   }, []);
 
   return (
