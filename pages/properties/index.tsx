@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
@@ -7,6 +6,7 @@ import PropertyCard from '../../components/PropertyCard';
 import styles from '../../styles/Properties.module.css';
 import { fetchWithErrorHandling } from '../../utils/client-utils';
 import StructuredData from '../../components/StructuredData';
+import Link from 'next/link';
 
 // Dynamically import components that might be heavy or use browser APIs
 const PropertyFilters = dynamic(() => import('../../components/PropertyFilters'), {
@@ -152,7 +152,7 @@ const Properties = () => {
       // const data = await fetchWithErrorHandling('/api/properties');
       // setProperties(data);
       // setFilteredProperties(data);
-      
+
       // Simulate API delay
       setTimeout(() => {
         setProperties(propertiesData);
@@ -171,25 +171,25 @@ const Properties = () => {
 
   const applyFilters = (newFilters) => {
     setFilters(newFilters);
-    
+
     const filtered = properties.filter(property => {
       const matchesPrice = property.price >= newFilters.minPrice && 
                           property.price <= newFilters.maxPrice;
-      
+
       const matchesBedrooms = newFilters.bedrooms === 0 || 
                              property.bedrooms >= newFilters.bedrooms;
-      
+
       const matchesBathrooms = newFilters.bathrooms === 0 || 
                               property.bathrooms >= newFilters.bathrooms;
-      
+
       const matchesFeatures = newFilters.features.length === 0 || 
                              newFilters.features.some(feature => 
                                property.features.includes(feature));
-      
+
       return matchesPrice && matchesBedrooms && matchesBathrooms && 
             (newFilters.features.length === 0 || matchesFeatures);
     });
-    
+
     setFilteredProperties(filtered);
   };
 
@@ -294,7 +294,7 @@ const Properties = () => {
             <p>Work with Dr. Jan Duffy, your Sun City Summerlin specialist with 25+ years of experience</p>
             <div className={styles.ctaButtons}>
               <Link href="/contact/" className={styles.primaryButton}>Schedule a Showing</Link>
-              <a href="tel:7027180043" className={styles.secondaryButton}>Call (702) 718-0043</a>
+              <Link href="tel:7027180043" className={styles.secondaryButton}>Call (702) 718-0043</Link>
             </div>
           </div>
         </section>
@@ -304,7 +304,7 @@ const Properties = () => {
             <h2>Featured in Sun City Summerlin</h2>
             <p>Explore the amenities and lifestyle of this premier community</p>
           </div>
-          
+
           <div className={styles.featuresGrid}>
             <div className={styles.featureCard}>
               <div className={styles.featureIcon}>⛳</div>

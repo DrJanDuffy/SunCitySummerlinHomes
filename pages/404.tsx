@@ -19,23 +19,17 @@ const Custom404: NextPage = () => {
           Sorry, the page you're looking for doesn't exist or has been moved.
         </p>
         <div className={styles.grid}>
-          <Link href="/">
-            <a className={styles.card}>
-              <h2>Return Home &rarr;</h2>
-              <p>Go back to the homepage</p>
-            </a>
+          <Link href="/" className={styles.card}>
+            <h2>Return Home &rarr;</h2>
+            <p>Go back to the homepage</p>
           </Link>
-          <Link href="/properties">
-            <a className={styles.card}>
-              <h2>View Properties &rarr;</h2>
-              <p>Browse available Sun City Summerlin homes</p>
-            </a>
+          <Link href="/properties" className={styles.card}>
+            <h2>View Properties &rarr;</h2>
+            <p>Browse available Sun City Summerlin homes</p>
           </Link>
-          <Link href="/contact">
-            <a className={styles.card}>
-              <h2>Contact Us &rarr;</h2>
-              <p>Get in touch for assistance</p>
-            </a>
+          <Link href="/contact" className={styles.card}>
+            <h2>Contact Us &rarr;</h2>
+            <p>Get in touch for assistance</p>
           </Link>
         </div>
       </main>
