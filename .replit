@@ -2166,3 +2166,12 @@ args = "rm -rf .next"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run build"
+
+[[workflows.workflow]]
+name = "Type Check Only"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsc --noEmit"
