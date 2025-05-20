@@ -1,0 +1,42 @@
+ dev
+  ▲ Next.js 14.2.28
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1241ms
+ ○ Compiling /404 ...
+ ⨯ ./styles/Home.module.css:1:143
+Syntax error: /home/runner/workspace/styles/Home.module.css Unclosed string
+
+> 1 | The code has been modified to include styles for accessibility filters and a feature section dedicated to accessibility, enhancing the website's usability for senior buyers.
+    |                                                                                                                                               ^
+  2 | ```
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/home/runner/workspace/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[6].oneOf[9].use[0]!/home/runner/workspace/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[6].oneOf[9].use[1]!/home/runner/workspace/styles/Home.module.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/home/runner/workspace/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[7].oneOf[9].use[1]!/home/runner/workspace/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[7].oneOf[9].use[2]!/home/runner/workspace/styles/Home.module.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz'
+ ⨯ ./styles/Home.module.css:1:143
+Syntax error: /home/runner/workspace/styles/Home.module.css Unclosed string
+
+> 1 | The code has been modified to include styles for accessibility filters and a feature section dedicated to accessibility, enhancing the website's usability for senior buyers.
+    |                                                                                                                                               ^
+  2 | ```
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `Head`. See https://react.dev/link/warning-keys for more information.
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `Head`. See https://react.dev/link/warning-keys for more information.
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `Head`. See https://react.dev/link/warning-keys for more information.
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `Head`. See https://react.dev/link/warning-keys for more information.
+ GET / 500 in 13307ms
+ GET /_next/static/webpack/358dda8e18b8d87c.webpack.hot-update.json 500 in 17001ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
