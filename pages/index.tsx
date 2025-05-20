@@ -6,6 +6,7 @@ import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 import StructuredData from "../components/StructuredData";
+import CommunityStructuredData from '../components/CommunityStructuredData';
 
 const Home: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -167,6 +168,8 @@ const Home: NextPage = () => {
           }}
         />
       </Head>
+
+      <CommunityStructuredData />
 
       <Script 
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
@@ -743,6 +746,7 @@ const Home: NextPage = () => {
 
         <Script 
           id="faq-schema"
+```text
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: `

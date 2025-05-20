@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
+import CommunityStructuredData from '../../components/CommunityStructuredData';
 
 const Community: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
