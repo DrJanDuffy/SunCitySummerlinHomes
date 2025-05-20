@@ -90,6 +90,13 @@ const Header = () => {
               <Link href="/blog" className={isActive('/blog')}><span>Blog</span></Link>
               <Link href="/testimonials" className={isActive('/testimonials')}><span>Testimonials</span></Link>
               <Link href="/contact" className={isActive('/contact')}><span>Contact</span></Link>
+
+              <Link href="/amenities" className={styles.navLink}><span>Amenities</span></Link>
+              <Link href="/map" className={styles.navLink}><span>Map</span></Link>
+              <Link href="/zipcodes" className={styles.navLink}><span>Zip Codes</span></Link>
+              <Link href="/blog" className={isActive('/blog')}><span>Blog</span></Link>
+              <Link href="/testimonials" className={isActive('/testimonials')}><span>Testimonials</span></Link>
+              <Link href="/contact" className={isActive('/contact')}><span>Contact</span></Link>
             </div>
           </nav>
 

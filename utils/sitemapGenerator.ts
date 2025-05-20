@@ -1,4 +1,3 @@
-
 /**
  * This utility generates a sitemap.xml file for SEO
  */
@@ -31,20 +30,20 @@ async function generateSitemap() {
     { url: '/contact', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/search', changefreq: 'weekly', priority: 0.9, lastmod: today },
     { url: '/blog', changefreq: 'daily', priority: 0.9, lastmod: today },
-    
+
     // Add specific zip code pages
     { url: '/zipcodes/89134', changefreq: 'weekly', priority: 0.7, lastmod: today },
     { url: '/zipcodes/89135', changefreq: 'weekly', priority: 0.7, lastmod: today },
     { url: '/zipcodes/89144', changefreq: 'weekly', priority: 0.7, lastmod: today },
     { url: '/zipcodes/89138', changefreq: 'weekly', priority: 0.7, lastmod: today },
-    
+
     // Add specific blog posts
     { url: '/blog/2023-market-trends', changefreq: 'monthly', priority: 0.7, lastmod: today },
     { url: '/blog/top-renovations-home-value', changefreq: 'monthly', priority: 0.7, lastmod: today },
     { url: '/blog/hoa-rules-guide', changefreq: 'monthly', priority: 0.7, lastmod: today },
     { url: '/blog/golf-course-living', changefreq: 'monthly', priority: 0.7, lastmod: today },
     { url: '/blog/california-nevada-relocation', changefreq: 'monthly', priority: 0.7, lastmod: today },
-    
+
     // Service pages
     { url: '/services', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/services/buying-agent', changefreq: 'monthly', priority: 0.8, lastmod: today },
@@ -52,10 +51,11 @@ async function generateSitemap() {
     { url: '/services/luxury-homes', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/services/relocation', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/services/offerings', changefreq: 'monthly', priority: 0.8, lastmod: today },
-    
+
     // Neighborhood pages
     { url: '/neighborhoods', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/neighborhoods/del-webb-north-ranch', changefreq: 'monthly', priority: 0.8, lastmod: today },
+	{ url: '/map', changefreq: 'monthly', priority: 0.8, lastmod: today },
   ];
 
   // Create a stream to write to
@@ -76,13 +76,13 @@ export async function writeSitemap() {
   try {
     const sitemap = await generateSitemap();
     const outputPath = './public/sitemap.xml';
-    
+
     // Ensure the directory exists
     const dir = path.dirname(outputPath);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    
+
     // Write the sitemap file
     fs.writeFileSync(outputPath, sitemap);
     console.log('✅ Sitemap generated successfully!');
