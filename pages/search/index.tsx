@@ -397,11 +397,6 @@ const PropertySearch: NextPage = () => {
               )}
             </div>
           </div>
-        </div>
-      </section>
-
-      </div>
-      </section>
 
       <section className={styles.searchTips}>
           <h2>Home Search Tips for Sun City Summerlin</h2>
@@ -424,8 +419,6 @@ const PropertySearch: NextPage = () => {
             </div>
           </div>
         </section>
-      </main>
-
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
           <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.footerLogo} />
