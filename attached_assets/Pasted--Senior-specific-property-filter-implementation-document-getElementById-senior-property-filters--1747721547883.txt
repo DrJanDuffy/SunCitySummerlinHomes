@@ -1,0 +1,64 @@
+// Senior-specific property filter implementation
+document.getElementById("senior-property-filters").addEventListener("change", function(event) {
+  const filterType = event.target.name;
+  const filterValue = event.target.checked;
+  
+  // Track which filters are active
+  activeFilters[filterType] = filterValue;
+  
+  // Filter the properties based on active filters
+  const filteredProperties = allProperties.filter(property => {
+    // Start with true, then apply each active filter
+    let matchesFilters = true;
+    
+    // Single story filter (most important for seniors)
+    if (activeFilters["single-story"] && !property.features.includes("Single Story")) {
+      matchesFilters = false;
+    }
+    
+    // Zero-step entry filter (important for mobility)
+    if (activeFilters["zero-step-entry"] && !property.features.includes("Zero Step Entry")) {
+      matchesFilters = false;
+    }
+    
+    // Wide doorways filter (accessibility feature)
+    if (activeFilters["wide-doorways"] && !property.features.includes("Wide Doorways")) {
+      matchesFilters = false;
+    }
+    
+    // Walk-in shower filter (senior-friendly bathroom)
+    if (activeFilters["walk-in-shower"] && !property.features.includes("Walk-in Shower")) {
+      matchesFilters = false;
+    }
+    
+    // Low-maintenance yard filter (reduced upkeep)
+    if (activeFilters["low-maintenance"] && !property.features.includes("Low Maintenance")) {
+      matchesFilters = false;
+    }
+    
+    // Guest suite filter (for visiting family)
+    if (activeFilters["guest-suite"] && !property.features.includes("Guest Suite")) {
+      matchesFilters = false;
+    }
+    
+    // Golf course view filter
+    if (activeFilters["golf-view"] && !property.features.includes("Golf Course View")) {
+      matchesFilters = false;
+    }
+    
+    // Mountain view filter
+    if (activeFilters["mountain-view"] && !property.features.includes("Mountain View")) {
+      matchesFilters = false;
+    }
+    
+    // Return whether this property matches all active filters
+    return matchesFilters;
+  });
+  
+  // Update the map and listings with filtered properties
+  updateMapMarkers(filteredProperties);
+  updatePropertyListings(filteredProperties);
+  
+  // Update filter count
+  document.getElementById("filter-count").textContent = filteredProperties.length;
+});
