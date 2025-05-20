@@ -10,7 +10,7 @@ channel = "stable-24_11"
 NEXT_TELEMETRY_DISABLED = "1"
 
 [deployment]
-build = ["sh", "-c", "npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/"]
+build = ["sh", "-c", "npm run build"]
 deploymentTarget = "cloudrun"
 run = ["sh", "-c", "cd .next/standalone && NODE_ENV=production node server.js"]
 
