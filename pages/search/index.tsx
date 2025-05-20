@@ -1,4 +1,3 @@
-
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -29,6 +28,20 @@ const PropertySearch: NextPage = () => {
   const [searchResults, setSearchResults] = useState<Property[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Accessibility Filters
+  const [showAccessibilityFilters, setShowAccessibilityFilters] = useState(false);
+  const [activeAccessibilityFilters, setActiveAccessibilityFilters] = useState({});
+
+  const accessibilityFeatures = [
+    { id: "wheelchairAccess", label: "Wheelchair Access", important: true },
+    { id: "grabBars", label: "Grab Bars in Bathrooms", important: true },
+    { id: "walkInShower", label: "Walk-In Shower" },
+    { id: "leverHandles", label: "Lever Handles on Doors" },
+    { id: "ramps", label: "Ramps" },
+    { id: "wideDoorways", label: "Wide Doorways" },
+    { id: "elevator", label: "Elevator (if multi-story)" }
+  ];
+
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -45,7 +58,7 @@ const PropertySearch: NextPage = () => {
       propertyType: "Single-Story",
       address: "10243 Sun City Blvd, Las Vegas, NV 89134",
       image: "/property1.jpg",
-      features: ["Golf Course View", "Patio", "Updated Kitchen"]
+      features: ["Golf Course View", "Patio", "Updated Kitchen", "Wheelchair Access"]
     },
     {
       id: 2,
@@ -57,7 +70,7 @@ const PropertySearch: NextPage = () => {
       propertyType: "Single-Story",
       address: "9876 Del Webb Blvd, Las Vegas, NV 89134",
       image: "/property2.jpg",
-      features: ["Pool", "Spa", "Mountain View"]
+      features: ["Pool", "Spa", "Mountain View", "Grab Bars in Bathrooms"]
     },
     {
       id: 3,
@@ -69,24 +82,44 @@ const PropertySearch: NextPage = () => {
       propertyType: "Patio Home",
       address: "2468 Sunshine Way, Las Vegas, NV 89134",
       image: "/property3.jpg",
-      features: ["Updated Flooring", "Open Floor Plan", "Desert Landscaping"]
+      features: ["Updated Flooring", "Open Floor Plan", "Desert Landscaping", "Walk-In Shower"]
     }
   ];
 
+  const handleAccessibilityFilterChange = (e: any) => {
+    const { name, checked } = e.target;
+    setActiveAccessibilityFilters(prevFilters => ({
+      ...prevFilters,
+      [name]: checked
+    }));
+  };
+
   const handleSearch = () => {
     setIsLoading(true);
-    
+
     // Simulate API call with setTimeout
     setTimeout(() => {
-      const filtered = mockProperties.filter(property => {
+      let filtered = mockProperties.filter(property => {
         const matchesPrice = property.price >= priceRange[0] && property.price <= priceRange[1];
         const matchesBeds = bedrooms === "any" || property.bedrooms === parseInt(bedrooms);
         const matchesBaths = bathrooms === "any" || property.bathrooms === parseFloat(bathrooms);
         const matchesType = propertyType === "any" || property.propertyType === propertyType;
-        
+
         return matchesPrice && matchesBeds && matchesBaths && matchesType;
       });
-      
+
+      // Apply accessibility filters
+      filtered = filtered.filter(property => {
+        for (const featureId in activeAccessibilityFilters) {
+          if (activeAccessibilityFilters[featureId] === true) {
+            if (!property.features.includes(featureId)) {
+              return false;
+            }
+          }
+        }
+        return true;
+      });
+
       setSearchResults(filtered);
       setIsLoading(false);
     }, 800);
@@ -133,9 +166,52 @@ const PropertySearch: NextPage = () => {
       <main className={`${styles.main} ${isVisible ? styles.fadeIn : ''}`}>
         <section className={styles.searchSection}>
           <h1 className={styles.pageTitle}>Find Your Dream Home in Sun City Summerlin</h1>
-          
+
           <div className={styles.searchContainer}>
+            
             <div className={styles.searchFilters}>
+              <div className={styles.accessibilityToggle}>
+                <button 
+                  onClick={() => setShowAccessibilityFilters(!showAccessibilityFilters)}
+                  className={styles.accessibilityButton}
+                  aria-expanded={showAccessibilityFilters}
+                  aria-controls="senior-property-filters"
+                >
+                  {showAccessibilityFilters ? 'Hide Accessibility Filters' : 'Show Accessibility Filters'} 
+                  <span aria-hidden="true">♿</span>
+                </button>
+                <p className={styles.accessibilityNote}>Find properties with senior-friendly features</p>
+              </div>
+
+              {showAccessibilityFilters && (
+                <div id="senior-property-filters" className={styles.accessibilityFilters}>
+                  <h3>Accessibility Features</h3>
+                  <div className={styles.accessibilityGrid}>
+                    {accessibilityFeatures.map(feature => (
+                      <div key={feature.id} className={styles.accessibilityCheckbox}>
+                        <input
+                          type="checkbox"
+                          id={`feature-${feature.id}`}
+                          name={feature.id}
+                          checked={activeAccessibilityFilters[feature.id] || false}
+                          onChange={handleAccessibilityFilterChange}
+                          aria-label={feature.label}
+                        />
+                        <label htmlFor={`feature-${feature.id}`}>
+                          {feature.label}
+                          {feature.important && <span className={styles.importantFeature} title="Highly recommended for seniors">★</span>}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  <div className={styles.filterSummary}>
+                    <span className={styles.filterCount} id="filter-count">
+                      {searchResults.length} properties match accessibility criteria
+                    </span>
+                  </div>
+                </div>
+              )}
+
               <div className={styles.filterGroup}>
                 <label htmlFor="priceRange">Price Range:</label>
                 <div className={styles.dualSlider}>
@@ -162,7 +238,7 @@ const PropertySearch: NextPage = () => {
                   <span className={styles.rangeValue}>{formatPrice(priceRange[1])}</span>
                 </div>
               </div>
-              
+
               <div className={styles.filterRow}>
                 <div className={styles.filterGroup}>
                   <label htmlFor="bedrooms">Bedrooms:</label>
@@ -179,7 +255,7 @@ const PropertySearch: NextPage = () => {
                     <option value="4">4+</option>
                   </select>
                 </div>
-                
+
                 <div className={styles.filterGroup}>
                   <label htmlFor="bathrooms">Bathrooms:</label>
                   <select 
@@ -196,7 +272,7 @@ const PropertySearch: NextPage = () => {
                     <option value="3">3+</option>
                   </select>
                 </div>
-                
+
                 <div className={styles.filterGroup}>
                   <label htmlFor="propertyType">Property Type:</label>
                   <select 
@@ -213,7 +289,7 @@ const PropertySearch: NextPage = () => {
                   </select>
                 </div>
               </div>
-              
+
               <button 
                 onClick={handleSearch}
                 className={styles.searchButton}
@@ -222,7 +298,7 @@ const PropertySearch: NextPage = () => {
                 {isLoading ? 'Searching...' : 'Search Properties'}
               </button>
             </div>
-            
+
             <div className={styles.searchResults}>
               {searchResults.length > 0 ? (
                 <div className={styles.resultsGrid}>
@@ -272,7 +348,7 @@ const PropertySearch: NextPage = () => {
             </div>
           </div>
         </section>
-        
+
         <section className={styles.searchTips}>
           <h2>Home Search Tips for Sun City Summerlin</h2>
           <div className={styles.tipsGrid}>
