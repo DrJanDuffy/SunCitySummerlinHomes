@@ -65,6 +65,18 @@ const ServicesPage = () => {
             </div>
           </section>
 
+          <section className={styles.servicesContainer}>
+            <div className={styles.serviceCard} data-service-type="specialized-offerings">
+              <h2>Specialized 55+ Community Services</h2>
+              <p>Tailored real estate solutions for Sun City Summerlin residents including Senior Downsizing, Veterans Housing Benefits, and HOA Navigation expertise.</p>
+              <div className={styles.serviceDetails} itemScope itemType="http://schema.org/RealEstateAgent">
+                <span itemProp="name">Dr. Jan Duffy, REALTOR®</span>
+                <span itemProp="description">55+ Community Real Estate Specialist in Sun City Summerlin, Las Vegas.</span>
+              </div>
+              <Link href="/services/offerings" className={styles.ctaButton}>View All Specialized Services</Link>
+            </div>
+          </section>
+
           <section className={styles.ctaSection}>
             <h2>Ready to start your real estate journey?</h2>
             <p>Contact Dr. Jan Duffy today for a personalized consultation about your real estate needs in Sun City Summerlin.</p>

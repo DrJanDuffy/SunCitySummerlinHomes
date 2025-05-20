@@ -51,6 +51,7 @@ async function generateSitemap() {
     { url: '/services/selling-agent', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/services/luxury-homes', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/services/relocation', changefreq: 'monthly', priority: 0.8, lastmod: today },
+    { url: '/services/offerings', changefreq: 'monthly', priority: 0.8, lastmod: today },
     
     // Neighborhood pages
     { url: '/neighborhoods', changefreq: 'monthly', priority: 0.8, lastmod: today },
