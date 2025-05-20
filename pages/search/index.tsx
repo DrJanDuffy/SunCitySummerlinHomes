@@ -419,6 +419,7 @@ const PropertySearch: NextPage = () => {
             </div>
           </div>
         </section>
+      </div>
       <footer className={styles.footer}>
         <div className={styles.footerBranding}>
           <img src="/bhhs-quality-seal-black.png" alt="BHHS Logo" className={styles.footerLogo} />
