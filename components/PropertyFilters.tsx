@@ -10,7 +10,13 @@ interface PropertyFiltersProps {
     bathrooms: number;
     features: string[];
   };
-  onApplyFilters: (filters: any) => void;
+  onApplyFilters: (filters: {
+    minPrice: number;
+    maxPrice: number;
+    bedrooms: number;
+    bathrooms: number;
+    features: string[];
+  }) => void;
 }
 
 const PropertyFilters = ({ currentFilters, onApplyFilters }: PropertyFiltersProps) => {
