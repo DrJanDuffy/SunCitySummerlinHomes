@@ -1,0 +1,152 @@
+import React, { useState } from 'react';
+
+const PropertySearch = () => {
+  const [minPrice, setMinPrice] = useState(300000);
+  const [maxPrice, setMaxPrice] = useState(800000);
+  const [bedrooms, setBedrooms] = useState('any');
+  const [bathrooms, setBathrooms] = useState('any');
+  const [features, setFeatures] = useState([]);
+  
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(price);
+  };
+  
+  const featureOptions = [
+    "Golf Course View",
+    "Swimming Pool",
+    "Single Story",
+    "Updated Kitchen",
+    "Mountain View",
+    "Covered Patio"
+  ];
+  
+  const toggleFeature = (feature) => {
+    if (features.includes(feature)) {
+      setFeatures(features.filter(f => f !== feature));
+    } else {
+      setFeatures([...features, feature]);
+    }
+  };
+  
+  return (
+    <div className="bg-white py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Your Dream Home</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Use our advanced search tools to find the perfect Sun City Summerlin property that matches your lifestyle needs
+          </p>
+        </div>
+        
+        <div className="bg-gray-50 rounded-xl shadow-md overflow-hidden">
+          <div className="p-6 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {/* Price Range */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-xs text-gray-500 mb-1">Minimum</label>
+                    <select 
+                      value={minPrice} 
+                      onChange={(e) => setMinPrice(Number(e.target.value))}
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    >
+                      <option value={200000}>$200,000</option>
+                      <option value={300000}>$300,000</option>
+                      <option value={400000}>$400,000</option>
+                      <option value={500000}>$500,000</option>
+                      <option value={600000}>$600,000</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-500 mb-1">Maximum</label>
+                    <select 
+                      value={maxPrice} 
+                      onChange={(e) => setMaxPrice(Number(e.target.value))}
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    >
+                      <option value={500000}>$500,000</option>
+                      <option value={600000}>$600,000</option>
+                      <option value={700000}>$700,000</option>
+                      <option value={800000}>$800,000</option>
+                      <option value={1000000}>$1,000,000+</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Bedrooms & Bathrooms */}
+              <div>
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Bedrooms</label>
+                  <select 
+                    value={bedrooms} 
+                    onChange={(e) => setBedrooms(e.target.value)}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  >
+                    <option value="any">Any</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Bathrooms</label>
+                  <select 
+                    value={bathrooms} 
+                    onChange={(e) => setBathrooms(e.target.value)}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  >
+                    <option value="any">Any</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                  </select>
+                </div>
+              </div>
+              
+              {/* Features */}
+              <div className="lg:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Features</label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {featureOptions.map((feature, index) => (
+                    <div key={index} className="flex items-center">
+                      <input
+                        id={`feature-${index}`}
+                        type="checkbox"
+                        checked={features.includes(feature)}
+                        onChange={() => toggleFeature(feature)}
+                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <label htmlFor={`feature-${index}`} className="ml-2 text-sm text-gray-700">
+                        {feature}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <button className="px-8 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                Search Properties
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-10 text-center text-gray-600">
+          <p>Looking for something specific? <a href="#" className="text-indigo-600 font-medium">Contact Dr. Jan Duffy</a> for personalized assistance.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PropertySearch;

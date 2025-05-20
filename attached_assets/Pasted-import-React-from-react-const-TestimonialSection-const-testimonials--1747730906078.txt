@@ -1,0 +1,89 @@
+import React from 'react';
+
+const TestimonialSection = () => {
+  const testimonials = [
+    {
+      quote: "Dr. Jan made our transition to Sun City Summerlin seamless. Her knowledge of the community amenities and lifestyle helped us find the perfect home near the golf course.",
+      author: "Robert & Susan Wilson",
+      location: "Highland Falls residents",
+      image: "/testimonial1.jpg"
+    },
+    {
+      quote: "After looking at dozens of properties, Dr. Jan understood exactly what we wanted. She found us a beautiful single-story with mountain views that exceeded our expectations.",
+      author: "James & Margaret Thompson",
+      location: "Relocated from California",
+      image: "/testimonial2.jpg"
+    },
+    {
+      quote: "Dr. Jan's expertise in Sun City Summerlin's real estate market got us the best price for our home. Her marketing strategy and negotiation skills are exceptional.",
+      author: "David & Carol Martinez",
+      location: "Palm Valley residents",
+      image: "/testimonial3.jpg"
+    }
+  ];
+  
+  return (
+    <div className="py-20 bg-indigo-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Hear from homeowners who found their perfect Sun City Summerlin property
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+              <div className="p-8 flex-grow">
+                <div className="text-3xl text-indigo-300 mb-4">"</div>
+                <p className="text-gray-700 mb-6 italic">{testimonial.quote}</p>
+                <div className="mt-auto">
+                  <p className="font-bold text-gray-900">{testimonial.author}</p>
+                  <p className="text-gray-500 text-sm">{testimonial.location}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-16 bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="md:flex">
+            <div className="md:w-1/2 p-8 md:p-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Meet Dr. Jan Duffy</h3>
+              <p className="text-gray-700 mb-6">
+                With over 25 years of experience specializing in Sun City Summerlin, Dr. Jan Duffy provides unparalleled expertise in helping buyers and sellers navigate this premier 55+ community in Las Vegas.
+              </p>
+              <p className="text-gray-700 mb-6">
+                As both a veteran-owned and women-owned business, Dr. Duffy's practice is dedicated to accessible, inclusive service for all clients.
+              </p>
+              <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                Schedule a Consultation
+              </button>
+            </div>
+            <div className="md:w-1/2 bg-gray-200 h-64 md:h-auto relative">
+              {/* This would be an image of Dr. Jan Duffy */}
+              <div className="absolute inset-0 bg-indigo-600 opacity-10"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center p-4">
+                  <div className="w-32 h-32 rounded-full bg-gray-300 mx-auto mb-4 relative overflow-hidden">
+                    {/* Placeholder image - replace with actual image path */}
+                    <img 
+                      src="/api/placeholder/100/100" 
+                      alt="Dr. Jan Duffy" 
+                      className="absolute w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="font-bold">Dr. Jan Duffy, REALTOR®</p>
+                  <p className="text-sm">Sun City Summerlin Specialist</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TestimonialSection;

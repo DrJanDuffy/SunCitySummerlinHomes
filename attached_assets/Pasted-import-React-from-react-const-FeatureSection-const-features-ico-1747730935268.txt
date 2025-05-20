@@ -1,0 +1,72 @@
+import React from 'react';
+
+const FeatureSection = () => {
+  const features = [
+    {
+      icon: "⛳",
+      title: "Championship Golf",
+      description: "Three distinct courses offering panoramic views of the Las Vegas valley"
+    },
+    {
+      icon: "🏊",
+      title: "Resort-Style Pools",
+      description: "Multiple swimming facilities with dedicated lap lanes and relaxation areas"
+    },
+    {
+      icon: "🏥",
+      title: "On-Site Healthcare",
+      description: "Convenient access to medical offices, pharmacies, and wellness centers"
+    },
+    {
+      icon: "🎾",
+      title: "Tennis & Pickleball",
+      description: "Professional courts with regular tournaments and social events"
+    },
+    {
+      icon: "🏠",
+      title: "Single-Story Living",
+      description: "Thoughtfully designed homes with accessibility features and low maintenance"
+    },
+    {
+      icon: "👥",
+      title: "Vibrant Community",
+      description: "Over 80 clubs and activities for an engaging, active lifestyle"
+    }
+  ];
+  
+  return (
+    <div className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Sun City Summerlin Lifestyle</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Experience the perfect blend of luxury, convenience, and active living in Las Vegas' premier 55+ community
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {features.map((feature, index) => (
+            <div 
+              key={index} 
+              className="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105"
+            >
+              <div className="p-8">
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <button className="px-8 py-4 bg-indigo-600 text-white rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-colors">
+            Schedule a Community Tour
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FeatureSection;

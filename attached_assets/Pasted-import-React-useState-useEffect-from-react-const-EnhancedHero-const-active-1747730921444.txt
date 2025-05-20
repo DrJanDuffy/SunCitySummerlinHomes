@@ -1,0 +1,100 @@
+import React, { useState, useEffect } from 'react';
+
+const EnhancedHero = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  const heroProperties = [
+    {
+      image: "/property1.jpg",
+      title: "Luxury Single-Story Villa",
+      price: "$548,175",
+      features: "3 bed • 2 bath • Golf Course Views"
+    },
+    {
+      image: "/property2.jpg",
+      title: "Modern Desert Retreat",
+      price: "$615,000",
+      features: "2 bed • 2.5 bath • Pool & Spa"
+    },
+    {
+      image: "/property3.jpg",
+      title: "Spacious Golf Course Home",
+      price: "$729,000",
+      features: "4 bed • 3 bath • Premium Views"
+    }
+  ];
+  
+  useEffect(() => {
+    setIsLoaded(true);
+    const interval = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % heroProperties.length);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [heroProperties.length]);
+  
+  return (
+    <div className="relative w-full h-screen max-h-[800px] overflow-hidden bg-gray-900">
+      {/* Property Slideshow */}
+      <div className="absolute inset-0 w-full h-full">
+        {heroProperties.map((property, index) => (
+          <div 
+            key={index}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
+              activeSlide === index ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
+            <img 
+              src={property.image} 
+              alt={property.title}
+              className="absolute w-full h-full object-cover transition-transform duration-10000 ease-out transform scale-105"
+            />
+          </div>
+        ))}
+      </div>
+      
+      {/* Hero Content */}
+      <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-center text-white">
+        <div className={`transform transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h1 className="mb-4 text-5xl font-bold leading-tight">
+            Luxury Living in Sun City Summerlin
+          </h1>
+          <p className="mb-8 text-xl max-w-2xl mx-auto">
+            Experience resort-style living in Las Vegas' premier 55+ active adult community with Dr. Jan Duffy, your REALTOR® specialist with 25+ years of experience
+          </p>
+          
+          {/* Property Info Card */}
+          <div className="bg-white/90 text-gray-800 p-6 rounded-lg shadow-lg max-w-md mx-auto mb-8 backdrop-blur-sm">
+            <h3 className="text-xl font-bold mb-2">{heroProperties[activeSlide].title}</h3>
+            <p className="text-2xl font-bold text-indigo-700 mb-2">{heroProperties[activeSlide].price}</p>
+            <p className="mb-4">{heroProperties[activeSlide].features}</p>
+            <div className="flex space-x-2 justify-center">
+              {heroProperties.map((_, index) => (
+                <button 
+                  key={index}
+                  onClick={() => setActiveSlide(index)}
+                  className={`w-3 h-3 rounded-full ${activeSlide === index ? 'bg-indigo-600' : 'bg-gray-300'}`}
+                  aria-label={`View property ${index + 1}`}
+                ></button>
+              ))}
+            </div>
+          </div>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-semibold text-lg transition-colors">
+              View Properties
+            </button>
+            <button className="px-8 py-3 bg-white text-indigo-700 hover:bg-gray-100 rounded-lg font-semibold text-lg transition-colors">
+              Schedule a Tour
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EnhancedHero;

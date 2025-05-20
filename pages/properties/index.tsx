@@ -135,6 +135,13 @@ const schemaData = {
 };
 
 const Properties = () => {
+  const [realScoutLoaded, setRealScoutLoaded] = useState(false);
+
+  useEffect(() => {
+    // Load RealScout after component mounts to avoid hydration issues
+    setRealScoutLoaded(true);
+  }, []);
+
   const [properties, setProperties] = useState(propertiesData);
   const [filteredProperties, setFilteredProperties] = useState(propertiesData);
   const [loading, setLoading] = useState(false);
@@ -337,6 +344,21 @@ const Properties = () => {
             </div>
           </div>
         </section>
+
+        <div className={styles.listingsSection}>
+          {realScoutLoaded && (
+            <div suppressHydrationWarning>
+              <realscout-office-listings 
+                agent-encoded-id="QWdlbnQtMjI1MDUw" 
+                sort-order="NEWEST" 
+                listing-status="For Sale" 
+                property-types="SFR,MF" 
+                price-min="800000" 
+                price-max="4000000">
+              </realscout-office-listings>
+            </div>
+          )}
+        </div>
       </main>
 
       <footer className={styles.footer}>

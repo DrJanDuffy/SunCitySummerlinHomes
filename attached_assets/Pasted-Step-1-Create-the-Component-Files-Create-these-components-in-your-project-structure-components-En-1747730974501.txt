@@ -1,0 +1,142 @@
+Step 1: Create the Component Files
+Create these components in your project structure:
+
+components/EnhancedHero.jsx
+components/FeatureSection.jsx
+components/PropertySearch.jsx
+components/TestimonialSection.jsx
+
+Copy the updated code from each of the artifacts I created into these files.
+Step 2: Update Your Home Page
+Modify your pages/index.tsx to use these new components:
+jsximport type { NextPage } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import Script from "next/script";
+import styles from "../styles/Home.module.css";
+import { useState, useEffect } from "react";
+import StructuredData from "../components/StructuredData";
+import EnhancedHero from "../components/EnhancedHero";
+import FeatureSection from "../components/FeatureSection";
+import PropertySearch from "../components/PropertySearch";
+import TestimonialSection from "../components/TestimonialSection";
+
+const Home: NextPage = () => {
+  const [realScoutLoaded, setRealScoutLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    setIsVisible(true);
+    
+    // Set a small delay to ensure hydration is complete before loading RealScout
+    const timer = setTimeout(() => {
+      setRealScoutLoaded(true);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Sun City Summerlin Las Vegas | Luxury 55+ Community Homes | Dr. Jan Duffy</title>
+        <meta name="description" content="Find your dream home in Sun City Summerlin, Las Vegas' premier 55+ Del Webb community. Expert REALTOR® Dr. Jan Duffy brings 25+ years of experience in luxury single-story homes, golf course properties, and active adult living." />
+        {/* Other meta tags */}
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      {/* Your existing header */}
+      <header className={styles.header}>
+        {/* Your header content */}
+      </header>
+
+      {/* New Enhanced Hero */}
+      <EnhancedHero />
+
+      {/* RealScout Listings Section */}
+      <div className={styles.listingsSection}>
+        {realScoutLoaded && (
+          <div suppressHydrationWarning>
+            <realscout-office-listings 
+              agent-encoded-id="QWdlbnQtMjI1MDUw" 
+              sort-order="NEWEST" 
+              listing-status="For Sale" 
+              property-types="SFR,MF" 
+              price-min="800000" 
+              price-max="4000000">
+            </realscout-office-listings>
+          </div>
+        )}
+      </div>
+
+      {/* Feature Section */}
+      <FeatureSection />
+
+      {/* Property Search */}
+      <PropertySearch />
+
+      {/* Testimonial Section */}
+      <TestimonialSection />
+
+      {/* Keep any other important sections from your original page */}
+      
+      {/* Footer */}
+      <footer className={styles.footer}>
+        {/* Your footer content */}
+      </footer>
+
+      {/* RealScout script */}
+      <Script 
+        id="realscout-listings-init" 
+        strategy="lazyOnload"
+      >
+        {`
+          document.addEventListener('realscout-web-components-ready', () => {
+            const container = document.querySelector('.${styles.listingsSection}');
+            if (container) {
+              const listingsElement = document.createElement('realscout-office-listings');
+              if (listingsElement && listingsElement.setAttribute) {
+                listingsElement.setAttribute('agent-encoded-id', 'QWdlbnQtMjI1MDUw');
+                listingsElement.setAttribute('sort-order', 'NEWEST');
+                listingsElement.setAttribute('listing-status', 'For Sale');
+                listingsElement.setAttribute('property-types','SFR,MF');
+                listingsElement.setAttribute('price-min', '800000');
+                listingsElement.setAttribute('price-max', '4000000');
+                container.appendChild(listingsElement);
+              }
+            }
+          });
+        `}
+      </Script>
+      
+      {/* Structured data for SEO */}
+      <StructuredData 
+        type="RealEstateAgent"
+        data={{
+          "@context": "https://schema.org",
+          "@type": "RealEstateAgent",
+          "name": "Dr. Jan Duffy, REALTOR®",
+          "image": "/drjan-logo.png",
+          "url": "https://suncitysummerlin.com",
+          "telephone": "(702) 718-0043",
+          // Additional structured data
+        }}
+      />
+    </div>
+  );
+};
+
+export default Home;
+Step 3: Styling Considerations
+
+Tailwind CSS: If you want to use the Tailwind CSS classes in the components, make sure Tailwind CSS is properly configured in your project. If you're not using Tailwind, you'll need to convert these classes to your own CSS.
+CSS Modules: Since your project appears to use CSS Modules (styles.container, etc.), you might want to adapt the components to use your CSS modules structure.
+
+Step 4: Final Checks
+Before deploying, make sure to:
+
+Check for any remaining references to unsupported libraries like next/image in your code
+Test on mobile devices to ensure responsive design works correctly
+Verify all images and assets are available in the correct paths
+Test RealScout integration to ensure it loads and displays correctly
+Run a build locally with npm run build to catch any errors before deployment
