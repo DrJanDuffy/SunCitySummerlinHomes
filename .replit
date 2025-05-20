@@ -70,7 +70,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "Fix TypeScript Errors"
+runButton = "Run After Fix"
 
 [[workflows.workflow]]
 name = "Run"
@@ -2216,3 +2216,53 @@ args = "echo \"Checking problematic section of code:\""
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "sed -n '395,410p' pages/search/index.tsx"
+
+[[workflows.workflow]]
+name = "Run After Fix"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean Next.js cache"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Start development server with optimizations"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NEXT_TELEMETRY_DISABLED=1 npm run dev"
+
+[[workflows.workflow]]
+name = "Run After Fix"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean Next.js cache"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Start development server with optimizations"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NEXT_TELEMETRY_DISABLED=1 npm run dev"
