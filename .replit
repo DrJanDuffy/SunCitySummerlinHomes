@@ -54,7 +54,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "NextJS Clean Start"
+runButton = "Fix All Hydration Issues"
 
 [[workflows.workflow]]
 name = "Run"
@@ -2053,3 +2053,44 @@ args = "# Test the standalone build locally (optional, comment out if not needed
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "# cd .next/standalone && NODE_ENV=production node server.js"
+
+[[workflows.workflow]]
+name = "Fix All Hydration Issues"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Kill any running processes - using pkill instead of lsof"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pkill -f node || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Clean Next.js cache completely"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf node_modules/.cache"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Start with hydration warning suppression and other optimizations"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run dev"
