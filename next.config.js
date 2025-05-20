@@ -22,6 +22,13 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     // number of pages that should be kept simultaneously without being disposed
     pagesBufferLength: 2,
+  },
+  // Additional settings to improve build stability
+  swcMinify: true,
+  compiler: {
+    // Suppress hydration warnings in production
+    styledComponents: true,
+    removeConsole: process.env.NODE_ENV === 'production',
   }
 };
 
