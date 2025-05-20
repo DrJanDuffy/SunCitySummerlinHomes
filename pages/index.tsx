@@ -1,3 +1,4 @@
+
 import type { NextPage } from "next";
 import Head from 'next/head';
 import Link from 'next/link';
@@ -118,7 +119,7 @@ const Home: NextPage = () => {
             <div className={styles.footerCol}>
               <h4>Services</h4>
               <Link href="/services/buying-agent">Buying</Link>
-              <Link href="/services/selling-agent">Selling</Selling>
+              <Link href="/services/selling-agent">Selling</Link>
               <Link href="/services/relocation">Relocation</Link>
               <Link href="/services/luxury-homes">Luxury Homes</Link>
             </div>
