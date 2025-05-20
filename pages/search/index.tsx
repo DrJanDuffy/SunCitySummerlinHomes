@@ -101,7 +101,7 @@ const PropertySearch: NextPage = () => {
   const [bedrooms, setBedrooms] = useState("any");
   const [bathrooms, setBathrooms] = useState("any");
   const [propertyType, setPropertyType] = useState("any");
-  const [searchResults, setSearchResults] = useState<Property[]>([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   // Accessibility Filters
@@ -231,7 +231,7 @@ const PropertySearch: NextPage = () => {
                   <span aria-hidden="true">♿</span>
                 </button>
                 <p className={styles.accessibilityNote}>Find properties with senior-friendly features</p>
-              </div>
+              </div>v>
 
               {showAccessibilityFilters && (
                 <div id="senior-property-filters" className={styles.accessibilityFilters}>
@@ -397,7 +397,6 @@ const PropertySearch: NextPage = () => {
               )}
             </div>
           </div>
-        </section>
 
         <section className={styles.searchTips}>
           <h2>Home Search Tips for Sun City Summerlin</h2>
@@ -452,4 +451,4 @@ const PropertySearch: NextPage = () => {
   );
 };
 
-export default PropertySearch;
+export default PropertySearch;t default PropertySearch;
