@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 import StructuredData from "../components/StructuredData";
 import CommunityStructuredData from '../components/CommunityStructuredData';
+import PropertyListingSchema from '../components/PropertyListingSchema';
 
 const Home: NextPage = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -170,6 +171,7 @@ const Home: NextPage = () => {
       </Head>
 
       <CommunityStructuredData />
+      <PropertyListingSchema />
 
       <Script 
         src="https://em.realscout.com/widgets/realscout-web-components.umd.js"

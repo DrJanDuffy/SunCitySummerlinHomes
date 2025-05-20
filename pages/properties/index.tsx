@@ -6,6 +6,7 @@ import PropertyCard from '../../components/PropertyCard';
 import styles from '../../styles/Properties.module.css';
 import { fetchWithErrorHandling } from '../../utils/client-utils';
 import StructuredData from '../../components/StructuredData';
+import PropertyListingSchema from '../../components/PropertyListingSchema';
 import Link from 'next/link';
 
 // Dynamically import components that might be heavy or use browser APIs
@@ -211,6 +212,7 @@ const Properties = () => {
       </Head>
 
       <StructuredData type="RealEstateAgent" data={schemaData} />
+      <PropertyListingSchema />
 
       <Header />
 
