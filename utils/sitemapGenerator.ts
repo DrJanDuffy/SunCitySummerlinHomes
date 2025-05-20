@@ -17,7 +17,7 @@ interface SitemapURL {
 async function generateSitemap() {
   // Set up the base URL - replace with your actual domain in production
   const baseUrl = 'https://suncitysummerlin.com';
-  const today = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
+  const today = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD for better compatibility
 
   // Define all the pages on your site
   const pages: SitemapURL[] = [
