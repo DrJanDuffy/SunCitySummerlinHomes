@@ -1,15 +1,16 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
+import type { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
+import Script from 'next/script'
+import '../styles/globals.css'
+import PageTransition from '../components/PageTransition';
+import RealEstateAgentSchema from '../components/RealEstateAgentSchema';
 import { useEffect } from 'react';
 import Head from 'next/head'
-import Script from 'next/script'
 import styles from '../styles/Home.module.css'
 // Import AOS styles
 import 'aos/dist/aos.css'
 import { suppressExtensionWarnings } from '../utils/suppress-warnings';
 import { AnimatePresence } from 'framer-motion';
-import PageTransition from '../components/PageTransition';
-import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();

@@ -19,6 +19,82 @@ interface Property {
   features: string[];
 }
 
+// Structured data component for accessible properties
+const AccessiblePropertySchema = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org/",
+        "@type": "WebPage",
+        "name": "Senior-Friendly Properties in Sun City Summerlin",
+        "description": "Find accessible homes with features like wheelchair access, grab bars, and walk-in showers in Sun City Summerlin.",
+        "url": "https://suncitysummerlin.com/search", // Replace with your actual URL
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://suncitysummerlin.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "accessibilityAPI": "ARIA",
+        "accessibilityControl": ["fullKeyboardAccess", "fullTouchAccess", "screenReaderOptimization"],
+        "accessibilityFeature": ["wheelchairAccess", "grabBars", "walkInShower"],
+        "accessMode": ["visual", "textual"],
+        "accessModeSufficient": [
+          {
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "WCAG 2.1 AA"
+              }
+            ]
+          }
+        ]
+      }),
+    }}
+  />
+);
+
+// Structured data component for senior real estate services
+const SeniorRealEstateService = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "Dr. Jan Duffy",
+        "description": "Specializing in senior community real estate in Sun City Summerlin. Helping seniors find the perfect home to enjoy their retirement.",
+        "url": "https://suncitysummerlin.com", // Replace with your website URL
+        "telephone": "+1-702-555-1234", // Replace with Dr. Duffy's phone number
+        "email": "jan.duffy@example.com", // Replace with Dr. Duffy's email
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Main St", // Replace with Dr. Duffy's office address
+          "addressLocality": "Las Vegas",
+          "addressRegion": "NV",
+          "postalCode": "89101",
+          "addressCountry": "US"
+        },
+        "priceRange": "$300,000-$1,000,000+",
+        "image": "https://example.com/dr-jan-duffy.jpg", // Replace with Dr. Duffy's professional headshot
+        "agentAssociatedWith": {
+          "@type": "RealEstateAgency",
+          "name": "Berkshire Hathaway HomeServices",
+          "url": "https://www.bhhs.com/"
+        },
+        "serviceArea": {
+          "@type": "City",
+          "name": "Sun City Summerlin"
+        },
+        "knowsAbout": ["Senior Living", "Retirement Communities", "55+ Communities", "Accessibility Features"],
+        "additionalType": "http://www.productontology.org/id/Real_estate_agent"
+      }),
+    }}
+  />
+);
+
 const PropertySearch: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [priceRange, setPriceRange] = useState([300000, 800000]);
@@ -136,39 +212,13 @@ const PropertySearch: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Find Your Dream Home in Sun City Summerlin | Advanced Property Search</title>
-        <meta name="description" content="Search for your perfect retirement home in Sun City Summerlin Las Vegas. Filter by price, bedrooms, bathrooms, and property type with our advanced search tools." />
-        <meta name="keywords" content="Sun City Summerlin homes for sale, Las Vegas 55+ community, retirement homes Las Vegas, golf course properties, single-story homes" />
-        <link rel="canonical" href="https://suncitysummerlin.com/search" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Senior-Focused Property Search | Dr. Jan Duffy</title>
+        <meta name="description" content="Find the perfect Sun City Summerlin home with our specialized search tools for senior buyers. Filter by accessibility features and senior-friendly amenities." />
       </Head>
+      <SeniorRealEstateService />
+      <AccessiblePropertySchema />
+      <div className={styles.searchContainer}>
 
-      <header className={styles.header}>
-        <div className={styles.logoContainer}>
-          <img src="/bhhs-quality-seal-black.png" alt="Berkshire Hathaway HomeServices" className={styles.bhsLogo} />
-          <div className={styles.logoText}>
-            <p className={styles.logo}>Sun City Summerlin Homes</p>
-            <p className={styles.subLogo}>Dr. Jan Duffy, REALTOR® | 55+ Community Specialist</p>
-          </div>
-        </div>
-        <nav className={styles.nav}>
-          <Link href="/">Home</Link>
-          <Link href="/properties">Properties</Link>
-          <Link href="/community">Community</Link>
-          <Link href="/lifestyle">Lifestyle</Link>
-          <Link href="/amenities">Amenities</Link>
-          <Link href="/zipcodes">Zipcodes</Link>
-          <Link href="/testimonials">Testimonials</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
-      </header>
-
-      <main className={`${styles.main} ${isVisible ? styles.fadeIn : ''}`}>
-        <section className={styles.searchSection}>
-          <h1 className={styles.pageTitle}>Find Your Dream Home in Sun City Summerlin</h1>
-
-          <div className={styles.searchContainer}>
-            
             <div className={styles.searchFilters}>
               <div className={styles.accessibilityToggle}>
                 <button 
