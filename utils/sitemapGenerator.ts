@@ -1,4 +1,3 @@
-
 /**
  * This utility generates a sitemap.xml file for SEO
  */
@@ -17,7 +16,7 @@ async function generateSitemap() {
   // Set up the base URL - replace with your actual domain in production
   const baseUrl = 'https://suncitysummerlin.com';
   const today = new Date().toISOString();
-  
+
   // Define all the pages on your site
   const pages: SitemapURL[] = [
     { url: '/', changefreq: 'weekly', priority: 1.0, lastmod: today },
@@ -30,13 +29,13 @@ async function generateSitemap() {
     { url: '/contact', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/search', changefreq: 'weekly', priority: 0.9, lastmod: today },
     { url: '/blog', changefreq: 'daily', priority: 0.9, lastmod: today },
-    
+
     // Add specific zip code pages
     { url: '/zipcodes/89134', changefreq: 'weekly', priority: 0.7, lastmod: today },
     { url: '/zipcodes/89135', changefreq: 'weekly', priority: 0.7, lastmod: today },
     { url: '/zipcodes/89144', changefreq: 'weekly', priority: 0.7, lastmod: today },
     { url: '/zipcodes/89138', changefreq: 'weekly', priority: 0.7, lastmod: today },
-    
+
     // Add specific blog posts
     { url: '/blog/2023-market-trends', changefreq: 'monthly', priority: 0.7, lastmod: today },
     { url: '/blog/top-renovations-home-value', changefreq: 'monthly', priority: 0.7, lastmod: today },
@@ -46,11 +45,13 @@ async function generateSitemap() {
     { url: '/services', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/services/buying-agent', changefreq: 'monthly', priority: 0.8, lastmod: today },
     { url: '/services/selling-agent', changefreq: 'monthly', priority: 0.8, lastmod: today },
+    { url: '/neighborhoods', changefreq: 'monthly', priority: 0.8, lastmod: today },
+    { url: '/neighborhoods/del-webb-north-ranch', changefreq: 'monthly', priority: 0.8, lastmod: today },
   ];
 
   // Create a stream to write to
   const stream = new SitemapStream({ hostname: baseUrl });
-  
+
   // Return a promise that resolves with your XML sitemap
   return streamToPromise(Readable.from(pages).pipe(stream)).then((data) => 
     data.toString()

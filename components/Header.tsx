@@ -86,6 +86,7 @@ const Header = () => {
                 </div>
               </div>
 
+              <Link href="/neighborhoods" className={isActive('/neighborhoods')}><span>Neighborhoods</span></Link>
               <Link href="/blog" className={isActive('/blog')}><span>Blog</span></Link>
               <Link href="/testimonials" className={isActive('/testimonials')}><span>Testimonials</span></Link>
               <Link href="/contact" className={isActive('/contact')}><span>Contact</span></Link>

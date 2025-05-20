@@ -1,0 +1,355 @@
+
+/* Hero Section */
+.heroSection {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/golf-course.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: white;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Neighborhood Grid */
+.neighborhoodsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.neighborhoodCard {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neighborhoodCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.neighborhoodCardImage {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.neighborhoodCardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.neighborhoodCard:hover .neighborhoodCardImage img {
+  transform: scale(1.05);
+}
+
+.neighborhoodCardContent {
+  padding: 1.5rem;
+}
+
+.neighborhoodCardContent h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.neighborhoodLocation {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.neighborhoodType {
+  display: inline-block;
+  background-color: #006aad;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.learnMoreButton {
+  display: inline-block;
+  background-color: #006aad;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.learnMoreButton:hover {
+  background-color: #005288;
+}
+
+/* Neighborhood Spotlight */
+.neighborhoodSpotlight {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.neighborhoodHero {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/golf-course.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 0;
+  margin-bottom: 2rem;
+}
+
+.neighborhoodImage {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.neighborhoodImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.neighborhoodDetails {
+  margin-bottom: 2rem;
+}
+
+.neighborhoodDetails h2 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.neighborhoodDetails div {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.neighborhoodDetails p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.neighborhoodFeatures {
+  margin: 2rem 0;
+}
+
+.neighborhoodFeatures h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.neighborhoodFeatures ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  padding-left: 1.5rem;
+}
+
+.neighborhoodFeatures li {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.neighborhoodDescription {
+  margin: 2rem 0;
+}
+
+.neighborhoodDescription h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.neighborhoodDescription p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Expert Section */
+.expertSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.expertContent {
+  text-align: center;
+}
+
+.expertContent h2 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.expertProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.expertPhoto {
+  border-radius: 50%;
+  border: 3px solid #006aad;
+}
+
+.expertInfo {
+  flex: 1;
+  text-align: center;
+}
+
+.expertInfo h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.expertInfo p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.expertAdvice {
+  margin: 2rem 0;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.expertAdvice h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* CTA Section */
+.ctaSection {
+  text-align: center;
+  margin: 3rem 0 1rem;
+  padding: 2rem;
+  background-color: #f0f7fc;
+  border-radius: 8px;
+}
+
+.ctaSection h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  display: inline-block;
+  background-color: #006aad;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.primaryButton:hover {
+  background-color: #005288;
+}
+
+.secondaryButton {
+  display: inline-block;
+  background-color: white;
+  color: #006aad;
+  border: 2px solid #006aad;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background-color: #f0f7fc;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .expertProfile {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .expertInfo {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .neighborhoodFeatures ul {
+    grid-template-columns: 1fr;
+  }
+}
