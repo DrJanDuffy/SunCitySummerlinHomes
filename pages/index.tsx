@@ -354,8 +354,8 @@ const Home: NextPage = () => {
             <p className={styles.description}>
               This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community. Many homes in the area include two primary suites and dedicated golf cart garage space.
             </p>
-
-          </section>
+          </div>
+        </section>
 
         <Script 
           id="residence-schema"
