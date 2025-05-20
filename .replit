@@ -12,7 +12,7 @@ NEXT_TELEMETRY_DISABLED = "1"
 [deployment]
 build = ["sh", "-c", "NEXT_SUPPRESS_HYDRATION_WARNING=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run build"]
 deploymentTarget = "cloudrun"
-run = ["sh", "-c", "cd .next/standalone && NODE_ENV=production NEXT_SUPPRESS_HYDRATION_WARNING=1 node server.js"]
+run = ["sh", "-c", "NODE_ENV=production node .next/standalone/server.js"]
 
 # Properly configured for Next.js standalone mode
 
@@ -1975,3 +1975,32 @@ args = "# Test the standalone build locally"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd .next/standalone && NODE_ENV=production NEXT_SUPPRESS_HYDRATION_WARNING=1 node server.js"
+
+[[workflows.workflow]]
+name = "NextJS Build with Fixes"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Kill any running processes"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = ""
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "# Build with optimizations"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS='--max-old-space-size=4096 --no-warnings' npm run build"
