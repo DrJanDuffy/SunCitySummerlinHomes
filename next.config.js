@@ -1,3 +1,4 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -36,6 +37,12 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Configure server to listen on all interfaces
+  server: {
+    // This ensures the server binds to all available network interfaces
+    hostname: '0.0.0.0',
+    port: process.env.PORT || 3000
+  }
 };
 
 module.exports = nextConfig;
