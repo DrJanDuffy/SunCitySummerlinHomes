@@ -1,0 +1,56 @@
+Let's fix the TypeScript error that's causing your deployment to fail. The error is in your pages/properties/index.tsx file on line 172, where you have a parameter newFilters that doesn't have a type specified.
+How to Fix TypeScript Type Error
+
+Find the problematic function in pages/properties/index.tsx at line 172
+Add a proper type for the newFilters parameter. Based on the error message, you have something like:
+
+tsx// Line 172 in pages/properties/index.tsx
+function someFunction(newFilters) {  // Error: Parameter 'newFilters' implicitly has an 'any' type
+  // Function implementation
+}
+
+Add an appropriate type to the parameter:
+
+Without seeing the exact code, I'll provide a few common solutions:
+Option 1: If newFilters is a simple object with known properties
+tsxfunction someFunction(newFilters: { price?: number; bedrooms?: number; bathrooms?: number }) {
+  // Function implementation
+}
+Option 2: If you have a type defined elsewhere for filters
+tsx// You might have this type defined elsewhere
+type PropertyFilters = {
+  price?: number;
+  bedrooms?: number;
+  bathrooms?: number;
+  // other filter properties
+};
+
+// Then use it for the parameter
+function someFunction(newFilters: PropertyFilters) {
+  // Function implementation
+}
+Option 3: If you don't want to define a specific type right now
+tsxfunction someFunction(newFilters: Record<string, any>) {
+  // Function implementation
+}
+Option 4: If you really need to use 'any' temporarily
+tsxfunction someFunction(newFilters: any) {
+  // Function implementation
+  // Note: Using 'any' defeats the purpose of TypeScript, but it will fix the error
+}
+TypeScript Configuration
+If you're having multiple TypeScript errors, you might also want to check your tsconfig.json file to make sure the appropriate strict type checking options are enabled:
+json{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    // other options...
+  }
+}
+After Making Changes
+After adding the type to the newFilters parameter, try deploying again. If you encounter any more TypeScript errors, use the same approach to fix them:
+
+Find the line with the error
+Add appropriate type annotations
+Test and deploy again
