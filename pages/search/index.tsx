@@ -6,13 +6,27 @@ import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useState, useEffect } from "react";
 
+// Define property type
+interface Property {
+  id: number;
+  title: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: number;
+  propertyType: string;
+  address: string;
+  image: string;
+  features: string[];
+}
+
 const PropertySearch: NextPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [priceRange, setPriceRange] = useState([300000, 800000]);
   const [bedrooms, setBedrooms] = useState("any");
   const [bathrooms, setBathrooms] = useState("any");
   const [propertyType, setPropertyType] = useState("any");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<Property[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -20,7 +34,7 @@ const PropertySearch: NextPage = () => {
   }, []);
 
   // Mock property data - in a real implementation, this would come from an API
-  const mockProperties = [
+  const mockProperties: Property[] = [
     {
       id: 1,
       title: "Elegant Single-Story Home",
@@ -78,7 +92,7 @@ const PropertySearch: NextPage = () => {
     }, 800);
   };
 
-  const formatPrice = (price) => {
+  const formatPrice = (price: number): string => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
