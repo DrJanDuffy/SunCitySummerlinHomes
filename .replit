@@ -30,7 +30,7 @@ localPort = 43821
 externalPort = 3000
 
 [workflows]
-runButton = "React 19 Page Transitions"
+runButton = "Fix Scripts and Missing Images"
 
 [[workflows.workflow]]
 name = "Run"
@@ -1831,3 +1831,20 @@ args = "# Add flags to prevent hydration warnings"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NEXT_TELEMETRY_DISABLED=1 NODE_OPTIONS='--no-warnings' npm run dev"
+
+[[workflows.workflow]]
+name = "Fix Scripts and Missing Images"
+author = 22930014
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "kill $(lsof -t -i:3000) 2>/dev/null || true"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "rm -rf .next"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "NEXT_SUPPRESS_HYDRATION_WARNING=1 NEXT_TELEMETRY_DISABLED=1 npm run dev"

@@ -355,65 +355,69 @@ const Home: NextPage = () => {
               This stunning single-story home in the prestigious Sun City Summerlin community offers the perfect blend of comfort and luxury. Featuring an open floor plan with spacious breakfast nook, gourmet kitchen, and resort-style backyard with Red Rock Canyon views, this property is perfect for those seeking an active 55+ lifestyle in Las Vegas' most established and amenity-rich community. Many homes in the area include two primary suites and dedicated golf cart garage space.
             </p>
 
-            <script type="application/ld+json" dangerouslySetInnerHTML={{
-              __html: `
-                {
-                  "@context": "https://schema.org",
-                  "@type": "Residence",
-                  "name": "Luxury Single-Story Home in Sun City Summerlin",
-                  "description": "Stunning single-story home with open floor plan, gourmet kitchen, and resort-style backyard with Red Rock Canyon views",
-                  "numberOfRooms": "3",
-                  "floorSize": {
-                    "@type": "QuantitativeValue",
-                    "value": "1850",
-                    "unitCode": "SQF"
+          </section>
+
+        <Script 
+          id="residence-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: `
+              {
+                "@context": "https://schema.org",
+                "@type": "Residence",
+                "name": "Luxury Single-Story Home in Sun City Summerlin",
+                "description": "Stunning single-story home with open floor plan, gourmet kitchen, and resort-style backyard with Red Rock Canyon views",
+                "numberOfRooms": "3",
+                "floorSize": {
+                  "@type": "QuantitativeValue",
+                  "value": "1850",
+                  "unitCode": "SQF"
+                },
+                "numberOfBathroomsTotal": 2,
+                "amenityFeature": [
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    "name": "Golf Course Views",
+                    "value": true
                   },
-                  "numberOfBathroomsTotal": 2,
-                  "amenityFeature": [
-                    {
-                      "@type": "LocationFeatureSpecification",
-                      "name": "Golf Course Views",
-                      "value": true
-                    },
-                    {
-                      "@type": "LocationFeatureSpecification",
-                      "name": "Single-Story",
-                      "value": true
-                    },
-                    {
-                      "@type": "LocationFeatureSpecification",
-                      "name": "Gourmet Kitchen",
-                      "value": true
-                    },
-                    {
-                      "@type": "LocationFeatureSpecification",
-                      "name": "Open Floor Plan",
-                      "value": true
-                    }
-                  ],
-                  "offers": {
-                    "@type": "Offer",
-                    "price": "548175",
-                    "priceCurrency": "USD",
-                    "availability": "https://schema.org/InStock"
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    "name": "Single-Story",
+                    "value": true
                   },
-                  "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 36.2043,
-                    "longitude": -115.2936
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    "name": "Gourmet Kitchen",
+                    "value": true
                   },
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Las Vegas",
-                    "addressRegion": "NV",
-                    "postalCode": "89134",
-                    "addressCountry": "US"
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    "name": "Open Floor Plan",
+                    "value": true
                   }
+                ],
+                "offers": {
+                  "@type": "Offer",
+                  "price": "548175",
+                  "priceCurrency": "USD",
+                  "availability": "https://schema.org/InStock"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 36.2043,
+                  "longitude": -115.2936
+                },
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Las Vegas",
+                  "addressRegion": "NV",
+                  "postalCode": "89134",
+                  "addressCountry": "US"
                 }
-              `
-            }}/>
-          </div>
-        </section>
+              }
+            `
+          }}
+        />
 
         <section id="features" className={styles.featuresSection}>
           <h2 className={styles.sectionTitle}>Property Features</h2>
@@ -736,48 +740,53 @@ const Home: NextPage = () => {
             <p>You can contact Dr. Jan Duffy at (702) 718-0043, email at DrDuffy@bhhsnv.com, or fill out the contact form on this website to schedule a viewing or consultation.</p>
           </div>
         </div>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: `
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What is the average home price in Sun City Summerlin?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The average home price in Sun City Summerlin is around $548,175, though prices vary based on size, location, and amenities. Golf course properties typically command higher prices."
+
+        <Script 
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: `
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is the average home price in Sun City Summerlin?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The average home price in Sun City Summerlin is around $548,175, though prices vary based on size, location, and amenities. Golf course properties typically command higher prices."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Is Sun City Summerlin a 55+ community?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, Sun City Summerlin is an age-restricted community where at least one resident must be 55 years or older, and no permanent residents can be under 19 years of age."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What amenities are available in Sun City Summerlin?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Sun City Summerlin offers three championship golf courses, four recreation centers, multiple swimming pools, tennis and pickleball courts, fitness centers, woodworking studios, over 100 social clubs, walking trails, and on-site shopping and dining."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How do I contact Dr. Jan Duffy for property viewings?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "You can contact Dr. Jan Duffy at (702) 718-0043, email at DrDuffy@bhhsnv.com, or fill out the contact form on this website to schedule a viewing or consultation."
+                    }
                   }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is Sun City Summerlin a 55+ community?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, Sun City Summerlin is an age-restricted community where at least one resident must be 55 years or older, and no permanent residents can be under 19 years of age."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What amenities are available in Sun City Summerlin?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sun City Summerlin offers three championship golf courses, four recreation centers, multiple swimming pools, tennis and pickleball courts, fitness centers, woodworking studios, over 100 social clubs, walking trails, and on-site shopping and dining."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How do I contact Dr. Jan Duffy for property viewings?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "You can contact Dr. Jan Duffy at (702) 718-0043, email at DrDuffy@bhhsnv.com, or fill out the contact form on this website to schedule a viewing or consultation."
-                  }
-                }
-              ]
-            }
-          `
-        }}/>
+                ]
+              }
+            `
+          }}
+        />
       </section>
 
       <footer className={styles.footer}>
