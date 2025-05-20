@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import styles from "../styles/Home.module.css";
@@ -17,7 +16,7 @@ const Header = () => {
     return paths.some(path => router.pathname.includes(path)) ? 
       `${styles.dropdownButton} ${styles.activeLink}` : styles.dropdownButton;
   };
-  
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -32,7 +31,7 @@ const Header = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobileMenuOpen]);
-  
+
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -50,7 +49,7 @@ const Header = () => {
           <nav className={styles.nav}>
             <div className={isMobileMenuOpen ? `${styles.navLinks} ${styles.navLinksActive}` : styles.navLinks}>
               <Link href="/" className={isActive('/')}><span>Home</span></Link>
-              
+
               <div className={styles.navDropdown}>
                 <span className={isDropdownActive(['/properties', '/search'])}>
                   Properties <span className={styles.chevronIcon}>▼</span>
@@ -62,7 +61,9 @@ const Header = () => {
                   <Link href="/properties/new-listings" className={styles.dropdownItem}>New Listings</Link>
                 </div>
               </div>
-              
+
+              <Link href="/services" className={isActive('/services')}><span>Services</span></Link>
+
               <div className={styles.navDropdown}>
                 <span className={isDropdownActive(['/community', '/lifestyle', '/amenities'])}>
                   Community <span className={styles.chevronIcon}>▼</span>
@@ -73,7 +74,7 @@ const Header = () => {
                   <Link href="/amenities" className={styles.dropdownItem}>Amenities</Link>
                 </div>
               </div>
-              
+
               <div className={styles.navDropdown}>
                 <span className={isDropdownActive(['/zipcodes'])}>
                   Location <span className={styles.chevronIcon}>▼</span>
@@ -84,7 +85,7 @@ const Header = () => {
                   <Link href="/zipcodes/89144" className={styles.dropdownItem}>89144 Area</Link>
                 </div>
               </div>
-              
+
               <Link href="/blog" className={isActive('/blog')}><span>Blog</span></Link>
               <Link href="/testimonials" className={isActive('/testimonials')}><span>Testimonials</span></Link>
               <Link href="/contact" className={isActive('/contact')}><span>Contact</span></Link>

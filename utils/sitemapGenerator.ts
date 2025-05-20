@@ -43,6 +43,9 @@ async function generateSitemap() {
     { url: '/blog/hoa-rules-guide', changefreq: 'monthly', priority: 0.7, lastmod: today },
     { url: '/blog/golf-course-living', changefreq: 'monthly', priority: 0.7, lastmod: today },
     { url: '/blog/california-nevada-relocation', changefreq: 'monthly', priority: 0.7, lastmod: today },
+    { url: '/services', changefreq: 'monthly', priority: 0.8, lastmod: today },
+    { url: '/services/buying-agent', changefreq: 'monthly', priority: 0.8, lastmod: today },
+    { url: '/services/selling-agent', changefreq: 'monthly', priority: 0.8, lastmod: today },
   ];
 
   // Create a stream to write to

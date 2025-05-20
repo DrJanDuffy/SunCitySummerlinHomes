@@ -1,0 +1,387 @@
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* Hero Section */
+.heroSection {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/golf-course.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: white;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Services Container */
+.servicesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.serviceCard {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.serviceCard h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.serviceCard p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.serviceDetails {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 4px;
+  border-left: 4px solid #006aad;
+}
+
+.serviceDetails span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ctaButton {
+  background-color: #006aad;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #005288;
+}
+
+/* Service Intro Section */
+.serviceIntro {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.serviceContent {
+  flex: 1;
+}
+
+.serviceImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.serviceImg {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.serviceHighlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.highlightCard {
+  background-color: #f0f7fc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid #006aad;
+}
+
+.highlightCard h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+/* Process List Section */
+.processList {
+  width: 100%;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.processList h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: #333;
+}
+
+.processStepper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.processStep {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stepNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #006aad;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.processStep h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+/* Marketing Strategy */
+.marketingStrategy {
+  width: 100%;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.marketingStrategy h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: #333;
+}
+
+.strategyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.strategyItem {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.strategyItem h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+  border-bottom: 2px solid #006aad;
+  padding-bottom: 0.5rem;
+}
+
+/* Testimonials Section */
+.testimonialsSection {
+  width: 100%;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.testimonialsSection h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: #333;
+}
+
+.testimonialCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.testimonialCard {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+}
+
+.testimonialCard:before {
+  content: '"';
+  font-size: 4rem;
+  color: #006aad;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  opacity: 0.2;
+}
+
+.testimonialCard p {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.testimonialCard h4 {
+  font-size: 1.1rem;
+  color: #555;
+  text-align: right;
+}
+
+/* CTA Section */
+.ctaSection {
+  width: 100%;
+  background-color: #006aad;
+  padding: 4rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+.ctaSection h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.ctaSection p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.primaryButton {
+  background-color: white;
+  color: #006aad;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .serviceIntro {
+    flex-direction: column;
+  }
+  
+  .serviceImage {
+    margin-top: 2rem;
+  }
+  
+  .processStepper {
+    flex-direction: column;
+  }
+  
+  .processStep {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .heroSection {
+    padding: 4rem 1.5rem;
+  }
+  
+  .serviceHighlights {
+    grid-template-columns: 1fr;
+  }
+  
+  .strategyGrid {
+    grid-template-columns: 1fr;
+  }
+}
